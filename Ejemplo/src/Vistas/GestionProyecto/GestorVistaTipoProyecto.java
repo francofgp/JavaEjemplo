@@ -77,7 +77,7 @@ public class GestorVistaTipoProyecto  extends GestorVista {
     @Override
     public void saveView() {
         int err;
-        err= this.setModel();
+        err= this.setModel();  //el set modelo
         if (err ==0){ 
            this.getGestor().saveModel(this.getOpcABM());
            this.actualizarView();

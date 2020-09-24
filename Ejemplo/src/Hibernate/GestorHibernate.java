@@ -1,16 +1,23 @@
 package Hibernate;
 import GUtilr.Util;
+import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
 import java.util.*;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 
 public class GestorHibernate extends HibernateUtil {
    
+    
+ 
+    
+    
+    
     
     private Transaction tx;
     /**
@@ -46,6 +53,22 @@ public class GestorHibernate extends HibernateUtil {
             ex.printStackTrace();
             getTx().rollback();
         }
+    }
+    
+        public void guardarUsuario(Usuario objeto){
+        
+        //esto es copiado y pegado, basicamente a todo lo que estaba antes lo guarda, sin verificar nada
+        // le paso el objeto que lo cree en el FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el gestor
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+       // objeto.setApellido("asd");
+       // objeto.setNombre("asdasd");
+       // objeto.setId(2);
+        s.save(objeto);        
+        tx.commit();
+        
+     
+
     }
 
      /**
