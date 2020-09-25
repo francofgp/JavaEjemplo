@@ -64,8 +64,7 @@ public class Usuario {
     public void setId(long id) {
         this.id = id;
     }
-    
-    
+        
     public String getPassword() {
         return password;
     }
