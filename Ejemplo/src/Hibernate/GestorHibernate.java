@@ -8,16 +8,22 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+//import org.hibernate.openSession;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import Modelos.GestionProyecto.Usuario;
+
+
 
 public class GestorHibernate extends HibernateUtil {
-   
-    
- 
-    
-    
-    
+
+    public static void Usuario(String text, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+       
     
     private Transaction tx;
     /**
@@ -127,8 +133,7 @@ public class GestorHibernate extends HibernateUtil {
     public List listarUltimo(Class clase) {
            Criteria crit = getSession().createCriteria(clase) 
                         .addOrder(Order.desc("codigo"));
-        return crit.list();
-         
+        return crit.list();         
     }
 
     public List listarClaseCodigo(Class clase, int valor){        
@@ -136,7 +141,7 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("codigo", valor))
              .add( Restrictions.eq("estado", 0));
         return crit.list();
-}  
+    }  
     
     
     public Object listarClaseCodigoUnique(Class clase, int valor){
@@ -145,6 +150,36 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
+    
+    public static boolean Login(String username, String password){
+        Session sesion = (Session) HibernateUtil.getSessionFactory();
+        
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("username",username)).uniqueResult();
+        
+        try{
+            if(usuario!=null){
+            
+                if(usuario.getPassword().equals(password)){
+                    JOptionPane.showMessageDialog(null,"Bienvenido usuario"+usuario.getNombre());
+                    return true;
+                }
+            }
+             
+            else{
+                JOptionPane.showMessageDialog(null,"El usuario"+usuario.getNombre()
+                        +" no existe","",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+        return false;
+        
+        
+    }
+
 
 } 
  

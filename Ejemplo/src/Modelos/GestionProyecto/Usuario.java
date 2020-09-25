@@ -26,8 +26,14 @@ public class Usuario {
         this.apellido = apellido;
     }
     
+    public Usuario(){
+        
+    }
+    
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
+    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
+    private String password;
 
     public String getNombre() {
         return nombre;
@@ -50,13 +56,23 @@ public class Usuario {
    
     @Column(columnDefinition = "TEXT")
     private String apellido;  
-
-    public long getId() {
+    
+       public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
     }
+    
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
 }
