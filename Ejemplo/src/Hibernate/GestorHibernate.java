@@ -66,9 +66,37 @@ public class GestorHibernate extends HibernateUtil {
        // objeto.setId(2);
         s.save(objeto);        
         tx.commit();
+    }
         
-     
-
+    public static boolean Login (String username, String password){
+        Session sesion = HibernateUtil.getSession();
+        
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", username)).uniqueResult();
+        
+        try {
+            if(usuario!=null){
+            
+                if(usuario.getPassword().equals(password)){
+                    JOptionPane.showMessageDialog(null, "Bienvenido usuario "+usuario.getNombre());
+                    return true;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
+                            + "no corresponde con el usuario", "" ,JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario "+usuario.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El usuario "+usuario.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return false;
+        }
     }
 
      /**

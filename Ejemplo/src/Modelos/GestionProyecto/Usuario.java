@@ -19,11 +19,15 @@ import javax.persistence.Table;
 @Table (name="usuario") 
 public class Usuario {
 
-    public Usuario( String nombre, String apellido) {   
+    public Usuario() {
+    }
+
+    public Usuario( String nombre, String apellido, String password) {   
         //this.id = id;
         //creamos el constructor para los datos que le vamos a pasar, pero el ID no porque es autoincremental
         this.nombre = nombre;
         this.apellido = apellido;
+        this.password= password;
     }
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
@@ -45,6 +49,17 @@ public class Usuario {
         this.apellido = apellido;
     }
     
+    @Column(columnDefinition = "TEXT")
+    private String password;     
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
     @Column(columnDefinition = "TEXT")
     private String nombre;       
    
