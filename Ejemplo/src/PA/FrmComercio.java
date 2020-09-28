@@ -5,6 +5,8 @@
  */
 package PA;
 
+import Vistas.GestionProyecto.Frmlogin;
+
 /**
  *
  * @author Chelo
@@ -16,6 +18,7 @@ public class FrmComercio extends javax.swing.JFrame {
      */
     public FrmComercio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -67,6 +70,7 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
@@ -368,8 +372,8 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //new Frmlogin().setVisible(true);
-        //this.setVisible(false);
+        new Frmlogin().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
