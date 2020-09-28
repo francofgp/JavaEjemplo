@@ -18,12 +18,12 @@ import javax.swing.JFileChooser;
  *
  * @author CrapBoy
  */
-public class FrmProducto extends javax.swing.JFrame {
+public class FrmCalificacion extends javax.swing.JFrame {
 GestorHibernate oper;
     /**
      * Creates new form FrmUsuario
      */
-    public FrmProducto() {
+    public FrmCalificacion() {
         initComponents();
         this.setLocationRelativeTo(null);//
         oper = new GestorHibernate();
@@ -46,26 +46,23 @@ GestorHibernate oper;
 
         btnAceptar1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        btnCrear1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        btnAceptar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        txtRuta = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        LblImagen = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        btnCrear2 = new javax.swing.JButton();
+        btnCrear3 = new javax.swing.JButton();
+        btnCrear4 = new javax.swing.JButton();
+        btnCrear5 = new javax.swing.JButton();
+        btnCrear6 = new javax.swing.JButton();
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -81,6 +78,18 @@ GestorHibernate oper;
 
         jTextField1.setText("jTextField1");
 
+        btnCrear1.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear1.setText("CREAR PRODUCTO");
+        btnCrear1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnCrear1.setContentAreaFilled(false);
+        btnCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear1ActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -89,105 +98,46 @@ GestorHibernate oper;
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAceptar.setBackground(new java.awt.Color(153, 204, 0));
-        btnAceptar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setText("Agregar imagen");
-        btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnAceptar.setContentAreaFilled(false);
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 190, 30));
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("EAT");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 60, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 60, -1));
 
         jLabel10.setBackground(new java.awt.Color(153, 204, 0));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("DELIVERY");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 140, -1));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("______________________________");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 140, -1));
 
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
+        txtNombre.setText("Comercio");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("______________________________");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
-
-        txtEmail.setBackground(new java.awt.Color(153, 204, 0));
-        txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Precio");
-        txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("______________________________");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-
-        txtContraseña.setBackground(new java.awt.Color(153, 204, 0));
-        txtContraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setText("Descripción");
-        txtContraseña.setBorder(null);
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 200, 30));
 
         jTextField3.setBackground(new java.awt.Color(153, 204, 0));
         jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Categoría");
+        jTextField3.setText("Seleccione la calificación");
         jTextField3.setBorder(null);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
-
-        txtRuta.setBackground(new java.awt.Color(255, 255, 255));
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
-        txtRuta.setText("_____________________________________________________");
-        jPanel1.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 300, -1));
-
-        jTextField4.setBackground(new java.awt.Color(153, 204, 0));
-        jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("Ruta de la imagen");
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 300, 30));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Registar Producto");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jLabel7.setText("Califica el Comercio");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -212,20 +162,20 @@ GestorHibernate oper;
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 300));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 310));
-        jPanel1.add(LblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 370, 180));
 
         btnCrear.setBackground(new java.awt.Color(153, 204, 0));
         btnCrear.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrear.setText("CREAR PRODUCTO");
-        btnCrear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnCrear.setText("5");
+        btnCrear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrear.setContentAreaFilled(false);
+        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 30));
+        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 40, 30));
 
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -237,34 +187,81 @@ GestorHibernate oper;
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 300));
+        btnCrear2.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear2.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear2.setText("CALIFICAR");
+        btnCrear2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnCrear2.setContentAreaFilled(false);
+        btnCrear2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 30));
+
+        btnCrear3.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear3.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear3.setText("1");
+        btnCrear3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrear3.setContentAreaFilled(false);
+        btnCrear3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrear3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 40, 30));
+
+        btnCrear4.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear4.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear4.setText("2");
+        btnCrear4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrear4.setContentAreaFilled(false);
+        btnCrear4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrear4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 40, 30));
+
+        btnCrear5.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear5.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear5.setText("3");
+        btnCrear5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrear5.setContentAreaFilled(false);
+        btnCrear5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrear5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 40, 30));
+
+        btnCrear6.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrear6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnCrear6.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear6.setText("4");
+        btnCrear6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrear6.setContentAreaFilled(false);
+        btnCrear6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCrear6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 40, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        txtRuta.setText(filename);
-        Image getAbsolutePath = null;
-        ImageIcon icon = new ImageIcon(filename);
-        Image image = icon.getImage().getScaledInstance(LblImagen.getWidth(),LblImagen.getHeight(),Image.SCALE_SMOOTH);
-        LblImagen.setIcon(icon);
-        
-        
-        //VIDEO DE YOUTUBE DEL QUE SAQUE ESTO
-        // https://www.youtube.com/watch?v=EYlJXP-ZmD0
-//Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -280,18 +277,41 @@ GestorHibernate oper;
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-    String image =txtRuta.getText();
-    image = image.replace("\\","\\\\");
+   
 // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear1ActionPerformed
+
+    private void btnCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear2ActionPerformed
+
+    private void btnCrear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear3ActionPerformed
+
+    private void btnCrear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear4ActionPerformed
+
+    private void btnCrear5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear5ActionPerformed
+
+    private void btnCrear6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrear6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,47 +330,46 @@ GestorHibernate oper;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCalificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCalificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCalificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCalificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmProducto().setVisible(true);
+                new FrmCalificacion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblImagen;
-    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnCrear1;
+    private javax.swing.JButton btnCrear2;
+    private javax.swing.JButton btnCrear3;
+    private javax.swing.JButton btnCrear4;
+    private javax.swing.JButton btnCrear5;
+    private javax.swing.JButton btnCrear6;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JLabel txtRuta;
     // End of variables declaration//GEN-END:variables
 }
