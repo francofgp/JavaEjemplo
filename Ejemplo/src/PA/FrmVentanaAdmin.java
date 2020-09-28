@@ -47,7 +47,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         btnAceptar.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setText("Registrar tipo de comercio");
+        btnAceptar.setText("Registrar tipo de categoria");
         btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar1.setText("Registrar tipo de producto");
+        btnAceptar1.setText("Registrar tipo de rubro");
         btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAceptar1.setContentAreaFilled(false);
         btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +108,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         btnAceptar2.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnAceptar2.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar2.setText("Modificar tipo de comercio");
+        btnAceptar2.setText("Modificar tipo de categoria");
         btnAceptar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAceptar2.setContentAreaFilled(false);
         btnAceptar2.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         btnAceptar3.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnAceptar3.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar3.setText("Modificar tipo de producto");
+        btnAceptar3.setText("Modificar tipo de rubro");
         btnAceptar3.setToolTipText("");
         btnAceptar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAceptar3.setContentAreaFilled(false);
@@ -143,11 +143,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-     new FrmComercio().setVisible(true);
+     new FrmCategoria().setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-        new FrmProducto().setVisible(true);
+        new FrmRubro().setVisible(true);
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar2ActionPerformed
