@@ -35,6 +35,7 @@ public class FrmPrincipal extends  javax.swing.JFrame {
 
         escritorio = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jmenu = new javax.swing.JMenuBar();
         mnConfiguracion = new javax.swing.JMenu();
         mnuProyecto = new javax.swing.JMenuItem();
@@ -52,6 +53,15 @@ public class FrmPrincipal extends  javax.swing.JFrame {
         });
         escritorio.add(jButton1);
         jButton1.setBounds(110, 120, 67, 21);
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        escritorio.add(jButton2);
+        jButton2.setBounds(100, 180, 71, 21);
 
         jmenu.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
 
@@ -119,6 +129,11 @@ public class FrmPrincipal extends  javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //new Frmlogin().setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -130,6 +145,7 @@ public static void main(String args[]) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar jmenu;
     private javax.swing.JMenu mnConfiguracion;
