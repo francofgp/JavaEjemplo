@@ -9,6 +9,7 @@ import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
 import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
+import java.util.HashSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -151,7 +152,7 @@ GestorHibernate oper;
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+           this.setVisible(false);         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
