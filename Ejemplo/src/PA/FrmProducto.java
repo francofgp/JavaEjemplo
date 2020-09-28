@@ -25,7 +25,7 @@ GestorHibernate oper;
      */
     public FrmProducto() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//
         oper = new GestorHibernate();
         
         /*is.setLocationRelativeTo(null);
