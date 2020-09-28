@@ -56,6 +56,7 @@ GestorHibernate oper;
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -150,7 +151,7 @@ GestorHibernate oper;
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
