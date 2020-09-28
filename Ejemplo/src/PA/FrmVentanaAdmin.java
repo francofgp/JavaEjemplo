@@ -143,16 +143,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-        // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        //Usuario user = new Usuario(this.txtNombre.getText(),this.txtApellido.getText());
-        //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-            // TODO add your handling code here:
+     new FrmComercio().setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-        // TODO add your handling code here:
+        new FrmProducto().setVisible(true);
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar2ActionPerformed
