@@ -16,6 +16,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
      */
     public FrmVentanaAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,121 +30,111 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         btnAceptar1 = new javax.swing.JButton();
         btnAceptar2 = new javax.swing.JButton();
         btnAceptar3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1274, 767));
+        setPreferredSize(new java.awt.Dimension(600, 400));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptar.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar.setForeground(new java.awt.Color(153, 204, 0));
         btnAceptar.setText("Registrar tipo de categoria");
-        btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 270, 30));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("EAT");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 60, -1));
-
-        jLabel10.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("DELIVERY");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 140, -1));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(153, 204, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 204, 0));
-        jButton2.setText("<");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 30));
-
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        jButton3.setContentAreaFilled(false);
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 460));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 460));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 270, 30));
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar1.setForeground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setText("Registrar tipo de rubro");
-        btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
         btnAceptar1.setContentAreaFilled(false);
         btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 270, 30));
+        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 270, 30));
 
         btnAceptar2.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar2.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar2.setForeground(new java.awt.Color(153, 204, 0));
         btnAceptar2.setText("Modificar tipo de categoria");
-        btnAceptar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAceptar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
         btnAceptar2.setContentAreaFilled(false);
         btnAceptar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 270, 30));
+        jPanel1.add(btnAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 270, 30));
 
         btnAceptar3.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar3.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar3.setForeground(new java.awt.Color(153, 204, 0));
         btnAceptar3.setText("Modificar tipo de rubro");
         btnAceptar3.setToolTipText("");
-        btnAceptar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAceptar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
         btnAceptar3.setContentAreaFilled(false);
         btnAceptar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptar3ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 270, 30));
+        jPanel1.add(btnAceptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("EAT");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 70, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("DELIVERY");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, -1));
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel3.setText("email:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, -1));
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Configuracion");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton5.setContentAreaFilled(false);
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 40, 120, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //new Frmlogin().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-     new FrmCategoria().setVisible(true);
+        new FrmCategoria().setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
@@ -201,11 +192,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnAceptar2;
     private javax.swing.JButton btnAceptar3;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

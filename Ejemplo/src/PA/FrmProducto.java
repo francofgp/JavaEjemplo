@@ -267,8 +267,10 @@ GestorHibernate oper;
         txtRuta.setText(filename);
         Image getAbsolutePath = null;
         ImageIcon icon = new ImageIcon(filename);
-        Image image = icon.getImage().getScaledInstance(LblImagen.getWidth(),LblImagen.getHeight(),Image.SCALE_SMOOTH);
+        Image image = icon.getImage().getScaledInstance(LblImagen.getWidth(),LblImagen.getHeight(),Image.SCALE_DEFAULT);
         LblImagen.setIcon(icon);
+        //this.repaint();
+        //rsscalelabel.RSScaleLabel.setScaleLabel(LblImagen,txtRuta.setText(filename));
         
         
         //VIDEO DE YOUTUBE DEL QUE SAQUE ESTO

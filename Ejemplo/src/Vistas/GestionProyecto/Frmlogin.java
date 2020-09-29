@@ -6,6 +6,7 @@
 package Vistas.GestionProyecto;
 
 import PA.FrmComercio;
+import PA.FrmPrincipalUsuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -200,8 +201,10 @@ public class Frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_IngresarActionPerformed
-        String password = new String(jPasswordField1.getPassword());
-        Hibernate.GestorHibernate.Usuario(jLabel2_Usuario.getText(),password);
+        new FrmPrincipalUsuario().setVisible(true);
+        this.setVisible(false);
+        //String password = new String(jPasswordField1.getPassword());
+        //Hibernate.GestorHibernate.Usuario(jLabel2_Usuario.getText(),password);
     }//GEN-LAST:event_jButton2_IngresarActionPerformed
 
     private void usuarioTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTextActionPerformed
