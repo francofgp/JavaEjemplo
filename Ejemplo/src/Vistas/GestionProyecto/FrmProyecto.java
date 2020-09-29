@@ -348,7 +348,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(cmbDenominacion);
-        cmbDenominacion.setBounds(110, 50, 460, 23);
+        cmbDenominacion.setBounds(110, 50, 460, 27);
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Search.png"))); // NOI18N
@@ -371,13 +371,13 @@ public class FrmProyecto extends FrmGenerica {
         txtDenominacion.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         txtDenominacion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtDenominacion);
-        txtDenominacion.setBounds(110, 50, 460, 23);
+        txtDenominacion.setBounds(110, 50, 460, 25);
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel3.setText("Código");
         jLabel3.setRequestFocusEnabled(false);
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 20, 90, 17);
+        jLabel3.setBounds(20, 20, 90, 19);
 
         txtCodigo.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -392,7 +392,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(txtCodigo);
-        txtCodigo.setBounds(110, 20, 90, 23);
+        txtCodigo.setBounds(110, 20, 90, 25);
 
         btnBuscarCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscarCodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Search.png"))); // NOI18N
@@ -419,7 +419,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(cmbTipoProyecto);
-        cmbTipoProyecto.setBounds(110, 80, 180, 23);
+        cmbTipoProyecto.setBounds(110, 80, 180, 27);
 
         jLabel2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel2.setText("Denominación");
@@ -434,7 +434,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(300, 80, 50, 23);
+        jButton1.setBounds(300, 80, 50, 21);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(10, 0, 610, 120);
@@ -587,7 +587,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         getContentPane().add(txtItemDenominacion);
-        txtItemDenominacion.setBounds(120, 140, 160, 23);
+        txtItemDenominacion.setBounds(120, 140, 160, 25);
 
         btnAgregar.setText("Agregar");
         btnAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
@@ -626,7 +626,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         getContentPane().add(btnImprimir);
-        btnImprimir.setBounds(360, 330, 37, 23);
+        btnImprimir.setBounds(360, 330, 37, 21);
 
         getAccessibleContext().setAccessibleName("Carg");
 
