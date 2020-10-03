@@ -16,6 +16,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
      */
     public FrmPrincipalComercio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

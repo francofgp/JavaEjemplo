@@ -61,7 +61,6 @@ GestorHibernate oper;
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         LblImagen = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
@@ -101,12 +100,12 @@ GestorHibernate oper;
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 190, 30));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 190, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("EAT");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 60, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 60, -1));
 
         jLabel10.setBackground(new java.awt.Color(153, 204, 0));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
@@ -169,13 +168,13 @@ GestorHibernate oper;
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
 
         txtRuta.setBackground(new java.awt.Color(255, 255, 255));
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
+        txtRuta.setForeground(new java.awt.Color(153, 204, 0));
         txtRuta.setText("_____________________________________________________");
         jPanel1.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 300, -1));
 
         jTextField4.setBackground(new java.awt.Color(153, 204, 0));
         jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setForeground(new java.awt.Color(153, 204, 0));
         jTextField4.setText("Ruta de la imagen");
         jTextField4.setBorder(null);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -192,20 +191,6 @@ GestorHibernate oper;
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(153, 204, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 204, 0));
-        jButton2.setText("<");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
@@ -287,11 +272,6 @@ GestorHibernate oper;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Frmlogin().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar1ActionPerformed
@@ -355,7 +335,6 @@ GestorHibernate oper;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
