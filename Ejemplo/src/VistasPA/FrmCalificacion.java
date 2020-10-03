@@ -54,10 +54,8 @@ GestorHibernate oper;
         jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         btnCrear2 = new javax.swing.JButton();
         btnCrear3 = new javax.swing.JButton();
         btnCrear4 = new javax.swing.JButton();
@@ -112,7 +110,7 @@ GestorHibernate oper;
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 140, -1));
 
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
-        txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setText("Comercio");
         txtNombre.setToolTipText("");
@@ -122,7 +120,7 @@ GestorHibernate oper;
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 250, 50));
 
         jTextField3.setBackground(new java.awt.Color(153, 204, 0));
         jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -144,20 +142,6 @@ GestorHibernate oper;
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 204, 0));
-        jButton2.setText("<");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 30));
-
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
         jButton3.setContentAreaFilled(false);
@@ -178,18 +162,6 @@ GestorHibernate oper;
             }
         });
         jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 40, 30));
-
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 204, 0), 2, true));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 170, -1));
 
         btnCrear2.setBackground(new java.awt.Color(153, 204, 0));
         btnCrear2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -297,11 +269,6 @@ GestorHibernate oper;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Frmlogin().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar1ActionPerformed
@@ -310,10 +277,6 @@ GestorHibernate oper;
    
 // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -398,11 +361,9 @@ GestorHibernate oper;
     private javax.swing.JButton btnCrear4;
     private javax.swing.JButton btnCrear5;
     private javax.swing.JButton btnCrear6;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
