@@ -42,7 +42,8 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String telefono;
     
-    
+    @Column(columnDefinition = "TEXT")
+    private String imagen;
         
     @Column(columnDefinition = "TEXT")
     private String nombreLocal;
@@ -53,8 +54,6 @@ public class Comercio {
     @OneToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Rubro rubro;
     
-    @OneToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private DetallePedido detallePedido;
     
     @OneToMany(targetEntity = Producto.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Producto producto;
@@ -164,6 +163,22 @@ public class Comercio {
 
     public void setDireccionNegocio(String direccionNegocio) {
         this.direccionNegocio = direccionNegocio;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public Producto getProducto() {
+        return producto;
     }
     
     
