@@ -54,13 +54,20 @@ public class Comercio {
     @OneToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Rubro rubro;
     
-    
     @OneToMany(targetEntity = Producto.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Producto producto;
     
     @Column(columnDefinition = "TEXT")
     private String direccionNegocio;
 
+    ////////////////////////////////////
+    @OneToMany(targetEntity = Producto.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private Calificacion calificacionIndividual;
+    
+    @Column(columnDefinition = "TEXT")
+    private String calificacion;
+    ////////////////////////////////////////
+    
     public long getId() {
         return id;
     }
