@@ -56,7 +56,7 @@ public class Comercio {
     @OneToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private DetallePedido detallePedido;
     
-    @OneToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    @OneToMany(targetEntity = Producto.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Producto producto;
     
     @Column(columnDefinition = "TEXT")
