@@ -135,7 +135,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton2_IngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 150, 30));
+        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, 30));
 
         jPasswordField1.setBackground(new java.awt.Color(153, 204, 0));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
