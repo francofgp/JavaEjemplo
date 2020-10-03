@@ -18,6 +18,9 @@ public class Calificacion {
    
     @Column(columnDefinition = "TEXT")
     private String fecha;
+    
+    @Column(columnDefinition = "TEXT")
+    private String comercio;
 
     public long getId() {
         return id;
@@ -41,6 +44,14 @@ public class Calificacion {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getComercio() {
+        return comercio;
+    }
+
+    public void setComercio(String comercio) {
+        this.comercio = comercio;
     }
 
     
