@@ -7,17 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="rol")
-public class rol{
+@Table (name="calificacion")
+public class Calificacion {
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
        
     @Column(columnDefinition = "TEXT")
-    private String nombre;       
+    private String numero;       
    
     @Column(columnDefinition = "TEXT")
-    private String descripcion;
+    private String fecha;
 
     public long getId() {
         return id;
@@ -27,21 +27,21 @@ public class rol{
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getFecha() {
+        return fecha;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-    
+
     
 }
