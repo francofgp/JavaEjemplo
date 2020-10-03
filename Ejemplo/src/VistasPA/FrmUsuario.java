@@ -6,7 +6,7 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Modelos.GestionProyecto.Usuario;
+//import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -246,9 +246,9 @@ GestorHibernate oper;
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        Usuario user = new Usuario(this.txtNombre.getText(),this.txtApellido.getText());
+        //Usuario user = new Usuario(this.txtNombre.getText(),this.txtApellido.getText());
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
 

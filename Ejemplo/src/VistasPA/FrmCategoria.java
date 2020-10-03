@@ -7,7 +7,7 @@ package VistasPA;
 
 import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
-import Modelos.GestionProyecto.Usuario;
+//import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import java.util.HashSet;
 import javax.swing.Icon;
