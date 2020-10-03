@@ -23,6 +23,10 @@ public class Pedido {
     @Column(columnDefinition = "TEXT")
     private float subtotal;
 
+    
+    @Column(columnDefinition = "TEXT")
+    private float descripcion;
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -62,6 +66,15 @@ public class Pedido {
     public void setSubtotal(float subtotal) {
         this.subtotal = subtotal;
     }
+
+    public float getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(float descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     
     
     
