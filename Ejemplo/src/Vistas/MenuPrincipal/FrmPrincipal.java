@@ -1,5 +1,5 @@
 package Vistas.MenuPrincipal;
-import Vistas.GestionProyecto.FrmUsuario;
+import VistasPA.FrmUsuario;
 import javax.swing.JDesktopPane;
 
 public class FrmPrincipal extends  javax.swing.JFrame {

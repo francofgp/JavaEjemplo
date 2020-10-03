@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas.GestionProyecto;
+package VistasPA;
 
-import PA.FrmComercio;
-import PA.FrmPrincipalUsuario;
+import VistasPA.FrmUsuario;
+import VistasPA.FrmComercio;
+import VistasPA.FrmPrincipalUsuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

@@ -3,29 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PA;
+package VistasPA;
 
-import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
 import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
-import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 
 /**
  *
  * @author CrapBoy
  */
-public class FrmProducto extends javax.swing.JFrame {
+public class FrmUsuario extends javax.swing.JFrame {
 GestorHibernate oper;
     /**
      * Creates new form FrmUsuario
      */
-    public FrmProducto() {
+    public FrmUsuario() {
         initComponents();
-        this.setLocationRelativeTo(null);//
+        this.setLocationRelativeTo(null);
         oper = new GestorHibernate();
         
         /*is.setLocationRelativeTo(null);
@@ -44,8 +41,7 @@ GestorHibernate oper;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAceptar1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -56,36 +52,35 @@ GestorHibernate oper;
         txtEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        txtRuta = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        LblImagen = new javax.swing.JLabel();
-        btnCrear = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
-
-        btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
-        btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar1.setText("CREAR CUENTA");
-        btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnAceptar1.setContentAreaFilled(false);
-        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptar1ActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton1.setText("Crea una cuenta como Comercio");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 210, 30));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,7 +88,7 @@ GestorHibernate oper;
         btnAceptar.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setText("Agregar imagen");
+        btnAceptar.setText("CREAR CUENTA");
         btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,18 +96,18 @@ GestorHibernate oper;
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 190, 30));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("EAT");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 60, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 60, -1));
 
         jLabel10.setBackground(new java.awt.Color(153, 204, 0));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("DELIVERY");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 140, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 260, 140, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +130,7 @@ GestorHibernate oper;
         txtEmail.setBackground(new java.awt.Color(153, 204, 0));
         txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Precio");
+        txtEmail.setText("Email");
         txtEmail.setBorder(null);
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
 
@@ -147,7 +142,7 @@ GestorHibernate oper;
         txtContraseña.setBackground(new java.awt.Color(153, 204, 0));
         txtContraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setText("Descripción");
+        txtContraseña.setText("Contraseña");
         txtContraseña.setBorder(null);
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,39 +151,68 @@ GestorHibernate oper;
         });
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("______________________________");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 20));
+
+        txtDireccion.setBackground(new java.awt.Color(153, 204, 0));
+        txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setText("Dirección");
+        txtDireccion.setBorder(null);
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("______________________________");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+
         jTextField3.setBackground(new java.awt.Color(153, 204, 0));
         jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Categoría");
+        jTextField3.setText("Teléfono");
         jTextField3.setBorder(null);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
 
-        txtRuta.setBackground(new java.awt.Color(255, 255, 255));
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
-        txtRuta.setText("_____________________________________________________");
-        jPanel1.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 300, -1));
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("______________________________");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
 
         jTextField4.setBackground(new java.awt.Color(153, 204, 0));
         jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("Ruta de la imagen");
+        jTextField4.setText("Fecha de Nacimiento");
         jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("______________________________");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+
+        txtApellido.setBackground(new java.awt.Color(153, 204, 0));
+        txtApellido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellido.setText("Apellido");
+        txtApellido.setBorder(null);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 300, 30));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Registar Producto");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        jLabel7.setText("Completá tus datos");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -213,71 +237,24 @@ GestorHibernate oper;
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 300));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 310));
-        jPanel1.add(LblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 370, 180));
 
-        btnCrear.setBackground(new java.awt.Color(153, 204, 0));
-        btnCrear.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnCrear.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrear.setText("CREAR PRODUCTO");
-        btnCrear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnCrear.setContentAreaFilled(false);
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 30));
-
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 204, 0), 2, true));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, -1));
-
-        jButton4.setBackground(new java.awt.Color(153, 204, 0));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("X");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 30, 20));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        txtRuta.setText(filename);
-        Image getAbsolutePath = null;
-        ImageIcon icon = new ImageIcon(filename);
-        Image image = icon.getImage().getScaledInstance(LblImagen.getWidth(),LblImagen.getHeight(),Image.SCALE_DEFAULT);
-        LblImagen.setIcon(icon);
-        //this.repaint();
-        //rsscalelabel.RSScaleLabel.setScaleLabel(LblImagen,txtRuta.setText(filename));
-        
-        
-        //VIDEO DE YOUTUBE DEL QUE SAQUE ESTO
-        // https://www.youtube.com/watch?v=EYlJXP-ZmD0
-//Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
+            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
+        Usuario user = new Usuario(this.txtNombre.getText(),this.txtApellido.getText());
+            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
+        oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
@@ -292,27 +269,9 @@ GestorHibernate oper;
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptar1ActionPerformed
-
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-    String image =txtRuta.getText();
-    image = image.replace("\\","\\\\");
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,48 +290,47 @@ GestorHibernate oper;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmProducto().setVisible(true);
+                new FrmUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblImagen;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnAceptar1;
-    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JLabel txtRuta;
     // End of variables declaration//GEN-END:variables
 }

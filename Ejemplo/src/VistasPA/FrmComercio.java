@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PA;
+package VistasPA;
 
-import Vistas.GestionProyecto.Frmlogin;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
