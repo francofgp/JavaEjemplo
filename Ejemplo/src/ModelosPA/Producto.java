@@ -33,7 +33,7 @@ public class Producto {
     private String descripcion;
     
     @Column(columnDefinition = "TEXT")
-    private String precio;
+    private float precio;
     
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
@@ -62,11 +62,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
     
