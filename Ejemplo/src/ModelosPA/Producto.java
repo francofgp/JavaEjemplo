@@ -17,8 +17,8 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table (name="rubro")
-public class Rubro {
+@Table (name="producto")
+public class Producto {
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
@@ -28,30 +28,9 @@ public class Rubro {
    
     @Column(columnDefinition = "TEXT")
     private String descripcion;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    
+    @Column(columnDefinition = "TEXT")
+    private String precio;
     
     
 }
