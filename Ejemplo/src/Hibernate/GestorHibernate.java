@@ -1,6 +1,6 @@
 package Hibernate;
 import GUtilr.Util;
-import Modelos.GestionProyecto.Usuario;
+//import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -14,7 +14,7 @@ import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import Modelos.GestionProyecto.Usuario;
+//import Modelos.GestionProyecto.Usuario;
 
 
 
@@ -61,7 +61,7 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
     
-        public void guardarUsuario(Usuario objeto){
+        /*public void guardarUsuario(Usuario objeto){
         
         //esto es copiado y pegado, basicamente a todo lo que estaba antes lo guarda, sin verificar nada
         // le paso el objeto que lo cree en el FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el gestor
@@ -76,7 +76,7 @@ public class GestorHibernate extends HibernateUtil {
      
 
     }
-
+*/
      /**
      * Actualiza un objeto en el repositorio
      * @param objeto Objeto a actualizar
@@ -150,7 +150,7 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
-    
+   /*
     public static boolean Login(String username, String password){
         Session sesion = (Session) HibernateUtil.getSessionFactory();
         
@@ -179,7 +179,7 @@ public class GestorHibernate extends HibernateUtil {
         
         
     }
-
+*/
 
 } 
  
