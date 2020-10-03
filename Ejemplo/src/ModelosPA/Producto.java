@@ -38,6 +38,9 @@ public class Producto {
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
 
+    @Column(columnDefinition = "TEXT")
+    private float imagen;
+    
     public long getId() {
         return id;
     }
@@ -68,6 +71,22 @@ public class Producto {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public float getImagen() {
+        return imagen;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setImagen(float imagen) {
+        this.imagen = imagen;
     }
     
     
