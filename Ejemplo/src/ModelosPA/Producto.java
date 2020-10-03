@@ -5,10 +5,13 @@
  */
 package ModelosPA;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,6 +34,41 @@ public class Producto {
     
     @Column(columnDefinition = "TEXT")
     private String precio;
+    
+    @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    private Categoria categoria;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
     
     
 }

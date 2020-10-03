@@ -18,4 +18,6 @@ import javax.persistence.Table;
 @Table (name="comercio")
 public class Comercio {
     
+    
+    
 }
