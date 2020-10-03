@@ -9,6 +9,8 @@ import javax.persistence.Table;
 @Table (name="categoria") 
 public class Categoria {
     
+    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+    private long id;
     @Column(columnDefinition = "TEXT")
     String descripcion;
     @Column(columnDefinition = "TEXT")
@@ -21,10 +23,8 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
-    private long id;
-    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
-    private String password;
+    
+
 
     public String getDescripcion() {
         return descripcion;
