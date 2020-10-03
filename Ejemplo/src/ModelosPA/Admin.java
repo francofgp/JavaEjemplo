@@ -1,14 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelosPA;
 
-/**
- *
- * @author roton
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="admin") 
 public class Admin {
     
+    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+    private long id;
+    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
+    private String password;
+    @Column(columnDefinition = "TEXT")
+    private String nombre;  
+
+    public Admin(long id, String password, String nombre) {
+        this.id = id;
+        this.password = password;
+        this.nombre = nombre;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+
 }
