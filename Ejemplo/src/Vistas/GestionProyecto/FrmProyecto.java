@@ -1,7 +1,12 @@
 package Vistas.GestionProyecto;
+import Hibernate.HibernateUtil;
+import Modelos.GestionProyecto.Usuario;
 import Vistas.FrmGenerica;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import javax.swing.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 public class FrmProyecto extends FrmGenerica {
     private GestorVistaProyecto gestorVista;
@@ -310,6 +315,7 @@ public class FrmProyecto extends FrmGenerica {
         cmbTipoProyecto = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -348,7 +354,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(cmbDenominacion);
-        cmbDenominacion.setBounds(110, 50, 460, 23);
+        cmbDenominacion.setBounds(110, 50, 460, 27);
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Search.png"))); // NOI18N
@@ -371,13 +377,13 @@ public class FrmProyecto extends FrmGenerica {
         txtDenominacion.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         txtDenominacion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtDenominacion);
-        txtDenominacion.setBounds(110, 50, 460, 23);
+        txtDenominacion.setBounds(110, 50, 460, 25);
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel3.setText("Código");
         jLabel3.setRequestFocusEnabled(false);
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 20, 90, 17);
+        jLabel3.setBounds(20, 20, 90, 19);
 
         txtCodigo.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -392,7 +398,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(txtCodigo);
-        txtCodigo.setBounds(110, 20, 90, 23);
+        txtCodigo.setBounds(110, 20, 90, 25);
 
         btnBuscarCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscarCodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Search.png"))); // NOI18N
@@ -419,7 +425,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(cmbTipoProyecto);
-        cmbTipoProyecto.setBounds(110, 80, 180, 23);
+        cmbTipoProyecto.setBounds(110, 80, 180, 27);
 
         jLabel2.setFont(new java.awt.Font("Bodoni MT", 0, 14)); // NOI18N
         jLabel2.setText("Denominación");
@@ -434,7 +440,11 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(300, 80, 50, 23);
+        jButton1.setBounds(300, 80, 50, 21);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(430, 20, 140, 19);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(10, 0, 610, 120);
@@ -587,7 +597,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         getContentPane().add(txtItemDenominacion);
-        txtItemDenominacion.setBounds(120, 140, 160, 23);
+        txtItemDenominacion.setBounds(120, 140, 160, 25);
 
         btnAgregar.setText("Agregar");
         btnAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
@@ -626,7 +636,7 @@ public class FrmProyecto extends FrmGenerica {
             }
         });
         getContentPane().add(btnImprimir);
-        btnImprimir.setBounds(360, 330, 37, 23);
+        btnImprimir.setBounds(360, 330, 37, 21);
 
         getAccessibleContext().setAccessibleName("Carg");
 
@@ -679,8 +689,35 @@ public class FrmProyecto extends FrmGenerica {
         }
 }//GEN-LAST:event_btnBuscarCodigoKeyPressed
 
+    public void llenaJComboBoxUsuario() {
+        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
+        Session sesion = null;
+        try {
+
+            sesion = HibernateUtil.getSessionFactory().openSession();
+
+            Criteria crit = sesion.createCriteria(Usuario.class);
+            List<Usuario> resulset = crit.list();
+            
+            jComboBox1.removeAllItems();
+
+            for (Usuario usuario : resulset) {
+                jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+            }
+
+            sesion.close();
+
+            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         this.viewNuevoEnter();
+        this.llenaJComboBoxUsuario();
+        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnNuevoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNuevoKeyPressed
@@ -811,6 +848,7 @@ public class FrmProyecto extends FrmGenerica {
     private javax.swing.JComboBox cmbDenominacion;
     private javax.swing.JComboBox cmbTipoProyecto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

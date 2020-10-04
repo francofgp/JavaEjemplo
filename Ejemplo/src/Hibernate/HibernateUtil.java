@@ -50,4 +50,8 @@ public class HibernateUtil  {
     throws HibernateException {
         return session;
     }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }
