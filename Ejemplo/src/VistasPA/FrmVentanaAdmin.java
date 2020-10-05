@@ -50,7 +50,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1274, 767));
+        setMinimumSize(new java.awt.Dimension(900, 600));
+        setPreferredSize(new java.awt.Dimension(1174, 772));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -205,7 +206,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnAceptar8, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 460, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 680));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 680));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -230,9 +231,9 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jButton5.setText("Configuracion");
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton5.setContentAreaFilled(false);
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 40, 120, 30));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 40, 120, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
