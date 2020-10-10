@@ -1,5 +1,7 @@
 package Hibernate;
 import GUtilr.Util;
+import ModelosPA.Rubro;
+import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
 import java.util.*;
@@ -61,7 +63,7 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
     
-        /*public void guardarUsuario(Usuario objeto){
+        public void guardarUsuario(Object objeto){
         
         //esto es copiado y pegado, basicamente a todo lo que estaba antes lo guarda, sin verificar nada
         // le paso el objeto que lo cree en el FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el gestor
@@ -72,11 +74,36 @@ public class GestorHibernate extends HibernateUtil {
        // objeto.setId(2);
         s.save(objeto);        
         tx.commit();
-        
-     
-
     }
-*/
+        
+    public void modificarUsuario(String nombre, String descripcion, Long ID){
+        
+        
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        
+        
+        Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+                .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        rubro.setDescripcion(descripcion);
+        rubro.setNombre(nombre);
+        s.update(rubro);
+        tx.commit();
+        
+        /***
+        //esto es copiado y pegado, basicamente a todo lo que estaba antes lo guarda, sin verificar nada
+        // le paso el objeto que lo cree en el FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el gestor
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+       // objeto.setApellido("asd");
+       // objeto.setNombre("asdasd");
+       // objeto.setId(2);
+        s.save(objeto);        
+        tx.commit();
+        * ***/
+    }
+
      /**
      * Actualiza un objeto en el repositorio
      * @param objeto Objeto a actualizar
@@ -97,6 +124,14 @@ public class GestorHibernate extends HibernateUtil {
 
             return false;
         }
+    }
+    
+    
+       public static List<Rubro> RubroShow(){
+           Session sesion = HibernateUtil.getSession();
+           List<Rubro> rubro = session.createCriteria(Rubro.class).list();
+           return rubro;
+        
     }
     
     
@@ -150,6 +185,20 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
+    
+     public void eliminarRubro(Long ID){
+
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        
+        
+        Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+                .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        s.delete(rubro);
+        tx.commit();
+    }
+    
    /*
     public static boolean Login(String username, String password){
         Session sesion = (Session) HibernateUtil.getSessionFactory();

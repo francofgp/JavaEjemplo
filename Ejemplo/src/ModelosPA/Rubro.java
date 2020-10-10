@@ -19,6 +19,16 @@ import javax.persistence.Table;
 @Entity
 @Table (name="rubro")
 public class Rubro {
+
+    public Rubro(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    public Rubro() {
+    }
+    
+    
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;

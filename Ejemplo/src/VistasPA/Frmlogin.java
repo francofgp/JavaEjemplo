@@ -11,6 +11,8 @@ import VistasPA.FrmPrincipalUsuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import VistasPA.FrmAdmin;
+
 
 /**
  *
@@ -45,6 +47,8 @@ public class Frmlogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel2_Usuario = new javax.swing.JLabel();
         jLabel4_Contraseña = new javax.swing.JLabel();
@@ -61,7 +65,32 @@ public class Frmlogin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        jButton5.setBackground(new java.awt.Color(153, 204, 0));
+        jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(153, 204, 0));
+        jButton5.setText("Crear una cuenta");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        jButton5.setContentAreaFilled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(153, 204, 0));
+        jButton7.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(153, 204, 0));
+        jButton7.setText("Crear una cuenta");
+        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        jButton7.setContentAreaFilled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 0));
@@ -179,6 +208,19 @@ public class Frmlogin extends javax.swing.JFrame {
         jLabel2.setText("¿No tenés una cuenta?");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
 
+        jButton6.setBackground(new java.awt.Color(153, 204, 0));
+        jButton6.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(153, 204, 0));
+        jButton6.setText("Crear Admin");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        jButton6.setContentAreaFilled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 120, 20));
+
         jButton3.setBackground(new java.awt.Color(153, 204, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
@@ -188,7 +230,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 100));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 330, 100));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 320, 100));
 
@@ -226,6 +268,19 @@ public class Frmlogin extends javax.swing.JFrame {
         //new FrmComercio().setVisible(true);
         //this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new FrmAdmin().setVisible(true);
+        this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +324,9 @@ public class Frmlogin extends javax.swing.JFrame {
     private javax.swing.JButton jButton2_Ingresar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2_Usuario;

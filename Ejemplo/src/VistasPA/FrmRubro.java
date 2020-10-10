@@ -7,6 +7,9 @@ package VistasPA;
 
 import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorRubro;
+import ModelosPA.Admin;
+import ModelosPA.Rubro;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -17,14 +20,22 @@ import javax.swing.ImageIcon;
  * @author CrapBoy
  */
 public class FrmRubro extends javax.swing.JFrame {
-GestorHibernate oper;
+    
+    String modificado="0"; //uso esto para saber si se modifico, si es 1 es
+    // es porque lo mando para modificar
+    String nombre;
+    String descripcion;
+    Long ID;
+    
+ControladorRubro oper;
+
     /**
      * Creates new form FrmUsuario
      */
     public FrmRubro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new GestorHibernate();
+        oper = new ControladorRubro();
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -48,7 +59,7 @@ GestorHibernate oper;
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -99,6 +110,11 @@ GestorHibernate oper;
         txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,12 +122,12 @@ GestorHibernate oper;
         jLabel1.setText("_____________________________________________________________________");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 390, -1));
 
-        txtEmail.setBackground(new java.awt.Color(153, 204, 0));
-        txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Descripcion");
-        txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 30));
+        txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
+        txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescripcion.setText("Descripcion");
+        txtDescripcion.setBorder(null);
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,7 +164,28 @@ GestorHibernate oper;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
+        if(modificado=="1"){
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+            this.nombre=txtNombre.getText();
+            this.descripcion=txtDescripcion.getText();
+            //this.ID=ID;
+            oper.modificarUsuario(nombre,descripcion,ID);
+        }else{
+            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
+            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
+        Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
+            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
+        oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        // TODO add your handling code here: 
+        
+        }
+            
+
+        
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -159,9 +196,24 @@ GestorHibernate oper;
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    public void modificar(String modificado, String nombre, String descripcion, long ID){
+        txtDescripcion.setText(descripcion);
+        txtNombre.setText(nombre);
+        btnAceptar.setText("Modificar rubro");
+        this.modificado=modificado;
+        
+        this.nombre=nombre;
+        this.descripcion=descripcion;
+        this.ID=ID;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -207,7 +259,7 @@ GestorHibernate oper;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,30 @@
  */
 package VistasPA;
 
+import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorRubro;
+import ModelosPA.Rubro;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Chelo
  */
 public class FrmVentanaAdmin extends javax.swing.JFrame {
+    GestorHibernate oper;
+    FrmRubro frmRubro;
+    
+    
+    
+    String nombre;
+    String descripcion;
+    Long ID;
+
 
     /**
      * Creates new form FrmComercio
@@ -17,6 +36,9 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public FrmVentanaAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+         oper = new GestorHibernate();
+         frmRubro = new FrmRubro();
+         LoadRubro();
     }
 
     /**
@@ -32,7 +54,13 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         btnAceptar = new javax.swing.JButton();
         btnAceptar1 = new javax.swing.JButton();
         btnAceptar2 = new javax.swing.JButton();
-        btnAceptar3 = new javax.swing.JButton();
+        Recargar = new javax.swing.JButton();
+        btnAceptar4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableRubro = new javax.swing.JTable();
+        btnAceptar5 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        seleccionTxt = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -58,7 +86,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 270, 30));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 270, 30));
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -71,7 +99,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 270, 30));
+        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 30));
 
         btnAceptar2.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -84,21 +112,85 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 270, 30));
+        jPanel1.add(btnAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 270, 30));
 
-        btnAceptar3.setBackground(new java.awt.Color(153, 204, 0));
-        btnAceptar3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar3.setForeground(new java.awt.Color(153, 204, 0));
-        btnAceptar3.setText("Modificar tipo de rubro");
-        btnAceptar3.setToolTipText("");
-        btnAceptar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        btnAceptar3.setContentAreaFilled(false);
-        btnAceptar3.addActionListener(new java.awt.event.ActionListener() {
+        Recargar.setBackground(new java.awt.Color(153, 204, 0));
+        Recargar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        Recargar.setForeground(new java.awt.Color(153, 204, 0));
+        Recargar.setText("Recargar Tabla");
+        Recargar.setToolTipText("");
+        Recargar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        Recargar.setContentAreaFilled(false);
+        Recargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptar3ActionPerformed(evt);
+                RecargarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 30));
+        jPanel1.add(Recargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 220, 30));
+
+        btnAceptar4.setBackground(new java.awt.Color(153, 204, 0));
+        btnAceptar4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnAceptar4.setForeground(new java.awt.Color(153, 204, 0));
+        btnAceptar4.setText("Modificar tipo de rubro");
+        btnAceptar4.setToolTipText("");
+        btnAceptar4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnAceptar4.setContentAreaFilled(false);
+        btnAceptar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 30));
+
+        jTableRubro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Descripcion", "ID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableRubro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableRubroMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableRubro);
+        if (jTableRubro.getColumnModel().getColumnCount() > 0) {
+            jTableRubro.getColumnModel().getColumn(0).setResizable(false);
+            jTableRubro.getColumnModel().getColumn(1).setResizable(false);
+            jTableRubro.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 230));
+
+        btnAceptar5.setBackground(new java.awt.Color(153, 204, 0));
+        btnAceptar5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnAceptar5.setForeground(new java.awt.Color(153, 204, 0));
+        btnAceptar5.setText("Eliminar rubro");
+        btnAceptar5.setToolTipText("");
+        btnAceptar5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnAceptar5.setContentAreaFilled(false);
+        btnAceptar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 220, 30));
+
+        jLabel2.setText("Elemento Seleccionado:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
+
+        seleccionTxt.setText("No ha seleccionado ningun elemento");
+        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 500, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
 
@@ -132,6 +224,39 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void LoadRubro(){
+        List<Rubro> rubro = oper.RubroShow();
+        if (rubro.size()>0){
+            Iterator consulta = rubro.iterator();
+            while(consulta.hasNext()){
+                DefaultTableModel tabla = (DefaultTableModel)jTableRubro.getModel();
+                Vector datos = new Vector();
+                Rubro fila = (Rubro)consulta.next();
+                datos.add(fila.getNombre());
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getId());
+                tabla.addRow(datos);
+                }
+        }else
+            JOptionPane.showMessageDialog(null,"no hay registros");
+    }
+    
+    void ClearTableRubro(){
+        while(jTableRubro.getRowCount()!=0){
+             ((DefaultTableModel)jTableRubro.getModel()).removeRow(0);
+        }
+    }
+    
+    public void conseguirValoresTxt(){
+        DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
+        int selectedRowIndex = jTableRubro.getSelectedRow();
+        ID = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
+        nombre = model.getValueAt(selectedRowIndex,0).toString();
+        descripcion = model.getValueAt(selectedRowIndex,1).toString();
+
+    }
+    
+    
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         new FrmCategoria().setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -144,9 +269,50 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar2ActionPerformed
 
-    private void btnAceptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar3ActionPerformed
+    private void RecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargarActionPerformed
+        ClearTableRubro(); //limpio la tabla antes de cargar, para que no sume
+                //por ejemplo si tengo 10 regs, y agrego 1 mas, no me traeria 11 sino 22, por eso limpio
+        LoadRubro();
+// TODO add your handling code here:
+    }//GEN-LAST:event_RecargarActionPerformed
+
+    private void btnAceptar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar4ActionPerformed
+        //Primero Obtengo todos los valores de la tabla
+        conseguirValoresTxt();
+        frmRubro.modificar("1",nombre,descripcion,ID );
+        frmRubro.setVisible(true);
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptar3ActionPerformed
+    }//GEN-LAST:event_btnAceptar4ActionPerformed
+
+    private void btnAceptar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar5ActionPerformed
+        //CONSIGO EL ID
+        conseguirValoresTxt();
+            //Long id;
+            //DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
+            //int selectedRowIndex = jTableRubro.getSelectedRow();
+            
+            //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
+            
+            oper.eliminarRubro(ID);
+            
+            ClearTableRubro();
+            LoadRubro();
+            
+        // TODO add your handling code here:
+        
+        //System.out.println(id); //esto era para probar si no manquié
+    }//GEN-LAST:event_btnAceptar5ActionPerformed
+
+    private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked
+            DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
+            int selectedRowIndex = jTableRubro.getSelectedRow();
+            seleccionTxt.setText("Nombre: "+ model.getValueAt(selectedRowIndex,0).toString() + " "+
+                    "Descripción: "+ model.getValueAt(selectedRowIndex,1).toString() + " "+
+                    "ID: "+ model.getValueAt(selectedRowIndex,2).toString());
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableRubroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,15 +353,21 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Recargar;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnAceptar2;
-    private javax.swing.JButton btnAceptar3;
+    private javax.swing.JButton btnAceptar4;
+    private javax.swing.JButton btnAceptar5;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableRubro;
+    private javax.swing.JLabel seleccionTxt;
     // End of variables declaration//GEN-END:variables
 }

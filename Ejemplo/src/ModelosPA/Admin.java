@@ -17,10 +17,13 @@ public class Admin {
     @Column(columnDefinition = "TEXT")
     private String nombre;  
 
-    public Admin(long id, String password, String nombre) {
-        this.id = id;
+    public Admin(String password, String nombre) {
         this.password = password;
         this.nombre = nombre;
+    }
+    
+    public Admin(){
+        
     }
 
     public long getId() {

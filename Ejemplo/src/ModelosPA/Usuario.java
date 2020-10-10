@@ -19,12 +19,17 @@ import javax.persistence.Table;
 @Table (name="usuario") 
 public class Usuario {
 
-    public Usuario( String nombre, String apellido) {   
-        //this.id = id;
-        //creamos el constructor para los datos que le vamos a pasar, pero el ID no porque es autoincremental
+    public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
+        this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.fechaNac = fechaNac;
     }
+
+
     
     public Usuario(){
         
