@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -15,7 +16,9 @@ import javax.persistence.Table;
 @Table (name="comercio")
 public class Comercio {
 
-    public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion, String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio) {
+    public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion,
+                    String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
+                    Rubro rubro) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
@@ -26,6 +29,7 @@ public class Comercio {
         this.telefono = telefono;
         this.nombreLocal = nombreLocal;
         this.direccionNegocio = direccionNegocio;
+        this.rubro = rubro;
     }
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
@@ -63,10 +67,10 @@ public class Comercio {
     /*
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
-    
-    @OneToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Rubro rubro;
     */
+    @ManyToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    private Rubro rubro;
+    
     
     @Column(columnDefinition = "TEXT")
     private String direccionNegocio;
@@ -124,11 +128,11 @@ public class Comercio {
     public Categoria getCategoria() {
         return categoria;
     }
-
+*/
     public Rubro getRubro() {
         return rubro;
     }
-*/
+
     public String getDireccionNegocio() {
         return direccionNegocio;
     }
@@ -176,11 +180,11 @@ public class Comercio {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
+*/
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }
-*/
+
     public void setDireccionNegocio(String direccionNegocio) {
         this.direccionNegocio = direccionNegocio;
     }

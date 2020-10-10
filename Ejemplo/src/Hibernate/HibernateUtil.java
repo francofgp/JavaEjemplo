@@ -34,7 +34,7 @@ public class HibernateUtil  {
             conf.addAnnotatedClass(ModelosPA.Admin.class);
             conf.addAnnotatedClass(ModelosPA.Rubro.class);
             conf.addAnnotatedClass(ModelosPA.Categoria.class);
-
+            conf.addAnnotatedClass(ModelosPA.Comercio.class);
 
            
             try {

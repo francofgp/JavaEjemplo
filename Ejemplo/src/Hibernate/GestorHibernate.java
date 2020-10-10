@@ -78,6 +78,8 @@ public class GestorHibernate extends HibernateUtil {
         tx.commit();
     }
         
+    
+        
     public void modificarUsuario(String nombre, String descripcion, Long ID){
         
         
@@ -276,7 +278,15 @@ public class GestorHibernate extends HibernateUtil {
         return rubro.getId();
     }
     
-    
+        public Object buscarObjetoPorId(Long id) {
+                 
+        Session sesion = HibernateUtil.getSession();
+        
+        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
+                .add(Restrictions.eq("id", id)).uniqueResult();
+        System.out.println(rubro.getId());
+        return rubro;
+    }
     
 }
 

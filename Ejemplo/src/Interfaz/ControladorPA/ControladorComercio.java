@@ -34,4 +34,8 @@ public class ControladorComercio {
     public  long  buscarObjeto(String s) {
         return oper.buscarObjeto(s);
     }
+
+    public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
+        return oper.buscarObjetoPorId(idDeRubroSeleccionado);
+    }
 }

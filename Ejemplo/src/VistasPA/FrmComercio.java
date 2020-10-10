@@ -420,7 +420,7 @@ public class FrmComercio extends javax.swing.JFrame {
         Comercio comercio = new Comercio(this.txtNombre.getText(),this.txtApellido.getText(), this.txtFecha.getText(),
                                     this.txtPassword.getText(),this.txtDireccion.getText(),this.txtEmail.getText(),
                                     this.txtCuit.getText(),this.txtTelefono.getText(),this.txtNombreLocal.getText(),
-                                    this.txtDireccionLocal.getText());
+                                    this.txtDireccionLocal.getText() , (Rubro) buscarObjetoPorId(idDeRubroSeleccionado));
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
@@ -428,6 +428,10 @@ public class FrmComercio extends javax.swing.JFrame {
         // TODO add your handling code here:    
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    public Object buscarObjetoPorId(Long id) {
+        return oper.buscarObjetoPorId(idDeRubroSeleccionado);
+        
+    }
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
