@@ -12,7 +12,7 @@ public class GestorVistaPrincipal extends GestorVista{
     public void abrirPrincipal() {
         FrmPrincipal frmPrincipal = new FrmPrincipal(this);
         FrmUsuario frmUsuario = new FrmUsuario();
-        //frmPrincipal.setVisible(true);
+        frmPrincipal.setVisible(true);
         frmUsuario.setVisible(true);
     }
 

@@ -1,4 +1,5 @@
 package Vistas.GestionProyecto;
+import Hibernate.GestorHibernate;
 import Hibernate.HibernateUtil;
 import Modelos.GestionProyecto.Usuario;
 import Vistas.FrmGenerica;
@@ -9,6 +10,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 public class FrmProyecto extends FrmGenerica {
+    
+    GestorHibernate oper;
     private GestorVistaProyecto gestorVista;
     private int YES_NO_OPTION;
 
@@ -83,6 +86,8 @@ public class FrmProyecto extends FrmGenerica {
 
     public FrmProyecto() {
         initComponents();
+        
+        oper = new GestorHibernate();
     }
     
       // Metodos que gestionan los botones de la barra comando 
@@ -443,6 +448,19 @@ public class FrmProyecto extends FrmGenerica {
         jButton1.setBounds(300, 80, 50, 21);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseEntered(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox1);
         jComboBox1.setBounds(430, 20, 140, 19);
 
@@ -702,7 +720,9 @@ public class FrmProyecto extends FrmGenerica {
             jComboBox1.removeAllItems();
 
             for (Usuario usuario : resulset) {
-                jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+                jComboBox1.addItem(usuario.getNombre());
+
             }
 
             sesion.close();
@@ -831,6 +851,42 @@ public class FrmProyecto extends FrmGenerica {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
            this.getGestorVista().openFormularioTipo((DefaultComboBoxModel) cmbTipoProyecto.getModel());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    int estado=0;
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        System.out.println("aca");
+
+        if (estado>=2){
+        String s = String.valueOf(jComboBox1.getSelectedItem());
+
+        
+
+        System.out.println(s);
+        System.out.println("a ver si funciona el buscar objeto");
+
+        
+        oper.buscarObjeto(s);
+
+        }else{
+            estado= estado+1;
+            System.out.println("en true");
+        }
+        
+        
+        
+
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1MouseClicked
+
+    private void jComboBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -98,7 +98,14 @@ public class GestorHibernate extends HibernateUtil {
             return false;
         }
     }
-
+        public  static boolean buscarObjeto(String nombre){
+        Session sesion = HibernateUtil.getSession();
+        
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+        System.out.println(usuario.getId());
+        return true;
+    }
      /**
      * Actualiza un objeto en el repositorio
      * @param objeto Objeto a actualizar
