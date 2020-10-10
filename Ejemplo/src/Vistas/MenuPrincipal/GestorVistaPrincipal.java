@@ -1,4 +1,5 @@
 package Vistas.MenuPrincipal;
+import Vistas.GestionProyecto.FrmUsuario;
 import Vistas.GestorVista;
 import Vistas.GestionProyecto.GestorVistaProyecto;
 import Vistas.GestionProyecto.GestorVistaTipoProyecto;
@@ -10,7 +11,9 @@ public class GestorVistaPrincipal extends GestorVista{
     ////////////////////////////////////////////////////////////////
     public void abrirPrincipal() {
         FrmPrincipal frmPrincipal = new FrmPrincipal(this);
-        frmPrincipal.setVisible(true);
+        FrmUsuario frmUsuario = new FrmUsuario();
+        //frmPrincipal.setVisible(true);
+        frmUsuario.setVisible(true);
     }
 
         
