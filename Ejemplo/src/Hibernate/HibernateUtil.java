@@ -56,7 +56,9 @@ public class HibernateUtil  {
         return session;
     }
 
-    static Object getSessionFactory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
+
+
 }

@@ -14,6 +14,19 @@ import javax.persistence.Table;
 @Entity
 @Table (name="comercio")
 public class Comercio {
+
+    public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion, String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNac;
+        this.password = password;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.cuil = cuil;
+        this.telefono = telefono;
+        this.nombreLocal = nombreLocal;
+        this.direccionNegocio = direccionNegocio;
+    }
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
@@ -42,21 +55,23 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String telefono;
     
-    @Column(columnDefinition = "TEXT")
-    private String imagen;
+    //@Column(columnDefinition = "TEXT")
+    //private String imagen;
         
     @Column(columnDefinition = "TEXT")
     private String nombreLocal;
-    
+    /*
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
     
     @OneToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Rubro rubro;
+    */
     
     @Column(columnDefinition = "TEXT")
     private String direccionNegocio;
 
+    /*
     ////////////////////////////////////
     @OneToMany(targetEntity = Calificacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Calificacion calificacionIndividual;
@@ -64,6 +79,7 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String calificacion;
     ////////////////////////////////////////
+    */
     
     public long getId() {
         return id;
@@ -104,7 +120,7 @@ public class Comercio {
     public String getNombreLocal() {
         return nombreLocal;
     }
-
+/*
     public Categoria getCategoria() {
         return categoria;
     }
@@ -112,7 +128,7 @@ public class Comercio {
     public Rubro getRubro() {
         return rubro;
     }
-
+*/
     public String getDireccionNegocio() {
         return direccionNegocio;
     }
@@ -156,7 +172,7 @@ public class Comercio {
     public void setNombreLocal(String nombreLocal) {
         this.nombreLocal = nombreLocal;
     }
-
+/*
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
@@ -164,11 +180,11 @@ public class Comercio {
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }
-
+*/
     public void setDireccionNegocio(String direccionNegocio) {
         this.direccionNegocio = direccionNegocio;
     }
-
+    /*
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
@@ -178,5 +194,5 @@ public class Comercio {
         return imagen;
     }
     
-    
+    */
 }

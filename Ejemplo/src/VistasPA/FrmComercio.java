@@ -5,10 +5,19 @@
  */
 package VistasPA;
 
+import Hibernate.HibernateUtil;
+import Interfaz.ControladorPA.ControladorComercio;
+import ModelosPA.Comercio;
+import ModelosPA.Rubro;
+import ModelosPA.Usuario;
 import java.awt.Image;
 import java.io.File;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 /**
  *
@@ -19,9 +28,12 @@ public class FrmComercio extends javax.swing.JFrame {
     /**
      * Creates new form FrmComercio
      */
+    
+    ControladorComercio oper;
     public FrmComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        oper = new ControladorComercio();
     }
 
     /**
@@ -42,15 +54,15 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
@@ -59,19 +71,20 @@ public class FrmComercio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
+        txtCuit = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        txtNombre2 = new javax.swing.JTextField();
+        txtNombreLocal = new javax.swing.JTextField();
         txtRuta = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxRubro = new javax.swing.JComboBox<>();
         imagenjLabel = new javax.swing.JLabel();
-        txtNombre4 = new javax.swing.JTextField();
+        txtDireccionLocal = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        btnAceptar1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,7 +105,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 210, 30));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,6 +129,11 @@ public class FrmComercio extends javax.swing.JFrame {
         txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,17 +153,17 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel2.setText("______________________________");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
 
-        txtContraseña.setBackground(new java.awt.Color(153, 204, 0));
-        txtContraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setText("Contraseña");
-        txtContraseña.setBorder(null);
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setBackground(new java.awt.Color(153, 204, 0));
+        txtPassword.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setText("Contraseña");
+        txtPassword.setBorder(null);
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 200, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 200, 30));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,17 +188,17 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel8.setText("______________________________");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(153, 204, 0));
-        jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Teléfono");
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefono.setBackground(new java.awt.Color(153, 204, 0));
+        txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setText("Teléfono");
+        txtTelefono.setBorder(null);
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -193,12 +211,12 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel4.setText("______________________________");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(153, 204, 0));
-        jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("Fecha de Nacimiento");
-        jTextField4.setBorder(null);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
+        txtFecha.setBackground(new java.awt.Color(153, 204, 0));
+        txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(255, 255, 255));
+        txtFecha.setText("Fecha de Nacimiento");
+        txtFecha.setBorder(null);
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,18 +274,18 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel11.setText("______________________________");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        txtNombre1.setBackground(new java.awt.Color(153, 204, 0));
-        txtNombre1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtNombre1.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre1.setText("CUIT/CUIL");
-        txtNombre1.setToolTipText("");
-        txtNombre1.setBorder(null);
-        txtNombre1.addActionListener(new java.awt.event.ActionListener() {
+        txtCuit.setBackground(new java.awt.Color(153, 204, 0));
+        txtCuit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtCuit.setForeground(new java.awt.Color(255, 255, 255));
+        txtCuit.setText("CUIT/CUIL");
+        txtCuit.setToolTipText("");
+        txtCuit.setBorder(null);
+        txtCuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre1ActionPerformed(evt);
+                txtCuitActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtCuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -289,13 +307,13 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel17.setText("______________________________");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
-        txtNombre2.setBackground(new java.awt.Color(153, 204, 0));
-        txtNombre2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtNombre2.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre2.setText("Nombre Local");
-        txtNombre2.setToolTipText("");
-        txtNombre2.setBorder(null);
-        jPanel1.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 200, 30));
+        txtNombreLocal.setBackground(new java.awt.Color(153, 204, 0));
+        txtNombreLocal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombreLocal.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreLocal.setText("Nombre Local");
+        txtNombreLocal.setToolTipText("");
+        txtNombreLocal.setBorder(null);
+        jPanel1.add(txtNombreLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 200, 30));
 
         txtRuta.setBackground(new java.awt.Color(153, 204, 0));
         txtRuta.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -329,20 +347,25 @@ public class FrmComercio extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 170, 30));
 
-        jComboBox2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 170, 30));
+        jComboBoxRubro.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRubroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 170, 30));
 
         imagenjLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.add(imagenjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 200, 110));
 
-        txtNombre4.setBackground(new java.awt.Color(153, 204, 0));
-        txtNombre4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtNombre4.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre4.setText("Dirección Completa");
-        txtNombre4.setToolTipText("");
-        txtNombre4.setBorder(null);
-        jPanel1.add(txtNombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 210, 30));
+        txtDireccionLocal.setBackground(new java.awt.Color(153, 204, 0));
+        txtDireccionLocal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDireccionLocal.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccionLocal.setText("Dirección Completa");
+        txtDireccionLocal.setToolTipText("");
+        txtDireccionLocal.setBorder(null);
+        jPanel1.add(txtDireccionLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 210, 30));
 
         jButton6.setBackground(new java.awt.Color(153, 204, 0));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -357,6 +380,19 @@ public class FrmComercio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 30, 20));
+
+        btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
+        btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar1.setText("Cargar Rubro");
+        btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAceptar1.setContentAreaFilled(false);
+        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 210, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 630));
 
@@ -378,21 +414,27 @@ public class FrmComercio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-        // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        //Usuario user = new Usuario(this.txtNombre.getText(),this.txtApellido.getText());
-        //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-            // TODO add your handling code here:
+
+        //String nombre, String apellido, String fechaNac, String password, String direccion, 
+        //String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio) {
+        Comercio comercio = new Comercio(this.txtNombre.getText(),this.txtApellido.getText(), this.txtFecha.getText(),
+                                    this.txtPassword.getText(),this.txtDireccion.getText(),this.txtEmail.getText(),
+                                    this.txtCuit.getText(),this.txtTelefono.getText(),this.txtNombreLocal.getText(),
+                                    this.txtDireccionLocal.getText());
+        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
+
+            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
+        oper.guardarUsuario(comercio);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        // TODO add your handling code here:    
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
@@ -403,15 +445,17 @@ public class FrmComercio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
+    private void txtCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCuitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre1ActionPerformed
+    }//GEN-LAST:event_txtCuitActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
@@ -430,6 +474,70 @@ public class FrmComercio extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
+llenaJComboBoxUsuario(jComboBoxRubro);
+    }//GEN-LAST:event_btnAceptar1ActionPerformed
+    int estado=0;
+
+    
+    Long idDeRubroSeleccionado;
+    private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
+        
+        //aca consigo el "ID" de lo que selecciono
+
+        if (estado>=2){
+        String s = String.valueOf(jComboBoxRubro.getSelectedItem());
+
+
+        
+        idDeRubroSeleccionado = oper.buscarObjeto(s);
+        //System.out.println(idDeRubroSeleccionado+ "estoy aca");
+
+        }else{
+            estado= estado+1;
+            
+            }//GEN-LAST:event_jComboBoxRubroActionPerformed
+    }
+    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
+        oper.llenaJComboBoxUsuario(jComboBoxRubro);
+        }
+
+        /* //ESTO NO HAY QUE HACER, TIENE QUE SER COMO ARRIBA, PORQUE ESTE COMBOBOX1 NO ES MVC
+    public void llenaJComboBoxUsuario1() {
+        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
+        Session sesion = null;
+        try {
+
+            sesion = HibernateUtil.getSessionFactory().openSession();
+
+            Criteria crit = sesion.createCriteria(Rubro.class);
+            List<Rubro> resulset = crit.list();
+            
+            jComboBoxRubro.removeAllItems();
+
+            for (Rubro rubro : resulset) {
+                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+                jComboBoxRubro.addItem(rubro.getNombre());
+
+            }
+
+            sesion.close();
+
+            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+*/
+
+
 
     /**
      * @param args the command line arguments
@@ -468,6 +576,7 @@ public class FrmComercio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar1;
     private javax.swing.JLabel imagenjLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -475,7 +584,7 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -496,16 +605,16 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtCuit;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDireccionLocal;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre4;
+    private javax.swing.JTextField txtNombreLocal;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtRuta;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

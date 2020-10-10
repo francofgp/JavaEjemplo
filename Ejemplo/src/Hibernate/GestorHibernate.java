@@ -6,6 +6,7 @@ import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
 import java.util.*;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -237,5 +238,49 @@ public class GestorHibernate extends HibernateUtil {
            return categoria;
     }
 
-} 
+    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
+        
+        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
+        Session sesion = null;
+        try {
+
+            sesion = HibernateUtil.getSessionFactory().openSession();
+
+            Criteria crit = sesion.createCriteria(Rubro.class);
+            List<Rubro> resulset = crit.list();
+            
+            jComboBoxRubro.removeAllItems();
+
+            for (Rubro rubro : resulset) {
+                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+                jComboBoxRubro.addItem(rubro.getNombre());
+
+            }
+
+            sesion.close();
+
+            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public long buscarObjeto(String nombre) {
+                 
+        Session sesion = HibernateUtil.getSession();
+        
+        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+        System.out.println(rubro.getId());
+        return rubro.getId();
+    }
+    
+    
+    
+}
+
+
+
+ 
  
