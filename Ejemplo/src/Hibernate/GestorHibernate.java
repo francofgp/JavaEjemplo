@@ -1,5 +1,6 @@
 package Hibernate;
 import GUtilr.Util;
+import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
@@ -229,6 +230,12 @@ public class GestorHibernate extends HibernateUtil {
         
     }
 */
+
+    public List<Categoria> CategoriaShow() {
+        Session sesion = HibernateUtil.getSession();
+           List<Categoria> categoria = session.createCriteria(Categoria.class).list();
+           return categoria;
+    }
 
 } 
  

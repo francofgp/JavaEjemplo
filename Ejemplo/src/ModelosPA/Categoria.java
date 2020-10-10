@@ -7,14 +7,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="categoria") 
+
 public class Categoria {
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
-    private long id;
-    @Column(columnDefinition = "TEXT")
-    String descripcion;
-    @Column(columnDefinition = "TEXT")
-    String nombre;
     
     public Categoria( String nombre, String apellido) {   
         //this.id = id;
@@ -22,8 +16,27 @@ public class Categoria {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
-
     
+    public Categoria(){
+    
+    }
+    
+    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+    private long id;
+    
+    @Column(columnDefinition = "TEXT")
+    String nombre;
+    
+    @Column(columnDefinition = "TEXT")
+    String descripcion;
+        
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }    
 
 
     public String getDescripcion() {
