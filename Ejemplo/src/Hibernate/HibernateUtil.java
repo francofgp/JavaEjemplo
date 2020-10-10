@@ -33,6 +33,7 @@ public class HibernateUtil  {
             conf.addAnnotatedClass(ModelosPA.Usuario.class);
             conf.addAnnotatedClass(ModelosPA.Admin.class);
             conf.addAnnotatedClass(ModelosPA.Rubro.class);
+            conf.addAnnotatedClass(ModelosPA.Categoria.class);
 
 
            

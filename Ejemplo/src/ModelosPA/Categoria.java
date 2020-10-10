@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 public class Categoria {
     
-    public Categoria( String nombre, String apellido) {   
+    public Categoria( String nombre, String descripcion) {   
         //this.id = id;
         //creamos el constructor para los datos que le vamos a pasar, pero el ID no porque es autoincremental
         this.nombre = nombre;
