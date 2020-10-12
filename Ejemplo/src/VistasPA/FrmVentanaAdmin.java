@@ -349,7 +349,14 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         descripcion = model.getValueAt(selectedRowIndex,1).toString();
 
     }
-    
+    public void conseguirValoresTxtCategoria(){
+        DefaultTableModel model = (DefaultTableModel)jTableCategoria.getModel();
+        int selectedRowIndex = jTableCategoria.getSelectedRow();
+        ID = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
+        nombre = model.getValueAt(selectedRowIndex,0).toString();
+        descripcion = model.getValueAt(selectedRowIndex,1).toString();
+
+    }
     
     
     
@@ -362,7 +369,12 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
-        // TODO add your handling code here:
+        conseguirValoresTxtCategoria();
+                       
+            oper.eliminarCategoria(ID);
+            
+            ClearTableCategoria();
+            LoadCategoria();
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
     private void RecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargarActionPerformed
@@ -411,7 +423,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableRubroMouseClicked
 
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed
-        // TODO add your handling code here:
+        //Primero Obtengo todos los valores de la tabla
+        conseguirValoresTxtCategoria();
+        frmCategoria.modificar("1",nombre,descripcion,ID );
+        frmCategoria.setVisible(true);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void btnRecargarTablaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarTablaCategoriaActionPerformed

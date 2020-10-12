@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -169,6 +170,8 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.descripcion=txtDescripcion.getText();
         //this.ID=ID;
         oper.modificarUsuario(nombre,descripcion,ID);
+        JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
+        this.setVisible(false);
         }else{
             
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
@@ -179,7 +182,9 @@ public class FrmCategoria extends javax.swing.JFrame {
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
         oper.guardarUsuario(categoria);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here: 
+        JOptionPane.showMessageDialog(null,"La categoría se registrón con éxito!");
         
+        this.setVisible(false);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -190,10 +195,22 @@ public class FrmCategoria extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
+    
+    public void modificar(String modificado, String nombre, String descripcion, long ID){
+        
+        txtDescripcion.setText(descripcion);
+        txtNombre.setText(nombre);
+        btnAceptar.setText("Modificar categoria");
+        this.modificado=modificado;
+        
+        this.nombre=nombre;
+        this.descripcion=descripcion;
+        this.ID=ID;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -240,4 +257,13 @@ public class FrmCategoria extends javax.swing.JFrame {
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+    
+    private void ClearTableCategoria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void LoadCategoria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

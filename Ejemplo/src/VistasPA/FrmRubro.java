@@ -23,7 +23,7 @@ import VistasPA.FrmVentanaAdmin;
  */
 public class FrmRubro extends javax.swing.JFrame {
     
-    FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
+     
     String modificado="0"; //uso esto para saber si se modifico, si es 1 es
     // es porque lo mando para modificar
     String nombre;
@@ -174,7 +174,7 @@ ControladorRubro oper;
             this.descripcion=txtDescripcion.getText();
             //this.ID=ID;
             oper.modificarUsuario(nombre,descripcion,ID);
-            JOptionPane.showMessageDialog(null,"El usuario se modificó con éxito!");
+            JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
             this.setVisible(false);
         }else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
@@ -185,17 +185,17 @@ ControladorRubro oper;
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
         oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here: 
-        JOptionPane.showMessageDialog(null,"El usuario se registrón con éxito!");
+        JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
         
         this.setVisible(false);     
        
         
         }
         
-         
-        clear.ClearTableRubro();
-        clear.LoadRubro();  
-
+        //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
+        //clear.ClearTableRubro();
+        //clear.LoadRubro();  
+        
         
         
     }//GEN-LAST:event_btnAceptarActionPerformed

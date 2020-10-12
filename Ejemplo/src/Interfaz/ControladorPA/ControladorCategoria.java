@@ -25,6 +25,6 @@ public class ControladorCategoria {
     }
         
     public  void modificarUsuario(String nombre, String descripcion, Long ID){
-        oper.modificarUsuario(nombre,descripcion,ID);
+        oper.modificarCategoria(nombre,descripcion,ID);
     }
 }

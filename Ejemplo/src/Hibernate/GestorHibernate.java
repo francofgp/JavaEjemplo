@@ -107,6 +107,23 @@ public class GestorHibernate extends HibernateUtil {
         tx.commit();
         * ***/
     }
+    
+    public void modificarCategoria(String nombre, String descripcion, Long ID){
+        
+        
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        
+        
+        Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
+                .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        categoria.setDescripcion(descripcion);
+        categoria.setNombre(nombre);
+        s.update(categoria);
+        tx.commit();
+      
+    }
 
      /**
      * Actualiza un objeto en el repositorio
@@ -202,7 +219,18 @@ public class GestorHibernate extends HibernateUtil {
         s.delete(rubro);
         tx.commit();
     }
-    
+    public void eliminarCategoria(Long ID){
+
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        
+        
+        Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
+                .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        s.delete(categoria);
+        tx.commit();
+    }
    /*
     public static boolean Login(String username, String password){
         Session sesion = (Session) HibernateUtil.getSessionFactory();
