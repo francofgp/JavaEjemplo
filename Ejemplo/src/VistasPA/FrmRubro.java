@@ -176,6 +176,7 @@ ControladorRubro oper;
             oper.modificarUsuario(nombre,descripcion,ID);
             JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
             this.setVisible(false);
+            new FrmVentanaAdmin().setVisible(true);
         }else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
@@ -187,7 +188,8 @@ ControladorRubro oper;
         // TODO add your handling code here: 
         JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
         
-        this.setVisible(false);     
+        this.setVisible(false);   
+        new FrmVentanaAdmin().setVisible(true);
        
         
         }

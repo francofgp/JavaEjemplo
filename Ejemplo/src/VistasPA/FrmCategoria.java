@@ -172,6 +172,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         oper.modificarUsuario(nombre,descripcion,ID);
         JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
         this.setVisible(false);
+        new FrmVentanaAdmin().setVisible(true);
         }else{
             
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
@@ -185,6 +186,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"La categoría se registrón con éxito!");
         
         this.setVisible(false);
+        new FrmVentanaAdmin().setVisible(true);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
