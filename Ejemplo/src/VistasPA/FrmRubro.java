@@ -14,6 +14,8 @@ import ModelosPA.Rubro;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import VistasPA.FrmVentanaAdmin;
 
 /**
  *
@@ -21,6 +23,7 @@ import javax.swing.ImageIcon;
  */
 public class FrmRubro extends javax.swing.JFrame {
     
+    FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
     String modificado="0"; //uso esto para saber si se modifico, si es 1 es
     // es porque lo mando para modificar
     String nombre;
@@ -171,18 +174,27 @@ ControladorRubro oper;
             this.descripcion=txtDescripcion.getText();
             //this.ID=ID;
             oper.modificarUsuario(nombre,descripcion,ID);
+            JOptionPane.showMessageDialog(null,"El usuario se modificó con éxito!");
+            this.setVisible(false);
         }else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
         Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-
+        
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
         oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here: 
+        JOptionPane.showMessageDialog(null,"El usuario se registrón con éxito!");
+        
+        this.setVisible(false);     
+       
         
         }
-            
+        
+         
+        clear.ClearTableRubro();
+        clear.LoadRubro();  
 
         
         
@@ -262,4 +274,12 @@ ControladorRubro oper;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void ClearTableRubro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void LoadRubro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

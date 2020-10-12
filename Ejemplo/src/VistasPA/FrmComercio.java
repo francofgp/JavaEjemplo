@@ -80,7 +80,7 @@ public class FrmComercio extends javax.swing.JFrame {
         txtNombreLocal = new javax.swing.JTextField();
         txtRuta = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxCategoria = new javax.swing.JComboBox<>();
         jComboBoxRubro = new javax.swing.JComboBox<>();
         imagenjLabel = new javax.swing.JLabel();
         txtDireccionLocal = new javax.swing.JTextField();
@@ -337,16 +337,16 @@ public class FrmComercio extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 170, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setToolTipText("");
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCategoria.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCategoria.setToolTipText("");
+        jComboBoxCategoria.setBorder(null);
+        jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 170, 30));
+        jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 170, 30));
 
         jComboBoxRubro.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
@@ -454,10 +454,10 @@ public class FrmComercio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCuitActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
@@ -492,14 +492,13 @@ public class FrmComercio extends javax.swing.JFrame {
 
     
     Long idDeRubroSeleccionado;
+    
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
         
         //aca consigo el "ID" de lo que selecciono
 
         if (estado>=2){
         String s = String.valueOf(jComboBoxRubro.getSelectedItem());
-
-
         
         idDeRubroSeleccionado = oper.buscarObjeto(s);
         //System.out.println(idDeRubroSeleccionado+ "estoy aca");
@@ -588,7 +587,7 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -41,8 +41,9 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
          oper = new GestorHibernate();
          frmRubro = new FrmRubro();
          frmCategoria = new FrmCategoria();
-         LoadRubro();
-         LoadCategoria();
+        
+        LoadRubro();
+        LoadCategoria();
          
     }
 
