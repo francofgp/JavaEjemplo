@@ -34,6 +34,7 @@ public class FrmComercio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new ControladorComercio();
+        llenaJComboBoxUsuario(jComboBoxRubro);
     }
 
     /**
@@ -485,7 +486,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-llenaJComboBoxUsuario(jComboBoxRubro);
+        //llenaJComboBoxUsuario(jComboBoxRubro);
     }//GEN-LAST:event_btnAceptar1ActionPerformed
     int estado=0;
 
