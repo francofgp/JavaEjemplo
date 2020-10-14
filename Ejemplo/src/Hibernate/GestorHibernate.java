@@ -211,25 +211,39 @@ public class GestorHibernate extends HibernateUtil {
 
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
-        
-        
-        Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
-                .add(Restrictions.eq("id",ID)).uniqueResult();
+        try{
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+            .add(Restrictions.eq("id",ID)).uniqueResult();
         
         s.delete(rubro);
         tx.commit();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro" + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+                   
+
+        
+
     }
     public void eliminarCategoria(Long ID){
 
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         
-        
+        try{
         Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
                 .add(Restrictions.eq("id",ID)).uniqueResult();
         
         s.delete(categoria);
-        tx.commit();
+        tx.commit();            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al eliminar la categoria" + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+        }
+        
+
     }
    /*
     public static boolean Login(String username, String password){
