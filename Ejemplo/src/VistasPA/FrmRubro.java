@@ -168,29 +168,42 @@ ControladorRubro oper;
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
+        String nombre = this.txtNombre.getText();
+        
         if(modificado=="1"){
             //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-            this.nombre=txtNombre.getText();
-            this.descripcion=txtDescripcion.getText();
-            //this.ID=ID;
-            oper.modificarUsuario(nombre,descripcion,ID);
-            JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
-            this.setVisible(false);
-            new FrmVentanaAdmin().setVisible(true);
+            if(oper.corroboraRubro(nombre)==false){
+                this.nombre=txtNombre.getText();
+                this.descripcion=txtDescripcion.getText();
+                //this.ID=ID;
+                oper.modificarUsuario(nombre,descripcion,ID);
+                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
+                this.setVisible(false);
+                new FrmVentanaAdmin().setVisible(true);
+        }else{
+                
+            }
+            
         }else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+            if(oper.corroboraRubro(nombre)==false){
+                Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+                oper.guardarUsuario(rubro);
+                JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
+                this.setVisible(false);   
+                new FrmVentanaAdmin().setVisible(true);
+            }
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
         
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        //oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here: 
-        JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
+        //JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
         
-        this.setVisible(false);   
-        new FrmVentanaAdmin().setVisible(true);
-       
+        //this.setVisible(false);   
+        //new FrmVentanaAdmin().setVisible(true);      
         
         }
         

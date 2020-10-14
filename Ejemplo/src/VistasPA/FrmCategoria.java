@@ -163,30 +163,43 @@ public class FrmCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-            
+        
+        String nombre = this.txtNombre.getText();
+        
         if(modificado=="1"){
-        //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-        this.nombre=txtNombre.getText();
-        this.descripcion=txtDescripcion.getText();
-        //this.ID=ID;
-        oper.modificarUsuario(nombre,descripcion,ID);
-        JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
-        this.setVisible(false);
-        new FrmVentanaAdmin().setVisible(true);
-        }else{
-            
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+            if(oper.corroboraCategoria(nombre)==false){
+                this.nombre=txtNombre.getText();
+                this.descripcion=txtDescripcion.getText();
+                //this.ID=ID;
+                oper.modificarUsuario(nombre,descripcion,ID);
+                JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
+                this.setVisible(false);
+                new FrmVentanaAdmin().setVisible(true);
+            }else{
+            //JOptionPane.showMessageDialog(null,"La categoría ya existe!");
+        }
+        }else{        
+        
+            if(oper.corroboraCategoria(nombre)==false){
+                Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
+                oper.guardarUsuario(categoria);
+                JOptionPane.showMessageDialog(null,"La categoría " + categoria.getNombre()+ " se registró con éxito!");
+                this.setVisible(false);
+                new FrmVentanaAdmin().setVisible(true);
+            }else{
+            //JOptionPane.showMessageDialog(null,"La categoría ya existe!");
+            }
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
+        //Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
+        //oper.guardarUsuario(categoria);
+        //JOptionPane.showMessageDialog(null,"La categoría se registrón con éxito!");
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        oper.guardarUsuario(categoria);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here: 
-        JOptionPane.showMessageDialog(null,"La categoría se registrón con éxito!");
-        
-        this.setVisible(false);
-        new FrmVentanaAdmin().setVisible(true);
+          //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        // TODO add your handling code here:  
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

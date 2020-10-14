@@ -6,8 +6,13 @@
 package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
+import Hibernate.HibernateUtil;
 import ModelosPA.Admin;
+import ModelosPA.Categoria;
 import ModelosPA.Rubro;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -28,5 +33,27 @@ public class ControladorRubro {
     public  void modificarUsuario(String nombre, String descripcion, Long ID){
         oper.modificarUsuario(nombre,descripcion,ID);
     }
-    
+    public static boolean corroboraRubro(String nombre){
+        Session sesion = HibernateUtil.getSession();
+        
+        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();                        
+        
+        try{
+            if(rubro!=null){  
+                String nom = rubro.getNombre();
+                if(nom.equals(nombre)){
+                    JOptionPane.showMessageDialog(null, "El rubro "+rubro.getNombre() + " ya existe!", "",JOptionPane.ERROR_MESSAGE);
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+       
+        }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
@@ -426,7 +427,9 @@ public class FrmComercio extends javax.swing.JFrame {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
         oper.guardarUsuario(comercio);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here:    
+        JOptionPane.showMessageDialog(null,"Tu comercio se registró con éxito!");
+        //this.setVisible(false);
+// TODO add your handling code here:    
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     public Object buscarObjetoPorId(Long id) {
