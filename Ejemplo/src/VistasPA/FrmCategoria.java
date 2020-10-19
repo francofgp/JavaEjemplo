@@ -30,6 +30,8 @@ public class FrmCategoria extends javax.swing.JFrame {
     String descripcion;
     Long ID;
     
+    String nombrePrimero;
+    
     ControladorCategoria oper;
     
     /**
@@ -100,7 +102,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +114,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setText("Descripcion");
         txtDescripcion.setBorder(null);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 30));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,10 +167,9 @@ public class FrmCategoria extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
         String nombre = this.txtNombre.getText();
-        
+                
         if(modificado=="1"){
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-            if(oper.corroboraCategoria(nombre)==false){
+            if(nombrePrimero.equals(nombre)){
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
@@ -177,30 +178,45 @@ public class FrmCategoria extends javax.swing.JFrame {
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }else{
-            //JOptionPane.showMessageDialog(null,"La categoría ya existe!");
-        }
-        }else{        
-        
+                if(oper.corroboraCategoria(nombre)==false){
+                this.nombre=txtNombre.getText();
+                this.descripcion=txtDescripcion.getText();
+                //this.ID=ID;
+                oper.modificarUsuario(nombre,descripcion,ID);
+                JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
+                this.setVisible(false);
+                new FrmVentanaAdmin().setVisible(true);
+            }
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+            
+                   
+            }}else{
+            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
+            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
             if(oper.corroboraCategoria(nombre)==false){
                 Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
                 oper.guardarUsuario(categoria);
-                JOptionPane.showMessageDialog(null,"La categoría " + categoria.getNombre()+ " se registró con éxito!");
-                this.setVisible(false);
+                JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
+                this.setVisible(false);   
                 new FrmVentanaAdmin().setVisible(true);
-            }else{
-            //JOptionPane.showMessageDialog(null,"La categoría ya existe!");
             }
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        //Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
-        //oper.guardarUsuario(categoria);
-        //JOptionPane.showMessageDialog(null,"La categoría se registrón con éxito!");
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-
+        
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-          //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here:  
+        //oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        // TODO add your handling code here: 
+        //JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
+        
+        //this.setVisible(false);   
+        //new FrmVentanaAdmin().setVisible(true);      
+        
         }
+        
+        //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
+        //clear.ClearTableRubro();
+        //clear.LoadRubro();  
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -225,6 +241,8 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.ID=ID;
+        
+        nombrePrimero=nombre;
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -218,7 +218,7 @@ public class GestorHibernate extends HibernateUtil {
         s.delete(rubro);
         tx.commit();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro" + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
             //getTx().rollback();
 
         }
@@ -239,7 +239,7 @@ public class GestorHibernate extends HibernateUtil {
         s.delete(categoria);
         tx.commit();            
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al eliminar la categoria" + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al eliminar la categoria ya que la tiene seleccionada un comercio" /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
             //getTx().rollback();
         }
         

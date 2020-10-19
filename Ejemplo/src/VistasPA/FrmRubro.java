@@ -16,6 +16,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import VistasPA.FrmVentanaAdmin;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,7 +30,8 @@ public class FrmRubro extends javax.swing.JFrame {
     String nombre;
     String descripcion;
     Long ID;
-    
+    String nombrePrimero;
+     
 ControladorRubro oper;
 
     /**
@@ -39,6 +41,7 @@ ControladorRubro oper;
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new ControladorRubro();
+        
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -118,19 +121,19 @@ ControladorRubro oper;
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("_____________________________________________________________________");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 390, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 390, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setText("Descripcion");
         txtDescripcion.setBorder(null);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 30));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,10 +172,9 @@ ControladorRubro oper;
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
         String nombre = this.txtNombre.getText();
-        
+                
         if(modificado=="1"){
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-            if(oper.corroboraRubro(nombre)==false){
+            if(nombrePrimero.equals(nombre)){
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
@@ -180,11 +182,20 @@ ControladorRubro oper;
                 JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
-        }else{
-                
+            }else{
+                if(oper.corroboraRubro(nombre)==false){
+                this.nombre=txtNombre.getText();
+                this.descripcion=txtDescripcion.getText();
+                //this.ID=ID;
+                oper.modificarUsuario(nombre,descripcion,ID);
+                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
+                this.setVisible(false);
+                new FrmVentanaAdmin().setVisible(true);
             }
+            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
             
-        }else{
+                   
+            }}else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
             if(oper.corroboraRubro(nombre)==false){
@@ -240,6 +251,8 @@ ControladorRubro oper;
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.ID=ID;
+        
+        nombrePrimero = nombre;
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
