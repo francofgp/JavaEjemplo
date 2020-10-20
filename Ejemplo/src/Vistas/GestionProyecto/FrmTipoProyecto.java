@@ -234,8 +234,9 @@ public class FrmTipoProyecto extends FrmGenerica {
     }
 
     @Override
-    public void saveView(){
-        this.getGestorVista().saveView();
+    public void saveView(){  //el getGestorVista lo que hace es devolver 
+                            //un objeto GestorVistaTipoProyecto (es el controlador).
+        this.getGestorVista().saveView(); //luego va a guardar con el metodo saveView (hacer ctrl+click en el metodo para seguir la explicacion
     }
 
     @Override
@@ -579,7 +580,7 @@ public class FrmTipoProyecto extends FrmGenerica {
     }//GEN-LAST:event_btnEditarKeyPressed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        this.saveView();
+        this.saveView(); //lamo al metodo guardar vista
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnGuardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGuardarKeyPressed

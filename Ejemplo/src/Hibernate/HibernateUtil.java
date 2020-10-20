@@ -30,6 +30,12 @@ public class HibernateUtil  {
             conf.addAnnotatedClass(Modelos.GestionProyecto.Proyecto.class);
             conf.addAnnotatedClass(Modelos.GestionProyecto.TipoProyecto.class);
             conf.addAnnotatedClass(Modelos.GestionProyecto.ItemProyecto.class);
+            conf.addAnnotatedClass(ModelosPA.Usuario.class);
+            conf.addAnnotatedClass(ModelosPA.Admin.class);
+            conf.addAnnotatedClass(ModelosPA.Rubro.class);
+            conf.addAnnotatedClass(ModelosPA.Categoria.class);
+            conf.addAnnotatedClass(ModelosPA.Comercio.class);
+
            
             try {
                     sessionFactory = conf.buildSessionFactory();
@@ -49,4 +55,10 @@ public class HibernateUtil  {
     throws HibernateException {
         return session;
     }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+
 }

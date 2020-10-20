@@ -2,6 +2,9 @@ package Vistas.MenuPrincipal;
 import Vistas.GestorVista;
 import Vistas.GestionProyecto.GestorVistaProyecto;
 import Vistas.GestionProyecto.GestorVistaTipoProyecto;
+import VistasPA.FrmUsuario;
+import VistasPA.FrmVentanaAdmin;
+import VistasPA.Frmlogin;
 import javax.swing.JDesktopPane;
 
 public class GestorVistaPrincipal extends GestorVista{
@@ -9,8 +12,13 @@ public class GestorVistaPrincipal extends GestorVista{
 
     ////////////////////////////////////////////////////////////////
     public void abrirPrincipal() {
-        FrmPrincipal frmPrincipal = new FrmPrincipal(this);
-        frmPrincipal.setVisible(true);
+        //FrmPrincipal frmPrincipal = new FrmPrincipal(this);
+        //frmPrincipal.setVisible(true);
+        Frmlogin frmLogin = new Frmlogin();
+        frmLogin.setVisible(true);
+        
+        FrmVentanaAdmin frmVentanaAdmin = new FrmVentanaAdmin();
+        frmVentanaAdmin.setVisible(true);
     }
 
         
@@ -20,6 +28,11 @@ public class GestorVistaPrincipal extends GestorVista{
     }
 
     public  void abrirTipoProyecto(JDesktopPane escritorio) {
+        GestorVistaTipoProyecto gestor= new GestorVistaTipoProyecto();
+        gestor.openFormulario(escritorio); 
+    }
+    
+    public  void abrirUsuario(JDesktopPane escritorio) {
         GestorVistaTipoProyecto gestor= new GestorVistaTipoProyecto();
         gestor.openFormulario(escritorio); 
     }
