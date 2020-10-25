@@ -375,6 +375,11 @@ public class GestorHibernate extends HibernateUtil {
             //JRDataSource data = new JREmptyDataSource();
             JasperPrint prin = JasperFillManager.fillReport(archivo, null,connection);
             JasperExportManager.exportReportToPdfFile(prin,"reporte.pdf");
+            
+            JasperPrint jprint = JasperFillManager.fillReport(archivo,null,connection);
+            JasperViewer view = new JasperViewer(jprint , false);
+            view.setDefaultCloseOperation(2);
+            view.setVisible(true);
         } catch (JRException ex) {
             Logger.getLogger(GestorHibernate.class.getName()).log(Level.SEVERE, null, ex);
         }
