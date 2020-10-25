@@ -5,7 +5,11 @@ import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
@@ -16,8 +20,20 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.SessionImpl;
+import org.hibernate.jdbc.Work;
 //import Modelos.GestionProyecto.Usuario;
 
 
@@ -336,6 +352,33 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("id", id)).uniqueResult();
         System.out.println(rubro.getId());
         return rubro;
+    }
+
+    public void reporteRubro() {
+        //saqué de este video de youtube: https://www.youtube.com/watch?v=2DvwZmsHfgo&t=23s
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            Session session = sessionFactory.openSession();
+            
+            
+            session.doWork(new Work() {
+                public void execute(Connection connection) throws SQLException {
+                    //use the connection here...
+                }
+            });
+            SessionImpl sessionImpl = (SessionImpl) session;
+            Connection connection = sessionImpl.connection();
+            //File file = new File("");
+            JasperReport archivo = JasperCompileManager.compileReport("rubro.jrxml");
+            // Map<String,Object> map = new HashMap<String, Object>();
+            //Conectar con = new Conectar("jdbc:mysql://localhost/productos");
+            //JRDataSource data = new JREmptyDataSource();
+            JasperPrint prin = JasperFillManager.fillReport(archivo, null,connection);
+            JasperExportManager.exportReportToPdfFile(prin,"reporte.pdf");
+        } catch (JRException ex) {
+            Logger.getLogger(GestorHibernate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }
