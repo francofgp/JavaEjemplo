@@ -29,10 +29,29 @@ public class FrmCategoria extends javax.swing.JFrame {
     String nombre;
     String descripcion;
     Long ID;
-    
     String nombrePrimero;
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     ControladorCategoria oper;
+    //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
+    public ControladorCategoria getControlador(){
+        if(oper==null){
+            synchronized (ControladorCategoria.class){
+                oper= new ControladorCategoria();
+            }
+        }
+        return oper;
+    }
     
     /**
      * Creates new form FrmUsuario
@@ -40,7 +59,8 @@ public class FrmCategoria extends javax.swing.JFrame {
     public FrmCategoria() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new ControladorCategoria();
+        this.getControlador();
+        //oper = new ControladorCategoria();
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -173,16 +193,16 @@ public class FrmCategoria extends javax.swing.JFrame {
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }else{
-                if(oper.corroboraCategoria(nombre)==false){
+                if(oper.corroborar(nombre)==false){
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
@@ -193,10 +213,10 @@ public class FrmCategoria extends javax.swing.JFrame {
             }}else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            if(oper.corroboraCategoria(nombre)==false){
-                Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
-                oper.guardarUsuario(categoria);
-                JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
+            if(oper.corroborar(nombre)==false){
+                //Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
+                oper.guardar(this.txtNombre.getText(),this.txtDescripcion.getText());
+                JOptionPane.showMessageDialog(null,"La categoría se registró con éxito!");       
                 this.setVisible(false);   
                 new FrmVentanaAdmin().setVisible(true);
             }

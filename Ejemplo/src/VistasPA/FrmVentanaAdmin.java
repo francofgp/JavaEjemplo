@@ -6,6 +6,7 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorCategoria;
 import Interfaz.ControladorPA.ControladorRubro;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
@@ -24,8 +25,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     GestorHibernate oper;
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
-    
-    
+    ControladorRubro rubro;
+    ControladorCategoria categoria;
     
     String nombre;
     String descripcion;
@@ -41,7 +42,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
          oper = new GestorHibernate();
          frmRubro = new FrmRubro();
          frmCategoria = new FrmCategoria();
-        
+        rubro = new ControladorRubro();
+        categoria = new ControladorCategoria();
         LoadRubro();
         LoadCategoria();
          
@@ -344,7 +346,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
         conseguirValoresTxtCategoria();
                        
-            oper.eliminarCategoria(ID);
+            categoria.eliminar(ID);
             
             ClearTableCategoria();
             LoadCategoria();
@@ -368,7 +370,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             
             //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
             
-            oper.eliminarRubro(ID);
+            rubro.eliminar(ID);
             
             ClearTableRubro();
             LoadRubro();

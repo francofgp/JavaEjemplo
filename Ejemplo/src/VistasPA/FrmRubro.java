@@ -32,7 +32,34 @@ public class FrmRubro extends javax.swing.JFrame {
     Long ID;
     String nombrePrimero;
      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 ControladorRubro oper;
+    //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
+    public ControladorRubro getControlador(){
+        if(oper==null){
+            synchronized (ControladorRubro.class){
+                oper= new ControladorRubro();
+            }
+        }
+        return oper;
+    }
+
+
 
     /**
      * Creates new form FrmUsuario
@@ -40,7 +67,7 @@ ControladorRubro oper;
     public FrmRubro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new ControladorRubro();
+        this.getControlador();
         
         
         /*is.setLocationRelativeTo(null);
@@ -178,16 +205,16 @@ ControladorRubro oper;
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }else{
-                if(oper.corroboraRubro(nombre)==false){
+                if(oper.corroborar(nombre)==false){
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
@@ -198,9 +225,9 @@ ControladorRubro oper;
             }}else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            if(oper.corroboraRubro(nombre)==false){
-                Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-                oper.guardarUsuario(rubro);
+            if(oper.corroborar(nombre)==false){
+                //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+                oper.guardar(this.txtNombre.getText(),this.txtDescripcion.getText());
                 JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
                 this.setVisible(false);   
                 new FrmVentanaAdmin().setVisible(true);

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import ModelosPA.Admin;
 
 /**
  *
@@ -17,11 +18,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table (name="usuario") 
-public class Usuario {
+public class Usuario extends Admin{
 
+    //IMPLEMENTAR AL MENOS 1 HERENCIA DE OBJETO
     public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-        this.password = password;
-        this.nombre = nombre;
+        super(password,nombre);
+        //this.password = password;
+        //this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.direccion = direccion;
@@ -38,11 +41,11 @@ public class Usuario {
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
     
-    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
-    private String password;
+    //@SuppressWarnings("FieldNameHidesFieldInSuperclass")
+    //private String password;
     
-    @Column(columnDefinition = "TEXT")
-    private String nombre;       
+    //@Column(columnDefinition = "TEXT")
+    //private String nombre;       
    
     @Column(columnDefinition = "TEXT")
     private String apellido;  
@@ -58,7 +61,7 @@ public class Usuario {
     
     @Column(columnDefinition = "TEXT")
     private String fechaNac;  
-
+/*
     public String getNombre() {
         return nombre;
     }
@@ -66,7 +69,7 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+*/
     public String getApellido() {
         return apellido;
     }
@@ -83,14 +86,14 @@ public class Usuario {
     public void setId(long id) {
         this.id = id;
     }
-        
+    /*    
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
+    }*/
 
     public String getEmail() {
         return email;

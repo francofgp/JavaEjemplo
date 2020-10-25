@@ -107,10 +107,11 @@ public class GestorHibernate extends HibernateUtil {
         tx.commit();
         * ***/
     }
-    
+    //implementar al menos 3 try y catch
+
     public void modificarCategoria(String nombre, String descripcion, Long ID){
         
-        
+        try{
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         
@@ -122,6 +123,10 @@ public class GestorHibernate extends HibernateUtil {
         categoria.setNombre(nombre);
         s.update(categoria);
         tx.commit();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al modificar la categoria " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+        }
+
       
     }
 
@@ -206,16 +211,17 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
-    
-     public void eliminarRubro(Long ID){
+    //implementar al menos 3 try y catch
+
+     public void eliminar(Long ID){
 
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try{
-            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+            Class clase = (Class) s.createCriteria(Class.class)
             .add(Restrictions.eq("id",ID)).uniqueResult();
         
-        s.delete(rubro);
+        s.delete(clase);
         tx.commit();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
@@ -223,10 +229,12 @@ public class GestorHibernate extends HibernateUtil {
 
         }
                    
-
+//este metodo era originalmente elimnarrubro,reemplezé todos los nombre por clase
         
 
     }
+     //implementar al menos 3 try y catch
+
     public void eliminarCategoria(Long ID){
 
         Session s = HibernateUtil.getSession();
@@ -281,7 +289,7 @@ public class GestorHibernate extends HibernateUtil {
            List<Categoria> categoria = session.createCriteria(Categoria.class).list();
            return categoria;
     }
-
+//implementar al menos 3 try y catch
     public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
         
         // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
