@@ -43,14 +43,14 @@
 				</textElement>
 				<text><![CDATA[Reporte de Rubros]]></text>
 			</staticText>
-			<image>
-				<reportElement x="-11" y="-20" width="900" height="80" uuid="c9060029-4a57-4f3a-ac3f-7f7c4800c4ac"/>
-				<imageExpression><![CDATA["D:/Desktop/1111.jpg"]]></imageExpression>
-			</image>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="670" y="60" width="100" height="30" uuid="72c41db6-5636-4bec-a07d-6377ef08283d"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="-20" y="-20" width="850" height="90" uuid="13586945-d44c-45e8-8bdc-658a612180d9"/>
+				<imageExpression><![CDATA["https://i.imgur.com/aMzxqXC.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -128,12 +128,12 @@
 	<pageFooter>
 		<band height="55" splitType="Stretch">
 			<textField>
-				<reportElement x="351" y="10" width="100" height="30" uuid="2f29ff10-c8e3-40b3-a35b-bbcad98f10ff"/>
+				<reportElement x="300" y="10" width="100" height="30" uuid="2f29ff10-c8e3-40b3-a35b-bbcad98f10ff"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="451" y="10" width="100" height="30" uuid="92776a7c-eecc-429f-8bc4-1041195a7087"/>
+				<reportElement x="400" y="10" width="100" height="30" uuid="92776a7c-eecc-429f-8bc4-1041195a7087"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
