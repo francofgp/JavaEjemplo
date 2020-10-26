@@ -41,7 +41,7 @@ public class GestorTipoProyecto extends  GestorHibernate{
         }
     }
     
-    public void guardarObjeto(){
+        public void guardarObjeto(){
         this.newCodigo();
         this.guardarObjeto(this.getModel());
     } 
