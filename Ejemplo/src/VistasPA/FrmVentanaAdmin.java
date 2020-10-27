@@ -8,6 +8,7 @@ package VistasPA;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorCategoria;
 import Interfaz.ControladorPA.ControladorRubro;
+import Interfaz.ControladorPA.ControladorVentanaAdmin;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     String nombre;
     String descripcion;
     Long ID;
+    ControladorVentanaAdmin controlAdmin;
 
 
     /**
@@ -39,14 +41,15 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public FrmVentanaAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
-         oper = new GestorHibernate();
-         frmRubro = new FrmRubro();
-         frmCategoria = new FrmCategoria();
+        oper = new GestorHibernate();
+        controlAdmin = new ControladorVentanaAdmin();
+        frmRubro = new FrmRubro();
+        frmCategoria = new FrmCategoria();
         rubro = new ControladorRubro();
         categoria = new ControladorCategoria();
         LoadRubro();
         LoadCategoria();
-         
+
     }
 
     /**
@@ -346,6 +349,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         new FrmRubro().setVisible(true);
+        //this.setVisible(false);
+        
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed

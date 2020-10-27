@@ -1,4 +1,5 @@
 package Vistas.MenuPrincipal;
+import Interfaz.ControladorPA.ControladorVistaRubro;
 import Vistas.GestorVista;
 import Vistas.GestionProyecto.GestorVistaProyecto;
 import Vistas.GestionProyecto.GestorVistaTipoProyecto;
@@ -22,6 +23,10 @@ public class GestorVistaPrincipal extends GestorVista{
     }
 
         
+    public void abrirRubro(JDesktopPane escritorio) {
+        ControladorVistaRubro gestor = new ControladorVistaRubro();
+        gestor.openFormulario(escritorio);
+    }
     public void abrirProyecto(JDesktopPane escritorio ) {
         GestorVistaProyecto gestor= new GestorVistaProyecto();
         gestor.openFormulario(escritorio);

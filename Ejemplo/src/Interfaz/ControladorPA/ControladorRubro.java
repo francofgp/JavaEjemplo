@@ -80,6 +80,9 @@ public class ControladorRubro extends GestorHibernate implements ICategoriaRubro
 
         }
     }
+
+    public void crearMofidificar() {
+    }
     
     
     
