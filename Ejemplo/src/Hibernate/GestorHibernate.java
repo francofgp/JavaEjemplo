@@ -5,7 +5,11 @@ import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
@@ -16,8 +20,20 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.SessionImpl;
+import org.hibernate.jdbc.Work;
 //import Modelos.GestionProyecto.Usuario;
 
 
@@ -107,10 +123,11 @@ public class GestorHibernate extends HibernateUtil {
         tx.commit();
         * ***/
     }
-    
+    //implementar al menos 3 try y catch
+
     public void modificarCategoria(String nombre, String descripcion, Long ID){
         
-        
+        try{
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         
@@ -122,6 +139,10 @@ public class GestorHibernate extends HibernateUtil {
         categoria.setNombre(nombre);
         s.update(categoria);
         tx.commit();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al modificar la categoria " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+        }
+
       
     }
 
@@ -206,16 +227,17 @@ public class GestorHibernate extends HibernateUtil {
             .add( Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
-    
-     public void eliminarRubro(Long ID){
+    //implementar al menos 3 try y catch
+
+     public void eliminar(Long ID){
 
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try{
-            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+            Class clase = (Class) s.createCriteria(Class.class)
             .add(Restrictions.eq("id",ID)).uniqueResult();
         
-        s.delete(rubro);
+        s.delete(clase);
         tx.commit();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
@@ -223,10 +245,12 @@ public class GestorHibernate extends HibernateUtil {
 
         }
                    
-
+//este metodo era originalmente elimnarrubro,reemplezé todos los nombre por clase
         
 
     }
+     //implementar al menos 3 try y catch
+
     public void eliminarCategoria(Long ID){
 
         Session s = HibernateUtil.getSession();
@@ -281,7 +305,7 @@ public class GestorHibernate extends HibernateUtil {
            List<Categoria> categoria = session.createCriteria(Categoria.class).list();
            return categoria;
     }
-
+//implementar al menos 3 try y catch
     public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
         
         // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
@@ -328,6 +352,38 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("id", id)).uniqueResult();
         System.out.println(rubro.getId());
         return rubro;
+    }
+
+    public void reporteRubro() {
+        //saqué de este video de youtube: https://www.youtube.com/watch?v=2DvwZmsHfgo&t=23s
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            Session session = sessionFactory.openSession();
+            
+            
+            session.doWork(new Work() {
+                public void execute(Connection connection) throws SQLException {
+                    //use the connection here...
+                }
+            });
+            SessionImpl sessionImpl = (SessionImpl) session;
+            Connection connection = sessionImpl.connection();
+            //File file = new File("");
+            JasperReport archivo = JasperCompileManager.compileReport("rubro.jrxml");
+            // Map<String,Object> map = new HashMap<String, Object>();
+            //Conectar con = new Conectar("jdbc:mysql://localhost/productos");
+            //JRDataSource data = new JREmptyDataSource();
+            JasperPrint prin = JasperFillManager.fillReport(archivo, null,connection);
+            JasperExportManager.exportReportToPdfFile(prin,"reporte.pdf");
+            
+            JasperPrint jprint = JasperFillManager.fillReport(archivo,null,connection);
+            JasperViewer view = new JasperViewer(jprint , false);
+            view.setDefaultCloseOperation(2);
+            view.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(GestorHibernate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

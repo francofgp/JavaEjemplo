@@ -8,6 +8,7 @@ package VistasPA;
 import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorRubro;
+import Interfaz.ControladorPA.ControladorVistaRubro;
 import ModelosPA.Admin;
 import ModelosPA.Rubro;
 //import Modelos.GestionProyecto.Usuario;
@@ -23,16 +24,108 @@ import javax.swing.JTextField;
  * @author CrapBoy
  */
 public class FrmRubro extends javax.swing.JFrame {
-    
-     
-    String modificado="0"; //uso esto para saber si se modifico, si es 1 es
+
+    String modificado = "0"; //uso esto para saber si se modifico, si es 1 es
     // es porque lo mando para modificar
     String nombre;
     String descripcion;
     Long ID;
     String nombrePrimero;
-     
-ControladorRubro oper;
+
+    public FrmRubro(ControladorVistaRubro controlVista) {
+        try {
+            initComponents();
+        } catch (Exception e) {
+
+        }
+        this.setControlVista(controlVista);
+    }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void setTxtDescripcion(JTextField txtDescripcion) {
+        this.txtDescripcion = txtDescripcion;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public String getModificado() {
+        return modificado;
+    }
+
+    public void setModificado(String modificado) {
+        this.modificado = modificado;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public String getNombrePrimero() {
+        return nombrePrimero;
+    }
+
+    public void setNombrePrimero(String nombrePrimero) {
+        this.nombrePrimero = nombrePrimero;
+    }
+
+    public ControladorVistaRubro getControlVista() {
+
+        if (controlVista == null) {
+            synchronized (ControladorVistaRubro.class) {
+                controlVista = new ControladorVistaRubro();
+
+            }
+        }
+        return controlVista;
+
+    }
+
+    public void setControlVista(ControladorVistaRubro controlVista) {
+        this.controlVista = controlVista;
+    }
+
+    ControladorVistaRubro controlVista;
+
+    ControladorRubro oper;
+
+    //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
+    public ControladorRubro getControlador() {
+        if (oper == null) {
+            synchronized (ControladorRubro.class) {
+                oper = new ControladorRubro();
+            }
+        }
+        return oper;
+    }
 
     /**
      * Creates new form FrmUsuario
@@ -40,9 +133,9 @@ ControladorRubro oper;
     public FrmRubro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new ControladorRubro();
-        
-        
+        this.getControlador();
+        getControlVista();
+        this.getControlVista().setForm(this);
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(),fondo.getHeight(),Image.SCALE_DEFAULT));
@@ -170,7 +263,9 @@ ControladorRubro oper;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        
+        this.getControlVista().crearModificar();
+        //System.out.println(txtNombre.getText()+ " en vista");
+        /*
         String nombre = this.txtNombre.getText();
                 
         if(modificado=="1"){
@@ -178,16 +273,16 @@ ControladorRubro oper;
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }else{
-                if(oper.corroboraRubro(nombre)==false){
+                if(oper.corroborar(nombre)==false){
                 this.nombre=txtNombre.getText();
                 this.descripcion=txtDescripcion.getText();
                 //this.ID=ID;
-                oper.modificarUsuario(nombre,descripcion,ID);
+                oper.modificar(nombre,descripcion,ID);
                 JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
                 this.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
@@ -198,9 +293,9 @@ ControladorRubro oper;
             }}else{
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            if(oper.corroboraRubro(nombre)==false){
-                Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-                oper.guardarUsuario(rubro);
+            if(oper.corroborar(nombre)==false){
+                //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
+                oper.guardar(this.txtNombre.getText(),this.txtDescripcion.getText());
                 JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
                 this.setVisible(false);   
                 new FrmVentanaAdmin().setVisible(true);
@@ -221,9 +316,9 @@ ControladorRubro oper;
         //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
         //clear.ClearTableRubro();
         //clear.LoadRubro();  
-        
-        
-        
+         */
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -241,19 +336,19 @@ ControladorRubro oper;
     /**
      * @param args the command line arguments
      */
-    
-    public void modificar(String modificado, String nombre, String descripcion, long ID){
+    public void modificar(String modificado, String nombre, String descripcion, long ID) {
         txtDescripcion.setText(descripcion);
         txtNombre.setText(nombre);
         btnAceptar.setText("Modificar rubro");
-        this.modificado=modificado;
-        
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.ID=ID;
-        
+        this.modificado = modificado;
+
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.ID = ID;
+
         nombrePrimero = nombre;
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -310,4 +405,12 @@ ControladorRubro oper;
     private void LoadRubro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+
+
+
+
+
 }

@@ -11,12 +11,13 @@ import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 /**
  *
  * @author Chelo
  */
-public class ControladorCategoria {
+public class ControladorCategoria extends GestorHibernate implements ICategoriaRubro{
     
     GestorHibernate oper;
     public ControladorCategoria() {
@@ -24,15 +25,16 @@ public class ControladorCategoria {
 
     }
     
-        public  void guardarUsuario(Categoria user){
-        oper.guardarUsuario(user);
+    public  void guardar(String nombre, String descripcion){
+        Categoria categoria = new Categoria(nombre,descripcion);
+        oper.guardarUsuario(categoria);
     }
         
-    public  void modificarUsuario(String nombre, String descripcion, Long ID){
+    public  void modificar(String nombre, String descripcion, Long ID){
         oper.modificarCategoria(nombre,descripcion,ID);
     }
     
-    public static boolean corroboraCategoria(String nombre){
+    public boolean corroborar(String nombre){
         Session sesion = HibernateUtil.getSession();
         
         Categoria categoria = (Categoria) sesion.createCriteria(Categoria.class)
@@ -55,4 +57,23 @@ public class ControladorCategoria {
         }
        
         }
+    
+    
+    
+    @Override//implementar al menos 1 herencia de comportamiento
+    public void eliminar(Long ID){
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        
+        try{
+        Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
+                .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        s.delete(categoria);
+        tx.commit();            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al eliminar la categoria ya que la tiene seleccionada un comercio" /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+        }
+    }
 }

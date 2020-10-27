@@ -6,7 +6,9 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorCategoria;
 import Interfaz.ControladorPA.ControladorRubro;
+import Interfaz.ControladorPA.ControladorVentanaAdmin;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import java.util.Iterator;
@@ -24,12 +26,13 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     GestorHibernate oper;
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
-    
-    
+    ControladorRubro rubro;
+    ControladorCategoria categoria;
     
     String nombre;
     String descripcion;
     Long ID;
+    ControladorVentanaAdmin controlAdmin;
 
 
     /**
@@ -38,13 +41,15 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public FrmVentanaAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
-         oper = new GestorHibernate();
-         frmRubro = new FrmRubro();
-         frmCategoria = new FrmCategoria();
-        
+        oper = new GestorHibernate();
+        controlAdmin = new ControladorVentanaAdmin();
+        frmRubro = new FrmRubro();
+        frmCategoria = new FrmCategoria();
+        rubro = new ControladorRubro();
+        categoria = new ControladorCategoria();
         LoadRubro();
         LoadCategoria();
-         
+
     }
 
     /**
@@ -258,10 +263,15 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Configuracion");
+        jButton5.setText("Generar Reporte Rubro");
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton5.setContentAreaFilled(false);
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 40, 120, 30));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
 
@@ -339,12 +349,14 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         new FrmRubro().setVisible(true);
+        //this.setVisible(false);
+        
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
         conseguirValoresTxtCategoria();
                        
-            oper.eliminarCategoria(ID);
+            categoria.eliminar(ID);
             
             ClearTableCategoria();
             LoadCategoria();
@@ -368,7 +380,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             
             //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
             
-            oper.eliminarRubro(ID);
+            rubro.eliminar(ID);
             
             ClearTableRubro();
             LoadRubro();
@@ -394,6 +406,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         frmCategoria.modificar("1",nombre,descripcion,ID );
         frmCategoria.setVisible(true);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+oper.reporteRubro();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

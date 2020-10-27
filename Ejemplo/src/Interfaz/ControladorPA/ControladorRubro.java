@@ -12,13 +12,14 @@ import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author CrapBoy
  */
-public class ControladorRubro {
+public class ControladorRubro extends GestorHibernate implements ICategoriaRubro{
     
     GestorHibernate oper;
     public ControladorRubro() {
@@ -26,14 +27,20 @@ public class ControladorRubro {
 
     }
     
-        public  void guardarUsuario(Rubro user){
-        oper.guardarUsuario(user);
+    public  void guardar(String nombre, String descripcion){
+        Rubro rubro = new Rubro(nombre,descripcion);
+        oper.guardarUsuario(rubro);
     }
         
-    public  void modificarUsuario(String nombre, String descripcion, Long ID){
+    public  void modificar(String nombre, String descripcion, Long ID){
         oper.modificarUsuario(nombre,descripcion,ID);
     }
-    public static boolean corroboraRubro(String nombre){
+    
+    
+    
+     //implementar al menos 3 try y catch
+
+    public  boolean corroborar(String nombre){
         Session sesion = HibernateUtil.getSession();
         
         Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
@@ -56,4 +63,29 @@ public class ControladorRubro {
         }
        
         }
+    
+    @Override //implementar al menos 1 herencia de comportamiento
+    public void eliminar(Long ID){
+                Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try{
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+            .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        s.delete(rubro);
+        tx.commit();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+
+    public void crearMofidificar() {
+    }
+    
+    
+    
+    
+    
 }
