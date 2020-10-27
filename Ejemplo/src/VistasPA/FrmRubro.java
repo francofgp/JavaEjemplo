@@ -5,7 +5,6 @@
  */
 package VistasPA;
 
-import Vistas.GestionProyecto.*;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorRubro;
 import Interfaz.ControladorPA.ControladorVistaRubro;

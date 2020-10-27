@@ -1,6 +1,5 @@
 package ModelosPA;
 
-import Modelos.GestionProyecto.ItemProyecto;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;

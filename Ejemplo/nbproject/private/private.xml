@@ -3,18 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/GestorVista.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/GestionProyecto/FrmProyecto.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/GestorHibernate.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmVentanaAdmin.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVentanaAdmin.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/GestionProyecto/GestorVistaProyecto.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVistaRubro.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Ejemplo/Main.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmCategoria.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/GestionProyecto/FrmTipoProyecto.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/GestionProyecto/GestorVistaTipoProyecto.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Vistas/MenuPrincipal/GestorVistaPrincipal.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorUsuario.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmPedido.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmRubro.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmProducto.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/nbproject/project.properties</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmCategoria.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/ModelosPA/DetallePedido.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorRubro.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/HibernateUtil.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmCalificacion.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmUsuario.java</file>
         </group>
     </open-files>
 </project-private>
