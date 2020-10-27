@@ -5,7 +5,6 @@
  */
 package Interfaz.ControladorPA;
 
-import Vistas.GestorVista;
 import VistasPA.FrmRubro;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JDesktopPane;
@@ -15,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author CrapBoy
  */
-public class ControladorVistaRubro extends GestorVista {
+public class ControladorVistaRubro  {
 
     private ControladorRubro oper;
     private FrmRubro form;
