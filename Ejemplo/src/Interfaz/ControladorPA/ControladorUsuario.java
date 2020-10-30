@@ -21,9 +21,9 @@ public class ControladorUsuario {
     
     
     
-    
-    
-    public  void guardarUsuario(Usuario user){
+    public void guardarUsuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
+        Usuario user = new Usuario(password, nombre, apellido,
+                                    email, direccion, telefono, fechaNac);
         oper.guardarUsuario(user);
     }
 }

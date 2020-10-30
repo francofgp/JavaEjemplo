@@ -408,7 +408,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-oper.reporteRubro();        // TODO add your handling code here:
+        oper.reporteRubro();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
