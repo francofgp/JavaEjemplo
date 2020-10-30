@@ -74,6 +74,8 @@ public class ControladorRubro extends GestorHibernate implements ICategoriaRubro
         
         s.delete(rubro);
         tx.commit();
+        JOptionPane.showMessageDialog(null, "El rubro se eliminó con éxito");
+        
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
             //getTx().rollback();

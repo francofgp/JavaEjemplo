@@ -8,6 +8,7 @@ package VistasPA;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorRubro;
 import Interfaz.ControladorPA.ControladorVistaRubro;
+//import Interfaz.ControladorPA.TextPrompt;
 import ModelosPA.Admin;
 import ModelosPA.Rubro;
 //import Modelos.GestionProyecto.Usuario;
@@ -17,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -135,11 +137,10 @@ public class FrmRubro extends javax.swing.JFrame {
         this.getControlador();
         getControlVista();
         this.getControlVista().setForm(this);
-        /*is.setLocationRelativeTo(null);
-        ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
-        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(),fondo.getHeight(),Image.SCALE_DEFAULT));
-        fondo.setIcon(icono);
-        this.repaint();*/
+        
+        TextPrompt txtNom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt txtDes = new TextPrompt("Descripcion",txtDescripcion);
+        
     }
 
     /**
@@ -205,7 +206,6 @@ public class FrmRubro extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +223,6 @@ public class FrmRubro extends javax.swing.JFrame {
         txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDescripcion.setText("Descripcion");
         txtDescripcion.setBorder(null);
         jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, -1));
 
@@ -262,6 +261,11 @@ public class FrmRubro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
+        if(txtNombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "ESDFSSFDDF", "",JOptionPane.ERROR_MESSAGE);
+        }
+        
         this.getControlVista().crearModificar();
         //System.out.println(txtNombre.getText()+ " en vista");
         /*
