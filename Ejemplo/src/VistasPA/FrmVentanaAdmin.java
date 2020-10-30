@@ -9,12 +9,18 @@ import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorCategoria;
 import Interfaz.ControladorPA.ControladorRubro;
 import Interfaz.ControladorPA.ControladorVentanaAdmin;
+import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,11 +34,14 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     FrmCategoria frmCategoria;
     ControladorRubro rubro;
     ControladorCategoria categoria;
+    FrmVentanaAdmin desktop =this;
     
     String nombre;
     String descripcion;
     Long ID;
     ControladorVentanaAdmin controlAdmin;
+    
+    ControladorVentanaAdminPrincipal controlVista;
 
 
     /**
@@ -47,6 +56,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         frmCategoria = new FrmCategoria();
         rubro = new ControladorRubro();
         categoria = new ControladorCategoria();
+        this.getControlVista().setForm(desktop);
         LoadRubro();
         LoadCategoria();
 
@@ -193,7 +203,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
         seleccionTxt.setForeground(new java.awt.Color(255, 255, 255));
         seleccionTxt.setText("No ha seleccionado ningun elemento");
-        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 500, -1));
+        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 520, 30));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Categoría");
@@ -278,8 +288,256 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public GestorHibernate getOper() {
+        return oper;
+    }
+
+    public void setOper(GestorHibernate oper) {
+        this.oper = oper;
+    }
+
+    public FrmRubro getFrmRubro() {
+        return frmRubro;
+    }
+
+    public void setFrmRubro(FrmRubro frmRubro) {
+        this.frmRubro = frmRubro;
+    }
+
+    public FrmCategoria getFrmCategoria() {
+        return frmCategoria;
+    }
+
+    public void setFrmCategoria(FrmCategoria frmCategoria) {
+        this.frmCategoria = frmCategoria;
+    }
+
+    public ControladorRubro getRubro() {
+        return rubro;
+    }
+
+    public void setRubro(ControladorRubro rubro) {
+        this.rubro = rubro;
+    }
+
+    public ControladorCategoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(ControladorCategoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public ControladorVentanaAdmin getControlAdmin() {
+        return controlAdmin;
+    }
+
+    public void setControlAdmin(ControladorVentanaAdmin controlAdmin) {
+        this.controlAdmin = controlAdmin;
+    }
+
+    public ControladorVentanaAdminPrincipal getControlVista() {
+        if (controlVista == null) {
+            synchronized (ControladorVentanaAdminPrincipal.class) {
+                controlVista = new ControladorVentanaAdminPrincipal();
+
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVentanaAdminPrincipal controlVista) {
+        this.controlVista = controlVista;
+    }
+
+    public JButton getBtnAceptar1() {
+        return btnAceptar1;
+    }
+
+    public void setBtnAceptar1(JButton btnAceptar1) {
+        this.btnAceptar1 = btnAceptar1;
+    }
+
+    public JButton getBtnAceptar4() {
+        return btnAceptar4;
+    }
+
+    public void setBtnAceptar4(JButton btnAceptar4) {
+        this.btnAceptar4 = btnAceptar4;
+    }
+
+    public JButton getBtnAceptar5() {
+        return btnAceptar5;
+    }
+
+    public void setBtnAceptar5(JButton btnAceptar5) {
+        this.btnAceptar5 = btnAceptar5;
+    }
+
+    public JButton getBtnEliminarCategoria() {
+        return btnEliminarCategoria;
+    }
+
+    public void setBtnEliminarCategoria(JButton btnEliminarCategoria) {
+        this.btnEliminarCategoria = btnEliminarCategoria;
+    }
+
+    public JButton getBtnModificarCategoria() {
+        return btnModificarCategoria;
+    }
+
+    public void setBtnModificarCategoria(JButton btnModificarCategoria) {
+        this.btnModificarCategoria = btnModificarCategoria;
+    }
+
+    public JButton getBtnNuevaCategoria() {
+        return btnNuevaCategoria;
+    }
+
+    public void setBtnNuevaCategoria(JButton btnNuevaCategoria) {
+        this.btnNuevaCategoria = btnNuevaCategoria;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTable getjTableCategoria() {
+        return jTableCategoria;
+    }
+
+    public void setjTableCategoria(JTable jTableCategoria) {
+        this.jTableCategoria = jTableCategoria;
+    }
+
+    public JTable getjTableRubro() {
+        return jTableRubro;
+    }
+
+    public void setjTableRubro(JTable jTableRubro) {
+        this.jTableRubro = jTableRubro;
+    }
+
+    public JLabel getSeleccionTxt() {
+        return seleccionTxt;
+    }
+
+    public void setSeleccionTxt(JLabel seleccionTxt) {
+        this.seleccionTxt = seleccionTxt;
+    }
+
+    
     void LoadRubro(){
-        List<Rubro> rubro = oper.RubroShow();
+        this.getControlVista().LoadRubro();
+        /*List<Rubro> rubro = oper.RubroShow();
         if (rubro.size()>0){
             Iterator consulta = rubro.iterator();
             while(consulta.hasNext()){
@@ -293,10 +551,13 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 }
         }else
             JOptionPane.showMessageDialog(null,"no hay registros de rubros");
+    */
+    
     }
     
     void LoadCategoria(){
-        List<Categoria> categoria = oper.CategoriaShow();
+        this.getControlVista().LoadCategoria();
+       /* List<Categoria> categoria = oper.CategoriaShow();
         if (categoria.size()>0){
             Iterator consulta = categoria.iterator();
             while(consulta.hasNext()){
@@ -310,37 +571,52 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 }
         }else
             JOptionPane.showMessageDialog(null,"no hay registros de categorias");
+    */
+    
     }
     
     void ClearTableRubro(){
-        while(jTableRubro.getRowCount()!=0){
+        this.getControlVista().ClearTableRubro();
+        
+        /*while(jTableRubro.getRowCount()!=0){
              ((DefaultTableModel)jTableRubro.getModel()).removeRow(0);
         }
+        */
     }
         
     void ClearTableCategoria(){
+        this.getControlVista().ClearTableCategoria();
+        /*
         while(jTableCategoria.getRowCount()!=0){
              ((DefaultTableModel)jTableCategoria.getModel()).removeRow(0);
         }
+        */
     }
     
     public void conseguirValoresTxt(){
+        
+        this.getControlVista().conseguirValoresTxt();
+        /*
         DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
         int selectedRowIndex = jTableRubro.getSelectedRow();
         ID = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
         nombre = model.getValueAt(selectedRowIndex,0).toString();
         descripcion = model.getValueAt(selectedRowIndex,1).toString();
+        */
 
     }
-    public void conseguirValoresTxtCategoria(){
-        DefaultTableModel model = (DefaultTableModel)jTableCategoria.getModel();
+
+    public void conseguirValoresTxtCategoria() {
+        this.getControlVista().conseguirValoresTxtCategoria();
+
+        /*DefaultTableModel model = (DefaultTableModel)jTableCategoria.getModel();
         int selectedRowIndex = jTableCategoria.getSelectedRow();
         ID = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
         nombre = model.getValueAt(selectedRowIndex,0).toString();
         descripcion = model.getValueAt(selectedRowIndex,1).toString();
-
+         */
     }
-    
+
     
     
     private void btnNuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCategoriaActionPerformed
@@ -391,11 +667,17 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar5ActionPerformed
 
     private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked
-            DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
-            int selectedRowIndex = jTableRubro.getSelectedRow();
-            seleccionTxt.setText("Nombre: "+ model.getValueAt(selectedRowIndex,0).toString() + " "+
-                    "Descripción: "+ model.getValueAt(selectedRowIndex,1).toString() + " "+
-                    "ID: "+ model.getValueAt(selectedRowIndex,2).toString());
+
+        //ESTE METODO TE DA LOS ID, NOMBRE Y DESCRIPCION DE
+        //LO QUE SELECCIONAS, NO HACE FALTA, LO HICE PARA PROBAR.
+        //el LABEL  seleccionTxt ESTA EN BLANCO, cambiar a negro y se ve
+        //que hace el metodo
+        
+        DefaultTableModel model = (DefaultTableModel) jTableRubro.getModel();
+        int selectedRowIndex = jTableRubro.getSelectedRow();
+        seleccionTxt.setText("Nombre: " + model.getValueAt(selectedRowIndex, 0).toString() + " "
+                + "Descripción: " + model.getValueAt(selectedRowIndex, 1).toString() + " "
+                + "ID: " + model.getValueAt(selectedRowIndex, 2).toString());
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableRubroMouseClicked
@@ -408,7 +690,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        oper.reporteRubro();        // TODO add your handling code here:
+        this.getOper().reporteRubro();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -471,4 +753,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTableRubro;
     private javax.swing.JLabel seleccionTxt;
     // End of variables declaration//GEN-END:variables
+
+
 }

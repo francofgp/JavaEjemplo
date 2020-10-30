@@ -51,7 +51,7 @@ public class ControladorVistaCategoria {
                 form.setDescripcion(form.getTxtDescripcion().getText());
                 //this.ID=ID;
                 oper.modificar(form.getNombre(),form.getDescripcion(),form.getID());
-                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
+                JOptionPane.showMessageDialog(null,"La categoría se modificó con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }else{
@@ -60,7 +60,7 @@ public class ControladorVistaCategoria {
                 form.setDescripcion(form.getTxtDescripcion().getText());
                 //this.ID=ID;
                 oper.modificar(form.getNombre(),form.getDescripcion(),form.getID());
-                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
+                JOptionPane.showMessageDialog(null,"La categoría se modificó con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
             }
@@ -74,7 +74,7 @@ public class ControladorVistaCategoria {
             if(oper.corroborar(nombre)==false){
                 //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
                 oper.guardar(form.getTxtNombre().getText(),form.getTxtDescripcion().getText());
-                JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
+                JOptionPane.showMessageDialog(null,"La categoría se registró con éxito!");       
                 form.setVisible(false);   
                 new FrmVentanaAdmin().setVisible(true);
             }
