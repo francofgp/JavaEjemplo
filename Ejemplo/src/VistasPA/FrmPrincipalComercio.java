@@ -24,6 +24,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     
     ControladorVistaPrincipalComercio controlVista;
     FrmPrincipalComercio desktop=this;
+    FrmProducto frmProducto;
     
     public FrmPrincipalComercio() {
         initComponents();
@@ -157,7 +158,10 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new FrmProducto().setVisible(true);
+        frmProducto= new FrmProducto();
+        frmProducto.setVisible(true);
+        frmProducto.getControlVista().setComercio(this.getControlVista().getComercio());
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

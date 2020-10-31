@@ -2,6 +2,7 @@ package Ejemplo;
 import Hibernate.HibernateUtil;
 import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
+import VistasPA.FrmProducto;
 
 public class Main {
 
@@ -14,6 +15,9 @@ public class Main {
 
         FrmVentanaAdmin frmVentanaAdmin = new FrmVentanaAdmin();
         frmVentanaAdmin.setVisible(true);
+        
+        FrmProducto HOLA = new FrmProducto();
+        HOLA.setVisible(true);
 
     }
 
