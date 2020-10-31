@@ -86,6 +86,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jTableCategoria = new javax.swing.JTable();
         btnModificarCategoria = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        btnDarDeBaja = new javax.swing.JButton();
+        btnDarDeBajaCategoria = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -158,11 +160,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "ID"
+                "Nombre", "Descripcion", "ID", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -179,6 +181,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableRubro.getColumnModel().getColumn(0).setResizable(false);
             jTableRubro.getColumnModel().getColumn(1).setResizable(false);
             jTableRubro.getColumnModel().getColumn(2).setResizable(false);
+            jTableRubro.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 230));
@@ -214,11 +217,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripción", "ID"
+                "Nombre", "Descripción", "ID", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -230,6 +233,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableCategoria.getColumnModel().getColumn(0).setResizable(false);
             jTableCategoria.getColumnModel().getColumn(1).setResizable(false);
             jTableCategoria.getColumnModel().getColumn(2).setResizable(false);
+            jTableCategoria.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, 230));
@@ -250,6 +254,34 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Rubro");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+
+        btnDarDeBaja.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBaja.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja.setText("Dar de baja");
+        btnDarDeBaja.setToolTipText("");
+        btnDarDeBaja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBaja.setContentAreaFilled(false);
+        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBajaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 110, 30));
+
+        btnDarDeBajaCategoria.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBajaCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBajaCategoria.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBajaCategoria.setText("Dar de baja");
+        btnDarDeBajaCategoria.setToolTipText("");
+        btnDarDeBajaCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBajaCategoria.setContentAreaFilled(false);
+        btnDarDeBajaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBajaCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
 
@@ -693,6 +725,25 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.getOper().reporteRubro();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
+        conseguirValoresTxt();
+
+        rubro.darDeBaja(ID);
+
+        ClearTableRubro();
+        LoadRubro();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarDeBajaActionPerformed
+
+    private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
+        conseguirValoresTxtCategoria();
+        categoria.darDeBajaCategoria(ID);
+        ClearTableCategoria();
+        LoadCategoria();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -735,6 +786,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnAceptar4;
     private javax.swing.JButton btnAceptar5;
+    private javax.swing.JButton btnDarDeBaja;
+    private javax.swing.JButton btnDarDeBajaCategoria;
     private javax.swing.JButton btnEliminarCategoria;
     private javax.swing.JButton btnModificarCategoria;
     private javax.swing.JButton btnNuevaCategoria;

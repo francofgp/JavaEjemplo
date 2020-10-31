@@ -18,7 +18,7 @@ public class Comercio {
 
     public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion,
                     String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
-                    Rubro rubro) {
+                    Rubro rubro, Categoria categoria) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
@@ -30,6 +30,7 @@ public class Comercio {
         this.nombreLocal = nombreLocal;
         this.direccionNegocio = direccionNegocio;
         this.rubro = rubro;
+        this.categoria=categoria;
     }
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
@@ -70,6 +71,9 @@ public class Comercio {
     */
     @ManyToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Rubro rubro;
+    
+    @ManyToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    private Categoria categoria;
     
     
     @Column(columnDefinition = "TEXT")

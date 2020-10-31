@@ -5,9 +5,14 @@
  */
 package Interfaz.ControladorPA;
 
+import Hibernate.HibernateUtil;
+import ModelosPA.Categoria;
 import VistasPA.FrmCategoria;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -98,7 +103,22 @@ public class ControladorVistaCategoria {
         
         }
 
+    public void darDeBajaCategoria(Long ID) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
+                    .add(Restrictions.eq("id", ID)).uniqueResult();
 
+            categoria.setEstado("Dado de Baja");
+            s.update(categoria);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja a la categoria ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
         
     }
 

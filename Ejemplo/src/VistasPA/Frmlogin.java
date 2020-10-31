@@ -67,6 +67,7 @@ public class Frmlogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        checkBoxComercio = new javax.swing.JCheckBox();
 
         jButton5.setBackground(new java.awt.Color(153, 204, 0));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -164,7 +165,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton2_IngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, 30));
+        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 150, 30));
 
         jPasswordField1.setBackground(new java.awt.Color(153, 204, 0));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,6 +235,12 @@ public class Frmlogin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 320, 100));
 
+        checkBoxComercio.setBackground(new java.awt.Color(153, 204, 0));
+        checkBoxComercio.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        checkBoxComercio.setForeground(new java.awt.Color(255, 255, 255));
+        checkBoxComercio.setText("Soy un comercio");
+        jPanel1.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
         pack();
@@ -244,6 +251,9 @@ public class Frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_IngresarActionPerformed
+        if(checkBoxComercio.isSelected()){
+            System.out.println("seleccionado");
+        }
         new FrmPrincipalUsuario().setVisible(true);
         this.setVisible(false);
         //String password = new String(jPasswordField1.getPassword());
@@ -319,6 +329,7 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton2_Ingresar;

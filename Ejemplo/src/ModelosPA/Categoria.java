@@ -15,6 +15,7 @@ public class Categoria {
         //creamos el constructor para los datos que le vamos a pasar, pero el ID no porque es autoincremental
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.estado="Activo";
     }
     
     public Categoria(){
@@ -29,6 +30,20 @@ public class Categoria {
     
     @Column(columnDefinition = "TEXT")
     String descripcion;
+    
+        
+    @Column(columnDefinition = "TEXT")
+    private String estado;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
         
     public long getId() {
         return id;

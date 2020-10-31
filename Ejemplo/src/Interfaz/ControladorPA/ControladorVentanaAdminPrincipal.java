@@ -75,6 +75,7 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getNombre());
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
+                datos.add(fila.getEstado());
                 tabla.addRow(datos);
             }
         } else {
@@ -93,6 +94,7 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getNombre());
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
+                datos.add(fila.getEstado());
                 tabla.addRow(datos);
             }
         } else {
