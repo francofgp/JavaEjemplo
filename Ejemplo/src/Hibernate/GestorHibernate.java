@@ -2,6 +2,7 @@ package Hibernate;
 
 import GUtilr.Util;
 import ModelosPA.Categoria;
+import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
@@ -423,6 +424,69 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("id", idCategoriaSeleccionado)).uniqueResult();
         System.out.println(categoria.getId());
         return categoria;
+    }
+
+    public boolean ingresarComercio(String username, String password) {
+        Session sesion = HibernateUtil.getSession();
+        
+        Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("nombre", username)).uniqueResult();
+        
+        try {
+            if(comercio!=null){
+            
+                if(comercio.getPassword().equals(password)){
+                    //JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
+                    //lo saco de aca porque spamea mucho sino
+                    return true;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
+                            + "no corresponde con el usuario", "" ,JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return false;
+        }    
+    }
+
+    public Comercio buscarComercioIngresante(String username, String password) {
+        Session sesion = HibernateUtil.getSession();
+        
+        Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("nombre", username)).uniqueResult();
+        
+                try {
+            if(comercio!=null){
+            
+                if(comercio.getPassword().equals(password)){
+                    JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
+                    return comercio;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
+                            + "no corresponde con el usuario", "" ,JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
+                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+        }
     }
 
 }

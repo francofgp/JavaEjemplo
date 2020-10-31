@@ -32,6 +32,11 @@ public class Comercio {
         this.rubro = rubro;
         this.categoria=categoria;
     }
+
+    public Comercio() {
+    }
+    
+    
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;

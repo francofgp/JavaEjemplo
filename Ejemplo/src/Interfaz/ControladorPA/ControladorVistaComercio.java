@@ -20,7 +20,7 @@ public class ControladorVistaComercio {
 
     public ControladorComercio getOper() {
         if (oper == null) {
-            synchronized (ControladorVistaCategoria.class) {
+            synchronized (ControladorComercio.class) {
                 oper = new ControladorComercio();
 
             }
