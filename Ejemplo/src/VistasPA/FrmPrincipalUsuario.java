@@ -30,6 +30,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
+        this.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxCategoria(jComboBoxCategoria);
         
     }
 
@@ -59,11 +61,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtRuta = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableComercio = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxCategoria = new javax.swing.JComboBox<>();
+        jComboBoxRubro = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -87,6 +89,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton13 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -191,18 +196,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 300, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableComercio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Comercio", "Rubro", "Categoría", "Dirección"
+                "Comercio", "ID"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableComercio);
+        if (jTableComercio.getColumnModel().getColumnCount() > 0) {
+            jTableComercio.getColumnModel().getColumn(0).setResizable(false);
+            jTableComercio.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 440));
 
@@ -210,16 +224,26 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("buscar comercio");
         jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
         jLabel2.setText("______________________________");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 110, -1));
+        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 110, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 110, -1));
+        jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRubroActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, -1));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
 
@@ -266,7 +290,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setText("Comercio");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jTextField5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(153, 204, 0));
@@ -438,6 +462,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 450, 190));
 
+        jButton13.setBackground(new java.awt.Color(255, 255, 255));
+        jButton13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(153, 204, 0));
+        jButton13.setText("Buscar");
+        jButton13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        jButton13.setContentAreaFilled(false);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 20));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel8.setText("Rubro");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 60, 20));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel12.setText("Categoria");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -492,7 +537,93 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+    int estado=0;
+    int estadoCategoria=0;
 
+    
+    Long idDeRubroSeleccionado;
+    Long idCategoriaSeleccionado;
+    private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
+             this.getControlVista().conseguirIDCategoriaSeleccionado();
+    }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
+
+    private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
+        this.getControlVista().conseguirIDRubroSeleccionado();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        this.ClearTableComercio();
+        this.LoadComercio();
+    }//GEN-LAST:event_jButton13ActionPerformed
+    
+    void ClearTableComercio() {
+        this.getControlVista().ClearTableComercio();
+    }
+        
+    void LoadComercio(){
+        this.getControlVista().LoadComercio();
+    }
+    public JComboBox<String> getjComboBoxCategoria() {
+        return jComboBoxCategoria;
+    }
+
+    public JTable getjTableComercio() {
+        return jTableComercio;
+    }
+
+    public void setjTableComercio(JTable jTableComercio) {
+        this.jTableComercio = jTableComercio;
+    }
+    
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getEstadoCategoria() {
+        return estadoCategoria;
+    }
+
+    public void setEstadoCategoria(int estadoCategoria) {
+        this.estadoCategoria = estadoCategoria;
+    }
+
+    public Long getIdDeRubroSeleccionado() {
+        return idDeRubroSeleccionado;
+    }
+
+    public void setIdDeRubroSeleccionado(Long idDeRubroSeleccionado) {
+        this.idDeRubroSeleccionado = idDeRubroSeleccionado;
+    }
+
+    public Long getIdCategoriaSeleccionado() {
+        return idCategoriaSeleccionado;
+    }
+
+    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
+        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
+    }
+
+    
+    public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
+        this.jComboBoxCategoria = jComboBoxCategoria;
+    }
+
+    public JComboBox<String> getjComboBoxRubro() {
+        return jComboBoxRubro;
+    }
+
+    public void setjComboBoxRubro(JComboBox<String> jComboBoxRubro) {
+        this.jComboBoxRubro = jComboBoxRubro;
+    }
+
+    
+    
     public ControladorVistaPrincipalUsuario getControlVista() {
          if (controlVista == null) {
             synchronized (ControladorVistaPrincipalUsuario.class) {
@@ -504,6 +635,14 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     public void setControlVista(ControladorVistaPrincipalUsuario controlVista) {
         this.controlVista = controlVista;
+    }
+    
+    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
+        this.getControlVista().llenaJComboBoxCategoria(jComboBoxCategoria);
+    }
+
+    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
+        this.getControlVista().llenaJComboBoxUsuario(jComboBoxRubro);
     }
 
     public FrmPrincipalUsuario getDesktop() {
@@ -603,19 +742,19 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
 
     public JComboBox<String> getjComboBox1() {
-        return jComboBox1;
+        return jComboBoxCategoria;
     }
 
     public void setjComboBox1(JComboBox<String> jComboBox1) {
-        this.jComboBox1 = jComboBox1;
+        this.jComboBoxCategoria = jComboBox1;
     }
 
     public JComboBox<String> getjComboBox2() {
-        return jComboBox2;
+        return jComboBoxRubro;
     }
 
     public void setjComboBox2(JComboBox<String> jComboBox2) {
-        this.jComboBox2 = jComboBox2;
+        this.jComboBoxRubro = jComboBox2;
     }
 
     public JLabel getjLabel1() {
@@ -755,11 +894,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
 
     public JTable getjTable1() {
-        return jTable1;
+        return jTableComercio;
     }
 
     public void setjTable1(JTable jTable1) {
-        this.jTable1 = jTable1;
+        this.jTableComercio = jTable1;
     }
 
     public JTable getjTable2() {
@@ -914,6 +1053,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -922,15 +1062,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxCategoria;
+    private javax.swing.JComboBox<String> jComboBoxRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -941,10 +1083,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTableComercio;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -957,4 +1099,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtRuta2;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+
+
 }

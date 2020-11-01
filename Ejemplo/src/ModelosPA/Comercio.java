@@ -77,6 +77,8 @@ public class Comercio {
     @ManyToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Rubro rubro;
     
+    
+    
     @ManyToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
     
@@ -133,14 +135,15 @@ public class Comercio {
     public String getNombreLocal() {
         return nombreLocal;
     }
-/*
+
     public Categoria getCategoria() {
         return categoria;
     }
-*/
+
     public Rubro getRubro() {
         return rubro;
     }
+    
 
     public String getDireccionNegocio() {
         return direccionNegocio;

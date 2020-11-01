@@ -127,7 +127,8 @@ public class ControladorVentanaAdminPrincipal {
     public void ClearTableCategoria() {
         while(this.getForm().getjTableCategoria().getRowCount()!=0){
              ((DefaultTableModel)this.getForm().getjTableCategoria().getModel()).removeRow(0);
-        }    }
+        }    
+    }
     
     
 

@@ -170,6 +170,13 @@ public class GestorHibernate extends HibernateUtil {
         return rubro;
 
     }
+    
+    public static List<Comercio> BuscarComercioPorCategoriaYRubro() {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class).list();
+        return comercio;
+
+    }
 
     public Transaction getTx() {
         return tx;
