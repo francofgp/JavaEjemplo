@@ -460,6 +460,9 @@ public class Frmlogin extends javax.swing.JFrame {
             if(this.getControlVista().ingresarComercio()){
                 this.setVisible(false);
             }            
+        }else{
+        this.getControlVista().ingresarUsuario();
+        this.setVisible(false);
         }
         
         //new FrmPrincipalUsuario().setVisible(true);
