@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,6 +24,17 @@ import javax.persistence.Table;
 @Entity
 @Table (name="producto")
 public class Producto {
+
+    public Producto(String nombre, String descripcion, float precio, Categoria categoria, Comercio comercio) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.comercio = comercio;
+    }
+    
+    
+    
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
@@ -39,10 +51,11 @@ public class Producto {
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
 
+    /*
     @Column(columnDefinition = "TEXT")
     private float imagen;
-    
-    @OneToMany(targetEntity = Comercio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    */
+    @ManyToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Comercio comercio;
     
     public long getId() {
@@ -81,17 +94,13 @@ public class Producto {
         return categoria;
     }
 
-    public float getImagen() {
-        return imagen;
-    }
+
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public void setImagen(float imagen) {
-        this.imagen = imagen;
-    }
+
     
     
 }

@@ -7,6 +7,8 @@ package VistasPA;
 
 import Hibernate.HibernateUtil;
 import Interfaz.ControladorPA.ControladorComercio;
+import Interfaz.ControladorPA.ControladorVistaComercio;
+import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
@@ -14,9 +16,13 @@ import java.awt.Image;
 import java.io.File;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
@@ -31,11 +37,15 @@ public class FrmComercio extends javax.swing.JFrame {
      */
     
     ControladorComercio oper;
+    ControladorVistaComercio controlVista;
+    FrmComercio desktop=this;
     public FrmComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getControlVista().setForm(desktop);
         oper = new ControladorComercio();
-        llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxCategoria(jComboBoxCategoria);
     }
 
     /**
@@ -415,18 +425,406 @@ public class FrmComercio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public ControladorComercio getOper() {
+        return oper;
+    }
+
+    public void setOper(ControladorComercio oper) {
+        this.oper = oper;
+    }
+
+    public ControladorVistaComercio getControlVista() {
+        if (controlVista == null) {
+            synchronized (ControladorVistaComercio.class) {
+                controlVista = new ControladorVistaComercio();
+
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVistaComercio controlVista) {
+        this.controlVista = controlVista;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getEstadoCategoria() {
+        return estadoCategoria;
+    }
+
+    public void setEstadoCategoria(int estadoCategoria) {
+        this.estadoCategoria = estadoCategoria;
+    }
+
+    public Long getIdDeRubroSeleccionado() {
+        return idDeRubroSeleccionado;
+    }
+
+    public void setIdDeRubroSeleccionado(Long idDeRubroSeleccionado) {
+        this.idDeRubroSeleccionado = idDeRubroSeleccionado;
+    }
+
+    public Long getIdCategoriaSeleccionado() {
+        return idCategoriaSeleccionado;
+    }
+
+    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
+        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnAceptar1() {
+        return btnAceptar1;
+    }
+
+    public void setBtnAceptar1(JButton btnAceptar1) {
+        this.btnAceptar1 = btnAceptar1;
+    }
+
+    public JLabel getImagenjLabel() {
+        return imagenjLabel;
+    }
+
+    public void setImagenjLabel(JLabel imagenjLabel) {
+        this.imagenjLabel = imagenjLabel;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public JComboBox<String> getjComboBoxCategoria() {
+        return jComboBoxCategoria;
+    }
+
+    public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
+        this.jComboBoxCategoria = jComboBoxCategoria;
+    }
+
+    public JComboBox<String> getjComboBoxRubro() {
+        return jComboBoxRubro;
+    }
+
+    public void setjComboBoxRubro(JComboBox<String> jComboBoxRubro) {
+        this.jComboBoxRubro = jComboBoxRubro;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public void setjLabel12(JLabel jLabel12) {
+        this.jLabel12 = jLabel12;
+    }
+
+    public JLabel getjLabel13() {
+        return jLabel13;
+    }
+
+    public void setjLabel13(JLabel jLabel13) {
+        this.jLabel13 = jLabel13;
+    }
+
+    public JLabel getjLabel14() {
+        return jLabel14;
+    }
+
+    public void setjLabel14(JLabel jLabel14) {
+        this.jLabel14 = jLabel14;
+    }
+
+    public JLabel getjLabel15() {
+        return jLabel15;
+    }
+
+    public void setjLabel15(JLabel jLabel15) {
+        this.jLabel15 = jLabel15;
+    }
+
+    public JLabel getjLabel16() {
+        return jLabel16;
+    }
+
+    public void setjLabel16(JLabel jLabel16) {
+        this.jLabel16 = jLabel16;
+    }
+
+    public JLabel getjLabel17() {
+        return jLabel17;
+    }
+
+    public void setjLabel17(JLabel jLabel17) {
+        this.jLabel17 = jLabel17;
+    }
+
+    public JLabel getjLabel18() {
+        return jLabel18;
+    }
+
+    public void setjLabel18(JLabel jLabel18) {
+        this.jLabel18 = jLabel18;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtCuit() {
+        return txtCuit;
+    }
+
+    public void setTxtCuit(JTextField txtCuit) {
+        this.txtCuit = txtCuit;
+    }
+
+    public JTextField getTxtDireccion() {
+        return txtDireccion;
+    }
+
+    public void setTxtDireccion(JTextField txtDireccion) {
+        this.txtDireccion = txtDireccion;
+    }
+
+    public JTextField getTxtDireccionLocal() {
+        return txtDireccionLocal;
+    }
+
+    public void setTxtDireccionLocal(JTextField txtDireccionLocal) {
+        this.txtDireccionLocal = txtDireccionLocal;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(JTextField txtFecha) {
+        this.txtFecha = txtFecha;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtNombreLocal() {
+        return txtNombreLocal;
+    }
+
+    public void setTxtNombreLocal(JTextField txtNombreLocal) {
+        this.txtNombreLocal = txtNombreLocal;
+    }
+
+    public JTextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(JTextField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+    public JTextField getTxtRuta() {
+        return txtRuta;
+    }
+
+    public void setTxtRuta(JTextField txtRuta) {
+        this.txtRuta = txtRuta;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(JTextField txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
         //String nombre, String apellido, String fechaNac, String password, String direccion, 
         //String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio) {
+        
+        this.getControlVista().guardar();
+        /*
         Comercio comercio = new Comercio(this.txtNombre.getText(),this.txtApellido.getText(), this.txtFecha.getText(),
                                     this.txtPassword.getText(),this.txtDireccion.getText(),this.txtEmail.getText(),
                                     this.txtCuit.getText(),this.txtTelefono.getText(),this.txtNombreLocal.getText(),
-                                    this.txtDireccionLocal.getText() , (Rubro) buscarObjetoPorId(idDeRubroSeleccionado));
+                                    this.txtDireccionLocal.getText() , (Rubro) buscarObjetoPorId(idDeRubroSeleccionado),
+                                    (Categoria) buscarCategoriaPorId(idCategoriaSeleccionado));
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
         oper.guardarUsuario(comercio);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        
+        */
         JOptionPane.showMessageDialog(null,"Tu comercio se registró con éxito!");
         //this.setVisible(false);
 // TODO add your handling code here:    
@@ -434,8 +832,12 @@ public class FrmComercio extends javax.swing.JFrame {
 
     public Object buscarObjetoPorId(Long id) {
         return oper.buscarObjetoPorId(idDeRubroSeleccionado);
-        
     }
+    
+    public Object buscarCategoriaPorId(Long id) {
+        return oper.buscarCategoriaPorId(idCategoriaSeleccionado);
+    }
+    
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
@@ -458,7 +860,20 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCuitActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
+        this.getControlVista().conseguirIDCategoriaSeleccionado();
 
+        /*
+        if (estadoCategoria>=2){
+        String s = String.valueOf(jComboBoxCategoria.getSelectedItem());
+        
+        idCategoriaSeleccionado = oper.buscarCategoria(s);
+        //System.out.println(idDeRubroSeleccionado+ "estoy aca");
+
+        }else{
+            estadoCategoria= estadoCategoria+1;
+            
+            }   
+        */
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
@@ -492,14 +907,17 @@ public class FrmComercio extends javax.swing.JFrame {
         //llenaJComboBoxUsuario(jComboBoxRubro);
     }//GEN-LAST:event_btnAceptar1ActionPerformed
     int estado=0;
+    int estadoCategoria=0;
 
     
     Long idDeRubroSeleccionado;
+    Long idCategoriaSeleccionado;
     
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
-        
         //aca consigo el "ID" de lo que selecciono
-
+        this.getControlVista().conseguirIDRubroSeleccionado();
+        
+        /*
         if (estado>=2){
         String s = String.valueOf(jComboBoxRubro.getSelectedItem());
         
@@ -508,11 +926,15 @@ public class FrmComercio extends javax.swing.JFrame {
 
         }else{
             estado= estado+1;
-            
+        }*/
             }//GEN-LAST:event_jComboBoxRubroActionPerformed
+    
+    
+    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
+        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
     public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
-        oper.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.getOper().llenaJComboBoxUsuario(jComboBoxRubro);
         }
 
         /* //ESTO NO HAY QUE HACER, TIENE QUE SER COMO ARRIBA, PORQUE ESTE COMBOBOX1 NO ES MVC
@@ -624,4 +1046,8 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JTextField txtRuta;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+
+
+
 }

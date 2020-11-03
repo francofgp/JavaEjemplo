@@ -27,14 +27,13 @@ public class HibernateUtil  {
             conf.setProperty("hibernate.hbm2ddl.auto","update");
 
             conf.addPackage("Modelos.GestionProyecto");
-            conf.addAnnotatedClass(Modelos.GestionProyecto.Proyecto.class);
-            conf.addAnnotatedClass(Modelos.GestionProyecto.TipoProyecto.class);
-            conf.addAnnotatedClass(Modelos.GestionProyecto.ItemProyecto.class);
             conf.addAnnotatedClass(ModelosPA.Usuario.class);
             conf.addAnnotatedClass(ModelosPA.Admin.class);
             conf.addAnnotatedClass(ModelosPA.Rubro.class);
             conf.addAnnotatedClass(ModelosPA.Categoria.class);
             conf.addAnnotatedClass(ModelosPA.Comercio.class);
+            conf.addAnnotatedClass(ModelosPA.Producto.class);
+
 
            
             try {
