@@ -8,21 +8,13 @@ package VistasPA;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorCategoria;
 import Interfaz.ControladorPA.ControladorRubro;
-import Interfaz.ControladorPA.ControladorVentanaAdmin;
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
-import ModelosPA.Categoria;
-import ModelosPA.Rubro;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,7 +31,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     String nombre;
     String descripcion;
     Long ID;
-    ControladorVentanaAdmin controlAdmin;
     
     ControladorVentanaAdminPrincipal controlVista;
 
@@ -51,11 +42,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new GestorHibernate();
-        controlAdmin = new ControladorVentanaAdmin();
-        frmRubro = new FrmRubro();
-        frmCategoria = new FrmCategoria();
-        rubro = new ControladorRubro();
-        categoria = new ControladorCategoria();
         this.getControlVista().setForm(desktop);
         LoadRubro();
         LoadCategoria();
@@ -324,11 +310,18 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         return oper;
     }
 
+    
+    
     public void setOper(GestorHibernate oper) {
         this.oper = oper;
     }
 
     public FrmRubro getFrmRubro() {
+        if (frmRubro == null) {
+            synchronized (FrmRubro.class) {
+                frmRubro = new FrmRubro();
+            }
+        }
         return frmRubro;
     }
 
@@ -337,6 +330,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }
 
     public FrmCategoria getFrmCategoria() {
+        if (frmCategoria == null) {
+            synchronized (FrmCategoria.class) {
+                frmCategoria = new FrmCategoria();
+            }
+        }
         return frmCategoria;
     }
 
@@ -345,6 +343,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }
 
     public ControladorRubro getRubro() {
+        if (rubro == null) {
+            synchronized (ControladorRubro.class) {
+                rubro = new ControladorRubro();
+            }
+        }
         return rubro;
     }
 
@@ -353,7 +356,12 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }
 
     public ControladorCategoria getCategoria() {
-        return categoria;
+        if (categoria == null) {
+            synchronized (ControladorRubro.class) {
+                categoria = new ControladorCategoria();
+            }
+        }
+        return categoria;    
     }
 
     public void setCategoria(ControladorCategoria categoria) {
@@ -384,13 +392,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.ID = ID;
     }
 
-    public ControladorVentanaAdmin getControlAdmin() {
-        return controlAdmin;
-    }
 
-    public void setControlAdmin(ControladorVentanaAdmin controlAdmin) {
-        this.controlAdmin = controlAdmin;
-    }
 
     public ControladorVentanaAdminPrincipal getControlVista() {
         if (controlVista == null) {
@@ -664,7 +666,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
         conseguirValoresTxtCategoria();
                        
-            categoria.eliminar(ID);
+            this.getCategoria().eliminar(ID);
             
             ClearTableCategoria();
             LoadCategoria();
@@ -673,8 +675,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnAceptar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar4ActionPerformed
         //Primero Obtengo todos los valores de la tabla
         conseguirValoresTxt();
-        frmRubro.modificar("1",nombre,descripcion,ID );
-        frmRubro.setVisible(true);
+        this.getFrmRubro().modificar("1",nombre,descripcion,ID );
+        this.getFrmRubro().setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
@@ -692,7 +694,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
             
             
-            rubro.eliminar(ID);
+            this.getRubro().eliminar(ID);
             
             ClearTableRubro();
             LoadRubro();
@@ -710,31 +712,31 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         //LO QUE SELECCIONAS, NO HACE FALTA, LO HICE PARA PROBAR.
         //el LABEL  seleccionTxt ESTA EN BLANCO, cambiar a negro y se ve
         //que hace el metodo
-        
+        /*
         DefaultTableModel model = (DefaultTableModel) jTableRubro.getModel();
         int selectedRowIndex = jTableRubro.getSelectedRow();
         seleccionTxt.setText("Nombre: " + model.getValueAt(selectedRowIndex, 0).toString() + " "
                 + "Descripción: " + model.getValueAt(selectedRowIndex, 1).toString() + " "
                 + "ID: " + model.getValueAt(selectedRowIndex, 2).toString());
-
+*/
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableRubroMouseClicked
 
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed
         //Primero Obtengo todos los valores de la tabla
         conseguirValoresTxtCategoria();
-        frmCategoria.modificar("1",nombre,descripcion,ID );
-        frmCategoria.setVisible(true);
+        this.getFrmCategoria().modificar("1",nombre,descripcion,ID );
+        this.getFrmCategoria().setVisible(true);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.getOper().reporteRubro();        // TODO add your handling code here:
+        this.getControlVista().reporteRubro();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
         conseguirValoresTxt();
 
-        rubro.darDeBaja(ID);
+        this.getRubro().darDeBaja(ID);
 
         ClearTableRubro();
         LoadRubro();
@@ -743,7 +745,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
         conseguirValoresTxtCategoria();
-        categoria.darDeBajaCategoria(ID);
+        this.getCategoria().darDeBajaCategoria(ID);
         ClearTableCategoria();
         LoadCategoria();
 

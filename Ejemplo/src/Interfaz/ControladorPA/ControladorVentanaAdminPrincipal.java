@@ -130,6 +130,10 @@ public class ControladorVentanaAdminPrincipal {
         }    
     }
     
+    public void reporteRubro(){
+    this.getOper().reporteRubro();
+    }
+    
     
 
 }
