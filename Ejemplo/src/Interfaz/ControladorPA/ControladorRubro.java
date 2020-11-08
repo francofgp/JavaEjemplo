@@ -66,12 +66,11 @@ public class ControladorRubro extends GestorHibernate implements ICategoriaRubro
     
     @Override //implementar al menos 1 herencia de comportamiento
     public void eliminar(Long ID){
-                Session s = HibernateUtil.getSession();
+        Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try{
             Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
             .add(Restrictions.eq("id",ID)).uniqueResult();
-        
         s.delete(rubro);
         tx.commit();
         }catch(Exception e){

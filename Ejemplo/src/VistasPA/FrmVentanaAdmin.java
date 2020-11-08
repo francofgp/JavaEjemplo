@@ -373,12 +373,16 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     private void btnAceptar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar5ActionPerformed
         //CONSIGO EL ID
-        conseguirValoresTxt();
+        int preg = JOptionPane.showConfirmDialog(null,"Seguro que desea elimar este rubro?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if(preg==JOptionPane.YES_OPTION){
+            conseguirValoresTxt();
             //Long id;
             //DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
             //int selectedRowIndex = jTableRubro.getSelectedRow();
             
             //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
+            
             
             rubro.eliminar(ID);
             
@@ -388,6 +392,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //System.out.println(id); //esto era para probar si no manquié
+        }
+        
     }//GEN-LAST:event_btnAceptar5ActionPerformed
 
     private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked

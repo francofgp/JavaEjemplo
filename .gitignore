@@ -6,3 +6,5 @@
 Ejemplo\build\built-jar.properties
 Ejemplo\nbproject\private\private.properties
 
+/placeholders/placeholders/build/
+/placeholders/placeholders/nbproject/private/
