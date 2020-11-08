@@ -263,7 +263,16 @@ public class FrmRubro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        this.getControlVista().crearModificar();
+        String nombs = txtNombre.getText();
+        String trim = nombs.trim();
+        if(trim.length()==0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
+        }else{
+            this.getControlVista().crearModificar();
+        }
+
+        //this.getControlVista().crearModificar();
+        
         //System.out.println(txtNombre.getText()+ " en vista");
         /*
         String nombre = this.txtNombre.getText();

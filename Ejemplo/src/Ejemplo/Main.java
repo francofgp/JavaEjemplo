@@ -14,9 +14,11 @@ public class Main {
         Frmlogin frmLogin = new Frmlogin();
         frmLogin.setVisible(true);
 
-        FrmPrincipalUsuario frmVentanaAdmin = new FrmPrincipalUsuario();
-        frmVentanaAdmin.setVisible(true);
+        //FrmPrincipalUsuario frmVentanaAdmin = new FrmPrincipalUsuario();        
+        //frmVentanaAdmin.setVisible(true);     
         
+        FrmVentanaAdmin frmVentanaAdmin = new FrmVentanaAdmin();
+        frmVentanaAdmin.setVisible(true);
 
 
     }
