@@ -7,18 +7,27 @@ package VistasPA;
 
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorUsuario;
+import Interfaz.ControladorPA.ControladorVistaUsuario;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author CrapBoy
  */
 public class FrmUsuario extends javax.swing.JFrame {
+    
+    ControladorVistaUsuario controlVista;
     ControladorUsuario oper;
+    
+    
     /**
      * Creates new form FrmUsuario
      */
@@ -26,6 +35,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new ControladorUsuario();
+        this.getControlVista().setForm(this);
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -33,6 +43,214 @@ public class FrmUsuario extends javax.swing.JFrame {
         fondo.setIcon(icono);
         this.repaint();*/
     }
+
+    public ControladorVistaUsuario getControlVista() {
+        if (controlVista == null) {
+            synchronized (ControladorVistaUsuario.class) {
+                controlVista = new ControladorVistaUsuario();
+
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVistaUsuario controlVista) {
+        this.controlVista = controlVista;
+    }
+
+    public ControladorUsuario getOper() {
+        return oper;
+    }
+
+    public void setOper(ControladorUsuario oper) {
+        this.oper = oper;
+    }
+
+    public JLabel getApellidoTxt() {
+        return apellidoTxt;
+    }
+
+    public void setApellidoTxt(JLabel apellidoTxt) {
+        this.apellidoTxt = apellidoTxt;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JLabel getDireccionTxt() {
+        return direccionTxt;
+    }
+
+    public void setDireccionTxt(JLabel direccionTxt) {
+        this.direccionTxt = direccionTxt;
+    }
+
+    public JLabel getEmailTxt() {
+        return emailTxt;
+    }
+
+    public void setEmailTxt(JLabel emailTxt) {
+        this.emailTxt = emailTxt;
+    }
+
+    public JLabel getFechaTxt() {
+        return fechaTxt;
+    }
+
+    public void setFechaTxt(JLabel fechaTxt) {
+        this.fechaTxt = fechaTxt;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JLabel getNombreTxt() {
+        return nombreTxt;
+    }
+
+    public void setNombreTxt(JLabel nombreTxt) {
+        this.nombreTxt = nombreTxt;
+    }
+
+    public JLabel getPasswordTxt() {
+        return passwordTxt;
+    }
+
+    public void setPasswordTxt(JLabel passwordTxt) {
+        this.passwordTxt = passwordTxt;
+    }
+
+    public JLabel getTelefonoTxt() {
+        return telefonoTxt;
+    }
+
+    public void setTelefonoTxt(JLabel telefonoTxt) {
+        this.telefonoTxt = telefonoTxt;
+    }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtDireccion() {
+        return txtDireccion;
+    }
+
+    public void setTxtDireccion(JTextField txtDireccion) {
+        this.txtDireccion = txtDireccion;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(JTextField txtFecha) {
+        this.txtFecha = txtFecha;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(JTextField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(JTextField txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -248,13 +466,15 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        Usuario user = new Usuario(this.txtPassword.getText(),this.txtNombre.getText(), this.txtApellido.getText(),
+            
+         this.getControlVista().Guardar();
+        /*Usuario user = new Usuario(this.txtPassword.getText(),this.txtNombre.getText(), this.txtApellido.getText(),
                                     this.txtEmail.getText(),this.txtDireccion.getText(),this.txtTelefono.getText(),
-                                    this.txtFecha.getText());
+                                    this.txtFecha.getText());*/
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
 

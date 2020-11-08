@@ -7,6 +7,7 @@ package VistasPA;
 
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorCategoria;
+import Interfaz.ControladorPA.ControladorVistaCategoria;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import java.util.HashSet;
@@ -15,7 +16,11 @@ import javax.swing.ImageIcon;
 
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -31,7 +36,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     String nombrePrimero;
     
     
-    
+    ControladorVistaCategoria controlVista;
     
     
     
@@ -59,6 +64,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlador();
+        this.getControlVista().setForm(this);
         //oper = new ControladorCategoria();
         
         /*is.setLocationRelativeTo(null);
@@ -183,9 +189,162 @@ public class FrmCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+    public String getModificado() {
+        return modificado;
+    }
+
+    public void setModificado(String modificado) {
+        this.modificado = modificado;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public String getNombrePrimero() {
+        return nombrePrimero;
+    }
+
+    public void setNombrePrimero(String nombrePrimero) {
+        this.nombrePrimero = nombrePrimero;
+    }
+
+    public ControladorCategoria getOper() {
+        return oper;
+    }
+
+    public void setOper(ControladorCategoria oper) {
+        this.oper = oper;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void setTxtDescripcion(JTextField txtDescripcion) {
+        this.txtDescripcion = txtDescripcion;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public ControladorVistaCategoria getControlVista() {
         
-        String nombre = this.txtNombre.getText();
+        if (controlVista == null) {
+            synchronized (ControladorVistaCategoria.class) {
+                controlVista = new ControladorVistaCategoria();
+
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVistaCategoria controlVista) {
+        this.controlVista = controlVista;
+    }
+    
+    
+    
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+    this.getControlVista().crearModificar();
+        /*String nombre = this.txtNombre.getText();
                 
         if(modificado=="1"){
             if(nombrePrimero.equals(nombre)){
@@ -234,7 +393,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         
         //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
         //clear.ClearTableRubro();
-        //clear.LoadRubro();  
+        //clear.LoadRubro();  */
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -317,5 +476,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     private void LoadCategoria() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

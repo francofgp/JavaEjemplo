@@ -5,6 +5,15 @@
  */
 package VistasPA;
 
+import Interfaz.ControladorPA.ControladorVistaPrincipalUsuario;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Chelo
@@ -14,9 +23,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     /**
      * Creates new form FrmPrincipalUsuario
      */
+    
+    ControladorVistaPrincipalUsuario controlVista;
+    FrmPrincipalUsuario desktop=this;
     public FrmPrincipalUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getControlVista().setForm(desktop);
+        this.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxCategoria(jComboBoxCategoria);
+        
     }
 
     /**
@@ -32,20 +48,24 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txtID = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        txtCorreo = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
         txtRuta = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableComercio = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxCategoria = new javax.swing.JComboBox<>();
+        jComboBoxRubro = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -69,6 +89,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton13 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,13 +121,13 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 40, 160, 40));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel3.setText("email:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 230, -1));
+        txtID.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtID.setText("ID:");
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 20, -1));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Mi direccion:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, -1));
+        txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombre.setText("Nombre:");
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 50, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -126,6 +149,22 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, 160, 40));
+
+        txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtCorreo.setText("email:");
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 40, -1));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setText("Nombre:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 50, -1));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel10.setText("email:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 40, -1));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setText("ID:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 20, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,18 +196,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 300, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableComercio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Comercio", "Rubro", "Categoría", "Dirección"
+                "Comercio", "ID"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableComercio);
+        if (jTableComercio.getColumnModel().getColumnCount() > 0) {
+            jTableComercio.getColumnModel().getColumn(0).setResizable(false);
+            jTableComercio.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 440));
 
@@ -176,16 +224,26 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("buscar comercio");
         jTextField1.setBorder(null);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
         jLabel2.setText("______________________________");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 110, -1));
+        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 110, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 110, -1));
+        jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRubroActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, -1));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
 
@@ -232,7 +290,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setText("Comercio");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jTextField5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(153, 204, 0));
@@ -404,6 +462,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 450, 190));
 
+        jButton13.setBackground(new java.awt.Color(255, 255, 255));
+        jButton13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(153, 204, 0));
+        jButton13.setText("Buscar");
+        jButton13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        jButton13.setContentAreaFilled(false);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 20));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel8.setText("Rubro");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 60, 20));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel12.setText("Categoria");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -458,7 +537,483 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+    int estado=0;
+    int estadoCategoria=0;
 
+    
+    Long idDeRubroSeleccionado;
+    Long idCategoriaSeleccionado;
+    private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
+             this.getControlVista().conseguirIDCategoriaSeleccionado();
+    }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
+
+    private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
+        this.getControlVista().conseguirIDRubroSeleccionado();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        this.ClearTableComercio();
+        this.LoadComercio();
+    }//GEN-LAST:event_jButton13ActionPerformed
+    
+    void ClearTableComercio() {
+        this.getControlVista().ClearTableComercio();
+    }
+        
+    void LoadComercio(){
+        this.getControlVista().LoadComercio();
+    }
+    public JComboBox<String> getjComboBoxCategoria() {
+        return jComboBoxCategoria;
+    }
+
+    public JTable getjTableComercio() {
+        return jTableComercio;
+    }
+
+    public void setjTableComercio(JTable jTableComercio) {
+        this.jTableComercio = jTableComercio;
+    }
+    
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getEstadoCategoria() {
+        return estadoCategoria;
+    }
+
+    public void setEstadoCategoria(int estadoCategoria) {
+        this.estadoCategoria = estadoCategoria;
+    }
+
+    public Long getIdDeRubroSeleccionado() {
+        return idDeRubroSeleccionado;
+    }
+
+    public void setIdDeRubroSeleccionado(Long idDeRubroSeleccionado) {
+        this.idDeRubroSeleccionado = idDeRubroSeleccionado;
+    }
+
+    public Long getIdCategoriaSeleccionado() {
+        return idCategoriaSeleccionado;
+    }
+
+    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
+        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
+    }
+
+    
+    public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
+        this.jComboBoxCategoria = jComboBoxCategoria;
+    }
+
+    public JComboBox<String> getjComboBoxRubro() {
+        return jComboBoxRubro;
+    }
+
+    public void setjComboBoxRubro(JComboBox<String> jComboBoxRubro) {
+        this.jComboBoxRubro = jComboBoxRubro;
+    }
+
+    
+    
+    public ControladorVistaPrincipalUsuario getControlVista() {
+         if (controlVista == null) {
+            synchronized (ControladorVistaPrincipalUsuario.class) {
+                controlVista = new ControladorVistaPrincipalUsuario();
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVistaPrincipalUsuario controlVista) {
+        this.controlVista = controlVista;
+    }
+    
+    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
+        this.getControlVista().llenaJComboBoxCategoria(jComboBoxCategoria);
+    }
+
+    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
+        this.getControlVista().llenaJComboBoxUsuario(jComboBoxRubro);
+    }
+
+    public FrmPrincipalUsuario getDesktop() {
+        return desktop;
+    }
+
+    public void setDesktop(FrmPrincipalUsuario desktop) {
+        this.desktop = desktop;
+    }
+
+    public JButton getjButton10() {
+        return jButton10;
+    }
+
+    public void setjButton10(JButton jButton10) {
+        this.jButton10 = jButton10;
+    }
+
+    public JButton getjButton11() {
+        return jButton11;
+    }
+
+    public void setjButton11(JButton jButton11) {
+        this.jButton11 = jButton11;
+    }
+
+    public JButton getjButton12() {
+        return jButton12;
+    }
+
+    public void setjButton12(JButton jButton12) {
+        this.jButton12 = jButton12;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public JButton getjButton7() {
+        return jButton7;
+    }
+
+    public void setjButton7(JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
+    public JButton getjButton8() {
+        return jButton8;
+    }
+
+    public void setjButton8(JButton jButton8) {
+        this.jButton8 = jButton8;
+    }
+
+    public JButton getjButton9() {
+        return jButton9;
+    }
+
+    public void setjButton9(JButton jButton9) {
+        this.jButton9 = jButton9;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBoxCategoria;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBoxCategoria = jComboBox1;
+    }
+
+    public JComboBox<String> getjComboBox2() {
+        return jComboBoxRubro;
+    }
+
+    public void setjComboBox2(JComboBox<String> jComboBox2) {
+        this.jComboBoxRubro = jComboBox2;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4) {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JTable getjTable1() {
+        return jTableComercio;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTableComercio = jTable1;
+    }
+
+    public JTable getjTable2() {
+        return jTable2;
+    }
+
+    public void setjTable2(JTable jTable2) {
+        this.jTable2 = jTable2;
+    }
+
+    public JTable getjTable3() {
+        return jTable3;
+    }
+
+    public void setjTable3(JTable jTable3) {
+        this.jTable3 = jTable3;
+    }
+
+    public JTable getjTable4() {
+        return jTable4;
+    }
+
+    public void setjTable4(JTable jTable4) {
+        this.jTable4 = jTable4;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    public JTextField getjTextField4() {
+        return jTextField4;
+    }
+
+    public void setjTextField4(JTextField jTextField4) {
+        this.jTextField4 = jTextField4;
+    }
+
+    public JTextField getjTextField5() {
+        return jTextField5;
+    }
+
+    public void setjTextField5(JTextField jTextField5) {
+        this.jTextField5 = jTextField5;
+    }
+
+    public JTextField getjTextField6() {
+        return jTextField6;
+    }
+
+    public void setjTextField6(JTextField jTextField6) {
+        this.jTextField6 = jTextField6;
+    }
+
+    public JTextField getjTextField7() {
+        return jTextField7;
+    }
+
+    public void setjTextField7(JTextField jTextField7) {
+        this.jTextField7 = jTextField7;
+    }
+
+    public JTextField getjTextField8() {
+        return jTextField8;
+    }
+
+    public void setjTextField8(JTextField jTextField8) {
+        this.jTextField8 = jTextField8;
+    }
+
+    public JLabel getTxtCorreo() {
+        return txtCorreo;
+    }
+
+    public void setTxtCorreo(JLabel txtCorreo) {
+        this.txtCorreo = txtCorreo;
+    }
+
+    public JLabel getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JLabel txtID) {
+        this.txtID = txtID;
+    }
+
+    public JLabel getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JLabel txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JLabel getTxtRuta() {
+        return txtRuta;
+    }
+
+    public void setTxtRuta(JLabel txtRuta) {
+        this.txtRuta = txtRuta;
+    }
+
+    public JLabel getTxtRuta2() {
+        return txtRuta2;
+    }
+
+    public void setTxtRuta2(JLabel txtRuta2) {
+        this.txtRuta2 = txtRuta2;
+    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -498,6 +1053,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -506,15 +1062,18 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxCategoria;
+    private javax.swing.JComboBox<String> jComboBoxRubro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -524,17 +1083,26 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTableComercio;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel txtCorreo;
+    private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtRuta2;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+
+
 }

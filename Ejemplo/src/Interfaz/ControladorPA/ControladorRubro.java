@@ -79,6 +79,23 @@ public class ControladorRubro extends GestorHibernate implements ICategoriaRubro
 
         }
     }
+    
+        public void darDeBaja(Long ID){
+                Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try{
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+            .add(Restrictions.eq("id",ID)).uniqueResult();
+        
+        rubro.setEstado("Dado de Baja");
+        s.update(rubro);
+        tx.commit();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
 
     public void crearMofidificar() {
     }

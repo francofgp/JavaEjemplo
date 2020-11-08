@@ -5,6 +5,7 @@
  */
 package VistasPA;
 
+import Interfaz.ControladorPA.ControladorVistaLogin;
 import VistasPA.FrmUsuario;
 import VistasPA.FrmComercio;
 import VistasPA.FrmPrincipalUsuario;
@@ -12,6 +13,12 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import VistasPA.FrmAdmin;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 
 /**
@@ -23,9 +30,14 @@ public class Frmlogin extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    
+    ControladorVistaLogin controlVista;
+    Frmlogin desktop=this;
     public Frmlogin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getControlVista().setForm(desktop);
+       
         /*ImageIcon imagen1 = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
         Icon icono = new ImageIcon(imagen1.getImage().getScaledInstance(fondo.getWidth(),fondo.getHeight(),Image.SCALE_DEFAULT));
         fondo.setIcon(icono);
@@ -67,6 +79,7 @@ public class Frmlogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        checkBoxComercio = new javax.swing.JCheckBox();
 
         jButton5.setBackground(new java.awt.Color(153, 204, 0));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -164,7 +177,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton2_IngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, 30));
+        jPanel1.add(jButton2_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 150, 30));
 
         jPasswordField1.setBackground(new java.awt.Color(153, 204, 0));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,6 +247,12 @@ public class Frmlogin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 320, 100));
 
+        checkBoxComercio.setBackground(new java.awt.Color(153, 204, 0));
+        checkBoxComercio.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        checkBoxComercio.setForeground(new java.awt.Color(255, 255, 255));
+        checkBoxComercio.setText("Soy un comercio");
+        jPanel1.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
         pack();
@@ -243,9 +262,211 @@ public class Frmlogin extends javax.swing.JFrame {
             System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public ControladorVistaLogin getControlVista() {
+        if (controlVista == null) {
+            synchronized (ControladorVistaLogin.class) {
+                controlVista = new ControladorVistaLogin();
+
+            }
+        }
+        return controlVista;    
+    }
+
+    public void setControlVista(ControladorVistaLogin controlVista) {
+        this.controlVista = controlVista;
+    }
+
+    public Frmlogin getDesktop() {
+        return desktop;
+    }
+
+    public void setDesktop(Frmlogin desktop) {
+        this.desktop = desktop;
+    }
+
+    public JCheckBox getCheckBoxComercio() {
+        return checkBoxComercio;
+    }
+
+    public void setCheckBoxComercio(JCheckBox checkBoxComercio) {
+        this.checkBoxComercio = checkBoxComercio;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton2_Ingresar() {
+        return jButton2_Ingresar;
+    }
+
+    public void setjButton2_Ingresar(JButton jButton2_Ingresar) {
+        this.jButton2_Ingresar = jButton2_Ingresar;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JButton getjButton6() {
+        return jButton6;
+    }
+
+    public void setjButton6(JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    public JButton getjButton7() {
+        return jButton7;
+    }
+
+    public void setjButton7(JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel2_Usuario() {
+        return jLabel2_Usuario;
+    }
+
+    public void setjLabel2_Usuario(JLabel jLabel2_Usuario) {
+        this.jLabel2_Usuario = jLabel2_Usuario;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel4_Contraseña() {
+        return jLabel4_Contraseña;
+    }
+
+    public void setjLabel4_Contraseña(JLabel jLabel4_Contraseña) {
+        this.jLabel4_Contraseña = jLabel4_Contraseña;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPasswordField getjPasswordField1() {
+        return jPasswordField1;
+    }
+
+    public void setjPasswordField1(JPasswordField jPasswordField1) {
+        this.jPasswordField1 = jPasswordField1;
+    }
+
+    public JTextField getUsuarioText() {
+        return usuarioText;
+    }
+
+    public void setUsuarioText(JTextField usuarioText) {
+        this.usuarioText = usuarioText;
+    }
+
+    
+    
     private void jButton2_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_IngresarActionPerformed
-        new FrmPrincipalUsuario().setVisible(true);
+        
+        if(checkBoxComercio.isSelected()){
+            if(this.getControlVista().ingresarComercio()){
+                this.setVisible(false);
+            }            
+        }else{
+        this.getControlVista().ingresarUsuario();
         this.setVisible(false);
+        }
+        
+        //new FrmPrincipalUsuario().setVisible(true);
+        //this.setVisible(false);
         //String password = new String(jPasswordField1.getPassword());
         //Hibernate.GestorHibernate.Usuario(jLabel2_Usuario.getText(),password);
     }//GEN-LAST:event_jButton2_IngresarActionPerformed
@@ -319,6 +540,7 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton2_Ingresar;
@@ -340,4 +562,7 @@ public class Frmlogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField usuarioText;
     // End of variables declaration//GEN-END:variables
+
+
+
 }

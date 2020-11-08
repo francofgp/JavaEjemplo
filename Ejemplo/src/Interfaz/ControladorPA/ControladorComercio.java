@@ -7,7 +7,9 @@ package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Admin;
+import ModelosPA.Categoria;
 import ModelosPA.Comercio;
+import ModelosPA.Rubro;
 import javax.swing.JComboBox;
 
 /**
@@ -24,18 +26,45 @@ public class ControladorComercio {
     
     
     public  void guardarUsuario(Comercio comercio){
-        oper.guardarUsuario(comercio);
+       // oper.guardarUsuario(comercio);
     }
     
     public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro){
         oper.llenaJComboBoxUsuario(jComboBoxRubro);
     }
+    
+        
+    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria){
+        oper.llenaJComboBoxCategoria(jComboBoxCategoria);
+    }
 
     public  long  buscarObjeto(String s) {
         return oper.buscarObjeto(s);
+    }
+    
+    public  long  buscarCategoria(String s) {
+        return oper.buscarCategoria(s);
     }
 
     public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
         return oper.buscarObjetoPorId(idDeRubroSeleccionado);
     }
+
+    public Object buscarCategoriaPorId(Long idCategoriaSeleccionado) {
+        return oper.buscarCategoriaPorId(idCategoriaSeleccionado);
+    }
+
+    void guardar(String nombre, String apellido, String fechaNac, String password, String direccion,
+                    String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
+                    Rubro rubro, Categoria categoria) {
+        
+        Comercio comercio = new Comercio(nombre,apellido,fechaNac,password,direccion,
+                                        correo,cuil,telefono,nombreLocal,direccionNegocio,
+                                        rubro,categoria);
+        
+        oper.guardarUsuario(comercio);
+
+    }
+
+
 }

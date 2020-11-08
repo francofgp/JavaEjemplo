@@ -24,7 +24,8 @@ public class ControladorAdmin {
     
     
     
-    public  void guardarUsuario(Admin user){
+    public  void guardarUsuario(String password, String nombre){
+        Admin user = new Admin(password,nombre);
         oper.guardarUsuario(user);
     }
 }

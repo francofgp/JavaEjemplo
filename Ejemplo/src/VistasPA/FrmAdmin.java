@@ -8,12 +8,17 @@ package VistasPA;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorAdmin;
 import Interfaz.ControladorPA.ControladorUsuario;
+import Interfaz.ControladorPA.ControladorVistaAdmin;
 import ModelosPA.Admin;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +26,7 @@ import javax.swing.ImageIcon;
  */
 public class FrmAdmin extends javax.swing.JFrame {
     ControladorAdmin oper;
+    ControladorVistaAdmin controlVista;
     /**
      * Creates new form FrmUsuario
      */
@@ -28,6 +34,8 @@ public class FrmAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new ControladorAdmin();
+        this.getControlVista().setForm(this);
+        
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -35,6 +43,125 @@ public class FrmAdmin extends javax.swing.JFrame {
         fondo.setIcon(icono);
         this.repaint();*/
     }
+
+    public ControladorAdmin getOper() {
+        return oper;
+    }
+
+    public void setOper(ControladorAdmin oper) {
+        this.oper = oper;
+    }
+
+    public ControladorVistaAdmin getControlVista() {
+        if (controlVista == null) {
+            synchronized (ControladorVistaAdmin.class) {
+                controlVista = new ControladorVistaAdmin();
+
+            }
+        }
+        return controlVista;
+    }
+
+    public void setControlVista(ControladorVistaAdmin ControlVista) {
+        this.controlVista = ControlVista;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JLabel getNombreTxt() {
+        return nombreTxt;
+    }
+
+    public void setNombreTxt(JLabel nombreTxt) {
+        this.nombreTxt = nombreTxt;
+    }
+
+    public JLabel getPasswordTxt() {
+        return passwordTxt;
+    }
+
+    public void setPasswordTxt(JLabel passwordTxt) {
+        this.passwordTxt = passwordTxt;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(JTextField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,11 +284,12 @@ public class FrmAdmin extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-        Admin user = new Admin(this.txtPassword.getText(),this.txtNombre.getText());
+        this.getControlVista().guardar();
+        //Admin user = new Admin(this.txtPassword.getText(),this.txtNombre.getText());
         //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
             //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
+        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
         // TODO add your handling code here: 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
