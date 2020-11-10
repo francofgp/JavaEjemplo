@@ -16,14 +16,13 @@ public class ControladorUsuario {
     GestorHibernate oper;
     public ControladorUsuario() {
      oper = new GestorHibernate();
-
+     
     }
     
     
     
     public void guardarUsuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-        Usuario user = new Usuario(password, nombre, apellido,
-                                    email, direccion, telefono, fechaNac);
+        Usuario user = new Usuario(password, nombre, apellido, email, direccion, telefono, fechaNac);
         oper.guardarUsuario(user);
     }
 }
