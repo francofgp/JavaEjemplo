@@ -99,7 +99,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnNuevaCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 110, 30));
+        jPanel1.add(btnNuevaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 110, 30));
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -112,7 +112,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 30));
+        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 110, 30));
 
         btnEliminarCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminarCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -125,7 +125,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnEliminarCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 370, 110, 30));
+        jPanel1.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, 110, 30));
 
         btnAceptar4.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -139,7 +139,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar4ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 110, 30));
+        jPanel1.add(btnAceptar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, 30));
 
         jTableRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,7 +170,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableRubro.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 470, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 230));
 
         btnAceptar5.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -184,7 +184,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar5ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 110, 30));
+        jPanel1.add(btnAceptar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 110, 30));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Elemento Seleccionado:");
@@ -192,13 +192,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
         seleccionTxt.setForeground(new java.awt.Color(255, 255, 255));
         seleccionTxt.setText("No ha seleccionado ningun elemento");
-        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 520, 30));
+        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 520, 30));
 
-        jLabel5.setBackground(new java.awt.Color(102, 255, 51));
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Heavy", 2, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 255, 51));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Categoría");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, -1, -1));
 
         jTableCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,7 +222,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableCategoria.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 470, 230));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, 230));
 
         btnModificarCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnModificarCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -237,12 +235,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnModificarCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 370, 110, 30));
+        jPanel1.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 110, 30));
 
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Heavy", 2, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 255, 51));
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Rubro");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         btnDarDeBaja.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBaja.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -256,7 +253,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnDarDeBajaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 110, 30));
+        jPanel1.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 110, 30));
 
         btnDarDeBajaCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBajaCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -270,9 +267,9 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnDarDeBajaCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 370, 110, 30));
+        jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1270, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -292,7 +289,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Generar Reporte Rubro");
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -302,7 +299,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 160, 30));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
 

@@ -292,9 +292,9 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Crea una cuenta como Comercio");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -340,7 +340,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
 
         emailTxt.setBackground(new java.awt.Color(255, 255, 255));
         emailTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,7 +352,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setText("Email");
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
 
         passwordTxt.setBackground(new java.awt.Color(255, 255, 255));
         passwordTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,7 +369,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 20));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
 
         direccionTxt.setBackground(new java.awt.Color(255, 255, 255));
         direccionTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -381,7 +381,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         txtDireccion.setText("Dirección");
         txtDireccion.setBorder(null);
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 20));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
 
         telefonoTxt.setBackground(new java.awt.Color(255, 255, 255));
         telefonoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -398,7 +398,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 20));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
 
         fechaTxt.setBackground(new java.awt.Color(255, 255, 255));
         fechaTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -410,7 +410,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
         txtFecha.setText("Fecha de Nacimiento");
         txtFecha.setBorder(null);
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 20));
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
 
         apellidoTxt.setBackground(new java.awt.Color(255, 255, 255));
         apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -427,7 +427,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 20));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

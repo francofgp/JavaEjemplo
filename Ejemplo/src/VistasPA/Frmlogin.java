@@ -62,6 +62,8 @@ public class Frmlogin extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel2_Usuario = new javax.swing.JLabel();
+        jLabel4_Contraseña = new javax.swing.JLabel();
         usuarioText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,8 +80,6 @@ public class Frmlogin extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         checkBoxComercio = new javax.swing.JCheckBox();
-        jLabel4_Contraseña = new javax.swing.JLabel();
-        jLabel2_Usuario = new javax.swing.JLabel();
 
         jButton5.setBackground(new java.awt.Color(153, 204, 0));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -112,7 +112,17 @@ public class Frmlogin extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("_________________________________________");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        jLabel2_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2_Usuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2_Usuario.setText("Email");
+        getContentPane().add(jLabel2_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        jLabel4_Contraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel4_Contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4_Contraseña.setText("Contraseña");
+        getContentPane().add(jLabel4_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         usuarioText.setBackground(new java.awt.Color(153, 204, 0));
         usuarioText.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,7 +132,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 usuarioTextActionPerformed(evt);
             }
         });
-        getContentPane().add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 145, 230, -1));
+        getContentPane().add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 230, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,14 +147,10 @@ public class Frmlogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LOGIN");
-        jLabel3.setToolTipText("");
-        jLabel3.setMaximumSize(new java.awt.Dimension(85, 19));
-        jLabel3.setMinimumSize(new java.awt.Dimension(85, 19));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, 30));
-        jLabel3.getAccessibleContext().setAccessibleDescription("");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 50, 20));
 
         jButton1.setBackground(new java.awt.Color(153, 204, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -176,11 +182,11 @@ public class Frmlogin extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(153, 204, 0));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 230, 20));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 213, 230, 20));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("________________________________________");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 213, -1, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -196,7 +202,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 150, 50));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 150, 50));
 
         jButton2.setBackground(new java.awt.Color(153, 204, 0));
         jButton2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -209,13 +215,11 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 20));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 20));
 
-        jLabel2.setBackground(java.awt.Color.black);
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jLabel2.setForeground(java.awt.Color.black);
         jLabel2.setText("¿No tenés una cuenta?");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 130, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
 
         jButton6.setBackground(new java.awt.Color(153, 204, 0));
         jButton6.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -228,7 +232,7 @@ public class Frmlogin extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, 20));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 120, 20));
 
         jButton3.setBackground(new java.awt.Color(153, 204, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -247,17 +251,7 @@ public class Frmlogin extends javax.swing.JFrame {
         checkBoxComercio.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         checkBoxComercio.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxComercio.setText("Soy un comercio");
-        jPanel1.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jLabel4_Contraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel4_Contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4_Contraseña.setText("Contraseña");
-        jPanel1.add(jLabel4_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
-
-        jLabel2_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2_Usuario.setText("Email");
-        jPanel1.add(jLabel2_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 30, -1));
+        jPanel1.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
