@@ -453,6 +453,15 @@ public class GestorHibernate extends HibernateUtil {
         //System.out.println(producto.getId());
         return producto;
     }
+    
+    public Object buscarComercio(Long idProducto) {
+        Session sesion = HibernateUtil.getSession();
+
+        Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("id", idProducto)).uniqueResult();
+        //System.out.println(producto.getId());
+        return comercio;
+    }
 
     public boolean ingresarComercio(String username, String password) {
         Session sesion = HibernateUtil.getSession();

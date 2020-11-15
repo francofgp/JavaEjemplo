@@ -3,16 +3,24 @@ package ModelosPA;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+
+@Entity
+@Table (name="pedido") 
 public class Pedido {
 
     public Pedido() {
     }
 
-    public Pedido(Usuario usuario, Comercio comercio, List<Producto> producto, float total, float descripcion) {
+    public Pedido(Usuario usuario, Comercio comercio, List<Producto> producto, float total, String descripcion) {
         this.usuario = usuario;
         this.comercio = comercio;
         this.producto = producto;
@@ -20,7 +28,8 @@ public class Pedido {
         this.descripcion = descripcion;
     }
     
-    
+    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+    private long id;
    
     @OneToOne (targetEntity = Usuario.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Usuario usuario;
@@ -28,7 +37,8 @@ public class Pedido {
     @OneToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Comercio comercio;
     
-    @OneToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    //@ManyToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    @OneToMany
     private List<Producto> producto;
     
     @Column(columnDefinition = "TEXT")
@@ -48,7 +58,7 @@ public class Pedido {
     
     
     @Column(columnDefinition = "TEXT")
-    private float descripcion;
+    private String descripcion;
 
     public Usuario getUsuario() {
         return usuario;
@@ -79,11 +89,11 @@ public class Pedido {
     }
 
 
-    public float getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(float descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
     
