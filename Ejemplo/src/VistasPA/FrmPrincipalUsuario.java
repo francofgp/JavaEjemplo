@@ -57,9 +57,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField6 = new javax.swing.JTextField();
+        txtMontoTotal = new javax.swing.JTextField();
         txtRuta = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtMinutos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableComercio = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -69,10 +69,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableCarro = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         txtRuta2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -86,12 +86,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jTableProducto = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jButton13 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtComercio = new javax.swing.JLabel();
+        txtIDL = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,32 +173,32 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField6.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField6.setText("$ xxxxx");
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtMontoTotal.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        txtMontoTotal.setForeground(new java.awt.Color(153, 204, 0));
+        txtMontoTotal.setText("$ xxxxx");
+        txtMontoTotal.setBorder(null);
+        txtMontoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtMontoTotalActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, 100, 30));
+        jPanel2.add(txtMontoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, 100, 30));
 
         txtRuta.setBackground(new java.awt.Color(255, 255, 255));
         txtRuta.setForeground(new java.awt.Color(153, 204, 0));
         txtRuta.setText("_____________________________________");
-        jPanel2.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 410, -1));
+        jPanel2.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 410, -1));
 
-        jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField4.setText("Hora (MM:SS)");
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtMinutos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtMinutos.setForeground(new java.awt.Color(153, 204, 0));
+        txtMinutos.setText("Hora (MM:SS)");
+        txtMinutos.setBorder(null);
+        txtMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtMinutosActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 300, 30));
+        jPanel2.add(txtMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, 300, 30));
 
         jTableComercio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -212,13 +216,18 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableComercio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableComercioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableComercio);
         if (jTableComercio.getColumnModel().getColumnCount() > 0) {
             jTableComercio.getColumnModel().getColumn(0).setResizable(false);
             jTableComercio.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 440));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 180));
 
         jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
@@ -264,18 +273,15 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel6.setText("Mi Pedido");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nombre Producto", "Descripcion", "Precio", "Title 4"
+                "Nombre Producto", "Descripcion", "Precio", "ID"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableCarro);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 450, 110));
 
@@ -286,22 +292,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 110, 160, 60));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setText("Comercio");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField5.setText("Descripcion (Opcional)");
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDescripcion.setForeground(new java.awt.Color(153, 204, 0));
+        txtDescripcion.setText("Descripcion (Opcional)");
+        txtDescripcion.setBorder(null);
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtDescripcionActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 300, 20));
+        jPanel2.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 300, 20));
 
         txtRuta2.setBackground(new java.awt.Color(255, 255, 255));
         txtRuta2.setForeground(new java.awt.Color(153, 204, 0));
@@ -315,6 +326,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Hacer Pedido");
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -432,18 +448,29 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, 120, 30));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nombre Producto", "Descripcion", "Precio", "Title 4"
+                "Nombre Producto", "Descripcion", "Precio", "ID"
             }
-        ));
-        jScrollPane4.setViewportView(jTable4);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTableProducto);
+        if (jTableProducto.getColumnModel().getColumnCount() > 0) {
+            jTableProducto.getColumnModel().getColumn(0).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(1).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(2).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 450, 190));
 
@@ -483,6 +510,26 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel12.setText("Categoria");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
 
+        jLabel3.setText("Comercio:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+
+        txtComercio.setText("No hay comercio seleccionado");
+        jPanel2.add(txtComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 170, 10));
+
+        txtIDL.setText("ID");
+        jPanel2.add(txtIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+
+        txtHora.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(153, 204, 0));
+        txtHora.setText("Hora (MM:SS)");
+        txtHora.setBorder(null);
+        txtHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 300, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -505,17 +552,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         new FrmVerPedidoUsuario().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtMontoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtMontoTotalActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtMinutosActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         new FrmCalificacion().setVisible(true);
@@ -556,6 +603,25 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.ClearTableComercio();
         this.LoadComercio();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jTableComercioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseClicked
+        this.getControlVista().seleccionarComercio();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTableComercioMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.getControlVista().agregarAlCarro();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    this.getControlVista().hacerPedido();
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoraActionPerformed
     
     void ClearTableComercio() {
         this.getControlVista().ClearTableComercio();
@@ -571,6 +637,33 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public JTable getjTableComercio() {
         return jTableComercio;
     }
+
+    public JTable getjTableCarro() {
+        return jTableCarro;
+    }
+
+    public void setjTableCarro(JTable jTableCarro) {
+        this.jTableCarro = jTableCarro;
+    }
+    
+    
+
+    public JLabel getTxtComercio() {
+        return txtComercio;
+    }
+
+    public void setTxtComercio(JLabel txtComercio) {
+        this.txtComercio = txtComercio;
+    }
+
+    public JLabel getTxtIDL() {
+        return txtIDL;
+    }
+
+    public void setTxtIDL(JLabel txtIDL) {
+        this.txtIDL = txtIDL;
+    }
+    
 
     public void setjTableComercio(JTable jTableComercio) {
         this.jTableComercio = jTableComercio;
@@ -902,11 +995,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
 
     public JTable getjTable2() {
-        return jTable2;
+        return jTableCarro;
     }
 
     public void setjTable2(JTable jTable2) {
-        this.jTable2 = jTable2;
+        this.jTableCarro = jTable2;
     }
 
     public JTable getjTable3() {
@@ -917,45 +1010,52 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.jTable3 = jTable3;
     }
 
-    public JTable getjTable4() {
-        return jTable4;
+    public JTable getjTableProducto() {
+        return jTableProducto;
     }
 
-    public void setjTable4(JTable jTable4) {
-        this.jTable4 = jTable4;
+    public void setjTableProducto(JTable jTableProducto) {
+        this.jTableProducto = jTableProducto;
     }
 
-    public JTextField getjTextField1() {
-        return jTextField1;
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
     }
 
-    public void setjTextField1(JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
+    public void setTxtDescripcion(JTextField txtDescripcion) {
+        this.txtDescripcion = txtDescripcion;
     }
 
-    public JTextField getjTextField4() {
-        return jTextField4;
+    public JTextField getTxtHora() {
+        return txtHora;
     }
 
-    public void setjTextField4(JTextField jTextField4) {
-        this.jTextField4 = jTextField4;
+    public void setTxtHora(JTextField txtHora) {
+        this.txtHora = txtHora;
     }
 
-    public JTextField getjTextField5() {
-        return jTextField5;
+    public JTextField getTxtMinutos() {
+        return txtMinutos;
     }
 
-    public void setjTextField5(JTextField jTextField5) {
-        this.jTextField5 = jTextField5;
+    public void setTxtMinutos(JTextField txtMinutos) {
+        this.txtMinutos = txtMinutos;
     }
 
-    public JTextField getjTextField6() {
-        return jTextField6;
+
+
+
+
+    public JTextField getTxtMontoTotal() {
+        return txtMontoTotal;
     }
 
-    public void setjTextField6(JTextField jTextField6) {
-        this.jTextField6 = jTextField6;
+    public void setTxtMontoTotal(JTextField txtMontoTotal) {
+        this.txtMontoTotal = txtMontoTotal;
     }
+
+
+    
 
     public JTextField getjTextField7() {
         return jTextField7;
@@ -1069,6 +1169,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1083,22 +1184,27 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTableCarro;
     private javax.swing.JTable jTableComercio;
+    private javax.swing.JTable jTableProducto;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel txtComercio;
     private javax.swing.JLabel txtCorreo;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtHora;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtIDL;
+    private javax.swing.JTextField txtMinutos;
+    private javax.swing.JTextField txtMontoTotal;
     private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtRuta2;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 

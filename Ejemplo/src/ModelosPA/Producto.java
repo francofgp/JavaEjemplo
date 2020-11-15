@@ -25,6 +25,11 @@ import javax.persistence.Table;
 @Table (name="producto")
 public class Producto {
 
+    public Producto() {
+    }
+
+    
+    
     public Producto(String nombre, String descripcion, float precio, Categoria categoria, Comercio comercio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -92,6 +97,14 @@ public class Producto {
 
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    public Comercio getComercio() {
+        return comercio;
+    }
+
+    public void setComercio(Comercio comercio) {
+        this.comercio = comercio;
     }
 
 

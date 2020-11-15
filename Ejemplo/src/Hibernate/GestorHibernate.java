@@ -4,6 +4,7 @@ import GUtilr.Util;
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
+import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 //import Modelos.GestionProyecto.Usuario;
@@ -175,6 +176,14 @@ public class GestorHibernate extends HibernateUtil {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class).list();
         return comercio;
+
+    }
+    
+    
+    public static List<Producto> BuscarProducto() {
+        Session sesion = HibernateUtil.getSession();
+        List<Producto> producto = session.createCriteria(Producto.class).list();
+        return producto;
 
     }
 
@@ -393,6 +402,8 @@ public class GestorHibernate extends HibernateUtil {
         System.out.println(categoria.getId() + " categoria");
         return categoria.getId();
     }
+    
+    
 
     public void reporteRubro() {
         //saqué de este video de youtube: https://www.youtube.com/watch?v=2DvwZmsHfgo&t=23s
@@ -432,6 +443,15 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("id", idCategoriaSeleccionado)).uniqueResult();
         System.out.println(categoria.getId());
         return categoria;
+    }
+    
+    public Object buscarProducto(Long idProducto) {
+        Session sesion = HibernateUtil.getSession();
+
+        Producto producto = (Producto) sesion.createCriteria(Producto.class)
+                .add(Restrictions.eq("id", idProducto)).uniqueResult();
+        //System.out.println(producto.getId());
+        return producto;
     }
 
     public boolean ingresarComercio(String username, String password) {

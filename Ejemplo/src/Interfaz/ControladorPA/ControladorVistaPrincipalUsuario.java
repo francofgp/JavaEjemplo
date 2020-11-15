@@ -7,15 +7,18 @@ package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Comercio;
+import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 import VistasPA.FrmPrincipalUsuario;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -110,6 +113,36 @@ public class ControladorVistaPrincipalUsuario {
             JOptionPane.showMessageDialog(null, "no hay registros de rubros");
         }
     }
+        
+    public void LoadProductos() {
+        
+        this.ClearTableProductos();
+        List<Producto> producto = this.getOper().BuscarProducto();
+        if (producto.size() > 0) {
+            Iterator consulta = producto.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableProducto().getModel();
+
+                Vector datos = new Vector();
+                Producto fila = (Producto) consulta.next();
+                if (fila.getComercio().getNombre()==this.getForm().getTxtComercio().getText()
+                        && fila.getCategoria().getId()==this.getForm().getIdCategoriaSeleccionado()) 
+                {
+                    datos.add(fila.getNombre());
+                    datos.add(fila.getDescripcion());
+                    datos.add(fila.getPrecio());
+                    datos.add(fila.getId());
+                    System.out.println(fila.getComercio().getNombre());
+                    System.out.println(fila.getCategoria().getNombre());
+
+                    tabla.addRow(datos);
+
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de rubros");
+        }
+    }
 
         
     public void ClearTableComercio() {
@@ -117,6 +150,59 @@ public class ControladorVistaPrincipalUsuario {
             ((DefaultTableModel) this.getForm().getjTableComercio().getModel()).removeRow(0);
         }
     }
+    
+    public void ClearTableProductos() {
+        while (this.getForm().getjTableProducto().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTableProducto().getModel()).removeRow(0);
+        }
+    }
+
+    public void seleccionarComercio() {
+        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+        int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
+        this.getForm().getTxtComercio().setText(model.getValueAt(selectedRowIndex, 0).toString());
+        
+        this.LoadProductos();
+    }
+
+    public void agregarAlCarro() {
+
+        TableModel model1 = this.getForm().getjTableProducto().getModel();
+        int[] indexs = this.getForm().getjTableProducto().getSelectedRows();
+        Object[] row = new Object[4];
+        DefaultTableModel model2 = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
+
+        for (int i = 0; i < indexs.length; i++) {
+            row[0] = model1.getValueAt(indexs[i], 0);
+            row[1] = model1.getValueAt(indexs[i], 1);
+            row[2] = model1.getValueAt(indexs[i], 2);
+            row[3] = model1.getValueAt(indexs[i], 3);
+            model2.addRow(row);
+        }
+        
+    }                                  
+
+    public void hacerPedido() {
+     DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();  
+
+    float precioTotal= (float) 0.0;
+    List<Producto> productos = new ArrayList<Producto>();
+    
+    
+    for (int row = 0; row < this.getForm().getjTableCarro().getRowCount(); row++){
+        productos.add((Producto) this.getOper().buscarProducto(Long.parseLong(model.getValueAt(row, 3).toString())));
+        System.out.println(model.getValueAt(row, 3).toString());
+        precioTotal= precioTotal+ Float.parseFloat(model.getValueAt(row, 2).toString());
+    }
+    
+    System.out.println(precioTotal);
+      System.out.println(productos);
+    // Probably add new line to 'data'
+    
+    this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));
+}
+    }
+    
 
     
-}
+

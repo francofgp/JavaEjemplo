@@ -33,6 +33,7 @@ public class HibernateUtil  {
             conf.addAnnotatedClass(ModelosPA.Categoria.class);
             conf.addAnnotatedClass(ModelosPA.Comercio.class);
             conf.addAnnotatedClass(ModelosPA.Producto.class);
+            conf.addAnnotatedClass(ModelosPA.Pedido.class);
 
 
            
