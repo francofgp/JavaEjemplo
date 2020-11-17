@@ -188,11 +188,11 @@ public class Comercio {
     public void setNombreLocal(String nombreLocal) {
         this.nombreLocal = nombreLocal;
     }
-/*
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-*/
+
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }

@@ -812,7 +812,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        this.oper.guardar3();
+        this.oper.guardar();
 
         JOptionPane.showMessageDialog(null,"Tu comercio se registró con éxito!");
   
