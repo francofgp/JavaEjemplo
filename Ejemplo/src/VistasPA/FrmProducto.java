@@ -6,7 +6,7 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorVistaProducto;
+
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import java.io.File;
@@ -18,14 +18,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import controladoresCU.registrarProducto;
 /**
  *
  * @author CrapBoy
  */
 public class FrmProducto extends javax.swing.JFrame {
 GestorHibernate oper;
-ControladorVistaProducto controlVista;
+registrarProducto controlVista;
 FrmProducto desktop=this;
 
 
@@ -268,16 +268,16 @@ FrmProducto desktop=this;
         this.oper = oper;
     }
 
-    public ControladorVistaProducto getControlVista() {
+    public registrarProducto getControlVista() {
         if (controlVista == null) {
-            synchronized (ControladorVistaProducto.class) {
-                controlVista = new ControladorVistaProducto();
+            synchronized (registrarProducto.class) {
+                controlVista = new registrarProducto();
 
             }
         }
         return controlVista;    }
 
-    public void setControlVista(ControladorVistaProducto controlVista) {
+    public void setControlVista(registrarProducto controlVista) {
         this.controlVista = controlVista;
     }
 
@@ -500,7 +500,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-                this.getControlVista().guardar();
+                this.controlVista.guardar3();
 
 
 //String image =txtRuta.getText();
@@ -551,6 +551,8 @@ FrmProducto desktop=this;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

@@ -1,47 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Interfaz.ControladorPA;
-
+package controladoresCU;
 import Hibernate.GestorHibernate;
+
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
+import ModelosPA.Producto;
 import VistasPA.FrmProducto;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author CrapBoy
- */
-public class ControladorVistaProducto {
+
+public class registrarProducto {
+    
     private GestorHibernate oper;
     private FrmProducto form;
     private Comercio comercio;
-    private ControladorProducto controlador;
 
-    public ControladorProducto getControlador() {
-        if (controlador == null) {
-            synchronized (ControladorProducto.class) {
-                controlador = new ControladorProducto();
-
-            }
-        }
-        return controlador;     
-    }
-
-    public void setControlador(ControladorProducto controlador) {
-        this.controlador = controlador;
-    }
-    
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
             synchronized (GestorHibernate.class) {
                 oper = new GestorHibernate();
-
             }
         }
         return oper; 
@@ -79,19 +57,37 @@ public class ControladorVistaProducto {
         }       
     }
 
-    public void guardar() {
+    public void guardar3() {
         try{
-        this.getControlador().guardar(this.getForm().getTxtNombre().getText(),this.getForm().getTxtDescripcion().getText(),
+        this.guardar(this.getForm().getTxtNombre().getText(),this.getForm().getTxtDescripcion().getText(),
         Long.parseLong(this.getForm().getTxtPrecio().getText()),
-        (Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()),
+        (Categoria) this.buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()),
         this.getComercio()); 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al crear el producto " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
-        }
-        
+        }   
+    }
 
+    public void guardar(String nombre, String descripcion, long precio, Categoria categoria, Comercio comercio) {
+        Producto producto = new Producto(nombre, descripcion, precio, categoria, comercio);
+         try {
+            this.getOper().guardarUsuario(producto);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al crear el producto " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     
-    
+    public void llenaJComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
+        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);        
+    }
+           
+    public Object buscarCategoriaPorId(Long id) {
+        return oper.buscarCategoriaPorId(id);
+    }
 }
+
+
+
+    
+

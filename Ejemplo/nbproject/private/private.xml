@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/GestorHibernate.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmPrincipalUsuario.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ICategoriaRubro.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/HibernateUtil.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVistaPrincipalUsuario.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorPedido.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmUsuario.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/ModelosPA/Admin.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorUsuario.java</file>
-            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/ModelosPA/Pedido.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
