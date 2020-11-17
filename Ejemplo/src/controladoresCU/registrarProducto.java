@@ -69,17 +69,21 @@ public class registrarProducto {
         model = new Producto();
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtNombre().getText());
-        model.setPrecio(this.getForm().getTxtPrecio().getText());
+        model.setPrecio(Float.parseFloat(this.getForm().getTxtPrecio().getText()));
         model.setCategoria((Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()));
         model.comercio = comercio;
         this.model = model;
     }
 
     public void guardar() {
-        this.setModel();
-        oper.guardarObjeto(this.getModel());
+        try {
+            this.setModel();
+            oper.guardarObjeto(this.getModel());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Parámetros incorrectos" + ex.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
+        }
     }
-    
+
     
     public void llenaJComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
         this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);        

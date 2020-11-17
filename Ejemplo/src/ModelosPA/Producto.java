@@ -30,7 +30,7 @@ public class Producto {
 
     
     
-    public Producto(String nombre, String descripcion, String precio, Categoria categoria, Comercio comercio) {
+    public Producto(String nombre, String descripcion, float precio, Categoria categoria, Comercio comercio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -50,8 +50,7 @@ public class Producto {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
     
-    @Column(columnDefinition = "TXT")
-    private String precio;
+    private float precio;
     
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     public Categoria categoria;
@@ -87,11 +86,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
