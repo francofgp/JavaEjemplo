@@ -160,7 +160,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         frmProducto= new FrmProducto();
         frmProducto.setVisible(true);
-        frmProducto.getControlVista().setComercio(this.getControlVista().getComercio());
+        frmProducto.getOper().setComercio(controlVista.getComercio());
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
