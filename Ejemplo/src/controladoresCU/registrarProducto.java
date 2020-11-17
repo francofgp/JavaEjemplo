@@ -1,5 +1,6 @@
 package controladoresCU;
 import Hibernate.GestorHibernate;
+import ModelosPA.Admin;
 
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
@@ -14,6 +15,8 @@ public class registrarProducto {
     private GestorHibernate oper;
     private FrmProducto form;
     private Comercio comercio;
+    private Producto model;
+    public Categoria categoria;
 
 
     public GestorHibernate getOper() {
@@ -45,6 +48,10 @@ public class registrarProducto {
         this.comercio = comercio;
     }
 
+    public Producto getModel() {
+        return model;
+    }
+    
     public void conseguirIDCategoriaSeleccionado() {
         if (this.getForm().getEstadoCategoria()>=2){
         String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
@@ -56,25 +63,21 @@ public class registrarProducto {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() +1);
         }       
     }
+    
+    public void setModel() {
 
-    public void guardar3() {
-        try{
-        this.guardar(this.getForm().getTxtNombre().getText(),this.getForm().getTxtDescripcion().getText(),
-        Long.parseLong(this.getForm().getTxtPrecio().getText()),
-        (Categoria) this.buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()),
-        this.getComercio()); 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al crear el producto " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
-        }   
+        model = new Producto();
+        model.setNombre(this.getForm().getTxtNombre().getText());
+        model.setDescripcion(this.getForm().getTxtNombre().getText());
+        model.setPrecio(this.getForm().getTxtPrecio().getText());
+        model.setCategoria((Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()));
+        model.comercio = comercio;
+        this.model = model;
     }
 
-    public void guardar(String nombre, String descripcion, long precio, Categoria categoria, Comercio comercio) {
-        Producto producto = new Producto(nombre, descripcion, precio, categoria, comercio);
-         try {
-            this.getOper().guardarUsuario(producto);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al crear el producto " + e.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
-        }
+    public void guardar() {
+        this.setModel();
+        oper.guardarObjeto(this.getModel());
     }
     
     

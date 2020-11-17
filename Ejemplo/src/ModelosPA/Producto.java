@@ -30,7 +30,7 @@ public class Producto {
 
     
     
-    public Producto(String nombre, String descripcion, float precio, Categoria categoria, Comercio comercio) {
+    public Producto(String nombre, String descripcion, String precio, Categoria categoria, Comercio comercio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -50,18 +50,18 @@ public class Producto {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
     
-    @Column(columnDefinition = "TEXT")
-    private float precio;
+    @Column(columnDefinition = "TXT")
+    private String precio;
     
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Categoria categoria;
+    public Categoria categoria;
 
     /*
     @Column(columnDefinition = "TEXT")
     private float imagen;
     */
     @ManyToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Comercio comercio;
+    public Comercio comercio;
     
     public long getId() {
         return id;
@@ -87,11 +87,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 

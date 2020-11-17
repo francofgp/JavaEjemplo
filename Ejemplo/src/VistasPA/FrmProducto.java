@@ -420,11 +420,18 @@ FrmProducto desktop=this;
     }
 
     public JTextField getTxtPrecio() {
+        
+        
+        
         return txtPrecio;
     }
 
-    public void setTxtPrecio(JTextField txtEmail) {
-        this.txtPrecio = txtEmail;
+    public void setTxtPrecio(JTextField txtPrecio ) {
+        
+        
+        this.txtPrecio = txtPrecio;
+        
+        
     }
 
     public JTextField getTxtNombre() {
@@ -479,7 +486,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-                this.controlVista.guardar3();
+                this.controlVista.guardar();
 
 
 //String image =txtRuta.getText();
