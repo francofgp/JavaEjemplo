@@ -6,7 +6,7 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorUsuario;
+//import Interfaz.ControladorPA.ControladorUsuario;
 import ModelosPA.Admin;
 import ModelosPA.Usuario;
 import controladoresCU.registrarAdmin;

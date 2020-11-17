@@ -39,8 +39,6 @@ public class Producto {
     }
     
     
-    
-    
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
        

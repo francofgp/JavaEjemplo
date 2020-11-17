@@ -6,9 +6,10 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorUsuario;
-import Interfaz.ControladorPA.ControladorVistaUsuario;
+//import Interfaz.ControladorPA.ControladorUsuario;
+//import Interfaz.ControladorPA.ControladorVistaUsuario;
 import ModelosPA.Usuario;
+import controladoresCU.registrarUsuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -24,8 +25,7 @@ import javax.swing.JTextField;
  */
 public class FrmUsuario extends javax.swing.JFrame {
     
-    ControladorVistaUsuario controlVista;
-    ControladorUsuario oper;
+    registrarUsuario oper;
     
     
     /**
@@ -34,8 +34,8 @@ public class FrmUsuario extends javax.swing.JFrame {
     public FrmUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new ControladorUsuario();
-        this.getControlVista().setForm(this);
+        oper = new registrarUsuario();
+        this.getOper().setForm(this);
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -44,25 +44,25 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.repaint();*/
     }
 
-    public ControladorVistaUsuario getControlVista() {
-        if (controlVista == null) {
-            synchronized (ControladorVistaUsuario.class) {
-                controlVista = new ControladorVistaUsuario();
+    public registrarUsuario getControlVista() {
+        if (oper == null) {
+            synchronized (registrarUsuario.class) {
+                oper = new registrarUsuario();
 
             }
         }
-        return controlVista;
-    }
-
-    public void setControlVista(ControladorVistaUsuario controlVista) {
-        this.controlVista = controlVista;
-    }
-
-    public ControladorUsuario getOper() {
         return oper;
     }
 
-    public void setOper(ControladorUsuario oper) {
+//    public void setControlVista(ControladorVistaUsuario controlVista) {
+//        this.controlVista = controlVista;
+//    }
+
+    public registrarUsuario getOper() {
+        return oper;
+    }
+
+    public void setOper(registrarUsuario oper) {
         this.oper = oper;
     }
 
@@ -467,7 +467,7 @@ public class FrmUsuario extends javax.swing.JFrame {
             //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
             // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
             
-         this.getControlVista().Guardar();
+         this.getOper().guardar();
         /*Usuario user = new Usuario(this.txtPassword.getText(),this.txtNombre.getText(), this.txtApellido.getText(),
                                     this.txtEmail.getText(),this.txtDireccion.getText(),this.txtTelefono.getText(),
                                     this.txtFecha.getText());*/
