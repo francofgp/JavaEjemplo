@@ -65,6 +65,7 @@ public class ABMCategoria {
             if (form.getNombrePrimero().equals(nombre)) {
                 form.setNombre(form.getTxtNombre().getText());
                 form.setDescripcion(form.getTxtDescripcion().getText());
+                
                 //this.ID=ID;
                 this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
                 JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
@@ -125,7 +126,7 @@ public class ABMCategoria {
         model = new Categoria();
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
-
+        model.setEstado("Activo");
         this.model = model;
     }
 
