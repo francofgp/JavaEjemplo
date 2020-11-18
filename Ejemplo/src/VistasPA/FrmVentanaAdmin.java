@@ -6,9 +6,10 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorCategoria;
+
 import Interfaz.ControladorPA.ControladorRubro;
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
+import controladoresCU.ABMCategoria;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,7 +26,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
     ControladorRubro rubro;
-    ControladorCategoria categoria;
+    ABMCategoria categoria;
     FrmVentanaAdmin desktop =this;
     
     String nombre;
@@ -42,6 +43,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new GestorHibernate();
+        categoria = new ABMCategoria();
         this.getControlVista().setForm(desktop);
         LoadRubro();
         LoadCategoria();
@@ -355,16 +357,16 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.rubro = rubro;
     }
 
-    public ControladorCategoria getCategoria() {
+    public ABMCategoria getCategoria() {
         if (categoria == null) {
-            synchronized (ControladorRubro.class) {
-                categoria = new ControladorCategoria();
+            synchronized (ABMCategoria.class) {
+                categoria = new ABMCategoria();
             }
         }
         return categoria;    
     }
 
-    public void setCategoria(ControladorCategoria categoria) {
+    public void setCategoria(ABMCategoria categoria) {
         this.categoria = categoria;
     }
 
@@ -571,51 +573,17 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     
     void LoadRubro(){
         this.getControlVista().LoadRubro();
-        /*List<Rubro> rubro = oper.RubroShow();
-        if (rubro.size()>0){
-            Iterator consulta = rubro.iterator();
-            while(consulta.hasNext()){
-                DefaultTableModel tabla = (DefaultTableModel)jTableRubro.getModel();
-                Vector datos = new Vector();
-                Rubro fila = (Rubro)consulta.next();
-                datos.add(fila.getNombre());
-                datos.add(fila.getDescripcion());
-                datos.add(fila.getId());
-                tabla.addRow(datos);
-                }
-        }else
-            JOptionPane.showMessageDialog(null,"no hay registros de rubros");
-    */
-    
+        
     }
     
     void LoadCategoria(){
         this.getControlVista().LoadCategoria();
-       /* List<Categoria> categoria = oper.CategoriaShow();
-        if (categoria.size()>0){
-            Iterator consulta = categoria.iterator();
-            while(consulta.hasNext()){
-                DefaultTableModel tabla = (DefaultTableModel)jTableCategoria.getModel();
-                Vector datos = new Vector();
-                Categoria fila = (Categoria)consulta.next();
-                datos.add(fila.getNombre());
-                datos.add(fila.getDescripcion());
-                datos.add(fila.getId());
-                tabla.addRow(datos);
-                }
-        }else
-            JOptionPane.showMessageDialog(null,"no hay registros de categorias");
-    */
-    
+           
     }
     
     void ClearTableRubro(){
         this.getControlVista().ClearTableRubro();
-        
-        /*while(jTableRubro.getRowCount()!=0){
-             ((DefaultTableModel)jTableRubro.getModel()).removeRow(0);
-        }
-        */
+
     }
         
     void ClearTableCategoria(){
@@ -666,7 +634,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
         conseguirValoresTxtCategoria();
                        
-            this.getCategoria().eliminar(ID);
+            categoria.eliminar(ID);
             
             ClearTableCategoria();
             LoadCategoria();
@@ -687,39 +655,18 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         
         if(preg==JOptionPane.YES_OPTION){
             conseguirValoresTxt();
-            //Long id;
-            //DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
-            //int selectedRowIndex = jTableRubro.getSelectedRow();
-            
-            //id = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
-            
-            
             this.getRubro().eliminar(ID);
             
             ClearTableRubro();
             LoadRubro();
-            
-        // TODO add your handling code here:
-        
-        //System.out.println(id); //esto era para probar si no manquié
+
         }
         
     }//GEN-LAST:event_btnAceptar5ActionPerformed
 
     private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked
 
-        //ESTE METODO TE DA LOS ID, NOMBRE Y DESCRIPCION DE
-        //LO QUE SELECCIONAS, NO HACE FALTA, LO HICE PARA PROBAR.
-        //el LABEL  seleccionTxt ESTA EN BLANCO, cambiar a negro y se ve
-        //que hace el metodo
-        /*
-        DefaultTableModel model = (DefaultTableModel) jTableRubro.getModel();
-        int selectedRowIndex = jTableRubro.getSelectedRow();
-        seleccionTxt.setText("Nombre: " + model.getValueAt(selectedRowIndex, 0).toString() + " "
-                + "Descripción: " + model.getValueAt(selectedRowIndex, 1).toString() + " "
-                + "ID: " + model.getValueAt(selectedRowIndex, 2).toString());
-*/
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTableRubroMouseClicked
 
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed

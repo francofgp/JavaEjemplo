@@ -9,11 +9,13 @@ import Hibernate.GestorHibernate;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import VistasPA.FrmVentanaAdmin;
+import controladoresCU.ABMCategoria;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import controladoresCU.ABMCategoria;
 
 /**
  *
@@ -21,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControladorVentanaAdminPrincipal {
 
-    private ControladorCategoria operCategoria;
+    private ABMCategoria operCategoria;
     private ControladorRubro operRubro;
     private GestorHibernate oper;
     private FrmVentanaAdmin form;
@@ -48,11 +50,11 @@ public class ControladorVentanaAdminPrincipal {
         this.form = form;
     }
 
-    public ControladorCategoria getOperCategoria() {
+    public ABMCategoria getOperCategoria() {
         return operCategoria;
     }
 
-    public void setOperCategoria(ControladorCategoria operCategoria) {
+    public void setOperCategoria(ABMCategoria operCategoria) {
         this.operCategoria = operCategoria;
     }
 

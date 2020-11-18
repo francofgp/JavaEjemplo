@@ -4,19 +4,16 @@ import VistasPA.FrmPrincipalUsuario;
 import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
 import VistasPA.FrmProducto;
+import controladoresCU.ABMCategoria;
 
 public class Main {
 
     public static void main(String[] args) {
         HibernateUtil.inicializar();
-        //FrmPrincipal frmPrincipal = new FrmPrincipal(this);
-        //frmPrincipal.setVisible(true);
+
         Frmlogin frmLogin = new Frmlogin();
         frmLogin.setVisible(true);
-
-        //FrmPrincipalUsuario frmVentanaAdmin = new FrmPrincipalUsuario();        
-        //frmVentanaAdmin.setVisible(true);     
-        
+         
         FrmVentanaAdmin frmVentanaAdmin = new FrmVentanaAdmin();
         frmVentanaAdmin.setVisible(true);
 
