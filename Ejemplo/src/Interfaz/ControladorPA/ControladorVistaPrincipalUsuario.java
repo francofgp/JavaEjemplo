@@ -161,12 +161,13 @@ public class ControladorVistaPrincipalUsuario {
     }
 
     String comercioSeleccionadoID;
+
     public void seleccionarComercio() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
         this.getForm().getTxtComercio().setText(model.getValueAt(selectedRowIndex, 0).toString());
         this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
-        comercioSeleccionadoID=model.getValueAt(selectedRowIndex, 1).toString();
+        comercioSeleccionadoID = model.getValueAt(selectedRowIndex, 1).toString();
         this.LoadProductos();
     }
 
@@ -187,14 +188,14 @@ public class ControladorVistaPrincipalUsuario {
 
     }
 
-    public Comercio buscarComercioSeleccionado(){
-        long id= Long.parseLong(comercioSeleccionadoID);
+    public Comercio buscarComercioSeleccionado() {
+        long id = Long.parseLong(comercioSeleccionadoID);
         //System.out.println(id);
         //Comercio comercio= (Comercio) this.getOper().buscarComercio(id);
         //System.out.println(comercio.getApellido());
         return (Comercio) this.getOper().buscarComercio(id);
     }
-    
+
     public void hacerPedido() {
         //this.buscarComercioSeleccionado();
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
@@ -215,7 +216,7 @@ public class ControladorVistaPrincipalUsuario {
         this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));
 
         this.getPedido().guardarPedido(this.getUsuario(), this.buscarComercioSeleccionado(),
-                                    productos, precioTotal, this.getForm().getTxtDescripcion().getText());
+                productos, precioTotal, this.getForm().getTxtDescripcion().getText());
     }
 
 }

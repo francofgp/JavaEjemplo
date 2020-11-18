@@ -4,7 +4,6 @@ import Hibernate.GestorHibernate;
 import ModelosPA.Admin;
 import ModelosPA.Usuario;
 import Hibernate.GestorHibernate;
-
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;

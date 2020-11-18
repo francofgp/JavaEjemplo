@@ -1,4 +1,5 @@
 package controladoresCU;
+
 import Hibernate.GestorHibernate;
 import ModelosPA.Admin;
 
@@ -9,15 +10,13 @@ import VistasPA.FrmProducto;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-
 public class registrarProducto {
-    
+
     private GestorHibernate oper;
     private FrmProducto form;
     private Comercio comercio;
     private Producto model;
     public Categoria categoria;
-
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -25,7 +24,7 @@ public class registrarProducto {
                 oper = new GestorHibernate();
             }
         }
-        return oper; 
+        return oper;
     }
 
     public void setOper(GestorHibernate oper) {
@@ -51,19 +50,18 @@ public class registrarProducto {
     public Producto getModel() {
         return model;
     }
-    
-    public void conseguirIDCategoriaSeleccionado() {
-        if (this.getForm().getEstadoCategoria()>=2){
-        String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-        
-        this.getForm().setIdCategoriaSeleccionado(this.getOper().buscarCategoria(s));
-        
 
-        }else{
-            this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() +1);
-        }       
+    public void conseguirIDCategoriaSeleccionado() {
+        if (this.getForm().getEstadoCategoria() >= 2) {
+            String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
+
+            this.getForm().setIdCategoriaSeleccionado(this.getOper().buscarCategoria(s));
+
+        } else {
+            this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
+        }
     }
-    
+
     public void setModel() {
 
         model = new Producto();
@@ -84,17 +82,11 @@ public class registrarProducto {
         }
     }
 
-    
     public void llenaJComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
-        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);        
+        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
-           
+
     public Object buscarCategoriaPorId(Long id) {
         return oper.buscarCategoriaPorId(id);
     }
 }
-
-
-
-    
-

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
@@ -18,10 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import controladoresCU.ABMCategoria;
 import controladoresCU.ABMRubro;
 
-/**
- *
- * @author CrapBoy
- */
 public class ControladorVentanaAdminPrincipal {
 
     private ABMCategoria operCategoria;
@@ -106,37 +97,35 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void conseguirValoresTxt() {
-        DefaultTableModel model = (DefaultTableModel)this.getForm().getjTableRubro().getModel();
+        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
         int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
-        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex,2).toString())) ;
-        this.getForm().setNombre(model.getValueAt(selectedRowIndex,0).toString());
-        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex,1).toString()) ;    
+        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
+        this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
+        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
     }
 
     public void conseguirValoresTxtCategoria() {
-        DefaultTableModel model = (DefaultTableModel)this.getForm().getjTableCategoria().getModel();
+        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
         int selectedRowIndex = this.getForm().getjTableCategoria().getSelectedRow();
-        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex,2).toString())) ;
-        this.getForm().setNombre(model.getValueAt(selectedRowIndex,0).toString());
-        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex,1).toString()) ;   
+        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
+        this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
+        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
     }
 
     public void ClearTableRubro() {
-        while(this.getForm().getjTableRubro().getRowCount()!=0){
-             ((DefaultTableModel)this.getForm().getjTableRubro().getModel()).removeRow(0);
-        }    
+        while (this.getForm().getjTableRubro().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTableRubro().getModel()).removeRow(0);
+        }
     }
 
     public void ClearTableCategoria() {
-        while(this.getForm().getjTableCategoria().getRowCount()!=0){
-             ((DefaultTableModel)this.getForm().getjTableCategoria().getModel()).removeRow(0);
-        }    
+        while (this.getForm().getjTableCategoria().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTableCategoria().getModel()).removeRow(0);
+        }
     }
-    
-    public void reporteRubro(){
-    this.getOper().reporteRubro();
+
+    public void reporteRubro() {
+        this.getOper().reporteRubro();
     }
-    
-    
 
 }
