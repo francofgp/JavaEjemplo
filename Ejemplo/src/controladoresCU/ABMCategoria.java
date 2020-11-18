@@ -40,19 +40,7 @@ public class ABMCategoria {
     }
 
     public void darDeBajaCategoria(Long ID) {
-        Session s = HibernateUtil.getSession();
-        Transaction tx = s.beginTransaction();
-        try {
-            Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-
-            categoria.setEstado("Dado de Baja");
-            s.update(categoria);
-            tx.commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al dar de baja a la categoria ", " Error ", JOptionPane.ERROR_MESSAGE);
-
-        }
+        this.getOper().darDeBajaCategoria(ID);
     }
 
     public void crearModificar() {
@@ -105,19 +93,7 @@ public class ABMCategoria {
     //////////////////////////////
     
     public void eliminar(Long ID) {
-        Session s = HibernateUtil.getSession();
-        Transaction tx = s.beginTransaction();
-
-        try {
-            Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-
-            s.delete(categoria);
-            tx.commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar la categoria ya que la tiene seleccionada un comercio" /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
-        }
+        this.getOper().eliminarCategoria(ID);
     }
 
    
@@ -141,26 +117,7 @@ public class ABMCategoria {
     }
 
     public boolean corroborar(String nombre) {
-        Session sesion = HibernateUtil.getSession();
-
-        Categoria categoria = (Categoria) sesion.createCriteria(Categoria.class)
-                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
-
-        try {
-            if (categoria != null) {
-                String nom = categoria.getNombre();
-                if (nom.equals(nombre)) {
-                    JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
+        return this.getOper().corroborarCategoria(nombre);
 
     }
 

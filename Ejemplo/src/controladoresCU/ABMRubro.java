@@ -29,6 +29,11 @@ public class ABMRubro {
     }
 
     public GestorHibernate getOper() {
+        if (oper == null) {
+            synchronized (GestorHibernate.class) {
+                oper = new GestorHibernate();
+            }
+        }
         return oper;
     }
 
@@ -36,18 +41,14 @@ public class ABMRubro {
         this.oper = oper;
     }
 
-    public ABMRubro() {
-        oper = new GestorHibernate();
-
-    }
 
     public void guardar(String nombre, String descripcion) {
         Rubro rubro = new Rubro(nombre, descripcion);
-        oper.guardarUsuario(rubro);
+        this.getOper().guardarUsuario(rubro);
     }
 
     public void modificar(String nombre, String descripcion, Long ID) {
-        oper.modificarUsuario(nombre, descripcion, ID);
+        this.getOper().modificarUsuario(nombre, descripcion, ID);
     }
 
     public FrmRubro getForm() {
@@ -70,67 +71,24 @@ public class ABMRubro {
 
     public void guardar() {
         this.setModel();
-        oper.guardarObjeto(this.getModel());
+        this.getOper().guardarObjeto(this.getModel());
     }
 
     public Rubro getModel() {
         return model;
     }
-
+    
+    
     public boolean corroborar(String nombre) {
-        Session sesion = HibernateUtil.getSession();
-
-        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
-                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
-
-        try {
-            if (rubro != null) {
-                String nom = rubro.getNombre();
-                if (nom.equals(nombre)) {
-                    JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-
+        return this.getOper().corroborarRubro(nombre);
     }
-
+    
     public void eliminar(Long ID) {
-        Session s = HibernateUtil.getSession();
-        Transaction tx = s.beginTransaction();
-        try {
-            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-            s.delete(rubro);
-            tx.commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
-
-        }
+        this.getOper().eliminarRubro(ID);
     }
-
+    
     public void darDeBaja(Long ID) {
-        Session s = HibernateUtil.getSession();
-        Transaction tx = s.beginTransaction();
-        try {
-            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-
-            rubro.setEstado("Dado de Baja");
-            s.update(rubro);
-            tx.commit();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
-
-        }
+        this.getOper().darDeBajaRubro(ID);
     }
 
     public void crearModificar(){

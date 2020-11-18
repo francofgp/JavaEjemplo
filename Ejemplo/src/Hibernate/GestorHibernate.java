@@ -608,5 +608,106 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
 
+        
+    public boolean corroborarRubro(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (rubro != null) {
+                String nom = rubro.getNombre();
+                if (nom.equals(nombre)) {
+                    JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+    
+    
+    public void eliminarRubro(Long ID) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+                    .add(Restrictions.eq("id", ID)).uniqueResult();
+            s.delete(rubro);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+    
+    public void darDeBajaRubro(Long ID) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+                    .add(Restrictions.eq("id", ID)).uniqueResult();
+
+            rubro.setEstado("Dado de Baja");
+            s.update(rubro);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+    
+    public void darDeBajaCategoria(Long ID) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
+                    .add(Restrictions.eq("id", ID)).uniqueResult();
+
+            categoria.setEstado("Dado de Baja");
+            s.update(categoria);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja a la categoria ", " Error ", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+    
+        public boolean corroborarCategoria(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Categoria categoria = (Categoria) sesion.createCriteria(Categoria.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (categoria != null) {
+                String nom = categoria.getNombre();
+                if (nom.equals(nombre)) {
+                    JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+ 
+    
+
 }
  
