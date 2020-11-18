@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz.ControladorPA;
+package controladoresCU;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Comercio;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author CrapBoy
  */
-public class ControladorPedido {
+public class registrarPedido {
     
      GestorHibernate oper;
 

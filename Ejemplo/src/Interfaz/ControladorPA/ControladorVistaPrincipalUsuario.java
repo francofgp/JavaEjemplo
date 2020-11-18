@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
@@ -11,6 +6,7 @@ import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 import VistasPA.FrmPrincipalUsuario;
+import controladoresCU.registrarPedido;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,16 +16,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author CrapBoy
- */
 public class ControladorVistaPrincipalUsuario {
 
     private GestorHibernate oper;
     private FrmPrincipalUsuario form;
     private Usuario usuario;
-    private ControladorPedido pedido;
+    private registrarPedido pedido;
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -40,16 +32,16 @@ public class ControladorVistaPrincipalUsuario {
         return oper;
     }
 
-    public ControladorPedido getPedido() {
+    public registrarPedido getPedido() {
         if (pedido == null) {
             synchronized (GestorHibernate.class) {
-                pedido = new ControladorPedido();
+                pedido = new registrarPedido();
             }
         }
         return pedido;
     }
 
-    public void setPedido(ControladorPedido pedido) {
+    public void setPedido(registrarPedido pedido) {
         this.pedido = pedido;
     }
 
