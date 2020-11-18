@@ -620,11 +620,12 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     
     private void btnNuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCategoriaActionPerformed
         new FrmCategoria().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNuevaCategoriaActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         new FrmRubro().setVisible(true);
-        //this.setVisible(false);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
@@ -642,7 +643,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirValoresTxt();
         this.getFrmRubro().modificar("1",nombre,descripcion,ID );
         this.getFrmRubro().setVisible(true);
-
+this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
 
@@ -671,6 +672,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirValoresTxtCategoria();
         this.getFrmCategoria().modificar("1",nombre,descripcion,ID );
         this.getFrmCategoria().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
