@@ -6,8 +6,6 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorRubro;
-import Interfaz.ControladorPA.ControladorVistaRubro;
 import ModelosPA.Admin;
 import ModelosPA.Rubro;
 //import Modelos.GestionProyecto.Usuario;
@@ -16,6 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import VistasPA.FrmVentanaAdmin;
+import controladoresCU.ABMRubro;
 import javax.swing.JTextField;
 //import VistasPA.TextPrompt;
 
@@ -32,7 +31,7 @@ public class FrmRubro extends javax.swing.JFrame {
     Long ID;
     String nombrePrimero;
 
-    public FrmRubro(ControladorVistaRubro controlVista) {
+    public FrmRubro(ABMRubro controlVista) {
         try {
             initComponents();
         } catch (Exception e) {
@@ -97,31 +96,29 @@ public class FrmRubro extends javax.swing.JFrame {
         this.nombrePrimero = nombrePrimero;
     }
 
-    public ControladorVistaRubro getControlVista() {
+    public ABMRubro getControlVista() {
 
-        if (controlVista == null) {
-            synchronized (ControladorVistaRubro.class) {
-                controlVista = new ControladorVistaRubro();
+        if (oper == null) {
+            synchronized (ABMRubro.class) {
+                oper = new ABMRubro();
 
             }
         }
-        return controlVista;
+        return oper;
 
     }
 
-    public void setControlVista(ControladorVistaRubro controlVista) {
-        this.controlVista = controlVista;
+    public void setControlVista(ABMRubro oper) {
+        this.oper = oper;
     }
 
-    ControladorVistaRubro controlVista;
-
-    ControladorRubro oper;
+    ABMRubro oper;
 
     //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
-    public ControladorRubro getControlador() {
+    public ABMRubro getControlador() {
         if (oper == null) {
-            synchronized (ControladorRubro.class) {
-                oper = new ControladorRubro();
+            synchronized (ABMRubro.class) {
+                oper = new ABMRubro();
             }
         }
         return oper;

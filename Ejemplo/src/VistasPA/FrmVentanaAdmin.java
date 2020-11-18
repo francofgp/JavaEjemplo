@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package VistasPA;
 
 import Hibernate.GestorHibernate;
 
-import Interfaz.ControladorPA.ControladorRubro;
+
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import controladoresCU.ABMCategoria;
+import controladoresCU.ABMRubro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,7 +22,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     GestorHibernate oper;
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
-    ControladorRubro rubro;
+    ABMRubro rubro;
     ABMCategoria categoria;
     FrmVentanaAdmin desktop =this;
     
@@ -344,16 +341,16 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.frmCategoria = frmCategoria;
     }
 
-    public ControladorRubro getRubro() {
+    public ABMRubro getRubro() {
         if (rubro == null) {
-            synchronized (ControladorRubro.class) {
-                rubro = new ControladorRubro();
+            synchronized (ABMRubro.class) {
+                rubro = new ABMRubro();
             }
         }
         return rubro;
     }
 
-    public void setRubro(ControladorRubro rubro) {
+    public void setRubro(ABMRubro rubro) {
         this.rubro = rubro;
     }
 

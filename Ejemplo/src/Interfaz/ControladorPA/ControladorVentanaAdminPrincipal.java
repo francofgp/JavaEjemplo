@@ -16,6 +16,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controladoresCU.ABMCategoria;
+import controladoresCU.ABMRubro;
 
 /**
  *
@@ -24,7 +25,7 @@ import controladoresCU.ABMCategoria;
 public class ControladorVentanaAdminPrincipal {
 
     private ABMCategoria operCategoria;
-    private ControladorRubro operRubro;
+    private ABMRubro operRubro;
     private GestorHibernate oper;
     private FrmVentanaAdmin form;
 
@@ -58,11 +59,11 @@ public class ControladorVentanaAdminPrincipal {
         this.operCategoria = operCategoria;
     }
 
-    public ControladorRubro getOperRubro() {
+    public ABMRubro getOperRubro() {
         return operRubro;
     }
 
-    public void setOperRubro(ControladorRubro operRubro) {
+    public void setOperRubro(ABMRubro operRubro) {
         this.operRubro = operRubro;
     }
 
