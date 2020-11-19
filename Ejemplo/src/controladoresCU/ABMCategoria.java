@@ -51,20 +51,38 @@ public class ABMCategoria {
 
         if (form.getModificado() == "1") {
             if (form.getNombrePrimero().equals(nombre)) {
+
+                /////////no hace nada//////
+                
+                ////////////////este ////////////////////
                 form.setNombre(form.getTxtNombre().getText());
                 form.setDescripcion(form.getTxtDescripcion().getText());
-                
-                //this.ID=ID;
                 this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
+                ///////////////////////////////////////////
+
+                /////////////// o este //////////////////////////////
+                //this.modificar(form.getTxtNombre().getText(),form.getTxtDescripcion().getText(),form.getID());
+                /////////////////////////////////////////////////////////////////////////////////////
+                
                 JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
+                
+                ////////no hace nada//////////                
+                
             } else {
                 if (this.corroborar(nombre) == false) {
+
+                    ////////////////este ////////////////////
                     form.setNombre(form.getTxtNombre().getText());
                     form.setDescripcion(form.getTxtDescripcion().getText());
-                    //this.ID=ID;
                     this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
+                    ///////////////////////////////////////////
+
+                    /////////////// o este //////////////////////////////
+                    //this.modificar(form.getTxtNombre().getText(),form.getTxtDescripcion().getText(),form.getID());
+                    /////////////////////////////////////////////////////////////////////////////////////
+                    
                     JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
                     form.setVisible(false);
                     new FrmVentanaAdmin().setVisible(true);
@@ -72,31 +90,28 @@ public class ABMCategoria {
 
             }
         } else {
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
             System.out.println(nombre);
             if (this.corroborar(nombre) == false) {
+
                 this.guardar();
+
                 JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
+
             }
-
         }
-
     }
 
     public Categoria getModel() {
         return model;
     }
-    
+
     //////////////////////////////
-    
     public void eliminar(Long ID) {
         this.getOper().eliminarCategoria(ID);
     }
 
-   
     public void setModel() {
 
         model = new Categoria();
@@ -110,8 +125,7 @@ public class ABMCategoria {
         this.setModel();
         oper.guardarObjeto(this.getModel());
     }
-    
-    
+
     public void modificar(String nombre, String descripcion, Long ID) {
         oper.modificarCategoria(nombre, descripcion, ID);
     }
@@ -121,4 +135,4 @@ public class ABMCategoria {
 
     }
 
- }
+}
