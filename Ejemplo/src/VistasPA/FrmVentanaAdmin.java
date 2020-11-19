@@ -19,13 +19,11 @@ import javax.swing.JTable;
  * @author Chelo
  */
 public class FrmVentanaAdmin extends javax.swing.JFrame {
-    GestorHibernate oper;
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
+    FrmVentanaAdmin desktop =this;
     ABMRubro rubro;
     ABMCategoria categoria;
-    FrmVentanaAdmin desktop =this;
-    
     String nombre;
     String descripcion;
     Long ID;
@@ -39,8 +37,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public FrmVentanaAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new GestorHibernate();
-        categoria = new ABMCategoria();
         this.getControlVista().setForm(desktop);
         LoadRubro();
         LoadCategoria();
@@ -305,15 +301,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public GestorHibernate getOper() {
-        return oper;
-    }
 
-    
-    
-    public void setOper(GestorHibernate oper) {
-        this.oper = oper;
-    }
 
     public FrmRubro getFrmRubro() {
         if (frmRubro == null) {
@@ -382,6 +370,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 
     public Long getID() {
         return ID;
@@ -632,7 +621,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
         conseguirValoresTxtCategoria();
                        
-            categoria.eliminar(ID);
+            this.getCategoria().eliminar(ID);
             
             ClearTableCategoria();
             LoadCategoria();

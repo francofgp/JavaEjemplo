@@ -330,7 +330,6 @@ public class FrmComercio extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(153, 204, 0));
         jButton4.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("+   Agregar Imagen");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -852,7 +851,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+/**
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
@@ -862,6 +861,8 @@ public class FrmComercio extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(filename);
         Image image = icon.getImage().getScaledInstance(imagenjLabel.getWidth(),imagenjLabel.getHeight(),Image.SCALE_SMOOTH);
         imagenjLabel.setIcon(icon);
+        * 
+        */
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
