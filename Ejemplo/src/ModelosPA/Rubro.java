@@ -78,4 +78,10 @@ public class Rubro {
     }
     
     
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
+    
+    
 }

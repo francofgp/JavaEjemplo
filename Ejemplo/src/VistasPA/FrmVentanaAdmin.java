@@ -141,11 +141,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "ID", "Estado"
+                "Nombre", "Descripcion", "ID", "Estado", "null"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -163,6 +163,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableRubro.getColumnModel().getColumn(1).setResizable(false);
             jTableRubro.getColumnModel().getColumn(2).setResizable(false);
             jTableRubro.getColumnModel().getColumn(3).setResizable(false);
+            jTableRubro.getColumnModel().getColumn(4).setResizable(false);
+            jTableRubro.getColumnModel().getColumn(4).setHeaderValue("null");
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 230));
@@ -630,9 +632,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnAceptar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar4ActionPerformed
         //Primero Obtengo todos los valores de la tabla
         conseguirValoresTxt();
-        this.getFrmRubro().modificar("1",nombre,descripcion,ID );
+        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
+        this.getFrmRubro().modificar("1",this.getRubro().getRubroElegido());
         this.getFrmRubro().setVisible(true);
-this.setVisible(false);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
 
@@ -642,7 +645,8 @@ this.setVisible(false);
         
         if(preg==JOptionPane.YES_OPTION){
             conseguirValoresTxt();
-            this.getRubro().eliminar(ID);
+            this.getRubro().setRubroElegido(this.getControlVista().getRubro());
+            this.getRubro().eliminar();
             
             ClearTableRubro();
             LoadRubro();
@@ -671,7 +675,8 @@ this.setVisible(false);
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
         conseguirValoresTxt();
 
-        this.getRubro().darDeBaja(ID);
+        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
+        this.getRubro().darDeBaja();
 
         ClearTableRubro();
         LoadRubro();

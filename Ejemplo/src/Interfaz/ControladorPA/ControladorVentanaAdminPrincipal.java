@@ -19,6 +19,26 @@ public class ControladorVentanaAdminPrincipal {
     private ABMRubro operRubro;
     private GestorHibernate oper;
     private FrmVentanaAdmin form;
+    private Rubro rubro;
+    private Categoria categoria;
+
+    public Rubro getRubro() {
+        return rubro;
+    }
+
+    public void setRubro(Rubro rubro) {
+        this.rubro = rubro;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -70,6 +90,7 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
+                datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
@@ -96,12 +117,17 @@ public class ControladorVentanaAdminPrincipal {
         }
     }
 
+    
     public void conseguirValoresTxt() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
         int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
+        /*
         this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
         this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
         this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
+*/
+        this.setRubro((Rubro)model.getValueAt(selectedRowIndex, 4));
+        //System.out.println(rubro.getDescripcion());
     }
 
     public void conseguirValoresTxtCategoria() {

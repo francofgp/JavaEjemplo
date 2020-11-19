@@ -19,7 +19,7 @@ public class ABMRubro {
     Rubro model;
     FrmRubro form;
     private String titulo;
-
+    Rubro rubroElegido;
     public String getTitulo() {
         return titulo;
     }
@@ -41,12 +41,27 @@ public class ABMRubro {
         this.oper = oper;
     }
 
+    public Rubro getRubroElegido() {
+        return rubroElegido;
+    }
+
+    public void setRubroElegido(Rubro rubroElegido) {
+        this.rubroElegido = rubroElegido;
+    }
+    
+    
+
 //    public void guardar(String nombre, String descripcion) {
 //        Rubro rubro = new Rubro(nombre, descripcion);
 //        this.getOper().guardarUsuario(rubro);
 //    }
-    public void modificar(String nombre, String descripcion, Long ID) {
-        this.getOper().modificarUsuario(nombre, descripcion, ID);
+    public void modificar() {
+        //this.getOper().modificarUsuario(nombre, descripcion, ID);
+        this.getRubroElegido().setDescripcion(form.getDescripcion());
+        this.getRubroElegido().setNombre(form.getNombre());
+        
+        
+        this.getOper().actualizarObjeto(this.getRubroElegido());
     }
 
     public FrmRubro getForm() {
@@ -80,12 +95,12 @@ public class ABMRubro {
         return this.getOper().corroborarRubro(nombre);
     }
 
-    public void eliminar(Long ID) {
-        this.getOper().eliminarRubro(ID);
+    public void eliminar() {
+        this.getOper().eliminarObjeto(this.getRubroElegido());
     }
 
-    public void darDeBaja(Long ID) {
-        this.getOper().darDeBajaRubro(ID);
+    public void darDeBaja() {
+        this.getOper().darDeBajaRubro(this.getRubroElegido());
     }
 
     public void crearModificar() {
@@ -99,7 +114,7 @@ public class ABMRubro {
                 
                 form.setNombre(form.getTxtNombre().getText());
                 form.setDescripcion(form.getTxtDescripcion().getText());
-                modificar(form.getNombre(), form.getDescripcion(), form.getID());
+                modificar();
                 
                 JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
                 form.setVisible(false);
@@ -109,10 +124,9 @@ public class ABMRubro {
                 
             } else {
                 if (corroborar(nombre) == false) {
-
-                    form.setNombre(form.getTxtNombre().getText());
-                    form.setDescripcion(form.getTxtDescripcion().getText());
-                    modificar(form.getNombre(), form.getDescripcion(), form.getID());
+                
+                    setearValoresEnTxtForm();
+                    modificar();
 
                     JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
                     form.setVisible(false);
@@ -130,5 +144,10 @@ public class ABMRubro {
                 new FrmVentanaAdmin().setVisible(true);
             }
         }
+    }
+
+    private void setearValoresEnTxtForm() {
+                    form.setNombre(form.getTxtNombre().getText());
+                    form.setDescripcion(form.getTxtDescripcion().getText());
     }
 }

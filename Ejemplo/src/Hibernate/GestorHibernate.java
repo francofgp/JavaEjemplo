@@ -329,7 +329,7 @@ public class GestorHibernate extends HibernateUtil {
             for (Rubro rubro : resulset) {
                 //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
                 if ("Activo".equals(rubro.getEstado())) {
-                    jComboBoxRubro.addItem(rubro.getNombre());
+                    jComboBoxRubro.addItem(rubro);
 
                 }
 
@@ -649,13 +649,10 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
     
-    public void darDeBajaRubro(Long ID) {
+    public void darDeBajaRubro(Rubro rubro) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try {
-            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-
             rubro.setEstado("Dado de Baja");
             s.update(rubro);
             tx.commit();

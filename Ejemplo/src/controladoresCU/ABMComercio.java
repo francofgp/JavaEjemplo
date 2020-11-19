@@ -12,6 +12,26 @@ public class ABMComercio {
     FrmComercio form;
     GestorHibernate oper;
     Comercio model;
+    Rubro rubro;
+    Categoria caterogia;
+
+    public Rubro getRubro() {
+        return rubro;
+    }
+
+    public void setRubro(Rubro rubro) {
+        this.rubro = rubro;
+    }
+
+    public Categoria getCaterogia() {
+        return caterogia;
+    }
+
+    public void setCaterogia(Categoria caterogia) {
+        this.caterogia = caterogia;
+    }
+    
+    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -56,7 +76,7 @@ public class ABMComercio {
         model.setCuil(this.getForm().getTxtCuit().getText());
         model.setDireccionNegocio(this.getForm().getTxtDireccionLocal().getText());
         model.setNombreLocal(this.getForm().getTxtNombreLocal().getText());
-        model.setRubro((Rubro) this.getForm().buscarObjetoPorId(this.getForm().getIdDeRubroSeleccionado()));
+        model.setRubro((Rubro) rubro);
         model.setCategoria((Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()));
 
         this.model = model;
@@ -95,10 +115,14 @@ public class ABMComercio {
 
     ////////////////////////////////////////////////////
     public void conseguirIDRubroSeleccionado() {
+
         if (this.getForm().getEstado() >= 2) {
+            
             String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
 
-            this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
+            this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));        
+        this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+        
         } else {
             this.getForm().setEstado(this.getForm().getEstado() + 1);
         }

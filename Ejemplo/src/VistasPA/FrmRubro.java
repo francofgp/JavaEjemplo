@@ -342,17 +342,19 @@ public class FrmRubro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void modificar(String modificado, String nombre, String descripcion, long ID) {
-        txtDescripcion.setText(descripcion);
-        txtNombre.setText(nombre);
+    public void modificar(String modificado, Rubro rubro) {
+        txtDescripcion.setText(rubro.getDescripcion());
+        txtNombre.setText(rubro.getNombre());
         btnAceptar.setText("Modificar rubro");
         this.modificado = modificado;
 
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.ID = ID;
+        this.nombre = rubro.getDescripcion();
+        this.descripcion = rubro.getNombre();
+        this.ID = rubro.getId();
 
         nombrePrimero = nombre;
+        this.getControlVista().setRubroElegido(rubro);
+        
     }
 
     public static void main(String args[]) {
