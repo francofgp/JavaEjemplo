@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import VistasPA.FrmVentanaAdmin;
 import controladoresCU.ABMRubro;
+import javax.swing.JButton;
 import javax.swing.JTextField;
 //import VistasPA.TextPrompt;
 
@@ -72,6 +73,15 @@ public class FrmRubro extends javax.swing.JFrame {
         this.nombre = nombre;
     }
 
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    
     public String getDescripcion() {
         return descripcion;
     }
@@ -281,17 +291,7 @@ public class FrmRubro extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public void modificar(String modificado, Rubro rubro) {
-        txtDescripcion.setText(rubro.getDescripcion());
-        txtNombre.setText(rubro.getNombre());
-        btnAceptar.setText("Modificar rubro");
-        this.modificado = modificado;
-
-        this.nombre = rubro.getDescripcion();
-        this.descripcion = rubro.getNombre();
-        this.ID = rubro.getId();
-
-        nombrePrimero = nombre;
-        this.getControlVista().setRubroElegido(rubro);
+        this.getControlVista().setearCampos(modificado,rubro);
         
     }
 

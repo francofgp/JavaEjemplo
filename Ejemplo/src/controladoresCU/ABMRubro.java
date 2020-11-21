@@ -168,4 +168,19 @@ public class ABMRubro {
             crearModificar();
         }
     }
+    
+        public void setearCampos(String modificado, Rubro rubro) {
+        this.getForm().getTxtDescripcion().setText(rubro.getDescripcion());
+        this.getForm().getTxtNombre().setText(rubro.getNombre());
+        this.getForm().getBtnAceptar().setText("Modificar rubro");
+        this.getForm().setModificado(modificado);
+           
+        this.getForm().setNombre(rubro.getNombre());
+        this.getForm().setDescripcion(rubro.getDescripcion());
+        this.getForm().setID(rubro.getId());
+        
+        this.getForm().setNombrePrimero(this.getForm().getNombre());
+        setRubroElegido(rubro);
+        }
+
 }

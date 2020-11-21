@@ -557,13 +557,13 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     }
 
-    void ClearTableRubro() {
-        this.getControlVista().ClearTableRubro();
+    void limpiarTablaRubro() {
+        this.getControlVista().limpiarTablaRubro();
 
     }
 
-    void ClearTableCategoria() {
-        this.getControlVista().ClearTableCategoria();
+    void limpiarTablaCategoria() {
+        this.getControlVista().limpiarTablaCategoria();
         /*
         while(jTableCategoria.getRowCount()!=0){
              ((DefaultTableModel)jTableCategoria.getModel()).removeRow(0);
@@ -611,7 +611,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirCategoria();
         this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
         this.getCategoria().preguntarEliminar();
-        ClearTableCategoria();
+        limpiarTablaCategoria();
         cargarCategoria();
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
@@ -630,7 +630,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirRubro();
         this.getRubro().setRubroElegido(this.getControlVista().getRubro());
         this.getRubro().preguntarEliminar();
-        ClearTableRubro();
+        limpiarTablaRubro();
         cargarRubro();
 
 
@@ -657,7 +657,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirRubro();
         this.getRubro().setRubroElegido(this.getControlVista().getRubro());
         this.getRubro().darDeBaja();
-        ClearTableRubro();
+        limpiarTablaRubro();
         cargarRubro();
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
@@ -665,7 +665,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         conseguirCategoria();
         this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
         this.getCategoria().darDeBajaCategoria();
-        ClearTableCategoria();
+        limpiarTablaCategoria();
         cargarCategoria();
 
 // TODO add your handling code here:

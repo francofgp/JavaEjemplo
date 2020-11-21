@@ -6,6 +6,7 @@
 package ModelosPA;
 
 import javax.persistence.CascadeType;
+import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Producto {
     
     private float precio;
     
-    @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
     public Categoria categoria;
 
     /*
@@ -109,6 +110,11 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+    
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
 
 
     

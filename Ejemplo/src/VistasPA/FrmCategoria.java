@@ -214,6 +214,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.ID = ID;
     }
 
+    
     public String getNombrePrimero() {
         return nombrePrimero;
     }
@@ -355,18 +356,8 @@ public class FrmCategoria extends javax.swing.JFrame {
     
     public void modificar(String modificado,Categoria categoria){
         
-        txtDescripcion.setText(categoria.getDescripcion());
-        txtNombre.setText(categoria.getNombre());
-        btnAceptar.setText("Modificar categoria");
-        this.modificado=modificado;
-           
-        
-        this.nombre=categoria.getNombre();
-        this.descripcion=categoria.getDescripcion();
-        this.ID=categoria.getId();
-        
-        nombrePrimero=nombre;
-        this.getControlVista().setCategoriaElegida(categoria);
+        this.getControlVista().setearCampos(modificado,categoria);
+
 
     }
     public static void main(String args[]) {

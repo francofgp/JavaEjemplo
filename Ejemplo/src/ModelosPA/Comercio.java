@@ -212,4 +212,9 @@ public class Comercio {
     }
     
     */
+    
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
 }

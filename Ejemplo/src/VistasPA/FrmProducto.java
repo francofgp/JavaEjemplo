@@ -45,7 +45,6 @@ FrmProducto desktop=this;
         btnAceptar1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        btnAceptar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -86,19 +85,6 @@ FrmProducto desktop=this;
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAceptar.setBackground(new java.awt.Color(153, 204, 0));
-        btnAceptar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setText("Agregar imagen");
-        btnAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnAceptar.setContentAreaFilled(false);
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 190, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,7 +227,7 @@ FrmProducto desktop=this;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    Long idCategoriaSeleccionado;
+    
     int estadoCategoria = 0;
     
     
@@ -283,13 +269,7 @@ FrmProducto desktop=this;
         this.LblImagen = LblImagen;
     }
 
-    public JButton getBtnAceptar() {
-        return btnAceptar;
-    }
 
-    public void setBtnAceptar(JButton btnAceptar) {
-        this.btnAceptar = btnAceptar;
-    }
 
     public JButton getBtnAceptar1() {
         return btnAceptar1;
@@ -459,19 +439,6 @@ FrmProducto desktop=this;
     }
     
     
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        txtRuta.setText(filename);
-        Image getAbsolutePath = null;
-        ImageIcon icon = new ImageIcon(filename);
-        Image image = icon.getImage().getScaledInstance(LblImagen.getWidth(),LblImagen.getHeight(),Image.SCALE_DEFAULT);
-        LblImagen.setIcon(icon);
-
-    }//GEN-LAST:event_btnAceptarActionPerformed
-
     
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
@@ -494,15 +461,16 @@ FrmProducto desktop=this;
 // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    public Object buscarCategoriaPorId(Long id) {
+    /*public Object buscarCategoriaPorId(Long id) {
         return controlVista.buscarCategoriaPorId(idCategoriaSeleccionado);
     }
+    */
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        this.getControlVista().conseguirIDCategoriaSeleccionado();
+        this.getControlVista().conseguirCategoriaSeleccionado();
 
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
@@ -550,7 +518,6 @@ FrmProducto desktop=this;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblImagen;
-    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton jButton3;
@@ -581,7 +548,7 @@ FrmProducto desktop=this;
     public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
         this.jComboBoxCategoria = jComboBoxCategoria;
     }
-
+/*
     public Long getIdCategoriaSeleccionado() {
         return idCategoriaSeleccionado;
     }
@@ -589,7 +556,7 @@ FrmProducto desktop=this;
     public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
         this.idCategoriaSeleccionado = idCategoriaSeleccionado;
     }
-
+*/
     public int getEstadoCategoria() {
         return estadoCategoria;
     }
@@ -600,7 +567,7 @@ FrmProducto desktop=this;
     
 
 
-    private void llenaJComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
+    private void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
 

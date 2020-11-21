@@ -142,13 +142,13 @@ public class ControladorVentanaAdminPrincipal {
         this.setCategoria((Categoria)model.getValueAt(selectedRowIndex, 0));
     }
 
-    public void ClearTableRubro() {
+    public void limpiarTablaRubro() {
         while (this.getForm().getjTableRubro().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTableRubro().getModel()).removeRow(0);
         }
     }
 
-    public void ClearTableCategoria() {
+    public void limpiarTablaCategoria() {
         while (this.getForm().getjTableCategoria().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTableCategoria().getModel()).removeRow(0);
         }

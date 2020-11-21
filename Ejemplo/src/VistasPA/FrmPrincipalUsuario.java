@@ -30,7 +30,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
-        this.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
         
     }
@@ -591,16 +591,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     Long idDeRubroSeleccionado;
     Long idCategoriaSeleccionado;
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-             this.getControlVista().conseguirIDCategoriaSeleccionado();
+             this.getControlVista().conseguirCategoriaSeleccionado();
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
-        this.getControlVista().conseguirIDRubroSeleccionado();
+        this.getControlVista().conseguirRubroSeleccionado();
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxRubroActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        this.ClearTableComercio();
+        this.limpiarTablaComercio();
         this.LoadComercio();
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -623,8 +623,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
     
-    void ClearTableComercio() {
-        this.getControlVista().ClearTableComercio();
+    void limpiarTablaComercio() {
+        this.getControlVista().limpiarTablaComercio();
     }
         
     void LoadComercio(){
@@ -734,8 +734,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.getControlVista().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
 
-    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
-        this.getControlVista().llenaJComboBoxUsuario(jComboBoxRubro);
+    public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
+        this.getControlVista().llenaJComboBoxRubro(jComboBoxRubro);
     }
 
     public FrmPrincipalUsuario getDesktop() {

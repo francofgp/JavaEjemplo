@@ -7,6 +7,7 @@ import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Producto;
 import VistasPA.FrmProducto;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -51,12 +52,21 @@ public class registrarProducto {
         return model;
     }
 
-    public void conseguirIDCategoriaSeleccionado() {
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    
+
+    public void conseguirCategoriaSeleccionado() {
         if (this.getForm().getEstadoCategoria() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-
-            this.getForm().setIdCategoriaSeleccionado(this.getOper().buscarCategoria(s));
-
+            //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
+            this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }
@@ -68,7 +78,7 @@ public class registrarProducto {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtNombre().getText());
         model.setPrecio(Float.parseFloat(this.getForm().getTxtPrecio().getText()));
-        model.setCategoria((Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()));
+        model.setCategoria((Categoria) this.getCategoria());
         model.comercio = comercio;
         this.model = model;
     }
@@ -82,8 +92,19 @@ public class registrarProducto {
         }
     }
 
-    public void llenaJComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
-        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
+    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
+        List<Categoria> resulset = this.getOper().CategoriaShow();
+
+        jComboBoxCategoria.removeAllItems();
+
+        for (Categoria categoria : resulset) {
+            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+            if ("Activo".equals(categoria.getEstado())) {
+                jComboBoxCategoria.addItem(categoria);
+
+            }
+
+        }
     }
 
     public Object buscarCategoriaPorId(Long id) {
