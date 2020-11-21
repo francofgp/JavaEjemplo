@@ -82,7 +82,7 @@ public class ABMCategoria {
                 ////////no hace nada//////////                
                 
             } else {
-                if (this.corroborar(nombre) == false) {
+                if (this.corroborar(nombre) == false || this.getCategoriaElegida().getNombre()==nombre) {
 
                     ////////////////este ////////////////////
                     
@@ -137,11 +137,11 @@ public class ABMCategoria {
 
     public void guardar() {
         this.setModel();
-        oper.guardarObjeto(this.getModel());
+        this.getOper().guardarObjeto(this.getModel());
     }
 
     public void modificar(String nombre, String descripcion, Long ID) {
-        oper.modificarCategoria(nombre, descripcion, ID);
+        this.getOper().modificarCategoria(nombre, descripcion, ID);
     }
 
     public boolean corroborar(String nombre) {

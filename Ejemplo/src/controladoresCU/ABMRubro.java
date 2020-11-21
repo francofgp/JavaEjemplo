@@ -123,7 +123,7 @@ public class ABMRubro {
                 ///////////no hace nada///////////////
                 
             } else {
-                if (corroborar(nombre) == false) {
+                if (corroborar(nombre) == false || this.getRubroElegido().getNombre()==nombre) {
                 
                     setearValoresEnTxtForm();
                     modificar();
