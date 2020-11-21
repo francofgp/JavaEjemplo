@@ -4,19 +4,14 @@ import Hibernate.GestorHibernate;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import VistasPA.FrmVentanaAdmin;
-import controladoresCU.ABMCategoria;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import controladoresCU.ABMCategoria;
-import controladoresCU.ABMRubro;
 
 public class ControladorVentanaAdminPrincipal {
 
-    private ABMCategoria operCategoria;
-    private ABMRubro operRubro;
     private GestorHibernate oper;
     private FrmVentanaAdmin form;
     private Rubro rubro;
@@ -61,22 +56,6 @@ public class ControladorVentanaAdminPrincipal {
 
     public void setForm(FrmVentanaAdmin form) {
         this.form = form;
-    }
-
-    public ABMCategoria getOperCategoria() {
-        return operCategoria;
-    }
-
-    public void setOperCategoria(ABMCategoria operCategoria) {
-        this.operCategoria = operCategoria;
-    }
-
-    public ABMRubro getOperRubro() {
-        return operRubro;
-    }
-
-    public void setOperRubro(ABMRubro operRubro) {
-        this.operRubro = operRubro;
     }
 
     public void cargarRubro() {
