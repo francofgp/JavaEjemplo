@@ -21,6 +21,7 @@ public class ControladorVentanaAdminPrincipal {
     private FrmVentanaAdmin form;
     private Rubro rubro;
     private Categoria categoria;
+    
 
     public Rubro getRubro() {
         return rubro;
@@ -78,7 +79,7 @@ public class ControladorVentanaAdminPrincipal {
         this.operRubro = operRubro;
     }
 
-    public void LoadRubro() {
+    public void cargarRubro() {
         List<Rubro> rubro = this.getOper().RubroShow();
         if (rubro.size() > 0) {
             Iterator consulta = rubro.iterator();
@@ -86,11 +87,11 @@ public class ControladorVentanaAdminPrincipal {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
                 Vector datos = new Vector();
                 Rubro fila = (Rubro) consulta.next();
-                datos.add(fila.getNombre());
+                datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                datos.add(fila);
+                //datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
@@ -98,7 +99,7 @@ public class ControladorVentanaAdminPrincipal {
         }
     }
 
-    public void LoadCategoria() {
+    public void cargarCategoria() {
         List<Categoria> categoria = this.getOper().CategoriaShow();
         if (categoria.size() > 0) {
             Iterator consulta = categoria.iterator();
@@ -106,7 +107,7 @@ public class ControladorVentanaAdminPrincipal {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
                 Vector datos = new Vector();
                 Categoria fila = (Categoria) consulta.next();
-                datos.add(fila.getNombre());
+                datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
@@ -118,7 +119,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     
-    public void conseguirValoresTxt() {
+    public void conseguirRubro() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
         int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
         /*
@@ -126,16 +127,19 @@ public class ControladorVentanaAdminPrincipal {
         this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
         this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
 */
-        this.setRubro((Rubro)model.getValueAt(selectedRowIndex, 4));
+        this.setRubro((Rubro)model.getValueAt(selectedRowIndex, 0));
         //System.out.println(rubro.getDescripcion());
     }
 
-    public void conseguirValoresTxtCategoria() {
+    public void conseguirCategoria() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
         int selectedRowIndex = this.getForm().getjTableCategoria().getSelectedRow();
+        /*
         this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
         this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
         this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
+        */
+        this.setCategoria((Categoria)model.getValueAt(selectedRowIndex, 0));
     }
 
     public void ClearTableRubro() {

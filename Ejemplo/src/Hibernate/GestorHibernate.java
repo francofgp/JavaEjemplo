@@ -411,11 +411,13 @@ public class GestorHibernate extends HibernateUtil {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
 
+            /*
             session.doWork(new Work() {
                 public void execute(Connection connection) throws SQLException {
                     //use the connection here...
                 }
             });
+            */
             SessionImpl sessionImpl = (SessionImpl) session;
             Connection connection = sessionImpl.connection();
             //File file = new File("");
@@ -663,13 +665,10 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
     
-    public void darDeBajaCategoria(Long ID) {
+    public void darDeBajaCategoria(Categoria categoria) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try {
-            Categoria categoria = (Categoria) s.createCriteria(Categoria.class)
-                    .add(Restrictions.eq("id", ID)).uniqueResult();
-
             categoria.setEstado("Dado de Baja");
             s.update(categoria);
             tx.commit();

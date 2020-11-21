@@ -16,6 +16,7 @@ public class ABMCategoria {
     private GestorHibernate oper;
     private FrmCategoria form;
     Categoria model;
+    Categoria categoriaElegida;
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -39,13 +40,23 @@ public class ABMCategoria {
         this.form = form;
     }
 
-    public void darDeBajaCategoria(Long ID) {
-        this.getOper().darDeBajaCategoria(ID);
+    public void darDeBajaCategoria() {
+        this.getOper().darDeBajaCategoria(this.getCategoriaElegida());
     }
+
+    public Categoria getCategoriaElegida() {
+        return categoriaElegida;
+    }
+
+    public void setCategoriaElegida(Categoria categoriaElegida) {
+        this.categoriaElegida = categoriaElegida;
+    }
+    
+    
 
     public void crearModificar() {
 
-        oper = getOper();
+        //oper = getOper();
 
         String nombre = form.getTxtNombre().getText();
 
@@ -74,6 +85,9 @@ public class ABMCategoria {
                 if (this.corroborar(nombre) == false) {
 
                     ////////////////este ////////////////////
+                    
+                    setearValoresEnTxtForm();
+                    modificar();
                     form.setNombre(form.getTxtNombre().getText());
                     form.setDescripcion(form.getTxtDescripcion().getText());
                     this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
@@ -108,8 +122,8 @@ public class ABMCategoria {
     }
 
     //////////////////////////////
-    public void eliminar(Long ID) {
-        this.getOper().eliminarCategoria(ID);
+    public void eliminar() {
+        this.getOper().eliminarObjeto(this.getCategoriaElegida());
     }
 
     public void setModel() {
@@ -133,6 +147,38 @@ public class ABMCategoria {
     public boolean corroborar(String nombre) {
         return this.getOper().corroborarCategoria(nombre);
 
+    }
+
+    private void setearValoresEnTxtForm() {
+        form.setNombre(form.getTxtNombre().getText());
+        form.setDescripcion(form.getTxtDescripcion().getText());
+    }
+    
+    public void modificar() {
+        //this.getOper().modificarUsuario(nombre, descripcion, ID);
+        this.getCategoriaElegida().setDescripcion(form.getDescripcion());
+        this.getCategoriaElegida().setNombre(form.getNombre());
+        
+        
+        this.getOper().actualizarObjeto(this.getCategoriaElegida());
+    }
+
+    public void preguntarEliminar() {
+        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (preg == JOptionPane.YES_OPTION) {     
+            eliminar();
+        }
+    }
+
+    public void comprobarVacioLuegoCrearModificar() {
+        String nombs = this.getForm().getTxtNombre().getText();
+        String trim = nombs.trim();
+        if(trim.length()==0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Categoria");
+        }else{
+            crearModificar();
+        }
     }
 
 }

@@ -150,4 +150,22 @@ public class ABMRubro {
                     form.setNombre(form.getTxtNombre().getText());
                     form.setDescripcion(form.getTxtDescripcion().getText());
     }
+
+    public void preguntarEliminar() {
+        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (preg == JOptionPane.YES_OPTION) {     
+            eliminar();
+        }
+    }
+
+    public void comprobarVacioLuegoCrearModificar() {
+        String nombs = this.getForm().getTxtNombre().getText();
+        String trim = nombs.trim();
+        if(trim.length()==0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
+        }else{
+            crearModificar();
+        }
+    }
 }

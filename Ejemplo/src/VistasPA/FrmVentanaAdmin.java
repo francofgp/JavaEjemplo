@@ -1,15 +1,11 @@
-
 package VistasPA;
-
-import Hibernate.GestorHibernate;
-
 
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import controladoresCU.ABMCategoria;
 import controladoresCU.ABMRubro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,17 +15,17 @@ import javax.swing.JTable;
  * @author Chelo
  */
 public class FrmVentanaAdmin extends javax.swing.JFrame {
+
     FrmRubro frmRubro;
     FrmCategoria frmCategoria;
-    FrmVentanaAdmin desktop =this;
+    FrmVentanaAdmin desktop = this;
     ABMRubro rubro;
     ABMCategoria categoria;
     String nombre;
     String descripcion;
     Long ID;
-    
-    ControladorVentanaAdminPrincipal controlVista;
 
+    ControladorVentanaAdminPrincipal controlVista;
 
     /**
      * Creates new form FrmComercio
@@ -38,8 +34,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
-        LoadRubro();
-        LoadCategoria();
+        cargarRubro();
+        cargarCategoria();
 
     }
 
@@ -141,11 +137,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "ID", "Estado", "null"
+                "Nombre", "Descripcion", "ID", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -163,8 +159,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableRubro.getColumnModel().getColumn(1).setResizable(false);
             jTableRubro.getColumnModel().getColumn(2).setResizable(false);
             jTableRubro.getColumnModel().getColumn(3).setResizable(false);
-            jTableRubro.getColumnModel().getColumn(4).setResizable(false);
-            jTableRubro.getColumnModel().getColumn(4).setHeaderValue("null");
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 230));
@@ -303,8 +297,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-
     public FrmRubro getFrmRubro() {
         if (frmRubro == null) {
             synchronized (FrmRubro.class) {
@@ -350,7 +342,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 categoria = new ABMCategoria();
             }
         }
-        return categoria;    
+        return categoria;
     }
 
     public void setCategoria(ABMCategoria categoria) {
@@ -373,7 +365,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.descripcion = descripcion;
     }
 
-
     public Long getID() {
         return ID;
     }
@@ -381,8 +372,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     public void setID(Long ID) {
         this.ID = ID;
     }
-
-
 
     public ControladorVentanaAdminPrincipal getControlVista() {
         if (controlVista == null) {
@@ -558,46 +547,45 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.seleccionTxt = seleccionTxt;
     }
 
-    
-    void LoadRubro(){
-        this.getControlVista().LoadRubro();
-        
+    void cargarRubro() {
+        this.getControlVista().cargarRubro();
+
     }
-    
-    void LoadCategoria(){
-        this.getControlVista().LoadCategoria();
-           
+
+    void cargarCategoria() {
+        this.getControlVista().cargarCategoria();
+
     }
-    
-    void ClearTableRubro(){
+
+    void ClearTableRubro() {
         this.getControlVista().ClearTableRubro();
 
     }
-        
-    void ClearTableCategoria(){
+
+    void ClearTableCategoria() {
         this.getControlVista().ClearTableCategoria();
         /*
         while(jTableCategoria.getRowCount()!=0){
              ((DefaultTableModel)jTableCategoria.getModel()).removeRow(0);
         }
-        */
+         */
     }
-    
-    public void conseguirValoresTxt(){
-        
-        this.getControlVista().conseguirValoresTxt();
+
+    public void conseguirRubro() {
+
+        this.getControlVista().conseguirRubro();
         /*
         DefaultTableModel model = (DefaultTableModel)jTableRubro.getModel();
         int selectedRowIndex = jTableRubro.getSelectedRow();
         ID = Long.parseLong(model.getValueAt(selectedRowIndex,2).toString());
         nombre = model.getValueAt(selectedRowIndex,0).toString();
         descripcion = model.getValueAt(selectedRowIndex,1).toString();
-        */
+         */
 
     }
 
-    public void conseguirValoresTxtCategoria() {
-        this.getControlVista().conseguirValoresTxtCategoria();
+    public void conseguirCategoria() {
+        this.getControlVista().conseguirCategoria();
 
         /*DefaultTableModel model = (DefaultTableModel)jTableCategoria.getModel();
         int selectedRowIndex = jTableCategoria.getSelectedRow();
@@ -607,8 +595,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
          */
     }
 
-    
-    
+
     private void btnNuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCategoriaActionPerformed
         new FrmCategoria().setVisible(true);
         this.setVisible(false);
@@ -617,53 +604,47 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         new FrmRubro().setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
-        conseguirValoresTxtCategoria();
-                       
-            this.getCategoria().eliminar(ID);
-            
-            ClearTableCategoria();
-            LoadCategoria();
+        conseguirCategoria();
+        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
+        this.getCategoria().preguntarEliminar();
+        ClearTableCategoria();
+        cargarCategoria();
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
     private void btnAceptar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar4ActionPerformed
         //Primero Obtengo todos los valores de la tabla
-        conseguirValoresTxt();
+        conseguirRubro();
         this.getRubro().setRubroElegido(this.getControlVista().getRubro());
-        this.getFrmRubro().modificar("1",this.getRubro().getRubroElegido());
+        this.getFrmRubro().modificar("1", this.getRubro().getRubroElegido());
         this.getFrmRubro().setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
 
     private void btnAceptar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar5ActionPerformed
-        //CONSIGO EL ID
-        int preg = JOptionPane.showConfirmDialog(null,"Seguro que desea elimar este rubro?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-        
-        if(preg==JOptionPane.YES_OPTION){
-            conseguirValoresTxt();
-            this.getRubro().setRubroElegido(this.getControlVista().getRubro());
-            this.getRubro().eliminar();
-            
-            ClearTableRubro();
-            LoadRubro();
 
-        }
-        
+        conseguirRubro();
+        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
+        this.getRubro().preguntarEliminar();
+        ClearTableRubro();
+        cargarRubro();
+
+
     }//GEN-LAST:event_btnAceptar5ActionPerformed
 
     private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked
 
-        
+
     }//GEN-LAST:event_jTableRubroMouseClicked
 
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed
-        //Primero Obtengo todos los valores de la tabla
-        conseguirValoresTxtCategoria();
-        this.getFrmCategoria().modificar("1",nombre,descripcion,ID );
+        conseguirCategoria();
+        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
+        this.getFrmCategoria().modificar("1", this.getCategoria().getCategoriaElegida());
         this.getFrmCategoria().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
@@ -673,21 +654,19 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        conseguirValoresTxt();
-
+        conseguirRubro();
         this.getRubro().setRubroElegido(this.getControlVista().getRubro());
         this.getRubro().darDeBaja();
-
         ClearTableRubro();
-        LoadRubro();
-        // TODO add your handling code here:
+        cargarRubro();
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
-        conseguirValoresTxtCategoria();
-        this.getCategoria().darDeBajaCategoria(ID);
+        conseguirCategoria();
+        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
+        this.getCategoria().darDeBajaCategoria();
         ClearTableCategoria();
-        LoadCategoria();
+        cargarCategoria();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed
@@ -754,6 +733,5 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTableRubro;
     private javax.swing.JLabel seleccionTxt;
     // End of variables declaration//GEN-END:variables
-
 
 }

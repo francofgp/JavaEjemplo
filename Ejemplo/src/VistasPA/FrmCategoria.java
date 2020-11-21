@@ -336,7 +336,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     
     
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-    this.getControlVista().crearModificar();
+    this.getControlVista().comprobarVacioLuegoCrearModificar();
 
         
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -353,18 +353,21 @@ public class FrmCategoria extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    public void modificar(String modificado, String nombre, String descripcion, long ID){
+    public void modificar(String modificado,Categoria categoria){
         
-        txtDescripcion.setText(descripcion);
-        txtNombre.setText(nombre);
+        txtDescripcion.setText(categoria.getDescripcion());
+        txtNombre.setText(categoria.getNombre());
         btnAceptar.setText("Modificar categoria");
         this.modificado=modificado;
+           
         
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.ID=ID;
+        this.nombre=categoria.getNombre();
+        this.descripcion=categoria.getDescripcion();
+        this.ID=categoria.getId();
         
         nombrePrimero=nombre;
+        this.getControlVista().setCategoriaElegida(categoria);
+
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -413,13 +416,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
     
-    private void ClearTableCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private void LoadCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
 
