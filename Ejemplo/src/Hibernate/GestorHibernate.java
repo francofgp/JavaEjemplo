@@ -313,7 +313,8 @@ public class GestorHibernate extends HibernateUtil {
     }
 //implementar al menos 3 try y catch
 
-    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
+    /*
+    public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
 
         // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
         Session sesion = null;
@@ -342,7 +343,9 @@ public class GestorHibernate extends HibernateUtil {
             //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
+    */
+/*
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
 
         // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
@@ -372,7 +375,7 @@ public class GestorHibernate extends HibernateUtil {
             //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+*/
     public long buscarObjeto(String nombre) {
 
         Session sesion = HibernateUtil.getSession();

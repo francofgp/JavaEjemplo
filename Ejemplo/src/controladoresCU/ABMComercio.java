@@ -5,6 +5,7 @@ import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import VistasPA.FrmComercio;
+import java.util.List;
 import javax.swing.JComboBox;
 
 public class ABMComercio {
@@ -13,7 +14,7 @@ public class ABMComercio {
     GestorHibernate oper;
     Comercio model;
     Rubro rubro;
-    Categoria caterogia;
+    Categoria categoria;
 
     public Rubro getRubro() {
         return rubro;
@@ -23,12 +24,12 @@ public class ABMComercio {
         this.rubro = rubro;
     }
 
-    public Categoria getCaterogia() {
-        return caterogia;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCaterogia(Categoria caterogia) {
-        this.caterogia = caterogia;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     
     
@@ -77,18 +78,44 @@ public class ABMComercio {
         model.setDireccionNegocio(this.getForm().getTxtDireccionLocal().getText());
         model.setNombreLocal(this.getForm().getTxtNombreLocal().getText());
         model.setRubro((Rubro) rubro);
-        model.setCategoria((Categoria) this.getForm().buscarCategoriaPorId(this.getForm().getIdCategoriaSeleccionado()));
+        model.setCategoria((Categoria) categoria);
 
         this.model = model;
     }
 
-    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
-        getOper().llenaJComboBoxUsuario(jComboBoxRubro);
+    public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
+        //getOper().llenaJComboBoxRubro(jComboBoxRubro);
+        
+        List<Rubro> resulset = getOper().RubroShow();
+
+        jComboBoxRubro.removeAllItems();
+
+        for (Rubro rubro : resulset) {
+            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+            if ("Activo".equals(rubro.getEstado())) {
+                jComboBoxRubro.addItem(rubro);
+
+            }
+
+        }
     }
 
     //////////////////////////    
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-        this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
+        //this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
+        List<Categoria> resulset = this.getOper().CategoriaShow();
+
+        jComboBoxCategoria.removeAllItems();
+
+        for (Categoria categoria : resulset) {
+            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+            if ("Activo".equals(categoria.getEstado())) {
+                jComboBoxCategoria.addItem(categoria);
+
+            }
+
+        }
+
     }
 
     public Object buscarCategoriaPorId(Long idCategoriaSeleccionado) {
@@ -104,34 +131,32 @@ public class ABMComercio {
         return oper.buscarCategoria(s);
     }
 
-    public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
+    /*public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
         return oper.buscarObjetoPorId(idDeRubroSeleccionado);
     }
-
+*/
     public void guardar() {
         this.setModel();
         oper.guardarObjeto(this.getModel());
     }
 
     ////////////////////////////////////////////////////
-    public void conseguirIDRubroSeleccionado() {
+    public void conseguirRubroSeleccionado() {
 
         if (this.getForm().getEstado() >= 2) {
-            
             String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
-
-            this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));        
-        this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-        
+            //this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
+            this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
         } else {
             this.getForm().setEstado(this.getForm().getEstado() + 1);
         }
     }
 
-    public void conseguirIDCategoriaSeleccionado() {
+    public void conseguirCategoriaSeleccionado() {
         if (this.getForm().getEstadoCategoria() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-            this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
+            //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
+            this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }

@@ -30,16 +30,17 @@ public class FrmComercio extends javax.swing.JFrame {
     int estadoCategoria=0;
 
     
+    /*
     Long idDeRubroSeleccionado;
     Long idCategoriaSeleccionado;
-    
+    */
     
     public FrmComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
         //oper = new ABMComercio();
-        this.llenaJComboBoxUsuario(jComboBoxRubro);
+        this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
         
         
@@ -465,7 +466,7 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setEstadoCategoria(int estadoCategoria) {
         this.estadoCategoria = estadoCategoria;
     }
-
+/*
     public Long getIdDeRubroSeleccionado() {
         return idDeRubroSeleccionado;
     }
@@ -481,7 +482,7 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
         this.idCategoriaSeleccionado = idCategoriaSeleccionado;
     }
-
+*/
     public JButton getBtnAceptar() {
         return btnAceptar;
     }
@@ -817,6 +818,7 @@ public class FrmComercio extends javax.swing.JFrame {
   
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    /*
     public Object buscarObjetoPorId(Long id) {
         return oper.buscarObjetoPorId(idDeRubroSeleccionado);
     }
@@ -824,7 +826,7 @@ public class FrmComercio extends javax.swing.JFrame {
     public Object buscarCategoriaPorId(Long id) {
         return oper.buscarCategoriaPorId(idCategoriaSeleccionado);
     }
-    
+    */
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
@@ -847,7 +849,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCuitActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        this.getControlVista().conseguirIDCategoriaSeleccionado();
+        this.getControlVista().conseguirCategoriaSeleccionado();
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -882,9 +884,9 @@ public class FrmComercio extends javax.swing.JFrame {
         //llenaJComboBoxUsuario(jComboBoxRubro);
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
-    
+
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
-        this.getControlVista().conseguirIDRubroSeleccionado();
+        this.getControlVista().conseguirRubroSeleccionado();
 
             }//GEN-LAST:event_jComboBoxRubroActionPerformed
     
@@ -892,8 +894,8 @@ public class FrmComercio extends javax.swing.JFrame {
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         this.getControlVista().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
-    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
-        this.getControlVista().llenaJComboBoxUsuario(jComboBoxRubro);
+    public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
+        this.getControlVista().llenaJComboBoxRubro(jComboBoxRubro);
     }
     
     

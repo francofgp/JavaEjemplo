@@ -80,7 +80,7 @@ public class Comercio {
     
     
     
-    @ManyToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    @ManyToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
     private Categoria categoria;
     
     
