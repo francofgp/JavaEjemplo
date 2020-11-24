@@ -16,7 +16,7 @@ public class ABMCategoria {
     private GestorHibernate oper;
     private FrmCategoria form;
     Categoria model;
-    Categoria categoriaElegida;
+    //Categoria categoriaElegida;
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -41,15 +41,15 @@ public class ABMCategoria {
     }
 
     public void darDeBajaCategoria() {
-        this.getOper().darDeBajaCategoria(this.getCategoriaElegida());
+        this.getOper().darDeBajaCategoria(this.getModel());
     }
 
-    public Categoria getCategoriaElegida() {
-        return categoriaElegida;
-    }
+//    public Categoria getCategoriaElegida() {
+//        return model;
+//    }
 
-    public void setCategoriaElegida(Categoria categoriaElegida) {
-        this.categoriaElegida = categoriaElegida;
+    public void setCategoriaElegida(Categoria categoria) {
+        this.model = categoria;
     }
     
     
@@ -82,7 +82,7 @@ public class ABMCategoria {
                 ////////no hace nada//////////                
                 
             } else {
-                if (this.corroborar(nombre) == false || this.getCategoriaElegida().getNombre()==nombre) {
+                if (this.corroborar(nombre) == false || this.getModel().getNombre()==nombre) {
 
                     ////////////////este ////////////////////
                     
@@ -123,7 +123,7 @@ public class ABMCategoria {
 
     //////////////////////////////
     public void eliminar() {
-        this.getOper().eliminarObjeto(this.getCategoriaElegida());
+        this.getOper().eliminarObjeto(this.getModel());
     }
 
     public void setModel() {
@@ -156,11 +156,11 @@ public class ABMCategoria {
     
     public void modificar() {
         //this.getOper().modificarUsuario(nombre, descripcion, ID);
-        this.getCategoriaElegida().setDescripcion(form.getDescripcion());
-        this.getCategoriaElegida().setNombre(form.getNombre());
+        this.getModel().setDescripcion(form.getDescripcion());
+        this.getModel().setNombre(form.getNombre());
         
         
-        this.getOper().actualizarObjeto(this.getCategoriaElegida());
+        this.getOper().actualizarObjeto(this.getModel());
     }
 
     public void preguntarEliminar() {

@@ -19,7 +19,8 @@ public class ABMRubro {
     Rubro model;
     FrmRubro form;
     private String titulo;
-    Rubro rubroElegido;
+    //Rubro rubroElegido;
+
     public String getTitulo() {
         return titulo;
     }
@@ -42,26 +43,20 @@ public class ABMRubro {
     }
 
     public Rubro getRubroElegido() {
-        return rubroElegido;
+        return model;
     }
 
-    public void setRubroElegido(Rubro rubroElegido) {
-        this.rubroElegido = rubroElegido;
+    public void setRubroElegido(Rubro rubro) {
+        this.model = rubro;
     }
-    
-    
 
-//    public void guardar(String nombre, String descripcion) {
-//        Rubro rubro = new Rubro(nombre, descripcion);
-//        this.getOper().guardarUsuario(rubro);
-//    }
     public void modificar() {
-        //this.getOper().modificarUsuario(nombre, descripcion, ID);
-        this.getRubroElegido().setDescripcion(form.getDescripcion());
-        this.getRubroElegido().setNombre(form.getNombre());
-        
-        
-        this.getOper().actualizarObjeto(this.getRubroElegido());
+        form.setNombre(form.getTxtNombre().getText());
+        form.setDescripcion(form.getTxtDescripcion().getText());
+        this.getModel().setDescripcion(form.getDescripcion());
+        this.getModel().setNombre(form.getNombre());
+
+        this.getOper().actualizarObjeto(this.getModel());
     }
 
     public FrmRubro getForm() {
@@ -72,7 +67,6 @@ public class ABMRubro {
         this.form = form;
     }
 
-    //implementar al menos 3 try y catch
     public void setModel() {
 
         model = new Rubro();
@@ -96,11 +90,11 @@ public class ABMRubro {
     }
 
     public void eliminar() {
-        this.getOper().eliminarObjeto(this.getRubroElegido());
+        this.getOper().eliminarObjeto(this.getModel());
     }
 
     public void darDeBaja() {
-        this.getOper().darDeBajaRubro(this.getRubroElegido());
+        this.getOper().darDeBajaRubro(this.getModel());
     }
 
     public void crearModificar() {
@@ -109,23 +103,9 @@ public class ABMRubro {
 
         if (form.getModificado() == "1") {
             if (form.getNombrePrimero().equals(nombre)) {
-                
-                /////No hace nada///////
-                
-                form.setNombre(form.getTxtNombre().getText());
-                form.setDescripcion(form.getTxtDescripcion().getText());
-                modificar();
-                
-                JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
-                form.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-                
-                ///////////no hace nada///////////////
-                
             } else {
-                if (corroborar(nombre) == false || this.getRubroElegido().getNombre()==nombre) {
-                
-                    setearValoresEnTxtForm();
+                if (corroborar(nombre) == false || this.getModel().getNombre() == nombre) {
+
                     modificar();
 
                     JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
@@ -136,9 +116,9 @@ public class ABMRubro {
         } else {
             System.out.println(nombre);
             if (corroborar(nombre) == false) {
-                
+
                 guardar();
-                
+
                 JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
@@ -146,15 +126,10 @@ public class ABMRubro {
         }
     }
 
-    private void setearValoresEnTxtForm() {
-                    form.setNombre(form.getTxtNombre().getText());
-                    form.setDescripcion(form.getTxtDescripcion().getText());
-    }
-
     public void preguntarEliminar() {
         int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        
-        if (preg == JOptionPane.YES_OPTION) {     
+
+        if (preg == JOptionPane.YES_OPTION) {
             eliminar();
         }
     }
@@ -162,25 +137,25 @@ public class ABMRubro {
     public void comprobarVacioLuegoCrearModificar() {
         String nombs = this.getForm().getTxtNombre().getText();
         String trim = nombs.trim();
-        if(trim.length()==0){
+        if (trim.length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
-        }else{
+        } else {
             crearModificar();
         }
     }
-    
-        public void setearCampos(String modificado, Rubro rubro) {
+
+    public void setearCampos(String modificado, Rubro rubro) {
         this.getForm().getTxtDescripcion().setText(rubro.getDescripcion());
         this.getForm().getTxtNombre().setText(rubro.getNombre());
         this.getForm().getBtnAceptar().setText("Modificar rubro");
         this.getForm().setModificado(modificado);
-           
+
         this.getForm().setNombre(rubro.getNombre());
         this.getForm().setDescripcion(rubro.getDescripcion());
         this.getForm().setID(rubro.getId());
-        
+
         this.getForm().setNombrePrimero(this.getForm().getNombre());
         setRubroElegido(rubro);
-        }
+    }
 
 }

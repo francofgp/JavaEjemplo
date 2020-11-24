@@ -622,6 +622,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.getFrmRubro().modificar("1", this.getRubro().getRubroElegido());
         this.getFrmRubro().setVisible(true);
         this.setVisible(false);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
 
@@ -644,7 +645,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed
         conseguirCategoria();
         this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
-        this.getFrmCategoria().modificar("1", this.getCategoria().getCategoriaElegida());
+        this.getFrmCategoria().modificar("1", this.getCategoria().getModel());
         this.getFrmCategoria().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed

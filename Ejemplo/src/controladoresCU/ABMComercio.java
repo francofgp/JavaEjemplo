@@ -86,7 +86,7 @@ public class ABMComercio {
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
         //getOper().llenaJComboBoxRubro(jComboBoxRubro);
         
-        List<Rubro> resulset = getOper().RubroShow();
+        List<Rubro> resulset = getOper().rubroShow();
 
         jComboBoxRubro.removeAllItems();
 

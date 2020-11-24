@@ -165,7 +165,7 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
 
-    public static List<Rubro> RubroShow() {
+    public static List<Rubro> rubroShow() {
         Session sesion = HibernateUtil.getSession();
         List<Rubro> rubro = session.createCriteria(Rubro.class).list();
         return rubro;

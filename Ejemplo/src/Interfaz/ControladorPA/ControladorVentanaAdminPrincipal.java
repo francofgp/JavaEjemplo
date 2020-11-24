@@ -59,7 +59,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void cargarRubro() {
-        List<Rubro> rubro = this.getOper().RubroShow();
+        List<Rubro> rubro = this.getOper().rubroShow();
         if (rubro.size() > 0) {
             Iterator consulta = rubro.iterator();
             while (consulta.hasNext()) {
