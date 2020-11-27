@@ -643,7 +643,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
         
     void LoadComercio(){
-        this.getControlVista().LoadComercio();
+        this.getControlVista().cargarComercio();
     }
     public JComboBox<String> getjComboBoxCategoria() {
         return jComboBoxCategoria;

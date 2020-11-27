@@ -160,7 +160,7 @@ public class GestionPedido {
         }
     }
 
-    public void LoadComercio() {
+    public void cargarComercio() {
         List<Comercio> comercio = this.getOper().BuscarComercioPorCategoriaYRubro();
         if (comercio.size() > 0) {
             Iterator consulta = comercio.iterator();
@@ -182,7 +182,7 @@ public class GestionPedido {
         }
     }
 
-    public void LoadProductos() {
+    public void cargarProductos() {
 
         this.limpiarTablaProducto();
         List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
@@ -237,7 +237,7 @@ public class GestionPedido {
         //this.getForm().getTxtComercio().setText(model.getValueAt(selectedRowIndex, 0).toString());
         //this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
         comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
-        this.LoadProductos();
+        this.cargarProductos();
         
         this.calculoTotal();
     }
