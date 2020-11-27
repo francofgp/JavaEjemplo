@@ -93,7 +93,7 @@ public class registrarProducto {
     }
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-        List<Categoria> resulset = this.getOper().CategoriaShow();
+        List<Categoria> resulset = this.getOper().categoriaShow();
 
         jComboBoxCategoria.removeAllItems();
 

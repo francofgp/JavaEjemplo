@@ -79,7 +79,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void cargarCategoria() {
-        List<Categoria> categoria = this.getOper().CategoriaShow();
+        List<Categoria> categoria = this.getOper().categoriaShow();
         if (categoria.size() > 0) {
             Iterator consulta = categoria.iterator();
             while (consulta.hasNext()) {

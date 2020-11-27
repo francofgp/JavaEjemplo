@@ -117,7 +117,7 @@ public class ControladorVistaPrincipalUsuario {
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         //this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
-        List<Categoria> resulset = this.getOper().CategoriaShow();
+        List<Categoria> resulset = this.getOper().categoriaShow();
 
         jComboBoxCategoria.removeAllItems();
 

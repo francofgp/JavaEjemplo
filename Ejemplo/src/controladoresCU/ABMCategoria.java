@@ -55,66 +55,20 @@ public class ABMCategoria {
     
 
     public void crearModificar() {
-
-        //oper = getOper();
-
         String nombre = form.getTxtNombre().getText();
-
-        if (form.getModificado() == "1") {
-            if (form.getNombrePrimero().equals(nombre)) {
-
-                /////////no hace nada//////
-                
-                ////////////////este ////////////////////
-                form.setNombre(form.getTxtNombre().getText());
-                form.setDescripcion(form.getTxtDescripcion().getText());
-                this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
-                ///////////////////////////////////////////
-
-                /////////////// o este //////////////////////////////
-                //this.modificar(form.getTxtNombre().getText(),form.getTxtDescripcion().getText(),form.getID());
-                /////////////////////////////////////////////////////////////////////////////////////
-                
-                JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
-                form.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-                
-                ////////no hace nada//////////                
-                
-            } else {
-                if (this.corroborar(nombre) == false || this.getModel().getNombre()==nombre) {
-
-                    ////////////////este ////////////////////
-                    
-                    setearValoresEnTxtForm();
+        if ("1".equals(form.getModificado()) &&  (this.corroborar(nombre) == false || this.getModel().getNombre().equals(nombre))) {
                     modificar();
-                    form.setNombre(form.getTxtNombre().getText());
-                    form.setDescripcion(form.getTxtDescripcion().getText());
-                    this.modificar(form.getNombre(), form.getDescripcion(), form.getID());
-                    ///////////////////////////////////////////
-
-                    /////////////// o este //////////////////////////////
-                    //this.modificar(form.getTxtNombre().getText(),form.getTxtDescripcion().getText(),form.getID());
-                    /////////////////////////////////////////////////////////////////////////////////////
-                    
                     JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
                     form.setVisible(false);
                     new FrmVentanaAdmin().setVisible(true);
-                }
 
-            }
-        } else {
-            System.out.println(nombre);
-            if (this.corroborar(nombre) == false) {
-
+        } else if(this.corroborar(nombre) == false) {
                 this.guardar();
-
                 JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);
-
-            }
-        }
+        }else{
+        JOptionPane.showMessageDialog(null, "La categoria ya existe!");}
     }
 
     public Categoria getModel() {
@@ -155,9 +109,10 @@ public class ABMCategoria {
     }
     
     public void modificar() {
-        //this.getOper().modificarUsuario(nombre, descripcion, ID);
-        this.getModel().setDescripcion(form.getDescripcion());
-        this.getModel().setNombre(form.getNombre());
+        //form.setNombre(form.getTxtNombre().getText());
+        //form.setDescripcion(form.getTxtDescripcion().getText());
+        this.getModel().setDescripcion(form.getTxtDescripcion().getText());
+        this.getModel().setNombre(form.getTxtNombre().getText());
         
         
         this.getOper().actualizarObjeto(this.getModel());
@@ -171,14 +126,11 @@ public class ABMCategoria {
         }
     }
 
-    public void comprobarVacioLuegoCrearModificar() {
-        String nombs = this.getForm().getTxtNombre().getText();
-        String trim = nombs.trim();
-        if(trim.length()==0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Categoria");
-        }else{
+    public void CrearModificar() {
+        if (validar()) {
             crearModificar();
         }
+
     }
 
     public void setearCampos(String modificado, Categoria categoria) {
@@ -195,4 +147,13 @@ public class ABMCategoria {
         setCategoriaElegida(categoria);
         }
 
+    private boolean validar() {
+        String nombs = this.getForm().getTxtNombre().getText();
+        String trim = nombs.trim();
+        if(trim.length()==0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su categoria");
+           return false;
+        }
+        return true;
+    }
 }

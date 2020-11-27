@@ -271,7 +271,7 @@ public class FrmRubro extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        
-        this.getControlVista().comprobarVacioLuegoCrearModificar();
+        this.getControlVista().CrearModificar();
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 

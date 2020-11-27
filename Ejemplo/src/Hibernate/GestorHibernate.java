@@ -306,7 +306,7 @@ public class GestorHibernate extends HibernateUtil {
     }
      */
 
-    public List<Categoria> CategoriaShow() {
+    public List<Categoria> categoriaShow() {
         Session sesion = HibernateUtil.getSession();
         List<Categoria> categoria = session.createCriteria(Categoria.class).list();
         return categoria;
@@ -624,7 +624,7 @@ public class GestorHibernate extends HibernateUtil {
             if (rubro != null) {
                 String nom = rubro.getNombre();
                 if (nom.equals(nombre)) {
-                    JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
                     return true;
                 } else {
                     return false;
@@ -691,7 +691,7 @@ public class GestorHibernate extends HibernateUtil {
             if (categoria != null) {
                 String nom = categoria.getNombre();
                 if (nom.equals(nombre)) {
-                    JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
                     return true;
                 } else {
                     return false;

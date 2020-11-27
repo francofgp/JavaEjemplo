@@ -1,17 +1,11 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
-import Hibernate.HibernateUtil;
-
-import ModelosPA.Categoria;
 import ModelosPA.Rubro;
-import VistasPA.FrmCategoria;
 import VistasPA.FrmRubro;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
+
 
 public class ABMRubro {
 
@@ -51,10 +45,10 @@ public class ABMRubro {
     }
 
     public void modificar() {
-        form.setNombre(form.getTxtNombre().getText());
-        form.setDescripcion(form.getTxtDescripcion().getText());
-        this.getModel().setDescripcion(form.getDescripcion());
-        this.getModel().setNombre(form.getNombre());
+        //form.setNombre(form.getTxtNombre().getText());
+        //form.setDescripcion(form.getTxtDescripcion().getText());
+        this.getModel().setDescripcion(form.getTxtDescripcion().getText());
+        this.getModel().setNombre(form.getTxtNombre().getText());
 
         this.getOper().actualizarObjeto(this.getModel());
     }
@@ -73,7 +67,7 @@ public class ABMRubro {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setEstado("Activo");
-        this.model = model;
+        //this.model = model;
     }
 
     public void guardar() {
@@ -98,31 +92,19 @@ public class ABMRubro {
     }
 
     public void crearModificar() {
-
         String nombre = form.getTxtNombre().getText();
-
-        if (form.getModificado() == "1") {
-            if (form.getNombrePrimero().equals(nombre)) {
-            } else {
-                if (corroborar(nombre) == false || this.getModel().getNombre() == nombre) {
-
+        if ("1".equals(form.getModificado()) && (corroborar(nombre) == false || this.getModel().getNombre().equals(nombre))) {                       
                     modificar();
-
                     JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
                     form.setVisible(false);
-                    new FrmVentanaAdmin().setVisible(true);
-                }
-            }
-        } else {
-            System.out.println(nombre);
-            if (corroborar(nombre) == false) {
-
+                    new FrmVentanaAdmin().setVisible(true);                           
+        } else if(corroborar(nombre) == false) {
                 guardar();
-
                 JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
                 form.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-            }
+                new FrmVentanaAdmin().setVisible(true);           
+        }else{
+        JOptionPane.showMessageDialog(null, "El rubro ya existe!");
         }
     }
 
@@ -134,14 +116,11 @@ public class ABMRubro {
         }
     }
 
-    public void comprobarVacioLuegoCrearModificar() {
-        String nombs = this.getForm().getTxtNombre().getText();
-        String trim = nombs.trim();
-        if (trim.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
-        } else {
+    public void CrearModificar() {       
+        if (validar()) {
             crearModificar();
         }
+        
     }
 
     public void setearCampos(String modificado, Rubro rubro) {
@@ -156,6 +135,17 @@ public class ABMRubro {
 
         this.getForm().setNombrePrimero(this.getForm().getNombre());
         setRubroElegido(rubro);
+    }
+
+    private boolean validar() {
+        String nombs = this.getForm().getTxtNombre().getText();
+        String trim = nombs.trim();
+
+        if(trim.length()==0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
+           return false;
+        }
+        return true;
     }
 
 }
