@@ -1,4 +1,4 @@
-package Interfaz.ControladorPA;
+package controladoresCU;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Categoria;
@@ -18,7 +18,7 @@ import ModelosPA.Producto;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-public class ControladorVistaPrincipalUsuario {
+public class GestionPedido {
 
     private GestorHibernate oper;
     private FrmPrincipalUsuario form;
@@ -29,6 +29,7 @@ public class ControladorVistaPrincipalUsuario {
     private Categoria categoria;
     private float precioTotal = (float) 0.0;
     private List<Producto> producto;
+
     public GestorHibernate getOper() {
         if (oper == null) {
             synchronized (GestorHibernate.class) {
@@ -67,17 +68,14 @@ public class ControladorVistaPrincipalUsuario {
     }
 
     public void setModel() {
-        model= new Pedido();
+        model = new Pedido();
         model.setUsuario(this.getUsuario());
         model.setComercio(this.getComercio());
         model.setTotal(precioTotal);
         model.setProducto(producto);
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
-        
+
     }
-    
-    
-    
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -106,13 +104,10 @@ public class ControladorVistaPrincipalUsuario {
     public void setProducto(List<Producto> producto) {
         this.producto = producto;
     }
-    
-    
-    
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
         //getOper().llenaJComboBoxRubro(jComboBoxRubro);
-        
+
         List<Rubro> resulset = getOper().rubroShow();
 
         jComboBoxRubro.removeAllItems();
@@ -201,14 +196,14 @@ public class ControladorVistaPrincipalUsuario {
                 Producto fila = (Producto) consulta.next();
                 //if (fila.getComercio() == this.getComercio()
                 //        && fila.getCategoria() == this.getCategoria()) {
-                    datos.add(fila);
-                    datos.add(fila.getDescripcion());
-                    datos.add(fila.getPrecio());
-                    datos.add(fila.getId());
-                    System.out.println(fila.getComercio().getNombre());
-                    System.out.println(fila.getCategoria().getNombre());
+                datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getPrecio());
+                datos.add(fila.getId());
+                System.out.println(fila.getComercio().getNombre());
+                System.out.println(fila.getCategoria().getNombre());
 
-                    tabla.addRow(datos);
+                tabla.addRow(datos);
 
                 //}
             }
@@ -228,9 +223,14 @@ public class ControladorVistaPrincipalUsuario {
             ((DefaultTableModel) this.getForm().getjTableProducto().getModel()).removeRow(0);
         }
     }
+    
+    public void limpiarTablaCarro() {
+        while (this.getForm().getjTableCarro().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTableCarro().getModel()).removeRow(0);
+        }
+    }
 
     //String comercioSeleccionadoID;
-
     public void seleccionarComercio() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
@@ -238,6 +238,8 @@ public class ControladorVistaPrincipalUsuario {
         //this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
         comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
         this.LoadProductos();
+        
+        this.calculoTotal();
     }
 
     public void agregarAlCarro() {
@@ -247,28 +249,37 @@ public class ControladorVistaPrincipalUsuario {
         Object[] row = new Object[4];
         DefaultTableModel model2 = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
 
-        for (int i = 0; i < indexs.length; i++) {
-            row[0] = model1.getValueAt(indexs[i], 0);
-            row[1] = model1.getValueAt(indexs[i], 1);
-            row[2] = model1.getValueAt(indexs[i], 2);
-            row[3] = model1.getValueAt(indexs[i], 3);
-            model2.addRow(row);
+        if (model2.getRowCount() <= 4) {
+            for (int i = 0; i < indexs.length; i++) {
+                row[0] = model1.getValueAt(indexs[i], 0);
+                row[1] = model1.getValueAt(indexs[i], 1);
+                row[2] = model1.getValueAt(indexs[i], 2);
+                row[3] = model1.getValueAt(indexs[i], 3);
+                model2.addRow(row);
+            }
         }
-
+        this.calculoTotal();
     }
 
-    /*
-    public Comercio buscarComercioSeleccionado() {
-        long id = Long.parseLong(comercioSeleccionadoID);
-        //System.out.println(id);
-        //Comercio comercio= (Comercio) this.getOper().buscarComercio(id);
-        //System.out.println(comercio.getApellido());
-        return (Comercio) this.getOper().buscarComercio(id);
-    }
-*/
-    
+
     public void hacerPedido() {
-        //this.buscarComercioSeleccionado();
+        this.calculoTotal();
+        this.getOper().guardarObjeto(getModel());
+
+    }
+    public void quitarProducto() {
+
+        int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model
+            DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
+            model.removeRow(modelIndex);
+        }
+        this.calculoTotal();
+    }
+    
+    public float calculoTotal() {
+
         precioTotal = (float) 0.0;
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
         List<Producto> productos = new ArrayList<Producto>();
@@ -278,29 +289,11 @@ public class ControladorVistaPrincipalUsuario {
             //System.out.println(model.getValueAt(row, 3).toString());
             precioTotal = precioTotal + Float.parseFloat(model.getValueAt(row, 2).toString());
         }
-        
-        producto=productos;
-        /*
-        System.out.println(precioTotal);
-        System.out.println(productos);
-        // Probably add new line to 'data'
-        */
+
         this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));
-        this.setModel();
-        this.getOper().guardarObjeto(getModel());
-        
-        
-        
+
+        return precioTotal;
     }
 
-    public void quitarProducto() {
 
-        int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model
-            DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
-            model.removeRow(modelIndex);
-        }
-
-    }
 }

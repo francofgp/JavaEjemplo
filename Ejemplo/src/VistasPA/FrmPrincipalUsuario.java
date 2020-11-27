@@ -5,7 +5,7 @@
  */
 package VistasPA;
 
-import Interfaz.ControladorPA.ControladorVistaPrincipalUsuario;
+import controladoresCU.GestionPedido;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -24,7 +24,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
      * Creates new form FrmPrincipalUsuario
      */
     
-    ControladorVistaPrincipalUsuario controlVista;
+    GestionPedido controlVista;
     FrmPrincipalUsuario desktop=this;
     public FrmPrincipalUsuario() {
         initComponents();
@@ -32,6 +32,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.getControlVista().setForm(desktop);
         this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
+        this.getTxtMontoTotal().setText("0.0");
         
     }
 
@@ -219,6 +220,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTableComercio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableComercioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTableComercioMouseEntered(evt);
             }
         });
         jScrollPane1.setViewportView(jTableComercio);
@@ -608,7 +612,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     private void jTableComercioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseClicked
         this.getControlVista().seleccionarComercio();
-// TODO add your handling code here:
+        this.limpiarTablaPedidos();
+        this.getControlVista().calculoTotal();
     }//GEN-LAST:event_jTableComercioMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -624,9 +629,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
+
+    private void jTableComercioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableComercioMouseEntered
     
     void limpiarTablaComercio() {
         this.getControlVista().limpiarTablaComercio();
+    }
+    
+    void limpiarTablaPedidos() {
+        this.getControlVista().limpiarTablaCarro();
     }
         
     void LoadComercio(){
@@ -719,16 +732,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     
     
-    public ControladorVistaPrincipalUsuario getControlVista() {
+    public GestionPedido getControlVista() {
          if (controlVista == null) {
-            synchronized (ControladorVistaPrincipalUsuario.class) {
-                controlVista = new ControladorVistaPrincipalUsuario();
+            synchronized (GestionPedido.class) {
+                controlVista = new GestionPedido();
             }
         }
         return controlVista;
     }
 
-    public void setControlVista(ControladorVistaPrincipalUsuario controlVista) {
+    public void setControlVista(GestionPedido controlVista) {
         this.controlVista = controlVista;
     }
     
