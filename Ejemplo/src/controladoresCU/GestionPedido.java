@@ -264,6 +264,7 @@ public class GestionPedido {
 
     public void hacerPedido() {
         this.calculoTotal();
+        this.setModel();
         this.getOper().guardarObjeto(getModel());
 
     }
@@ -291,7 +292,8 @@ public class GestionPedido {
         }
 
         this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));
-
+        
+        producto=productos;
         return precioTotal;
     }
 
