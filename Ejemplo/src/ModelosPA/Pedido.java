@@ -1,5 +1,6 @@
 package ModelosPA;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="pedido") 
-public class Pedido {
+public class Pedido  implements Serializable{
 
     public Pedido() {
     }

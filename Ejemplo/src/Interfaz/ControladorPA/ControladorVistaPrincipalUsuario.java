@@ -27,7 +27,8 @@ public class ControladorVistaPrincipalUsuario {
     private Pedido model;
     private Rubro rubro;
     private Categoria categoria;
-    float precioTotal = (float) 0.0;
+    private float precioTotal = (float) 0.0;
+    private List<Producto> producto;
     public GestorHibernate getOper() {
         if (oper == null) {
             synchronized (GestorHibernate.class) {
@@ -70,6 +71,7 @@ public class ControladorVistaPrincipalUsuario {
         model.setUsuario(this.getUsuario());
         model.setComercio(this.getComercio());
         model.setTotal(precioTotal);
+        model.setProducto(producto);
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         
     }
@@ -96,6 +98,16 @@ public class ControladorVistaPrincipalUsuario {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public List<Producto> getProducto() {
+        return producto;
+    }
+
+    public void setProducto(List<Producto> producto) {
+        this.producto = producto;
+    }
+    
+    
     
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
@@ -178,7 +190,8 @@ public class ControladorVistaPrincipalUsuario {
     public void LoadProductos() {
 
         this.limpiarTablaProducto();
-        List<Producto> producto = this.getOper().BuscarProducto();
+        List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
+        //List<Producto> producto = this.getOper().BuscarProducto();
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
             while (consulta.hasNext()) {
@@ -186,8 +199,8 @@ public class ControladorVistaPrincipalUsuario {
 
                 Vector datos = new Vector();
                 Producto fila = (Producto) consulta.next();
-                if (fila.getComercio() == this.getComercio()
-                        && fila.getCategoria() == this.getCategoria()) {
+                //if (fila.getComercio() == this.getComercio()
+                //        && fila.getCategoria() == this.getCategoria()) {
                     datos.add(fila);
                     datos.add(fila.getDescripcion());
                     datos.add(fila.getPrecio());
@@ -197,10 +210,10 @@ public class ControladorVistaPrincipalUsuario {
 
                     tabla.addRow(datos);
 
-                }
+                //}
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de rubros");
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
         }
     }
 
@@ -253,6 +266,7 @@ public class ControladorVistaPrincipalUsuario {
         return (Comercio) this.getOper().buscarComercio(id);
     }
 */
+    
     public void hacerPedido() {
         //this.buscarComercioSeleccionado();
         precioTotal = (float) 0.0;
@@ -265,6 +279,7 @@ public class ControladorVistaPrincipalUsuario {
             precioTotal = precioTotal + Float.parseFloat(model.getValueAt(row, 2).toString());
         }
         
+        producto=productos;
         /*
         System.out.println(precioTotal);
         System.out.println(productos);
@@ -278,4 +293,14 @@ public class ControladorVistaPrincipalUsuario {
         
     }
 
+    public void quitarProducto() {
+
+        int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model
+            DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
+            model.removeRow(modelIndex);
+        }
+
+    }
 }

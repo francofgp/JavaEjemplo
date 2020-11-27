@@ -54,6 +54,11 @@ public class ABMRubro {
     }
 
     public FrmRubro getForm() {
+                if (form == null) {
+            synchronized (FrmRubro.class) {
+                form = new FrmRubro();
+            }
+        }
         return form;
     }
 

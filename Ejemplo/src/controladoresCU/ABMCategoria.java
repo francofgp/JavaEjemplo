@@ -5,6 +5,7 @@ import Hibernate.HibernateUtil;
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import VistasPA.FrmCategoria;
+import VistasPA.FrmRubro;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -33,6 +34,11 @@ public class ABMCategoria {
     }
 
     public FrmCategoria getForm() {
+        if (form == null) {
+            synchronized (FrmCategoria.class) {
+                form = new FrmCategoria();
+            }
+        }
         return form;
     }
 
@@ -61,7 +67,6 @@ public class ABMCategoria {
                     JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
                     form.setVisible(false);
                     new FrmVentanaAdmin().setVisible(true);
-
         } else if(this.corroborar(nombre) == false) {
                 this.guardar();
                 JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
@@ -102,12 +107,12 @@ public class ABMCategoria {
         return this.getOper().corroborarCategoria(nombre);
 
     }
-
+ /*
     private void setearValoresEnTxtForm() {
         form.setNombre(form.getTxtNombre().getText());
         form.setDescripcion(form.getTxtDescripcion().getText());
     }
-    
+    */
     public void modificar() {
         //form.setNombre(form.getTxtNombre().getText());
         //form.setDescripcion(form.getTxtDescripcion().getText());

@@ -16,15 +16,9 @@ import javax.swing.JTable;
  */
 public class FrmVentanaAdmin extends javax.swing.JFrame {
 
-    FrmRubro frmRubro;
-    FrmCategoria frmCategoria;
-    FrmVentanaAdmin desktop = this;
-    ABMRubro rubro;
-    ABMCategoria categoria;
-    String nombre;
-    String descripcion;
-    Long ID;
+    
 
+    FrmVentanaAdmin desktop = this;
     ControladorVentanaAdminPrincipal controlVista;
 
     /**
@@ -296,84 +290,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public FrmRubro getFrmRubro() {
-        if (frmRubro == null) {
-            synchronized (FrmRubro.class) {
-                frmRubro = new FrmRubro();
-            }
-        }
-        return frmRubro;
-    }
-
-    public void setFrmRubro(FrmRubro frmRubro) {
-        this.frmRubro = frmRubro;
-    }
-
-    public FrmCategoria getFrmCategoria() {
-        if (frmCategoria == null) {
-            synchronized (FrmCategoria.class) {
-                frmCategoria = new FrmCategoria();
-            }
-        }
-        return frmCategoria;
-    }
-
-    public void setFrmCategoria(FrmCategoria frmCategoria) {
-        this.frmCategoria = frmCategoria;
-    }
-
-    public ABMRubro getRubro() {
-        if (rubro == null) {
-            synchronized (ABMRubro.class) {
-                rubro = new ABMRubro();
-            }
-        }
-        return rubro;
-    }
-
-    public void setRubro(ABMRubro rubro) {
-        this.rubro = rubro;
-    }
-
-    public ABMCategoria getCategoria() {
-        if (categoria == null) {
-            synchronized (ABMCategoria.class) {
-                categoria = new ABMCategoria();
-            }
-        }
-        return categoria;
-    }
-
-    public void setCategoria(ABMCategoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public ControladorVentanaAdminPrincipal getControlVista() {
+ public ControladorVentanaAdminPrincipal getControlVista() {
         if (controlVista == null) {
             synchronized (ControladorVentanaAdminPrincipal.class) {
                 controlVista = new ControladorVentanaAdminPrincipal();
@@ -597,44 +514,34 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
 
     private void btnNuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaCategoriaActionPerformed
-        new FrmCategoria().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().nuevoCategoria();
+        //new FrmCategoria().setVisible(true);
+        //this.setVisible(false);
     }//GEN-LAST:event_btnNuevaCategoriaActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-        new FrmRubro().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().nuevo();
+        //new FrmRubro().setVisible(true);
+        //this.setVisible(false);
 
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
-        conseguirCategoria();
-        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
-        this.getCategoria().preguntarEliminar();
-        limpiarTablaCategoria();
-        cargarCategoria();
+        this.getControlVista().eliminarCategoria();
+
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
     private void btnAceptar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar4ActionPerformed
         //Primero Obtengo todos los valores de la tabla
-        conseguirRubro();
-        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
-        this.getFrmRubro().modificar("1", this.getRubro().getRubroElegido());
-        this.getFrmRubro().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().modificar();
+
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar4ActionPerformed
 
     private void btnAceptar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar5ActionPerformed
-
-        conseguirRubro();
-        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
-        this.getRubro().preguntarEliminar();
-        limpiarTablaRubro();
-        cargarRubro();
-
-
+  
+        this.getControlVista().eliminar();
     }//GEN-LAST:event_btnAceptar5ActionPerformed
 
     private void jTableRubroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRubroMouseClicked
@@ -643,11 +550,9 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableRubroMouseClicked
 
     private void btnModificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCategoriaActionPerformed
-        conseguirCategoria();
-        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
-        this.getFrmCategoria().modificar("1", this.getCategoria().getModel());
-        this.getFrmCategoria().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().modificarCategoria();
+
+
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -655,19 +560,14 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        conseguirRubro();
-        this.getRubro().setRubroElegido(this.getControlVista().getRubro());
-        this.getRubro().darDeBaja();
-        limpiarTablaRubro();
-        cargarRubro();
+        this.getControlVista().darDeBaja();
+
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
-        conseguirCategoria();
-        this.getCategoria().setCategoriaElegida(this.getControlVista().getCategoria());
-        this.getCategoria().darDeBajaCategoria();
-        limpiarTablaCategoria();
-        cargarCategoria();
+        this.getControlVista().darDeBajaCategoria();
+
+
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed

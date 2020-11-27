@@ -3,7 +3,10 @@ package Interfaz.ControladorPA;
 import Hibernate.GestorHibernate;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
+
 import VistasPA.FrmVentanaAdmin;
+import controladoresCU.ABMCategoria;
+import controladoresCU.ABMRubro;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -16,7 +19,8 @@ public class ControladorVentanaAdminPrincipal {
     private FrmVentanaAdmin form;
     private Rubro rubro;
     private Categoria categoria;
-    
+    private ABMRubro ABMrubro;
+    private ABMCategoria ABMcategoria;
 
     public Rubro getRubro() {
         return rubro;
@@ -33,6 +37,34 @@ public class ControladorVentanaAdminPrincipal {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public ABMRubro getABMrubro() {
+                if (ABMrubro == null) {
+            synchronized (ABMRubro.class) {
+                ABMrubro = new ABMRubro();
+            }
+        }
+        return ABMrubro;
+    }
+
+    public void setABMrubro(ABMRubro ABMrubro) {
+        this.ABMrubro = ABMrubro;
+    }
+
+    public ABMCategoria getABMcategoria() {
+                        if (ABMcategoria == null) {
+            synchronized (ABMRubro.class) {
+                ABMcategoria = new ABMCategoria();
+            }
+        }
+        return ABMcategoria;
+    }
+
+    public void setABMcategoria(ABMCategoria ABMcategoria) {
+        this.ABMcategoria = ABMcategoria;
+    }
+    
+    
     
     
 
@@ -136,5 +168,67 @@ public class ControladorVentanaAdminPrincipal {
     public void reporteRubro() {
         this.getOper().reporteRubro();
     }
+
+    public void nuevo() {
+        this.getABMrubro().getForm().setVisible(true);
+        this.getForm().setVisible(false);    
+    }
+
+    public void eliminar() {
+        conseguirRubro();
+        this.getABMrubro().setRubroElegido(this.getRubro());
+        this.getABMrubro().preguntarEliminar();
+        limpiarTablaRubro();
+        cargarRubro();    
+    }
+
+    public void darDeBaja() {
+        conseguirRubro();
+        this.getABMrubro().setRubroElegido(this.getRubro());
+        this.getABMrubro().darDeBaja();
+        limpiarTablaRubro();
+        cargarRubro();
+    }
+
+    public void modificar() {
+        conseguirRubro();
+        this.getABMrubro().setRubroElegido(this.getRubro());
+        this.getABMrubro().getForm().modificar("1", this.getABMrubro().getRubroElegido());
+        this.getABMrubro().getForm().setVisible(true);
+        this.getForm().setVisible(false);
+    }
+
+    public void nuevoCategoria() {
+        this.getABMcategoria().getForm().setVisible(true);
+        this.getForm().setVisible(false); 
+
+    }
+
+    public void modificarCategoria() {
+        
+        conseguirCategoria();
+        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+        this.getABMcategoria().getForm().modificar("1", this.getABMcategoria().getModel());
+        this.getABMcategoria().getForm().setVisible(true);
+        this.getForm().setVisible(false);
+    }
+
+    public void darDeBajaCategoria() {
+        conseguirCategoria();
+        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+        this.getABMcategoria().darDeBajaCategoria();
+        limpiarTablaCategoria();
+        cargarCategoria();
+    }
+
+    public void eliminarCategoria() {
+        conseguirCategoria();
+        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+        this.getABMcategoria().preguntarEliminar();
+        limpiarTablaCategoria();
+        cargarCategoria();
+    }
+        
+   
 
 }

@@ -5,6 +5,7 @@
  */
 package ModelosPA;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="rubro")
-public class Rubro {
+public class Rubro implements Serializable{
 
     public Rubro(String nombre, String descripcion) {
         this.nombre = nombre;
