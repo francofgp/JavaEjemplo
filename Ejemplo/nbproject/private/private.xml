@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/git/TPI/ProyectoJava/Ejemplo/src/controladoresCU/ABMCategoria.java</file>
-            <file>file:/C:/git/TPI/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVentanaAdminPrincipal.java</file>
-            <file>file:/C:/git/TPI/ProyectoJava/Ejemplo/src/VistasPA/FrmVentanaAdmin.java</file>
-            <file>file:/C:/git/TPI/ProyectoJava/Ejemplo/src/Hibernate/GestorHibernate.java</file>
-            <file>file:/C:/git/TPI/ProyectoJava/Ejemplo/src/controladoresCU/ABMRubro.java</file>
+            <file>file:/C:/Users/Chelo/Desktop/UTN%202020/Programacion%20Avanzada/GitHub/ProyectoJava/ProyectoJava/ProyectoJava/Ejemplo/src/controladoresCU/iniciarSesion.java</file>
+            <file>file:/C:/Users/Chelo/Desktop/UTN%202020/Programacion%20Avanzada/GitHub/ProyectoJava/ProyectoJava/ProyectoJava/Ejemplo/src/VistasPA/FrmVentanaAdmin.java</file>
+            <file>file:/C:/Users/Chelo/Desktop/UTN%202020/Programacion%20Avanzada/GitHub/ProyectoJava/ProyectoJava/ProyectoJava/Ejemplo/src/VistasPA/FrmPrincipalUsuario.java</file>
+            <file>file:/C:/Users/Chelo/Desktop/UTN%202020/Programacion%20Avanzada/GitHub/ProyectoJava/ProyectoJava/ProyectoJava/Ejemplo/src/VistasPA/Frmlogin.java</file>
         </group>
     </open-files>
 </project-private>

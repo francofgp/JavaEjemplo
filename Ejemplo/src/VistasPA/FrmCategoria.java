@@ -60,6 +60,9 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.getControlVista().setForm(this);
         //oper = new ControladorCategoria();
         
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt des = new TextPrompt("Descripcion",txtDescripcion);
+        
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(),fondo.getHeight(),Image.SCALE_DEFAULT));
@@ -117,22 +120,20 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("_____________________________________________________________________");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 390, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 390, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDescripcion.setText("Descripcion");
         txtDescripcion.setBorder(null);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 20));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

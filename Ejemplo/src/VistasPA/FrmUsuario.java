@@ -37,6 +37,14 @@ public class FrmUsuario extends javax.swing.JFrame {
         oper = new registrarUsuario();
         this.getOper().setForm(this);
         
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt des = new TextPrompt("Apellido",txtApellido);
+        TextPrompt email = new TextPrompt("Email",txtEmail);
+        TextPrompt direcc = new TextPrompt("Direccion",txtDireccion);
+        TextPrompt contrasena = new TextPrompt("Contraseña",txtPassword);
+        TextPrompt telefono = new TextPrompt("Telefono",txtTelefono);
+        TextPrompt fecha = new TextPrompt("Fecha",txtFecha);
+        
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(fondo.getWidth(),fondo.getHeight(),Image.SCALE_DEFAULT));
@@ -337,10 +345,9 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
 
         emailTxt.setBackground(new java.awt.Color(255, 255, 255));
         emailTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,9 +357,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtEmail.setBackground(new java.awt.Color(153, 204, 0));
         txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Email");
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
         passwordTxt.setBackground(new java.awt.Color(255, 255, 255));
         passwordTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -362,14 +368,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(153, 204, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setText("Contraseña");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, -1));
 
         direccionTxt.setBackground(new java.awt.Color(255, 255, 255));
         direccionTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,9 +384,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtDireccion.setBackground(new java.awt.Color(153, 204, 0));
         txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setText("Dirección");
         txtDireccion.setBorder(null);
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 20));
 
         telefonoTxt.setBackground(new java.awt.Color(255, 255, 255));
         telefonoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -391,14 +395,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtTelefono.setBackground(new java.awt.Color(153, 204, 0));
         txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Teléfono");
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 20));
 
         fechaTxt.setBackground(new java.awt.Color(255, 255, 255));
         fechaTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -408,9 +411,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtFecha.setBackground(new java.awt.Color(153, 204, 0));
         txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
-        txtFecha.setText("Fecha de Nacimiento");
         txtFecha.setBorder(null);
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 20));
 
         apellidoTxt.setBackground(new java.awt.Color(255, 255, 255));
         apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -420,14 +427,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtApellido.setBackground(new java.awt.Color(153, 204, 0));
         txtApellido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellido.setText("Apellido");
         txtApellido.setBorder(null);
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 30));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -499,6 +505,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         new FrmComercio().setVisible(true);
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     /**
      * @param args the command line arguments

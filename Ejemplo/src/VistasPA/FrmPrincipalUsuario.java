@@ -468,6 +468,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(jTableProducto);
         if (jTableProducto.getColumnModel().getColumnCount() > 0) {
             jTableProducto.getColumnModel().getColumn(0).setResizable(false);

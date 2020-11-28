@@ -36,6 +36,10 @@ FrmProducto desktop=this;
         this.getControlVista().setForm(desktop);
         
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
+        
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt prec = new TextPrompt("Precio",txtPrecio);
+        TextPrompt desc = new TextPrompt("Descripcion",txtDescripcion);
     }
     
     @SuppressWarnings("unchecked")
@@ -105,10 +109,9 @@ FrmProducto desktop=this;
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,9 +121,8 @@ FrmProducto desktop=this;
         txtPrecio.setBackground(new java.awt.Color(153, 204, 0));
         txtPrecio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecio.setText("Precio");
         txtPrecio.setBorder(null);
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,14 +132,13 @@ FrmProducto desktop=this;
         txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDescripcion.setText("Descripción");
         txtDescripcion.setBorder(null);
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 20));
 
         jTextField3.setBackground(new java.awt.Color(153, 204, 0));
         jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
