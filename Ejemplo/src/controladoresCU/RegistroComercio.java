@@ -5,16 +5,20 @@ import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import VistasPA.FrmComercio;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
-public class ABMComercio {
+public class RegistroComercio {
 
-    FrmComercio form;
-    GestorHibernate oper;
-    Comercio model;
-    Rubro rubro;
-    Categoria categoria;
+    private FrmComercio form;
+    private GestorHibernate oper;
+    private Comercio model;
+    private Rubro rubro;
+    private Categoria categoria;
+    private String date;
+    private InicioSesion inicioSesion;
 
     public Rubro getRubro() {
         return rubro;
@@ -31,8 +35,6 @@ public class ABMComercio {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -43,7 +45,7 @@ public class ABMComercio {
         return oper;
     }
 
-    public ABMComercio() {
+    public RegistroComercio() {
         oper = new GestorHibernate();
 
     }
@@ -64,12 +66,21 @@ public class ABMComercio {
         return model;
     }
 
+    public InicioSesion getInicioSesion() {
+        if (inicioSesion == null) {
+            synchronized (InicioSesion.class) {
+                inicioSesion = new InicioSesion();
+            }
+        }
+        return inicioSesion;
+    }
+
     public void setModel() {
 
         model = new Comercio();
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setApellido(this.getForm().getTxtApellido().getText());
-        model.setFechaNac(this.getForm().getTxtFecha().getText());
+        model.setFechaNac(date);
         model.setPassword(this.getForm().getTxtPassword().getText());
         model.setDireccion(this.getForm().getTxtDireccion().getText());
         model.setCorreo(this.getForm().getTxtEmail().getText());
@@ -79,13 +90,15 @@ public class ABMComercio {
         model.setNombreLocal(this.getForm().getTxtNombreLocal().getText());
         model.setRubro((Rubro) rubro);
         model.setCategoria((Categoria) categoria);
+        
+        System.out.println(rubro);System.out.println(categoria);
+        
 
-        this.model = model;
     }
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
         //getOper().llenaJComboBoxRubro(jComboBoxRubro);
-        
+
         List<Rubro> resulset = getOper().rubroShow();
 
         jComboBoxRubro.removeAllItems();
@@ -134,10 +147,16 @@ public class ABMComercio {
     /*public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
         return oper.buscarObjetoPorId(idDeRubroSeleccionado);
     }
-*/
+     */
     public void guardar() {
-        this.setModel();
-        oper.guardarObjeto(this.getModel());
+        if (validar()) {
+            this.setModel();
+            oper.guardarObjeto(this.getModel());
+            JOptionPane.showMessageDialog(null, "Tu comercio se registró con éxito!");
+            this.getForm().setVisible(false);
+            this.getInicioSesion().abrirse();
+        }
+
     }
 
     ////////////////////////////////////////////////////
@@ -160,6 +179,73 @@ public class ABMComercio {
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }
+    }
+
+    private boolean obtenerFecha() {
+
+        try {
+            SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
+            date = dFormat.format(this.getForm().getDataFecha().getDate());
+            System.out.println(date);
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
+
+    }
+
+    private boolean validar() {
+        String nombs = this.getForm().getTxtNombre().getText();
+        String trim = nombs.trim();
+        if (trim.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Comercio");
+            return false;
+        }
+        if (this.getOper().corroborarComercio(trim)) {
+            JOptionPane.showMessageDialog(null, "Nombre de comercio ya esta en uso");
+            return false;
+        }
+
+        if (obtenerFecha()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar Fecha de Nacimiento");
+            return false;
+        }
+
+        if (tieneCategoriaSeleccionada()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la Categoria");
+            return false;
+        }
+
+        if (tieneRubroSeleccionado()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el Rubro");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean tieneCategoriaSeleccionada() {
+        try {
+            conseguirCategoriaSeleccionado();
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
+
+    }
+
+    private boolean tieneRubroSeleccionado() {
+        try {
+            conseguirRubroSeleccionado();
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
+
+    }
+
+    void abrirse() {
+        new FrmComercio().setVisible(true);
     }
 
 }

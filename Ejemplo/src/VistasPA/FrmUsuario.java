@@ -9,7 +9,8 @@ import Hibernate.GestorHibernate;
 //import Interfaz.ControladorPA.ControladorUsuario;
 //import Interfaz.ControladorPA.ControladorVistaUsuario;
 import ModelosPA.Usuario;
-import controladoresCU.registrarUsuario;
+import com.toedter.calendar.JDateChooser;
+import controladoresCU.RegistroUsuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -25,7 +26,7 @@ import javax.swing.JTextField;
  */
 public class FrmUsuario extends javax.swing.JFrame {
     
-    registrarUsuario oper;
+    RegistroUsuario oper;
     
     
     /**
@@ -34,7 +35,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     public FrmUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new registrarUsuario();
+        oper = new RegistroUsuario();
         this.getOper().setForm(this);
         
         TextPrompt nom = new TextPrompt("Nombre",txtNombre);
@@ -52,10 +53,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.repaint();*/
     }
 
-    public registrarUsuario getControlVista() {
+    public RegistroUsuario getControlVista() {
         if (oper == null) {
-            synchronized (registrarUsuario.class) {
-                oper = new registrarUsuario();
+            synchronized (RegistroUsuario.class) {
+                oper = new RegistroUsuario();
 
             }
         }
@@ -66,11 +67,11 @@ public class FrmUsuario extends javax.swing.JFrame {
 //        this.controlVista = controlVista;
 //    }
 
-    public registrarUsuario getOper() {
+    public RegistroUsuario getOper() {
         return oper;
     }
 
-    public void setOper(registrarUsuario oper) {
+    public void setOper(RegistroUsuario oper) {
         this.oper = oper;
     }
 
@@ -125,6 +126,16 @@ public class FrmUsuario extends javax.swing.JFrame {
     public JButton getjButton2() {
         return jButton2;
     }
+
+    public JDateChooser getDataFecha() {
+        return dataFecha;
+    }
+
+    public void setDataFecha(JDateChooser dataFecha) {
+        this.dataFecha = dataFecha;
+    }
+    
+    
 
     public void setjButton2(JButton jButton2) {
         this.jButton2 = jButton2;
@@ -269,6 +280,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
@@ -292,6 +304,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        dataFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -463,6 +476,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 300));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 310));
+        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
@@ -470,18 +484,8 @@ public class FrmUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            
-         this.getOper().guardar();
-        /*Usuario user = new Usuario(this.txtPassword.getText(),this.txtNombre.getText(), this.txtApellido.getText(),
-                                    this.txtEmail.getText(),this.txtDireccion.getText(),this.txtTelefono.getText(),
-                                    this.txtFecha.getText());*/
-        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
-            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here:
+         this.getOper().guardar();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
@@ -548,12 +552,14 @@ public class FrmUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoTxt;
     private javax.swing.JButton btnAceptar;
+    private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel direccionTxt;
     private javax.swing.JLabel emailTxt;
     private javax.swing.JLabel fechaTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;

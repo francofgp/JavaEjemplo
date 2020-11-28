@@ -704,6 +704,25 @@ public class GestorHibernate extends HibernateUtil {
         }
 
     }
+        
+    public boolean corroborarUsuario(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (usuario != null) {
+                String nom = usuario.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
     public static List<Producto> BuscarProducto(Categoria categoria, Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
@@ -714,6 +733,44 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
 
         return producto;
+
+    }
+
+    public boolean corroborarAdmin(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Admin admin = (Admin) sesion.createCriteria(Admin.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (admin != null) {
+                String nom = admin.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public boolean corroborarComercio(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (comercio != null) {
+                String nom = comercio.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
 
     }
 

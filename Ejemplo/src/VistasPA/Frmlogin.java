@@ -6,7 +6,7 @@
 package VistasPA;
 
 //import Interfaz.ControladorPA.ControladorVistaLogin;
-import controladoresCU.iniciarSesion;
+import controladoresCU.InicioSesion;
 import VistasPA.FrmUsuario;
 import VistasPA.FrmComercio;
 import VistasPA.FrmPrincipalUsuario;
@@ -32,7 +32,7 @@ public class Frmlogin extends javax.swing.JFrame {
      * Creates new form login
      */
     
-    iniciarSesion controlVista;
+    InicioSesion controlVista;
     Frmlogin desktop=this;
     public Frmlogin() {
         initComponents();
@@ -249,17 +249,17 @@ public class Frmlogin extends javax.swing.JFrame {
             System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public iniciarSesion getControlVista() {
+    public InicioSesion getControlVista() {
         if (controlVista == null) {
-            synchronized (iniciarSesion.class) {
-                controlVista = new iniciarSesion();
+            synchronized (InicioSesion.class) {
+                controlVista = new InicioSesion();
 
             }
         }
         return controlVista;    
     }
 
-    public void setControlVista(iniciarSesion controlVista) {
+    public void setControlVista(InicioSesion controlVista) {
         this.controlVista = controlVista;
     }
 
@@ -459,13 +459,15 @@ public class Frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioTextActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new FrmComercio().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().ingresarRegistrarComercio();
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new FrmUsuario().setVisible(true);
-        this.setVisible(false);
+        
+        this.getControlVista().ingresarRegistrarUsuario();
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -477,8 +479,9 @@ public class Frmlogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new FrmAdmin().setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
+
+        this.getControlVista().ingresarRegistrarAdmin();
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

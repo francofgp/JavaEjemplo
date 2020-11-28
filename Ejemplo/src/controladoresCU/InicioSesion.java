@@ -6,10 +6,45 @@ import VistasPA.FrmPrincipalUsuario;
 import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
 
-public class iniciarSesion {
+public class InicioSesion {
 
     private GestorHibernate oper;
     private Frmlogin form;
+    private RegistroUsuario rUsuario;
+    private RegistroAdmin rAdmin;
+    private RegistroComercio rComercio;
+
+    public RegistroComercio getrComercio() {
+        if (rComercio == null) {
+            synchronized (RegistroComercio.class) {
+                rComercio = new RegistroComercio();
+            }
+        }
+        return rComercio;
+    }
+    
+    
+    
+    public RegistroUsuario getrUsuario() {
+        if (rUsuario == null) {
+            synchronized (RegistroUsuario.class) {
+                rUsuario = new RegistroUsuario();
+
+            }
+        }
+        return rUsuario;
+    }
+
+    public RegistroAdmin getrAdmin() {
+                if (rAdmin == null) {
+            synchronized (RegistroAdmin.class) {
+                rAdmin = new RegistroAdmin();
+            }
+        }
+        return rAdmin;
+    }
+    
+    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -26,6 +61,11 @@ public class iniciarSesion {
     }
 
     public Frmlogin getForm() {
+        if (form == null) {
+            synchronized (Frmlogin.class) {
+                form = new Frmlogin();
+            }
+        }
         return form;
     }
 
@@ -68,5 +108,24 @@ public class iniciarSesion {
             frmUsuario.getTxtNombre().setText(frmUsuario.getControlVista().getUsuario().getNombre());
             frmUsuario.getTxtCorreo().setText(frmUsuario.getControlVista().getUsuario().getEmail());
         }
+    }
+
+    public void ingresarRegistrarUsuario() {
+        this.getrUsuario().abrirse();
+        this.getForm().setVisible(false);
+    }
+
+    public void ingresarRegistrarAdmin() {
+        this.getrAdmin().abrirse();
+        this.getForm().setVisible(false);// TODO add your handling code here:
+    }
+
+    public void ingresarRegistrarComercio() {
+        this.getrComercio().abrirse();
+        this.getForm().setVisible(false);
+    }
+
+    void abrirse() {
+        this.getForm().setVisible(true);
     }
 }

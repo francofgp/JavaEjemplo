@@ -7,7 +7,8 @@ import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
-import controladoresCU.ABMComercio;
+import com.toedter.calendar.JDateChooser;
+import controladoresCU.RegistroComercio;
 import java.awt.Image;
 import java.io.File;
 import java.util.List;
@@ -24,7 +25,7 @@ import org.hibernate.Session;
 
 public class FrmComercio extends javax.swing.JFrame {
 
-    ABMComercio oper;         
+    RegistroComercio oper;         
     FrmComercio desktop=this;
      int estado=0;
     int estadoCategoria=0;
@@ -82,14 +83,13 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtNombreLocal = new javax.swing.JTextField();
-        txtRuta = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         jComboBoxRubro = new javax.swing.JComboBox<>();
-        imagenjLabel = new javax.swing.JLabel();
         txtDireccionLocal = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        btnAceptar1 = new javax.swing.JButton();
+        txtNombre1 = new javax.swing.JTextField();
+        txtNombre2 = new javax.swing.JTextField();
+        dataFecha = new com.toedter.calendar.JDateChooser();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -320,26 +320,6 @@ public class FrmComercio extends javax.swing.JFrame {
         txtNombreLocal.setBorder(null);
         jPanel1.add(txtNombreLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 200, 30));
 
-        txtRuta.setBackground(new java.awt.Color(153, 204, 0));
-        txtRuta.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
-        txtRuta.setText("Dirección Completa");
-        txtRuta.setToolTipText("");
-        txtRuta.setBorder(null);
-        jPanel1.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 400, 30));
-
-        jButton4.setBackground(new java.awt.Color(153, 204, 0));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 170, 30));
-
         jComboBoxCategoria.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
         jComboBoxCategoria.setToolTipText("");
@@ -349,7 +329,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 jComboBoxCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 170, 30));
+        jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 170, 30));
 
         jComboBoxRubro.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
@@ -358,10 +338,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 jComboBoxRubroActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 170, 30));
-
-        imagenjLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(imagenjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 200, 110));
+        jPanel1.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 170, 30));
 
         txtDireccionLocal.setBackground(new java.awt.Color(153, 204, 0));
         txtDireccionLocal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -385,18 +362,32 @@ public class FrmComercio extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 30, 20));
 
-        btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
-        btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptar1.setText("Cargar Rubro");
-        btnAceptar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnAceptar1.setContentAreaFilled(false);
-        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre1.setBackground(new java.awt.Color(153, 204, 0));
+        txtNombre1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombre1.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre1.setText("Seleccione Rubro");
+        txtNombre1.setToolTipText("");
+        txtNombre1.setBorder(null);
+        txtNombre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptar1ActionPerformed(evt);
+                txtNombre1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 210, 30));
+        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 200, 30));
+
+        txtNombre2.setBackground(new java.awt.Color(153, 204, 0));
+        txtNombre2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombre2.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre2.setText("Seleccione Categoría");
+        txtNombre2.setToolTipText("");
+        txtNombre2.setBorder(null);
+        txtNombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombre2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 200, 30));
+        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 170, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 630));
 
@@ -417,27 +408,27 @@ public class FrmComercio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void setOper(ABMComercio  oper) {
+     public void setOper(RegistroComercio  oper) {
         this.oper = oper;
     }
      
-     public ABMComercio getOper() {
+     public RegistroComercio getOper() {
         return oper;
     }
      
      
 
-    public ABMComercio getControlVista() {
+    public RegistroComercio getControlVista() {
         if (oper == null) {
-            synchronized (ABMComercio.class) {
-                oper = new ABMComercio();
+            synchronized (RegistroComercio.class) {
+                oper = new RegistroComercio();
 
             }
         }
         return oper;
     }
 
-    public void setControlVista(ABMComercio oper) {
+    public void setControlVista(RegistroComercio oper) {
        this.oper = oper;
        
        
@@ -491,21 +482,6 @@ public class FrmComercio extends javax.swing.JFrame {
         this.btnAceptar = btnAceptar;
     }
 
-    public JButton getBtnAceptar1() {
-        return btnAceptar1;
-    }
-
-    public void setBtnAceptar1(JButton btnAceptar1) {
-        this.btnAceptar1 = btnAceptar1;
-    }
-
-    public JLabel getImagenjLabel() {
-        return imagenjLabel;
-    }
-
-    public void setImagenjLabel(JLabel imagenjLabel) {
-        this.imagenjLabel = imagenjLabel;
-    }
 
     public JButton getjButton2() {
         return jButton2;
@@ -523,17 +499,19 @@ public class FrmComercio extends javax.swing.JFrame {
         this.jButton3 = jButton3;
     }
 
-    public JButton getjButton4() {
-        return jButton4;
-    }
-
-    public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
-    }
-
     public JButton getjButton5() {
         return jButton5;
     }
+
+    public JDateChooser getDataFecha() {
+        return dataFecha;
+    }
+
+    public void setDataFecha(JDateChooser dataFecha) {
+        this.dataFecha = dataFecha;
+    }
+    
+    
 
     public void setjButton5(JButton jButton5) {
         this.jButton5 = jButton5;
@@ -795,14 +773,6 @@ public class FrmComercio extends javax.swing.JFrame {
         this.txtPassword = txtPassword;
     }
 
-    public JTextField getTxtRuta() {
-        return txtRuta;
-    }
-
-    public void setTxtRuta(JTextField txtRuta) {
-        this.txtRuta = txtRuta;
-    }
-
     public JTextField getTxtTelefono() {
         return txtTelefono;
     }
@@ -814,7 +784,7 @@ public class FrmComercio extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         this.oper.guardar();
 
-        JOptionPane.showMessageDialog(null,"Tu comercio se registró con éxito!");
+        
   
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -852,21 +822,6 @@ public class FrmComercio extends javax.swing.JFrame {
         this.getControlVista().conseguirCategoriaSeleccionado();
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-/**
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        txtRuta.setText(filename);
-        Image getAbsolutePath = null;
-        ImageIcon icon = new ImageIcon(filename);
-        Image image = icon.getImage().getScaledInstance(imagenjLabel.getWidth(),imagenjLabel.getHeight(),Image.SCALE_SMOOTH);
-        imagenjLabel.setIcon(icon);
-        * 
-        */
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -880,15 +835,19 @@ public class FrmComercio extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-        //llenaJComboBoxUsuario(jComboBoxRubro);
-    }//GEN-LAST:event_btnAceptar1ActionPerformed
-
 
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
         this.getControlVista().conseguirRubroSeleccionado();
 
             }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
+    private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombre1ActionPerformed
+
+    private void txtNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombre2ActionPerformed
     
     
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
@@ -933,11 +892,9 @@ public class FrmComercio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnAceptar1;
-    private javax.swing.JLabel imagenjLabel;
+    private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
@@ -969,11 +926,14 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombre1;
+    private javax.swing.JTextField txtNombre2;
     private javax.swing.JTextField txtNombreLocal;
     private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtRuta;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 

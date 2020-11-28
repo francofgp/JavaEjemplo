@@ -4,7 +4,7 @@ import Hibernate.GestorHibernate;
 //import Interfaz.ControladorPA.ControladorUsuario;
 import ModelosPA.Admin;
 import ModelosPA.Usuario;
-import controladoresCU.registrarAdmin;
+import controladoresCU.RegistroAdmin;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -15,35 +15,35 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FrmAdmin extends javax.swing.JFrame {
-    registrarAdmin oper;
+    RegistroAdmin oper;
     
 
     public FrmAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new registrarAdmin();
+        oper = new RegistroAdmin();
         this.getControlVista().setForm(this);
     }
 
-    public registrarAdmin getOper() {
+    public RegistroAdmin getOper() {
         return oper;
     }
 
-    public void setOper(registrarAdmin oper) {
+    public void setOper(RegistroAdmin oper) {
         this.oper = oper;
     }
 
-    public registrarAdmin getControlVista() {
+    public RegistroAdmin getControlVista() {
         if (oper == null) {
-            synchronized (registrarAdmin.class) {
-                oper = new registrarAdmin();
+            synchronized (RegistroAdmin.class) {
+                oper = new RegistroAdmin();
 
             }
         }
         return oper;
     }
 
-    public void setControlVista(registrarAdmin oper) {
+    public void setControlVista(RegistroAdmin oper) {
         this.oper = oper;
     }
 
