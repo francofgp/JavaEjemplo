@@ -500,6 +500,26 @@ public class GestorHibernate extends HibernateUtil {
         }    
     }
     
+    
+  public Comercio buscarComercioLogin(String username, String password) {
+        Session sesion = HibernateUtil.getSession();
+        
+
+        
+        try {
+             Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("nombre", username))
+                .add(Restrictions.eq("password", password)).uniqueResult();
+             
+             return comercio;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta "
+                       , " " ,JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+        }    
+    }
+        
     public boolean ingresarUsuario(String username, String password) {
         Session sesion = HibernateUtil.getSession();
         
@@ -772,6 +792,28 @@ public class GestorHibernate extends HibernateUtil {
             return false;
         }
 
+    }
+
+    public Usuario buscarUsuarioLogin(String username, String password) {
+        
+        Session sesion = HibernateUtil.getSession();
+        
+
+        
+        try {
+             Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", username))
+                .add(Restrictions.eq("password", password)).uniqueResult();
+             
+             return usuario;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta "
+                       , " " ,JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+           
+    }
+        
     }
 
  

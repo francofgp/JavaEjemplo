@@ -1,10 +1,14 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
+import ModelosPA.Comercio;
+import ModelosPA.Usuario;
 import VistasPA.FrmPrincipalComercio;
 import VistasPA.FrmPrincipalUsuario;
 import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
+import javax.swing.JOptionPane;
 
 public class InicioSesion {
 
@@ -13,6 +17,7 @@ public class InicioSesion {
     private RegistroUsuario rUsuario;
     private RegistroAdmin rAdmin;
     private RegistroComercio rComercio;
+    private ControladorVistaPrincipalComercio vistaComercio;
 
     public RegistroComercio getrComercio() {
         if (rComercio == null) {
@@ -22,6 +27,20 @@ public class InicioSesion {
         }
         return rComercio;
     }
+
+    public ControladorVistaPrincipalComercio getVistaComercio() {
+            if (vistaComercio == null) {
+            synchronized (ControladorVistaPrincipalComercio.class) {
+                vistaComercio = new ControladorVistaPrincipalComercio();
+            }
+        }
+        return vistaComercio;
+    }
+
+    public void setVistaComercio(ControladorVistaPrincipalComercio vistaComercio) {
+        this.vistaComercio = vistaComercio;
+    }
+    
     
     
     
@@ -76,25 +95,24 @@ public class InicioSesion {
     public boolean ingresarComercio() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
         //this.getOper().Ingresar(this.getForm().getUsuarioText().getText(), password);
-
-        if (this.getOper().ingresarComercio(this.getForm().getUsuarioText().getText(), password)) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
-            FrmPrincipalComercio frmComercio = new FrmPrincipalComercio();
-            frmComercio.setVisible(true);
-            //necesito ahora pasarle los datos al frmComercio, del comercio de la sesion
-            frmComercio.getControlVista().setComercio(this.getOper().buscarComercioIngresante(this.getForm().getUsuarioText().getText(), password));
-
-            frmComercio.getTxtID().setText(Long.toString(frmComercio.getControlVista().getComercio().getId()));
-            frmComercio.getTxtNombre().setText(frmComercio.getControlVista().getComercio().getNombre());
-            frmComercio.getTxtEmail().setText(frmComercio.getControlVista().getComercio().getCorreo());
-
+        Comercio comercio = this.getOper().buscarComercioLogin(this.getForm().getUsuarioText().getText(), password);
+        //if (this.getOper().ingresarComercio(this.getForm().getUsuarioText().getText(), password)) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
+        if (comercio != null) {
+            this.getVistaComercio().abrirse(comercio);
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Comercio o contraseña incorrecta", "", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        return this.getOper().ingresarComercio(this.getForm().getUsuarioText().getText(), password);
+        
     }
 
     public void ingresarUsuario() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
         //primero pruebo si ingresa con admin, sino pruebo con usuario
+        
 
+        
         if (this.getOper().ingresarAdmin(this.getForm().getUsuarioText().getText(), password)) {
             FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
             frmAdmin.setVisible(true);
@@ -127,5 +145,18 @@ public class InicioSesion {
 
     void abrirse() {
         this.getForm().setVisible(true);
+    }
+
+    public void iniciarSesion() {
+
+        if (this.getForm().getCheckBoxComercio().isSelected()) {
+            if (ingresarComercio()) {
+                this.getForm().setVisible(false);
+            }
+        } else {
+            ingresarUsuario();
+            this.getForm().setVisible(false);
+        }
+
     }
 }

@@ -40,4 +40,16 @@ public class ControladorVistaPrincipalComercio {
         this.form = form;
     }
 
+    public void abrirse(Comercio comercio) {
+        FrmPrincipalComercio frmComercio = new FrmPrincipalComercio();
+        this.setForm(frmComercio);
+        this.getForm().setVisible(true);
+        this.getForm().setControlVista(this);
+        setComercio(comercio);
+        this.getForm().getTxtID().setText(Long.toString(getComercio().getId()));
+        this.getForm().getTxtNombre().setText(getComercio().getNombre());
+        this.getForm().getTxtEmail().setText(getComercio().getCorreo());
+
+    }
+
 }

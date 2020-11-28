@@ -443,14 +443,8 @@ public class Frmlogin extends javax.swing.JFrame {
     
     private void jButton2_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_IngresarActionPerformed
         
-        if(checkBoxComercio.isSelected()){
-            if(this.getControlVista().ingresarComercio()){
-                this.setVisible(false);
-            }            
-        }else{
-        this.getControlVista().ingresarUsuario();
-        this.setVisible(false);
-        }
+        this.getControlVista().iniciarSesion();
+
         
     }//GEN-LAST:event_jButton2_IngresarActionPerformed
 
