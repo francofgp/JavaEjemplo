@@ -48,8 +48,12 @@ public class Pedido  implements Serializable{
     @Column(columnDefinition = "TEXT")
     private float total;
     
-    //@Column(columnDefinition = "TEXT")
-    //private float subtotal;
+    @Column(columnDefinition = "TEXT")
+    private String estado;
+    
+    @OneToOne (targetEntity = Calificacion.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    private Calificacion calificacion;
+    
 
     public List<Producto> getProducto() {
         return producto;
@@ -90,6 +94,23 @@ public class Pedido  implements Serializable{
         this.comercio = comercio;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Calificacion getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(Calificacion calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    
 
 
     public void setTotal(float total) {
@@ -106,7 +127,10 @@ public class Pedido  implements Serializable{
     }
     
     
-    
+    @Override
+    public String toString () {
+        return  this.getDescripcion();
+    }  
     
     
 }
