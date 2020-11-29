@@ -194,7 +194,7 @@ public class GestionPedido {
     }
 
     public void cargarComercio() {
-        List<Comercio> comercio = this.getOper().BuscarComercioPorCategoriaYRubro(this.getCategoria(), this.getRubro());
+        List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(getCategoria(), getRubro());
         if (comercio.size() > 0) {
             Iterator consulta = comercio.iterator();
             while (consulta.hasNext()) {
@@ -390,9 +390,7 @@ public class GestionPedido {
         return precioTotal;
     }
 
-<<<<<<< HEAD
-    
-=======
+
     void abrirse(Usuario usuario) {
         
             FrmPrincipalUsuario frmUsuario = new FrmPrincipalUsuario();
@@ -406,7 +404,5 @@ public class GestionPedido {
             
             
  }
-
->>>>>>> 6da65c902a6d1ce3428162bc1c90e012528800b2
 
 }

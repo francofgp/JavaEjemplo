@@ -180,7 +180,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Comercio> BuscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+    public static List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
                 .createAlias("categoria", "cat")
