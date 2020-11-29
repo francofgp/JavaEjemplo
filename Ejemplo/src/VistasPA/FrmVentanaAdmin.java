@@ -521,6 +521,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         this.getControlVista().nuevo();
+        
+        //new GestionPedido() = GestionPedido() gestor;
+        
+        
         //new FrmRubro().setVisible(true);
         //this.setVisible(false);
 

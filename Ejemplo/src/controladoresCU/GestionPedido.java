@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import ModelosPA.Comercio;
 import ModelosPA.Pedido;
 import ModelosPA.Producto;
+import VistasPA.FrmRubro;
+import VistasPA.FrmVerPedidoUsuario;
+import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -29,7 +32,37 @@ public class GestionPedido {
     private Categoria categoria;
     private float precioTotal = (float) 0.0;
     private List<Producto> producto;
+    private FrmVerPedidoUsuario formPedido;
+    public long id;
+    private Producto producto2;
 
+    public long getId() {
+        return id;
+    }
+
+    public FrmVerPedidoUsuario getFormPedido() {
+
+        return formPedido;
+    }
+
+//    public void setFormPedido(FrmVerPedidoUsuario formPedido) {
+//        this.formPedido = formPedido;
+//    }
+    public FrmVerPedidoUsuario setFormPedido() {
+        if (formPedido == null) {
+            synchronized (FrmVerPedidoUsuario.class) {
+                formPedido = new FrmVerPedidoUsuario();
+            }
+        }
+        return formPedido;
+    }
+
+//    public void nuevo() {
+//        this.setFormPedido().setVisible(true);
+//        this.getFormPedido().setControlVista(this);
+//        //this.getFormPedido().setVisible(false);    
+//    }
+//    
     public GestorHibernate getOper() {
         if (oper == null) {
             synchronized (GestorHibernate.class) {
@@ -211,6 +244,56 @@ public class GestionPedido {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");
         }
     }
+    
+
+    public void nuevoPedido() {
+
+        this.setFormPedido();
+        this.getFormPedido().setVisible(true);
+        System.out.println(this.getUsuario().getId());
+        this.cargarPedido();
+
+    }
+
+    public void cargarPedido() {
+
+        //this.limpiarTablaPedido();
+        long a = this.getUsuario().getId();
+        System.out.println(a);
+
+        List<Pedido> pedido = this.getOper().buscarPedido(this.getUsuario());
+
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getFormPedido().getjTable1().getModel();
+
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                //datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getTotal());
+                datos.add(fila.getId());
+                datos.add(fila.getUsuario().getNombre());
+                datos.add(fila.getUsuario().getId());
+                datos.add(fila.getComercio().getNombre());
+
+                tabla.addRow(datos);
+
+                //}
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+        }
+
+    }
+
+    public void limpiarTablaPedido() {
+        while (this.getFormPedido().getjTable1().getRowCount() != 0) {
+            ((DefaultTableModel) this.getFormPedido().getjTable1().getModel()).removeRow(0);
+        }
+    }
 
     public void limpiarTablaComercio() {
         while (this.getForm().getjTableComercio().getRowCount() != 0) {
@@ -223,7 +306,7 @@ public class GestionPedido {
             ((DefaultTableModel) this.getForm().getjTableProducto().getModel()).removeRow(0);
         }
     }
-    
+
     public void limpiarTablaCarro() {
         while (this.getForm().getjTableCarro().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTableCarro().getModel()).removeRow(0);
@@ -238,10 +321,20 @@ public class GestionPedido {
         //this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
         comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
         this.cargarProductos();
-        
+
         this.calculoTotal();
     }
 
+    public void seleccionarPedido() {
+       DefaultTableModel model = (DefaultTableModel) this.getFormPedido().getjTable1().getModel();
+        int selectedRowIndex = this.getFormPedido().getjTable1().getSelectedRow();
+        
+        this.model = (Pedido) model.getValueAt(selectedRowIndex, 0);
+        
+    }
+
+    
+        
     public void agregarAlCarro() {
 
         TableModel model1 = this.getForm().getjTableProducto().getModel();
@@ -261,13 +354,13 @@ public class GestionPedido {
         this.calculoTotal();
     }
 
-
     public void hacerPedido() {
         this.calculoTotal();
         this.setModel();
         this.getOper().guardarObjeto(getModel());
 
     }
+
     public void quitarProducto() {
 
         int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
@@ -278,7 +371,7 @@ public class GestionPedido {
         }
         this.calculoTotal();
     }
-    
+
     public float calculoTotal() {
 
         precioTotal = (float) 0.0;
@@ -292,10 +385,11 @@ public class GestionPedido {
         }
 
         this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));
-        
-        producto=productos;
+
+        producto = productos;
         return precioTotal;
     }
 
+    
 
 }

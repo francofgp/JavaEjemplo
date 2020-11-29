@@ -26,6 +26,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     
     GestionPedido controlVista;
     FrmPrincipalUsuario desktop=this;
+    
     public FrmPrincipalUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -36,6 +37,12 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         
     }
 
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -555,7 +562,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new FrmVerPedidoUsuario().setVisible(true);
+        //new FrmVerPedidoUsuario().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtMontoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoTotalActionPerformed
@@ -590,7 +597,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+
+        this.getControlVista().nuevoPedido();
+        
+        
     }//GEN-LAST:event_jButton12ActionPerformed
     int estado=0;
     int estadoCategoria=0;

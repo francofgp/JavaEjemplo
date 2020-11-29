@@ -59,6 +59,10 @@ public class Pedido  implements Serializable{
         this.producto = producto;
     }
 
+    public long getId() {
+        return id;
+    }
+
     
     
     @Column(columnDefinition = "TEXT")

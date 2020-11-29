@@ -12,7 +12,6 @@ public class RegistroAdmin {
     private Admin model;
     private InicioSesion inicioSesion;
 
-
     public RegistroAdmin() {
         oper = new GestorHibernate();
     }
@@ -31,8 +30,8 @@ public class RegistroAdmin {
         }
         return oper;
     }
-    
-        public InicioSesion getInicioSesion() {
+
+    public InicioSesion getInicioSesion() {
         if (inicioSesion == null) {
             synchronized (InicioSesion.class) {
                 inicioSesion = new InicioSesion();
@@ -63,7 +62,6 @@ public class RegistroAdmin {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setPassword(this.getForm().getTxtPassword().getText());
 
-        
     }
 
     public void guardar() {
@@ -79,18 +77,16 @@ public class RegistroAdmin {
     private boolean validar() {
         String nombs = this.getForm().getTxtNombre().getText();
         String trim = nombs.trim();
-        if(trim.length()==0){
+        if (trim.length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Admin");
-           return false;
+            return false;
         }
-        
-        if(this.getOper().corroborarAdmin(trim)){
+
+        if (this.getOper().corroborarAdmin(trim)) {
             JOptionPane.showMessageDialog(null, "Nombre de admin ya esta en uso");
             return false;
         }
-        
-        
-        
+
         return true;
 
     }

@@ -105,7 +105,7 @@ public class RegistroUsuario {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Usuario");
            return false;
         }
-        if(this.getOper().corroborarUsuario(trim)){
+        if(this.getOper().corroborarUsuario(trim) || this.getOper().corroborarComercio(trim) ||this.getOper().corroborarAdmin(trim)){
             JOptionPane.showMessageDialog(null, "Nombre de usuario ya esta en uso");
             return false;
         }

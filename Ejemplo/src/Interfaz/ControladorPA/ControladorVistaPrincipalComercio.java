@@ -2,7 +2,13 @@ package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Comercio;
+import ModelosPA.Pedido;
 import VistasPA.FrmPrincipalComercio;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorVistaPrincipalComercio {
 
@@ -51,5 +57,43 @@ public class ControladorVistaPrincipalComercio {
         this.getForm().getTxtEmail().setText(getComercio().getCorreo());
 
     }
+    
+    
+   public void cargarPedido() {
+
+        
+        List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
+
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTable1().getModel();
+
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                //datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getTotal());
+                datos.add(fila.getId());
+                //datos.add(fila.getUsuario().getId());
+                datos.add(fila.getComercio().getId());
+
+                tabla.addRow(datos);
+
+                //}
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+        }
+        
+    
+    
+    }
+    
+    
+    
+    
+    
 
 }
