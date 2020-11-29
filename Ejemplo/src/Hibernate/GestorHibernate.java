@@ -179,7 +179,18 @@ public class GestorHibernate extends HibernateUtil {
         return comercio;
 
     }
-    
+
+    public static List<Comercio> BuscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .createAlias("categoria", "cat")
+                .createAlias("rubro", "rub")
+                .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
+                .add(Restrictions.eq("rub.nombre", rubro.getNombre())).list();
+
+        return comercio;
+
+    }
     
     public static List<Producto> BuscarProducto() {
         Session sesion = HibernateUtil.getSession();

@@ -18,6 +18,7 @@ public class InicioSesion {
     private RegistroAdmin rAdmin;
     private RegistroComercio rComercio;
     private ControladorVistaPrincipalComercio vistaComercio;
+    private GestionPedido gestionPedido;
 
     public RegistroComercio getrComercio() {
         if (rComercio == null) {
@@ -27,6 +28,21 @@ public class InicioSesion {
         }
         return rComercio;
     }
+
+    public GestionPedido getGestionPedido() {
+        if (gestionPedido == null) {
+            synchronized (GestionPedido.class) {
+                gestionPedido = new GestionPedido();
+            }
+        }
+        return gestionPedido;
+    }
+
+    public void setGestionPedido(GestionPedido gestionPedido) {
+        this.gestionPedido = gestionPedido;
+    }
+    
+    
 
     public ControladorVistaPrincipalComercio getVistaComercio() {
             if (vistaComercio == null) {
@@ -110,21 +126,17 @@ public class InicioSesion {
     public void ingresarUsuario() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
         //primero pruebo si ingresa con admin, sino pruebo con usuario
-        
+
 
         
         if (this.getOper().ingresarAdmin(this.getForm().getUsuarioText().getText(), password)) {
             FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
             frmAdmin.setVisible(true);
-        } else if (this.getOper().ingresarUsuario(this.getForm().getUsuarioText().getText(), password)) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
-            FrmPrincipalUsuario frmUsuario = new FrmPrincipalUsuario();
-            frmUsuario.setVisible(true);
+        } else if (this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password)!=null) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
+            Usuario usuario=  this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password);
 
-            frmUsuario.getControlVista().setUsuario(this.getOper().buscarUsuarioIngresante(this.getForm().getUsuarioText().getText(), password));
+            this.getGestionPedido().abrirse(usuario);
 
-            frmUsuario.getTxtID().setText(Long.toString(frmUsuario.getControlVista().getUsuario().getId()));
-            frmUsuario.getTxtNombre().setText(frmUsuario.getControlVista().getUsuario().getNombre());
-            frmUsuario.getTxtCorreo().setText(frmUsuario.getControlVista().getUsuario().getEmail());
         }
     }
 

@@ -194,7 +194,7 @@ public class GestionPedido {
     }
 
     public void cargarComercio() {
-        List<Comercio> comercio = this.getOper().BuscarComercioPorCategoriaYRubro();
+        List<Comercio> comercio = this.getOper().BuscarComercioPorCategoriaYRubro(this.getCategoria(), this.getRubro());
         if (comercio.size() > 0) {
             Iterator consulta = comercio.iterator();
             while (consulta.hasNext()) {
@@ -202,16 +202,16 @@ public class GestionPedido {
 
                 Vector datos = new Vector();
                 Comercio fila = (Comercio) consulta.next();
-                if (fila.getRubro().getId() == this.getRubro().getId()
-                        && fila.getCategoria().getId() == this.getCategoria().getId()) {
+              //  if (fila.getRubro().getId() == this.getRubro().getId()
+                  //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
                     datos.add(fila);
                     datos.add(fila.getId());
                     tabla.addRow(datos);
 
-                }
+                //}
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de rubros");
+            JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
         }
     }
 
@@ -390,6 +390,23 @@ public class GestionPedido {
         return precioTotal;
     }
 
+<<<<<<< HEAD
     
+=======
+    void abrirse(Usuario usuario) {
+        
+            FrmPrincipalUsuario frmUsuario = new FrmPrincipalUsuario();
+            this.setForm(frmUsuario);
+            this.getForm().setVisible(true);
+            this.getForm().setControlVista(this);
+            setUsuario(usuario);
+            this.getForm().getTxtID().setText(Long.toString(getUsuario().getId()));
+            this.getForm().getTxtNombre().setText(getUsuario().getNombre());
+            this.getForm().getTxtCorreo().setText(getUsuario().getEmail());
+            
+            
+ }
+
+>>>>>>> 6da65c902a6d1ce3428162bc1c90e012528800b2
 
 }
