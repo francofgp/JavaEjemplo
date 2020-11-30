@@ -76,7 +76,7 @@ public class registrarProducto {
 
         model = new Producto();
         model.setNombre(this.getForm().getTxtNombre().getText());
-        model.setDescripcion(this.getForm().getTxtNombre().getText());
+        model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setPrecio(Float.parseFloat(this.getForm().getTxtPrecio().getText()));
         model.setCategoria((Categoria) this.getCategoria());
         model.comercio = comercio;

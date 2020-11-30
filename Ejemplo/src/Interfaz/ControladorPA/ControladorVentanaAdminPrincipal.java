@@ -39,7 +39,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public ABMRubro getABMrubro() {
-                if (ABMrubro == null) {
+        if (ABMrubro == null) {
             synchronized (ABMRubro.class) {
                 ABMrubro = new ABMRubro();
             }
@@ -52,7 +52,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public ABMCategoria getABMcategoria() {
-                        if (ABMcategoria == null) {
+        if (ABMcategoria == null) {
             synchronized (ABMRubro.class) {
                 ABMcategoria = new ABMCategoria();
             }
@@ -63,10 +63,6 @@ public class ControladorVentanaAdminPrincipal {
     public void setABMcategoria(ABMCategoria ABMcategoria) {
         this.ABMcategoria = ABMcategoria;
     }
-    
-    
-    
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -129,28 +125,19 @@ public class ControladorVentanaAdminPrincipal {
         }
     }
 
-    
     public void conseguirRubro() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
         int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
-        /*
-        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
-        this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
-        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
-*/
-        this.setRubro((Rubro)model.getValueAt(selectedRowIndex, 0));
+
+        this.setRubro((Rubro) model.getValueAt(selectedRowIndex, 0));
         //System.out.println(rubro.getDescripcion());
     }
 
     public void conseguirCategoria() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
         int selectedRowIndex = this.getForm().getjTableCategoria().getSelectedRow();
-        /*
-        this.getForm().setID(Long.parseLong(model.getValueAt(selectedRowIndex, 2).toString()));
-        this.getForm().setNombre(model.getValueAt(selectedRowIndex, 0).toString());
-        this.getForm().setDescripcion(model.getValueAt(selectedRowIndex, 1).toString());
-        */
-        this.setCategoria((Categoria)model.getValueAt(selectedRowIndex, 0));
+
+        this.setCategoria((Categoria) model.getValueAt(selectedRowIndex, 0));
     }
 
     public void limpiarTablaRubro() {
@@ -171,7 +158,7 @@ public class ControladorVentanaAdminPrincipal {
 
     public void nuevo() {
         this.getABMrubro().getForm().setVisible(true);
-        this.getForm().setVisible(false);    
+        this.getForm().setVisible(false);
     }
 
     public void eliminar() {
@@ -179,7 +166,7 @@ public class ControladorVentanaAdminPrincipal {
         this.getABMrubro().setRubroElegido(this.getRubro());
         this.getABMrubro().preguntarEliminar();
         limpiarTablaRubro();
-        cargarRubro();    
+        cargarRubro();
     }
 
     public void darDeBaja() {
@@ -200,12 +187,12 @@ public class ControladorVentanaAdminPrincipal {
 
     public void nuevoCategoria() {
         this.getABMcategoria().getForm().setVisible(true);
-        this.getForm().setVisible(false); 
+        this.getForm().setVisible(false);
 
     }
 
     public void modificarCategoria() {
-        
+
         conseguirCategoria();
         this.getABMcategoria().setCategoriaElegida(this.getCategoria());
         this.getABMcategoria().getForm().modificar("1", this.getABMcategoria().getModel());
@@ -228,7 +215,5 @@ public class ControladorVentanaAdminPrincipal {
         limpiarTablaCategoria();
         cargarCategoria();
     }
-        
-   
 
 }

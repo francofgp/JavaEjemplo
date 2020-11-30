@@ -14,14 +14,12 @@ public class Calificacion {
     private long id;
        
     @Column(columnDefinition = "TEXT")
-    private String numero;       
+    private String descripcion;       
    
-    @Column(columnDefinition = "TEXT")
-    private String fecha;
-    
-    @Column(columnDefinition = "TEXT")
-    private String comercio;
 
+    @Column(columnDefinition = "TEXT")
+    private float calificacion;
+        
     public long getId() {
         return id;
     }
@@ -30,29 +28,26 @@ public class Calificacion {
         this.id = id;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public String getFecha() {
-        return fecha;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+
+
+    public float getCalificacion() {
+        return calificacion;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setCalificacion(float calificacion) {
+        this.calificacion = calificacion;
     }
+    
+    
 
-    public String getComercio() {
-        return comercio;
-    }
-
-    public void setComercio(String comercio) {
-        this.comercio = comercio;
-    }
 
     
 }

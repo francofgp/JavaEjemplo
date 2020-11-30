@@ -15,14 +15,25 @@ public class ControladorVistaPrincipalComercio {
     private GestorHibernate oper;
     private FrmPrincipalComercio form;
     private Comercio comercio;
+    private Pedido pedido;
 
     public Comercio getComercio() {
         return comercio;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    
     public void setComercio(Comercio comercio) {
         this.comercio = comercio;
     }
+    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -59,9 +70,16 @@ public class ControladorVistaPrincipalComercio {
     }
     
     
+    public void limpiarTablaPedido() {
+        while (this.getForm().getjTable1().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTable1().getModel()).removeRow(0);
+        }
+    }
+     
+    
    public void cargarPedido() {
-
         
+        limpiarTablaPedido();
         List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
 
         if (pedido.size() > 0) {
@@ -78,6 +96,7 @@ public class ControladorVistaPrincipalComercio {
                 datos.add(fila.getId());
                 //datos.add(fila.getUsuario().getId());
                 datos.add(fila.getComercio().getId());
+                datos.add(fila.getEstado());
 
                 tabla.addRow(datos);
 

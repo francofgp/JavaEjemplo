@@ -6,6 +6,9 @@
 package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
+import ModelosPA.Pedido;
+import controladoresCU.GestionPedido;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,12 +28,16 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     ControladorVistaPrincipalComercio controlVista;
     FrmPrincipalComercio desktop=this;
     FrmProducto frmProducto;
+    GestionPedido controlPedido;
+    Pedido pedido;
     
     public FrmPrincipalComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista();
         this.getControlVista().setForm(desktop);
+//        this.getControlPedido();
+//        this.getControlPedido().setFormComercio(desktop);
         
         
     }
@@ -60,6 +67,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        btnCalificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,7 +150,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Descripcion", "Total", "IDPedido", "IDcomercio"
+                "Descripcion", "Total", "IDPedido", "IDcomercio", "Estado"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -152,6 +160,19 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Pedidos");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 20));
+
+        btnCalificar.setBackground(new java.awt.Color(153, 204, 0));
+        btnCalificar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCalificar.setForeground(new java.awt.Color(153, 204, 0));
+        btnCalificar.setText("Listo");
+        btnCalificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnCalificar.setContentAreaFilled(false);
+        btnCalificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,7 +186,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -187,6 +208,13 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
+        //this.getControlVista().listo();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCalificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +252,8 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         });
     }
 
+    
+    
     public ControladorVistaPrincipalComercio getControlVista() {
         if (controlVista == null) {
             synchronized (ControladorVistaPrincipalComercio.class) {
@@ -234,6 +264,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         return controlVista;
     }
 
+    public GestionPedido getControlPedido() {
+        return controlPedido;
+    }
+    private static final Logger LOG = Logger.getLogger(FrmPrincipalComercio.class.getName());
+
+    public void setControlPedido(GestionPedido controlPedido) {
+        this.controlPedido = controlPedido;
+    }
+
+    
+    
+    
     public void setControlVista(ControladorVistaPrincipalComercio controlVista) {
         this.controlVista = controlVista;
     }
@@ -377,6 +419,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalificar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

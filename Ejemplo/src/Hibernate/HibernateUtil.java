@@ -34,9 +34,9 @@ public class HibernateUtil  {
             conf.addAnnotatedClass(ModelosPA.Comercio.class);
             conf.addAnnotatedClass(ModelosPA.Producto.class);
             conf.addAnnotatedClass(ModelosPA.Pedido.class);
+            conf.addAnnotatedClass(ModelosPA.Calificacion.class);
 
-
-           
+ 
             try {
                     sessionFactory = conf.buildSessionFactory();
                     session=sessionFactory.openSession();

@@ -112,14 +112,13 @@ public class GestorHibernate extends HibernateUtil {
 
         /**
          * *
-         * //esto es copiado y pegado, basicamente a todo lo que estaba antes lo
-         * guarda, sin verificar nada // le paso el objeto que lo cree en el
+         * //esto es copiado y pegado, basicamente a todo lo que estaba antes
+         * lo guarda, sin verificar nada // le paso el objeto que lo cree en el
          * FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el
          * gestor Session s = HibernateUtil.getSession(); Transaction tx =
          * s.beginTransaction(); // objeto.setApellido("asd"); //
          * objeto.setNombre("asdasd"); // objeto.setId(2); s.save(objeto);
-         * tx.commit();
-        * **
+         * tx.commit(); **
          */
     }
     //implementar al menos 3 try y catch
@@ -172,7 +171,7 @@ public class GestorHibernate extends HibernateUtil {
         return rubro;
 
     }
-    
+
     public static List<Comercio> BuscarComercioPorCategoriaYRubro() {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class).list();
@@ -191,7 +190,7 @@ public class GestorHibernate extends HibernateUtil {
         return comercio;
 
     }
-    
+
     public static List<Producto> BuscarProducto() {
         Session sesion = HibernateUtil.getSession();
         List<Producto> producto = session.createCriteria(Producto.class).list();
@@ -287,107 +286,12 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    /*
-    public static boolean Login(String username, String password){
-        Session sesion = (Session) HibernateUtil.getSessionFactory();
-        
-        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
-                .add(Restrictions.eq("username",username)).uniqueResult();
-        
-        try{
-            if(usuario!=null){
-            
-                if(usuario.getPassword().equals(password)){
-                    JOptionPane.showMessageDialog(null,"Bienvenido usuario"+usuario.getNombre());
-                    return true;
-                }
-            }
-             
-            else{
-                JOptionPane.showMessageDialog(null,"El usuario"+usuario.getNombre()
-                        +" no existe","",JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }catch(Exception e){
-            System.out.println(e);
-            return false;
-        }
-        return false;
-        
-        
-    }
-     */
-
     public List<Categoria> categoriaShow() {
         Session sesion = HibernateUtil.getSession();
         List<Categoria> categoria = session.createCriteria(Categoria.class).list();
         return categoria;
     }
-//implementar al menos 3 try y catch
 
-    /*
-    public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
-
-        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
-        Session sesion = null;
-        try {
-
-            sesion = HibernateUtil.getSessionFactory().openSession();
-
-            Criteria crit = sesion.createCriteria(Rubro.class);
-            List<Rubro> resulset = crit.list();
-
-            jComboBoxRubro.removeAllItems();
-
-            for (Rubro rubro : resulset) {
-                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
-                if ("Activo".equals(rubro.getEstado())) {
-                    jComboBoxRubro.addItem(rubro);
-
-                }
-
-            }
-
-            sesion.close();
-
-            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    */
-/*
-    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-
-        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
-        Session sesion = null;
-        try {
-
-            sesion = HibernateUtil.getSessionFactory().openSession();
-
-            Criteria crit = sesion.createCriteria(Categoria.class);
-            List<Categoria> resulset = crit.list();
-
-            jComboBoxCategoria.removeAllItems();
-
-            for (Categoria categoria : resulset) {
-                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
-                if ("Activo".equals(categoria.getEstado())) {
-                    jComboBoxCategoria.addItem(categoria.getNombre());
-
-                }
-
-            }
-
-            sesion.close();
-
-            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-*/
     public long buscarObjeto(String nombre) {
 
         Session sesion = HibernateUtil.getSession();
@@ -521,7 +425,7 @@ public class GestorHibernate extends HibernateUtil {
             return comercio;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta ",
-                     " ", JOptionPane.ERROR_MESSAGE);
+                    " ", JOptionPane.ERROR_MESSAGE);
             System.out.println(e);
             return null;
         }
@@ -691,6 +595,20 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
 
+    public void cancelar(Pedido pedido) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            pedido.setEstado("Cancelado");
+            s.update(pedido);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+
     public void darDeBajaCategoria(Categoria categoria) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
@@ -749,7 +667,7 @@ public class GestorHibernate extends HibernateUtil {
 
     public static List<Producto> BuscarProducto(Categoria categoria, Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
-        
+
         List<Producto> producto = session.createCriteria(Producto.class)
                 .createAlias("categoria", "cat")
                 .createAlias("comercio", "com")
@@ -759,41 +677,30 @@ public class GestorHibernate extends HibernateUtil {
         return producto;
 
     }
-    
 
-    
-    
-    
-      public static List<Pedido> buscarPedido(Usuario usuario) {
+    public static List<Pedido> buscarPedido(Usuario usuario) {
         Session sesion = HibernateUtil.getSession();
-        
+
         List<Pedido> pedido = session.createCriteria(Pedido.class)
                 .createAlias("usuario", "usu")
-                .add(Restrictions.eq("usu.nombre", usuario.getNombre()))                
+                .add(Restrictions.eq("usu.nombre", usuario.getNombre()))
                 .list();
-        
-        
-               
+
         return pedido;
 
     }
-          public static List<Pedido> buscarPedidoComercio(Comercio comercio) {
+
+    public static List<Pedido> buscarPedidoComercio(Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
-        
+
         List<Pedido> pedido = session.createCriteria(Pedido.class)
                 .createAlias("comercio", "com")
                 .add(Restrictions.eq("com.nombre", comercio.getNombre()))
                 .list();
-        
-        
-               
+
         return pedido;
 
     }
-    
-    
-    
-    
 
     public boolean corroborarAdmin(String nombre) {
         Session sesion = HibernateUtil.getSession();
@@ -845,7 +752,7 @@ public class GestorHibernate extends HibernateUtil {
             return usuario;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta ",
-                     " ", JOptionPane.ERROR_MESSAGE);
+                    " ", JOptionPane.ERROR_MESSAGE);
             System.out.println(e);
             return null;
 
@@ -854,5 +761,3 @@ public class GestorHibernate extends HibernateUtil {
     }
 
 }
-
-
