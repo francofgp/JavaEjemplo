@@ -6,9 +6,11 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorUsuario;
-import Interfaz.ControladorPA.ControladorVistaUsuario;
+//import Interfaz.ControladorPA.ControladorUsuario;
+//import Interfaz.ControladorPA.ControladorVistaUsuario;
 import ModelosPA.Usuario;
+import com.toedter.calendar.JDateChooser;
+import controladoresCU.RegistroUsuario;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -24,8 +26,7 @@ import javax.swing.JTextField;
  */
 public class FrmUsuario extends javax.swing.JFrame {
     
-    ControladorVistaUsuario controlVista;
-    ControladorUsuario oper;
+    RegistroUsuario oper;
     
     
     /**
@@ -34,8 +35,16 @@ public class FrmUsuario extends javax.swing.JFrame {
     public FrmUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        oper = new ControladorUsuario();
-        this.getControlVista().setForm(this);
+        oper = new RegistroUsuario();
+        this.getOper().setForm(this);
+        
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt des = new TextPrompt("Apellido",txtApellido);
+        TextPrompt email = new TextPrompt("Email",txtEmail);
+        TextPrompt direcc = new TextPrompt("Direccion",txtDireccion);
+        TextPrompt contrasena = new TextPrompt("Contraseña",txtPassword);
+        TextPrompt telefono = new TextPrompt("Telefono",txtTelefono);
+        TextPrompt fecha = new TextPrompt("Fecha",txtFecha);
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -44,25 +53,25 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.repaint();*/
     }
 
-    public ControladorVistaUsuario getControlVista() {
-        if (controlVista == null) {
-            synchronized (ControladorVistaUsuario.class) {
-                controlVista = new ControladorVistaUsuario();
+    public RegistroUsuario getControlVista() {
+        if (oper == null) {
+            synchronized (RegistroUsuario.class) {
+                oper = new RegistroUsuario();
 
             }
         }
-        return controlVista;
-    }
-
-    public void setControlVista(ControladorVistaUsuario controlVista) {
-        this.controlVista = controlVista;
-    }
-
-    public ControladorUsuario getOper() {
         return oper;
     }
 
-    public void setOper(ControladorUsuario oper) {
+//    public void setControlVista(ControladorVistaUsuario controlVista) {
+//        this.controlVista = controlVista;
+//    }
+
+    public RegistroUsuario getOper() {
+        return oper;
+    }
+
+    public void setOper(RegistroUsuario oper) {
         this.oper = oper;
     }
 
@@ -117,6 +126,16 @@ public class FrmUsuario extends javax.swing.JFrame {
     public JButton getjButton2() {
         return jButton2;
     }
+
+    public JDateChooser getDataFecha() {
+        return dataFecha;
+    }
+
+    public void setDataFecha(JDateChooser dataFecha) {
+        this.dataFecha = dataFecha;
+    }
+    
+    
 
     public void setjButton2(JButton jButton2) {
         this.jButton2 = jButton2;
@@ -261,6 +280,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
@@ -284,6 +304,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        dataFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -337,10 +358,9 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
 
         emailTxt.setBackground(new java.awt.Color(255, 255, 255));
         emailTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,9 +370,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtEmail.setBackground(new java.awt.Color(153, 204, 0));
         txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Email");
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
         passwordTxt.setBackground(new java.awt.Color(255, 255, 255));
         passwordTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -362,14 +381,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(153, 204, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setText("Contraseña");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, -1));
 
         direccionTxt.setBackground(new java.awt.Color(255, 255, 255));
         direccionTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,9 +397,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtDireccion.setBackground(new java.awt.Color(153, 204, 0));
         txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setText("Dirección");
         txtDireccion.setBorder(null);
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 20));
 
         telefonoTxt.setBackground(new java.awt.Color(255, 255, 255));
         telefonoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -391,14 +408,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtTelefono.setBackground(new java.awt.Color(153, 204, 0));
         txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Teléfono");
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 20));
 
         fechaTxt.setBackground(new java.awt.Color(255, 255, 255));
         fechaTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -408,9 +424,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtFecha.setBackground(new java.awt.Color(153, 204, 0));
         txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
-        txtFecha.setText("Fecha de Nacimiento");
         txtFecha.setBorder(null);
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 20));
 
         apellidoTxt.setBackground(new java.awt.Color(255, 255, 255));
         apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -420,14 +440,13 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtApellido.setBackground(new java.awt.Color(153, 204, 0));
         txtApellido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellido.setText("Apellido");
         txtApellido.setBorder(null);
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 30));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -457,6 +476,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 300));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 310));
+        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
@@ -464,18 +484,8 @@ public class FrmUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            
-         this.getControlVista().Guardar();
-        /*Usuario user = new Usuario(this.txtPassword.getText(),this.txtNombre.getText(), this.txtApellido.getText(),
-                                    this.txtEmail.getText(),this.txtDireccion.getText(),this.txtTelefono.getText(),
-                                    this.txtFecha.getText());*/
-        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
 
-            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(user);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here:
+         this.getOper().guardar();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
@@ -499,6 +509,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         new FrmComercio().setVisible(true);
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,12 +552,14 @@ public class FrmUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoTxt;
     private javax.swing.JButton btnAceptar;
+    private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel direccionTxt;
     private javax.swing.JLabel emailTxt;
     private javax.swing.JLabel fechaTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;

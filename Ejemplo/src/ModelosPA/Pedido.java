@@ -1,5 +1,6 @@
 package ModelosPA;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="pedido") 
-public class Pedido {
+public class Pedido  implements Serializable{
 
     public Pedido() {
     }
@@ -47,8 +48,18 @@ public class Pedido {
     @Column(columnDefinition = "TEXT")
     private float total;
     
-    //@Column(columnDefinition = "TEXT")
-    //private float subtotal;
+    @Column(columnDefinition = "TEXT")
+    private String estado;
+    
+    @Column(columnDefinition = "TEXT")
+    private String fecha;
+    
+    @Column(columnDefinition = "TEXT")
+    private String hora;
+    
+    @OneToOne (targetEntity = Calificacion.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    private Calificacion calificacion;
+    
 
     public List<Producto> getProducto() {
         return producto;
@@ -56,6 +67,10 @@ public class Pedido {
 
     public void setProducto(List<Producto> producto) {
         this.producto = producto;
+    }
+
+    public long getId() {
+        return id;
     }
 
     
@@ -85,6 +100,40 @@ public class Pedido {
         this.comercio = comercio;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Calificacion getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(Calificacion calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    
+    
 
 
     public void setTotal(float total) {
@@ -101,7 +150,10 @@ public class Pedido {
     }
     
     
-    
+    @Override
+    public String toString () {
+        return  this.getDescripcion();
+    }  
     
     
 }

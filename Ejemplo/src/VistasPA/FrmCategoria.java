@@ -6,8 +6,8 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorCategoria;
-import Interfaz.ControladorPA.ControladorVistaCategoria;
+//import Interfaz.ControladorPA.ControladorCategoria;
+//import Interfaz.ControladorPA.ControladorVistaCategoria;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import java.util.HashSet;
@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
+import controladoresCU.ABMCategoria;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,22 +37,14 @@ public class FrmCategoria extends javax.swing.JFrame {
     String nombrePrimero;
     
     
-    ControladorVistaCategoria controlVista;
+    ABMCategoria oper;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    ControladorCategoria oper;
+   
     //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
-    public ControladorCategoria getControlador(){
+    public ABMCategoria getControlador(){
         if(oper==null){
-            synchronized (ControladorCategoria.class){
-                oper= new ControladorCategoria();
+            synchronized (ABMCategoria.class){
+                oper= new ABMCategoria();
             }
         }
         return oper;
@@ -66,6 +59,9 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.getControlador();
         this.getControlVista().setForm(this);
         //oper = new ControladorCategoria();
+        
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt des = new TextPrompt("Descripcion",txtDescripcion);
         
         /*is.setLocationRelativeTo(null);
         ImageIcon imagen = new ImageIcon("src/Imagenes/fondoVerde6.jpg");
@@ -124,22 +120,20 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 200, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("_____________________________________________________________________");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 390, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 390, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(153, 204, 0));
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDescripcion.setText("Descripcion");
         txtDescripcion.setBorder(null);
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 400, 20));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,6 +215,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.ID = ID;
     }
 
+    
     public String getNombrePrimero() {
         return nombrePrimero;
     }
@@ -229,11 +224,11 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.nombrePrimero = nombrePrimero;
     }
 
-    public ControladorCategoria getOper() {
+    public ABMCategoria getOper() {
         return oper;
     }
 
-    public void setOper(ControladorCategoria oper) {
+    public void setOper(ABMCategoria oper) {
         this.oper = oper;
     }
 
@@ -325,75 +320,26 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public ControladorVistaCategoria getControlVista() {
+    public ABMCategoria getControlVista() {
         
-        if (controlVista == null) {
-            synchronized (ControladorVistaCategoria.class) {
-                controlVista = new ControladorVistaCategoria();
+        if (oper == null) {
+            synchronized (ABMCategoria.class) {
+                oper = new ABMCategoria();
 
             }
         }
-        return controlVista;
+        return oper;
     }
 
-    public void setControlVista(ControladorVistaCategoria controlVista) {
-        this.controlVista = controlVista;
+    public void setControlVista(ABMCategoria oper) {
+        this.oper = oper;
     }
     
     
     
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-    this.getControlVista().crearModificar();
-        /*String nombre = this.txtNombre.getText();
-                
-        if(modificado=="1"){
-            if(nombrePrimero.equals(nombre)){
-                this.nombre=txtNombre.getText();
-                this.descripcion=txtDescripcion.getText();
-                //this.ID=ID;
-                oper.modificar(nombre,descripcion,ID);
-                JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
-                this.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-            }else{
-                if(oper.corroborar(nombre)==false){
-                this.nombre=txtNombre.getText();
-                this.descripcion=txtDescripcion.getText();
-                //this.ID=ID;
-                oper.modificar(nombre,descripcion,ID);
-                JOptionPane.showMessageDialog(null,"La categoria se modificó con éxito!");
-                this.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-            }
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-            
-                   
-            }}else{
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            if(oper.corroborar(nombre)==false){
-                //Categoria categoria = new Categoria(this.txtNombre.getText(),this.txtDescripcion.getText());
-                oper.guardar(this.txtNombre.getText(),this.txtDescripcion.getText());
-                JOptionPane.showMessageDialog(null,"La categoría se registró con éxito!");       
-                this.setVisible(false);   
-                new FrmVentanaAdmin().setVisible(true);
-            }
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-        
-            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here: 
-        //JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
-        
-        //this.setVisible(false);   
-        //new FrmVentanaAdmin().setVisible(true);      
-        
-        }
-        
-        //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
-        //clear.ClearTableRubro();
-        //clear.LoadRubro();  */
+    this.getControlVista().CrearModificar();
+
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -409,18 +355,11 @@ public class FrmCategoria extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    public void modificar(String modificado, String nombre, String descripcion, long ID){
+    public void modificar(String modificado,Categoria categoria){
         
-        txtDescripcion.setText(descripcion);
-        txtNombre.setText(nombre);
-        btnAceptar.setText("Modificar categoria");
-        this.modificado=modificado;
-        
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.ID=ID;
-        
-        nombrePrimero=nombre;
+        this.getControlVista().setearCampos(modificado,categoria);
+
+
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -469,13 +408,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
     
-    private void ClearTableCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private void LoadCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
 

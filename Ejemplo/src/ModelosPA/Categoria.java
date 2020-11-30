@@ -1,4 +1,5 @@
 package ModelosPA;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name="categoria") 
 
-public class Categoria {
+public class Categoria implements Serializable {
     
     public Categoria( String nombre, String descripcion) {   
         //this.id = id;
@@ -70,4 +71,8 @@ public class Categoria {
         this.nombre = nombre;
     }
     
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
 }

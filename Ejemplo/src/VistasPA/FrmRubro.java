@@ -6,8 +6,6 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
-import Interfaz.ControladorPA.ControladorRubro;
-import Interfaz.ControladorPA.ControladorVistaRubro;
 import ModelosPA.Admin;
 import ModelosPA.Rubro;
 //import Modelos.GestionProyecto.Usuario;
@@ -16,6 +14,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import VistasPA.FrmVentanaAdmin;
+import controladoresCU.ABMRubro;
+import javax.swing.JButton;
 import javax.swing.JTextField;
 //import VistasPA.TextPrompt;
 
@@ -32,7 +32,7 @@ public class FrmRubro extends javax.swing.JFrame {
     Long ID;
     String nombrePrimero;
 
-    public FrmRubro(ControladorVistaRubro controlVista) {
+    public FrmRubro(ABMRubro controlVista) {
         try {
             initComponents();
         } catch (Exception e) {
@@ -73,6 +73,15 @@ public class FrmRubro extends javax.swing.JFrame {
         this.nombre = nombre;
     }
 
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    
     public String getDescripcion() {
         return descripcion;
     }
@@ -97,31 +106,29 @@ public class FrmRubro extends javax.swing.JFrame {
         this.nombrePrimero = nombrePrimero;
     }
 
-    public ControladorVistaRubro getControlVista() {
+    public ABMRubro getControlVista() {
 
-        if (controlVista == null) {
-            synchronized (ControladorVistaRubro.class) {
-                controlVista = new ControladorVistaRubro();
+        if (oper == null) {
+            synchronized (ABMRubro.class) {
+                oper = new ABMRubro();
 
             }
         }
-        return controlVista;
+        return oper;
 
     }
 
-    public void setControlVista(ControladorVistaRubro controlVista) {
-        this.controlVista = controlVista;
+    public void setControlVista(ABMRubro oper) {
+        this.oper = oper;
     }
 
-    ControladorVistaRubro controlVista;
-
-    ControladorRubro oper;
+    ABMRubro oper;
 
     //SINGLETON IMPLEMENTAR AL MENOS 1 PATRON DE OBJETO
-    public ControladorRubro getControlador() {
+    public ABMRubro getControlador() {
         if (oper == null) {
-            synchronized (ControladorRubro.class) {
-                oper = new ControladorRubro();
+            synchronized (ABMRubro.class) {
+                oper = new ABMRubro();
             }
         }
         return oper;
@@ -263,70 +270,8 @@ public class FrmRubro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String nombs = txtNombre.getText();
-        String trim = nombs.trim();
-        if(trim.length()==0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
-        }else{
-            this.getControlVista().crearModificar();
-        }
-
-        //this.getControlVista().crearModificar();
-        
-        //System.out.println(txtNombre.getText()+ " en vista");
-        /*
-        String nombre = this.txtNombre.getText();
-                
-        if(modificado=="1"){
-            if(nombrePrimero.equals(nombre)){
-                this.nombre=txtNombre.getText();
-                this.descripcion=txtDescripcion.getText();
-                //this.ID=ID;
-                oper.modificar(nombre,descripcion,ID);
-                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
-                this.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-            }else{
-                if(oper.corroborar(nombre)==false){
-                this.nombre=txtNombre.getText();
-                this.descripcion=txtDescripcion.getText();
-                //this.ID=ID;
-                oper.modificar(nombre,descripcion,ID);
-                JOptionPane.showMessageDialog(null,"El rubro se modificó con éxito!");
-                this.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-            }
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-            
-                   
-            }}else{
-            //LO QUE HAGO ACA ES, CREAR UN OBJETO USUARIO Y PASERLE TODOS ESOS DATOS Y LLAMAR A LA FUNCION
-            // GUARDAR USUARIO QUE CREE YO,que esta en el gestor del HIBERNATE (controlador), AHORA ESTO ES LA VISTA
-            if(oper.corroborar(nombre)==false){
-                //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-                oper.guardar(this.txtNombre.getText(),this.txtDescripcion.getText());
-                JOptionPane.showMessageDialog(null,"El rubro se registró con éxito!");       
-                this.setVisible(false);   
-                new FrmVentanaAdmin().setVisible(true);
-            }
-            //Rubro rubro = new Rubro(this.txtNombre.getText(),this.txtDescripcion.getText());
-        //public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
-        
-            //HACER CLICK ACA PARA SEGUIR LA EXPLICACION
-        //oper.guardarUsuario(rubro);  //Long.parseLong(this.txtId.getText()  esto lo guarde, porque estaba probando
-        // TODO add your handling code here: 
-        //JOptionPane.showMessageDialog(null,"El rubro se registrón con éxito!");
-        
-        //this.setVisible(false);   
-        //new FrmVentanaAdmin().setVisible(true);      
-        
-        }
-        
-        //FrmVentanaAdmin clear = new FrmVentanaAdmin(); 
-        //clear.ClearTableRubro();
-        //clear.LoadRubro();  
-         */
-
+       
+        this.getControlVista().CrearModificar();
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -345,17 +290,9 @@ public class FrmRubro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void modificar(String modificado, String nombre, String descripcion, long ID) {
-        txtDescripcion.setText(descripcion);
-        txtNombre.setText(nombre);
-        btnAceptar.setText("Modificar rubro");
-        this.modificado = modificado;
-
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.ID = ID;
-
-        nombrePrimero = nombre;
+    public void modificar(String modificado, Rubro rubro) {
+        this.getControlVista().setearCampos(modificado,rubro);
+        
     }
 
     public static void main(String args[]) {
@@ -407,13 +344,6 @@ public class FrmRubro extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void ClearTableRubro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void LoadRubro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
 

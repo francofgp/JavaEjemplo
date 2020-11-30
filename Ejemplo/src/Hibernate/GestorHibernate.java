@@ -7,6 +7,7 @@ import ModelosPA.Comercio;
 import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
+import ModelosPA.Pedido;
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Component;
 import java.sql.Connection;
@@ -111,14 +112,13 @@ public class GestorHibernate extends HibernateUtil {
 
         /**
          * *
-         * //esto es copiado y pegado, basicamente a todo lo que estaba antes lo
-         * guarda, sin verificar nada // le paso el objeto que lo cree en el
+         * //esto es copiado y pegado, basicamente a todo lo que estaba antes
+         * lo guarda, sin verificar nada // le paso el objeto que lo cree en el
          * FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el
          * gestor Session s = HibernateUtil.getSession(); Transaction tx =
          * s.beginTransaction(); // objeto.setApellido("asd"); //
          * objeto.setNombre("asdasd"); // objeto.setId(2); s.save(objeto);
-         * tx.commit();
-        * **
+         * tx.commit(); **
          */
     }
     //implementar al menos 3 try y catch
@@ -165,21 +165,33 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
 
-    public static List<Rubro> RubroShow() {
+    public static List<Rubro> rubroShow() {
         Session sesion = HibernateUtil.getSession();
         List<Rubro> rubro = session.createCriteria(Rubro.class).list();
         return rubro;
 
     }
-    
-    public static List<Comercio> BuscarComercioPorCategoriaYRubro() {
+
+    public static List<Comercio> buscarComercioPorCategoriaYRubro(String nombre) {
         Session sesion = HibernateUtil.getSession();
-        List<Comercio> comercio = session.createCriteria(Comercio.class).list();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.like("nombre", "%"+nombre+"%")).list();
         return comercio;
 
     }
-    
-    
+
+    public static List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .createAlias("categoria", "cat")
+                .createAlias("rubro", "rub")
+                .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
+                .add(Restrictions.eq("rub.nombre", rubro.getNombre())).list();
+
+        return comercio;
+
+    }
+
     public static List<Producto> BuscarProducto() {
         Session sesion = HibernateUtil.getSession();
         List<Producto> producto = session.createCriteria(Producto.class).list();
@@ -275,102 +287,10 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    /*
-    public static boolean Login(String username, String password){
-        Session sesion = (Session) HibernateUtil.getSessionFactory();
-        
-        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
-                .add(Restrictions.eq("username",username)).uniqueResult();
-        
-        try{
-            if(usuario!=null){
-            
-                if(usuario.getPassword().equals(password)){
-                    JOptionPane.showMessageDialog(null,"Bienvenido usuario"+usuario.getNombre());
-                    return true;
-                }
-            }
-             
-            else{
-                JOptionPane.showMessageDialog(null,"El usuario"+usuario.getNombre()
-                        +" no existe","",JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }catch(Exception e){
-            System.out.println(e);
-            return false;
-        }
-        return false;
-        
-        
-    }
-     */
-
-    public List<Categoria> CategoriaShow() {
+    public List<Categoria> categoriaShow() {
         Session sesion = HibernateUtil.getSession();
         List<Categoria> categoria = session.createCriteria(Categoria.class).list();
         return categoria;
-    }
-//implementar al menos 3 try y catch
-
-    public void llenaJComboBoxUsuario(JComboBox jComboBoxRubro) {
-
-        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
-        Session sesion = null;
-        try {
-
-            sesion = HibernateUtil.getSessionFactory().openSession();
-
-            Criteria crit = sesion.createCriteria(Rubro.class);
-            List<Rubro> resulset = crit.list();
-
-            jComboBoxRubro.removeAllItems();
-
-            for (Rubro rubro : resulset) {
-                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
-                if ("Activo".equals(rubro.getEstado())) {
-                    jComboBoxRubro.addItem(rubro.getNombre());
-
-                }
-
-            }
-
-            sesion.close();
-
-            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-
-        // Video de donde saque https://www.youtube.com/watch?v=qCmMzU4HQt4
-        Session sesion = null;
-        try {
-
-            sesion = HibernateUtil.getSessionFactory().openSession();
-
-            Criteria crit = sesion.createCriteria(Categoria.class);
-            List<Categoria> resulset = crit.list();
-
-            jComboBoxCategoria.removeAllItems();
-
-            for (Categoria categoria : resulset) {
-                //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
-                if ("Activo".equals(categoria.getEstado())) {
-                    jComboBoxCategoria.addItem(categoria.getNombre());
-
-                }
-
-            }
-
-            sesion.close();
-
-            //JOptionPane.showMessageDialog(this, "Factor creado Satisfactoriamente", "Felicitaciones", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            //JOptionPane.showMessageDialog(this, "Error al crear Factor:" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     public long buscarObjeto(String nombre) {
@@ -402,8 +322,6 @@ public class GestorHibernate extends HibernateUtil {
         System.out.println(categoria.getId() + " categoria");
         return categoria.getId();
     }
-    
-    
 
     public void reporteRubro() {
         //saqué de este video de youtube: https://www.youtube.com/watch?v=2DvwZmsHfgo&t=23s
@@ -411,11 +329,13 @@ public class GestorHibernate extends HibernateUtil {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
 
+            /*
             session.doWork(new Work() {
                 public void execute(Connection connection) throws SQLException {
                     //use the connection here...
                 }
             });
+             */
             SessionImpl sessionImpl = (SessionImpl) session;
             Connection connection = sessionImpl.connection();
             //File file = new File("");
@@ -444,7 +364,7 @@ public class GestorHibernate extends HibernateUtil {
         System.out.println(categoria.getId());
         return categoria;
     }
-    
+
     public Object buscarProducto(Long idProducto) {
         Session sesion = HibernateUtil.getSession();
 
@@ -453,7 +373,7 @@ public class GestorHibernate extends HibernateUtil {
         //System.out.println(producto.getId());
         return producto;
     }
-    
+
     public Object buscarComercio(Long idProducto) {
         Session sesion = HibernateUtil.getSession();
 
@@ -465,76 +385,92 @@ public class GestorHibernate extends HibernateUtil {
 
     public boolean ingresarComercio(String username, String password) {
         Session sesion = HibernateUtil.getSession();
-        
+
         Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
                 .add(Restrictions.eq("nombre", username)).uniqueResult();
-        
+
         try {
-            if(comercio!=null){
-            
-                if(comercio.getPassword().equals(password)){
+            if (comercio != null) {
+
+                if (comercio.getPassword().equals(password)) {
                     //JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
                     //lo saco de aca porque spamea mucho sino
                     return true;
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
-                            + "no corresponde con el comercio", "" ,JOptionPane.ERROR_MESSAGE);
+                            + "no corresponde con el comercio", "", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "El comercio "+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El comercio "
+                        + " no existe", "", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El comercio "+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El comercio "
+                    + " no existe", "", JOptionPane.ERROR_MESSAGE);
             System.out.println(e);
             return false;
-        }    
+        }
     }
-    
+
+    public Comercio buscarComercioLogin(String username, String password) {
+        Session sesion = HibernateUtil.getSession();
+
+        try {
+            Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                    .add(Restrictions.eq("nombre", username))
+                    .add(Restrictions.eq("password", password)).uniqueResult();
+
+            return comercio;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta ",
+                    " ", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public boolean ingresarUsuario(String username, String password) {
         Session sesion = HibernateUtil.getSession();
-        
+
         Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
                 .add(Restrictions.eq("nombre", username)).uniqueResult();
-        
+
         try {
-            if(usuario!=null){
-            
-                if(usuario.getPassword().equals(password)){
+            if (usuario != null) {
+
+                if (usuario.getPassword().equals(password)) {
                     //JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
                     //lo saco de aca porque spamea mucho sino
                     return true;
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
-                            + "no corresponde con el usuario", "" ,JOptionPane.ERROR_MESSAGE);
+                            + "no corresponde con el usuario", "", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "El usuario "+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario "
+                        + " no existe", "", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El usuario "+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El usuario "
+                    + " no existe", "", JOptionPane.ERROR_MESSAGE);
             //System.out.println(e);
             return false;
-        }    
+        }
     }
-    
+
     public boolean ingresarAdmin(String username, String password) {
         Session sesion = HibernateUtil.getSession();
 
         Admin admin = (Admin) sesion.createCriteria(Admin.class)
                 .add(Restrictions.eq("class", Admin.class))
-                .add(Restrictions.eq("nombre",username)).uniqueResult();
-        
-        
+                .add(Restrictions.eq("nombre", username)).uniqueResult();
+
         if (admin != null) {
             if (admin.getPassword().equals(password)) {
                 return true;
@@ -547,66 +483,303 @@ public class GestorHibernate extends HibernateUtil {
 
     public Comercio buscarComercioIngresante(String username, String password) {
         Session sesion = HibernateUtil.getSession();
-        
+
         Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
                 .add(Restrictions.eq("nombre", username)).uniqueResult();
-        
-                try {
-            if(comercio!=null){
-            
-                if(comercio.getPassword().equals(password)){
-                    JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
+
+        try {
+            if (comercio != null) {
+
+                if (comercio.getPassword().equals(password)) {
+                    JOptionPane.showMessageDialog(null, "Bienvenido Comercio " + comercio.getNombre());
                     return comercio;
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
-                            + "no corresponde con el usuario", "" ,JOptionPane.ERROR_MESSAGE);
+                            + "no corresponde con el usuario", "", JOptionPane.ERROR_MESSAGE);
                     return null;
                 }
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El comercio " + comercio.getNombre()
+                        + " no existe", "", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El comercio "+comercio.getNombre()+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
-            System.out.println(e);
-            return null;
-        }
-    }
-    
-    
-        public Usuario buscarUsuarioIngresante(String username, String password) {
-        Session sesion = HibernateUtil.getSession();
-        
-        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
-                .add(Restrictions.eq("nombre", username)).uniqueResult();
-        
-                try {
-            if(usuario!=null){
-            
-                if(usuario.getPassword().equals(password)){
-                    JOptionPane.showMessageDialog(null, "Bienvenido Usuario "+usuario.getNombre());
-                    return usuario;
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
-                            + "no corresponde con el Usuario", "" ,JOptionPane.ERROR_MESSAGE);
-                    return null;
-                }
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "El Usuario "+usuario.getNombre()+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
-                return null;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El Usuario "+usuario.getNombre()+
-                        " no existe", "" ,JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El comercio " + comercio.getNombre()
+                    + " no existe", "", JOptionPane.ERROR_MESSAGE);
             System.out.println(e);
             return null;
         }
     }
 
+    public Usuario buscarUsuarioIngresante(String username, String password) {
+        Session sesion = HibernateUtil.getSession();
+
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", username)).uniqueResult();
+
+        try {
+            if (usuario != null) {
+
+                if (usuario.getPassword().equals(password)) {
+                    JOptionPane.showMessageDialog(null, "Bienvenido Usuario " + usuario.getNombre());
+                    return usuario;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
+                            + "no corresponde con el Usuario", "", JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El Usuario " + usuario.getNombre()
+                        + " no existe", "", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El Usuario " + usuario.getNombre()
+                    + " no existe", "", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public boolean corroborarRubro(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Rubro rubro = (Rubro) sesion.createCriteria(Rubro.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (rubro != null) {
+                String nom = rubro.getNombre();
+                if (nom.equals(nombre)) {
+                    //JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public void eliminarRubro(Long ID) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            Rubro rubro = (Rubro) s.createCriteria(Rubro.class)
+                    .add(Restrictions.eq("id", ID)).uniqueResult();
+            s.delete(rubro);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+
+    public void darDeBajaRubro(Rubro rubro) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            rubro.setEstado("Dado de Baja");
+            s.update(rubro);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+
+    public void cancelar(Pedido pedido) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            pedido.setEstado("Cancelado");
+            s.update(pedido);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
+
+    public void darDeBajaCategoria(Categoria categoria) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            categoria.setEstado("Dado de Baja");
+            s.update(categoria);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja a la categoria ", " Error ", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    public boolean corroborarCategoria(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Categoria categoria = (Categoria) sesion.createCriteria(Categoria.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (categoria != null) {
+                String nom = categoria.getNombre();
+                if (nom.equals(nombre)) {
+                    //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public boolean corroborarUsuario(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (usuario != null) {
+                String nom = usuario.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public static List<Producto> BuscarProducto(Categoria categoria, Comercio comercio) {
+        Session sesion = HibernateUtil.getSession();
+
+        List<Producto> producto = session.createCriteria(Producto.class)
+                .createAlias("categoria", "cat")
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
+                .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
+
+        return producto;
+
+    }
+    
+    public static List<Producto> BuscarProducto(Comercio comercio) {
+        Session sesion = HibernateUtil.getSession();
+
+        List<Producto> producto = session.createCriteria(Producto.class)
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
+
+        return producto;
+
+    }
+
+    public static List<Pedido> buscarPedido(Usuario usuario) {
+        Session sesion = HibernateUtil.getSession();
+
+        List<Pedido> pedido = session.createCriteria(Pedido.class)
+                .createAlias("usuario", "usu")
+                .add(Restrictions.eq("usu.nombre", usuario.getNombre()))
+                .list();
+
+        return pedido;
+
+    }
+
+    public static List<Pedido> buscarPedidoComercio(Comercio comercio) {
+        Session sesion = HibernateUtil.getSession();
+
+        List<Pedido> pedido = session.createCriteria(Pedido.class)
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("com.nombre", comercio.getNombre()))
+                .list();
+
+        return pedido;
+
+    }
+
+    public boolean corroborarAdmin(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Admin admin = (Admin) sesion.createCriteria(Admin.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (admin != null) {
+                String nom = admin.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public boolean corroborarComercio(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (comercio != null) {
+                String nom = comercio.getNombre();
+                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public Usuario buscarUsuarioLogin(String username, String password) {
+
+        Session sesion = HibernateUtil.getSession();
+
+        try {
+            Usuario usuario = (Usuario) sesion.createCriteria(Usuario.class)
+                    .add(Restrictions.eq("nombre", username))
+                    .add(Restrictions.eq("password", password)).uniqueResult();
+
+            return usuario;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta ",
+                    " ", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e);
+            return null;
+
+        }
+
+    }
+
+    public List<Comercio> buscarComercioPorNombre(String nombreComercio) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.like("nombre", "%"+nombreComercio+"%")).list();
+        return comercio;
+        
+    }
+
+
+
 }
- 

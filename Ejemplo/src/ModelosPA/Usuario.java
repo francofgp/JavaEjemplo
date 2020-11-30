@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import ModelosPA.Admin;
+import java.io.Serializable;
 
 /**
  *
@@ -18,7 +19,7 @@ import ModelosPA.Admin;
  */
 @Entity
 @Table (name="usuario") 
-public class Usuario extends Admin{
+public class Usuario extends Admin implements Serializable{
 
     //IMPLEMENTAR AL MENOS 1 HERENCIA DE OBJETO
     public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {

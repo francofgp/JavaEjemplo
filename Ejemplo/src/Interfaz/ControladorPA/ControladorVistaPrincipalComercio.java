@@ -1,32 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaz.ControladorPA;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Comercio;
+import ModelosPA.Pedido;
 import VistasPA.FrmPrincipalComercio;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author CrapBoy
- */
 public class ControladorVistaPrincipalComercio {
-    
+
     private GestorHibernate oper;
     private FrmPrincipalComercio form;
     private Comercio comercio;
+    private Pedido pedido;
 
     public Comercio getComercio() {
         return comercio;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    
     public void setComercio(Comercio comercio) {
         this.comercio = comercio;
     }
-    
     
 
     public GestorHibernate getOper() {
@@ -36,7 +42,7 @@ public class ControladorVistaPrincipalComercio {
 
             }
         }
-        return oper; 
+        return oper;
     }
 
     public void setOper(GestorHibernate oper) {
@@ -51,11 +57,62 @@ public class ControladorVistaPrincipalComercio {
         this.form = form;
     }
 
+    public void abrirse(Comercio comercio) {
+        FrmPrincipalComercio frmComercio = new FrmPrincipalComercio();
+        this.setForm(frmComercio);
+        this.getForm().setVisible(true);
+        this.getForm().setControlVista(this);
+        setComercio(comercio);
+        this.getForm().getTxtID().setText(Long.toString(getComercio().getId()));
+        this.getForm().getTxtNombre().setText(getComercio().getNombre());
+        this.getForm().getTxtEmail().setText(getComercio().getCorreo());
 
+    }
+    
+    
+    public void limpiarTablaPedido() {
+        while (this.getForm().getjTable1().getRowCount() != 0) {
+            ((DefaultTableModel) this.getForm().getjTable1().getModel()).removeRow(0);
+        }
+    }
+     
+    
+   public void cargarPedido() {
+        
+        limpiarTablaPedido();
+        List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
 
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTable1().getModel();
 
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                //datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getTotal());
+                datos.add(fila.getId());
+                //datos.add(fila.getUsuario().getId());
+                datos.add(fila.getComercio().getId());
+                datos.add(fila.getEstado());
+
+                tabla.addRow(datos);
+
+                //}
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+        }
+        
+    
+    
+    }
     
     
     
     
+    
+
 }

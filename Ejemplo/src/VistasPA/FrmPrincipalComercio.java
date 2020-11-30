@@ -6,6 +6,9 @@
 package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
+import ModelosPA.Pedido;
+import controladoresCU.GestionPedido;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,11 +28,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     ControladorVistaPrincipalComercio controlVista;
     FrmPrincipalComercio desktop=this;
     FrmProducto frmProducto;
+    GestionPedido controlPedido;
+    Pedido pedido;
     
     public FrmPrincipalComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getControlVista();
         this.getControlVista().setForm(desktop);
+//        this.getControlPedido();
+//        this.getControlPedido().setFormComercio(desktop);
+        
+        
     }
 
     /**
@@ -46,16 +56,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        btnCalificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,19 +91,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtID.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtID.setText("Comercio:");
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
-
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Registrar Producto");
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 120, 30));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -117,27 +116,63 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtEmail.setText("Comercio:");
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 150, -1));
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Registrar Producto");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton6.setContentAreaFilled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 120, 30));
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("CargarPedidos");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 120, 30));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Descripcion", "Total", "IDPedido", "IDcomercio", "Estado"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 360));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 860, 360));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Pedidos");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 20));
+
+        btnCalificar.setBackground(new java.awt.Color(153, 204, 0));
+        btnCalificar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCalificar.setForeground(new java.awt.Color(153, 204, 0));
+        btnCalificar.setText("Listo");
+        btnCalificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnCalificar.setContentAreaFilled(false);
+        btnCalificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,18 +186,35 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.getControlVista().cargarPedido();
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
         frmProducto= new FrmProducto();
         frmProducto.setVisible(true);
         frmProducto.getControlVista().setComercio(this.getControlVista().getComercio());
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
+        //this.getControlVista().listo();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCalificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,10 +247,13 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmPrincipalComercio().setVisible(true);
+                
             }
         });
     }
 
+    
+    
     public ControladorVistaPrincipalComercio getControlVista() {
         if (controlVista == null) {
             synchronized (ControladorVistaPrincipalComercio.class) {
@@ -209,6 +264,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         return controlVista;
     }
 
+    public GestionPedido getControlPedido() {
+        return controlPedido;
+    }
+    private static final Logger LOG = Logger.getLogger(FrmPrincipalComercio.class.getName());
+
+    public void setControlPedido(GestionPedido controlPedido) {
+        this.controlPedido = controlPedido;
+    }
+
+    
+    
+    
     public void setControlVista(ControladorVistaPrincipalComercio controlVista) {
         this.controlVista = controlVista;
     }
@@ -352,8 +419,10 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalificar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

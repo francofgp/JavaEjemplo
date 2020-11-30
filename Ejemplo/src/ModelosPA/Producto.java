@@ -6,6 +6,7 @@
 package ModelosPA;
 
 import javax.persistence.CascadeType;
+import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,8 +40,6 @@ public class Producto {
     }
     
     
-    
-    
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
        
@@ -50,18 +49,17 @@ public class Producto {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
     
-    @Column(columnDefinition = "TEXT")
     private float precio;
     
-    @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Categoria categoria;
+    @OneToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
+    public Categoria categoria;
 
     /*
     @Column(columnDefinition = "TEXT")
     private float imagen;
     */
     @ManyToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Comercio comercio;
+    public Comercio comercio;
     
     public long getId() {
         return id;
@@ -112,6 +110,11 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+    
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
 
 
     

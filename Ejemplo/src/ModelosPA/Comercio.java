@@ -1,6 +1,7 @@
 package ModelosPA;
 
 import javax.persistence.CascadeType;
+import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -74,12 +75,12 @@ public class Comercio {
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
     */
-    @ManyToOne (targetEntity = Rubro.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    @ManyToOne (targetEntity = Rubro.class, cascade= MERGE,fetch=FetchType.LAZY)
     private Rubro rubro;
     
     
     
-    @ManyToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    @ManyToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
     private Categoria categoria;
     
     
@@ -188,11 +189,11 @@ public class Comercio {
     public void setNombreLocal(String nombreLocal) {
         this.nombreLocal = nombreLocal;
     }
-/*
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-*/
+
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }
@@ -211,4 +212,9 @@ public class Comercio {
     }
     
     */
+    
+    @Override
+    public String toString () {
+        return  this.getNombre();
+    }  
 }
