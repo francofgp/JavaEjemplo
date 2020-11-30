@@ -253,33 +253,70 @@ public class GestionPedido {
     }
 
     public void cargarComercio() {
-        conseguirRubroSeleccionado();
-        conseguirCategoriaSeleccionado();
-        List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(categoria,rubro);
-        if (comercio.size() > 0) {
-            Iterator consulta = comercio.iterator();
-            while (consulta.hasNext()) {
-                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
 
-                Vector datos = new Vector();
-                Comercio fila = (Comercio) consulta.next();
-                //  if (fila.getRubro().getId() == this.getRubro().getId()
-                //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
-                datos.add(fila);
-                datos.add(fila.getId());
-                tabla.addRow(datos);
+        if (this.getForm().getCheckBoxComercio().isSelected()) {
 
-                //}
+            conseguirRubroSeleccionado();
+            conseguirCategoriaSeleccionado();
+            String nombreComercio= this.getForm().getTxtBuscarComercio().getText();
+            
+            List<Comercio> comercio = this.getOper().buscarComercioPorNombre(nombreComercio);
+            if (comercio.size() > 0) {
+                Iterator consulta = comercio.iterator();
+                while (consulta.hasNext()) {
+                    DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+
+                    Vector datos = new Vector();
+                    Comercio fila = (Comercio) consulta.next();
+                    //  if (fila.getRubro().getId() == this.getRubro().getId()
+                    //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
+                    datos.add(fila);
+                    datos.add(fila.getId());
+                    tabla.addRow(datos);
+
+                    //}
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
             }
+            
+            
         } else {
-            JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
+            conseguirRubroSeleccionado();
+            conseguirCategoriaSeleccionado();
+            List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(categoria, rubro);
+            if (comercio.size() > 0) {
+                Iterator consulta = comercio.iterator();
+                while (consulta.hasNext()) {
+                    DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+
+                    Vector datos = new Vector();
+                    Comercio fila = (Comercio) consulta.next();
+                    //  if (fila.getRubro().getId() == this.getRubro().getId()
+                    //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
+                    datos.add(fila);
+                    datos.add(fila.getId());
+                    tabla.addRow(datos);
+
+                    //}
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
+            }
         }
+
     }
 
     public void cargarProductos() {
 
         this.limpiarTablaProducto();
-        List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
+         List<Producto> producto;
+        if(this.getForm().getCheckBoxComercio().isSelected()){
+             producto = this.getOper().BuscarProducto(this.getComercio());
+        }else{
+            producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
+        }
+        //List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
         //List<Producto> producto = this.getOper().BuscarProducto();
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
@@ -295,7 +332,7 @@ public class GestionPedido {
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
                 System.out.println(fila.getComercio().getNombre());
-                System.out.println(fila.getCategoria().getNombre());
+                //System.out.println(fila.getCategoria().getNombre());
 
                 tabla.addRow(datos);
 
@@ -394,6 +431,7 @@ public class GestionPedido {
         //this.getForm().getTxtComercio().setText(model.getValueAt(selectedRowIndex, 0).toString());
         //this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
         comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
+        
         this.cargarProductos();
 
         this.calculoTotal();
@@ -516,7 +554,6 @@ public class GestionPedido {
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
                 System.out.println(fila.getComercio().getNombre());
-                System.out.println(fila.getCategoria().getNombre());
 
                 tabla.addRow(datos);
 

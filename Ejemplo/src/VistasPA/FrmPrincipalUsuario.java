@@ -7,6 +7,7 @@ package VistasPA;
 
 import controladoresCU.GestionPedido;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -68,7 +69,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtMontoTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableComercio = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscarComercio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         jComboBoxRubro = new javax.swing.JComboBox<>();
@@ -103,6 +104,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtIDL = new javax.swing.JLabel();
         jComboBoxHora = new javax.swing.JComboBox<>();
         jComboBoxMinuto = new javax.swing.JComboBox<>();
+        checkBoxComercio = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -218,12 +220,12 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
             jTableComercio.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 180));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 180));
 
-        jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("buscar comercio");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
+        txtBuscarComercio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtBuscarComercio.setForeground(new java.awt.Color(204, 204, 204));
+        txtBuscarComercio.setText("buscar comercio");
+        jPanel2.add(txtBuscarComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
         jLabel2.setText("______________________________");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, -1));
@@ -495,13 +497,13 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
 
         jLabel3.setText("Comercio:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         txtComercio.setText("No hay comercio seleccionado");
-        jPanel2.add(txtComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 170, 10));
+        jPanel2.add(txtComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 170, 10));
 
         txtIDL.setText("ID");
-        jPanel2.add(txtIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+        jPanel2.add(txtIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         jComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         jPanel2.add(jComboBoxHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 50, -1));
@@ -513,6 +515,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBoxMinuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 50, -1));
+
+        checkBoxComercio.setText("Buscar por nombre");
+        jPanel2.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -628,6 +633,15 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         return jComboBoxCategoria;
     }
 
+    public JTextField getTxtBuscarComercio() {
+        return txtBuscarComercio;
+    }
+
+    public void setTxtBuscarComercio(JTextField txtBuscarComercio) {
+        this.txtBuscarComercio = txtBuscarComercio;
+    }
+
+    
     public JTable getjTableComercio() {
         return jTableComercio;
     }
@@ -639,6 +653,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public void setjTableCarro(JTable jTableCarro) {
         this.jTableCarro = jTableCarro;
     }
+
+    public JCheckBox getCheckBoxComercio() {
+        return checkBoxComercio;
+    }
+
+    public void setCheckBoxComercio(JCheckBox checkBoxComercio) {
+        this.checkBoxComercio = checkBoxComercio;
+    }
+    
+    
     
     
 
@@ -1140,6 +1164,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1180,9 +1205,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTableCarro;
     private javax.swing.JTable jTableComercio;
     private javax.swing.JTable jTableProducto;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField txtBuscarComercio;
     private javax.swing.JLabel txtComercio;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtDescripcion;

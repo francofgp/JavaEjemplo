@@ -172,9 +172,10 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Comercio> BuscarComercioPorCategoriaYRubro() {
+    public static List<Comercio> buscarComercioPorCategoriaYRubro(String nombre) {
         Session sesion = HibernateUtil.getSession();
-        List<Comercio> comercio = session.createCriteria(Comercio.class).list();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.like("nombre", "%"+nombre+"%")).list();
         return comercio;
 
     }
@@ -677,6 +678,17 @@ public class GestorHibernate extends HibernateUtil {
         return producto;
 
     }
+    
+    public static List<Producto> BuscarProducto(Comercio comercio) {
+        Session sesion = HibernateUtil.getSession();
+
+        List<Producto> producto = session.createCriteria(Producto.class)
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
+
+        return producto;
+
+    }
 
     public static List<Pedido> buscarPedido(Usuario usuario) {
         Session sesion = HibernateUtil.getSession();
@@ -759,5 +771,15 @@ public class GestorHibernate extends HibernateUtil {
         }
 
     }
+
+    public List<Comercio> buscarComercioPorNombre(String nombreComercio) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.like("nombre", "%"+nombreComercio+"%")).list();
+        return comercio;
+        
+    }
+
+
 
 }
