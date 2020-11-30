@@ -161,7 +161,8 @@ public class RegistroComercio {
 
     ////////////////////////////////////////////////////
     public void conseguirRubroSeleccionado() {
-
+        this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+/*
         if (this.getForm().getEstado() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
             //this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
@@ -169,9 +170,13 @@ public class RegistroComercio {
         } else {
             this.getForm().setEstado(this.getForm().getEstado() + 1);
         }
+        */
     }
 
     public void conseguirCategoriaSeleccionado() {
+        
+        this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
+        /*
         if (this.getForm().getEstadoCategoria() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
             //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
@@ -179,6 +184,7 @@ public class RegistroComercio {
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }
+*/
     }
 
     private boolean obtenerFecha() {

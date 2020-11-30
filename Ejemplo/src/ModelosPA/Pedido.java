@@ -51,6 +51,12 @@ public class Pedido  implements Serializable{
     @Column(columnDefinition = "TEXT")
     private String estado;
     
+    @Column(columnDefinition = "TEXT")
+    private String fecha;
+    
+    @Column(columnDefinition = "TEXT")
+    private String hora;
+    
     @OneToOne (targetEntity = Calificacion.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Calificacion calificacion;
     
@@ -110,6 +116,23 @@ public class Pedido  implements Serializable{
         this.calificacion = calificacion;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    
     
 
 

@@ -471,7 +471,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        this.getControlVista().conseguirCategoriaSeleccionado();
+        //this.getControlVista().conseguirCategoriaSeleccionado();
 
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 

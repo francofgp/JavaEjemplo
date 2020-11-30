@@ -20,6 +20,10 @@ import VistasPA.FrmPrincipalComercio;
 import VistasPA.FrmRubro;
 import VistasPA.FrmVerPedidoUsuario;
 import java.awt.HeadlessException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -37,8 +41,9 @@ public class GestionPedido {
     private List<Producto> producto;
     private FrmVerPedidoUsuario formPedido;
     private FrmPrincipalComercio formComercio;
-
+    private String hora;
     private float puntaje;
+    private String fecha;
 
     
     /////////////////////////getter y setter ////////////////////////////////
@@ -125,6 +130,8 @@ public class GestionPedido {
         model.setProducto(producto);
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setEstado("Recien Creado");
+        model.setFecha(fecha);
+        model.setHora(hora);
 
     }
 
@@ -135,6 +142,24 @@ public class GestionPedido {
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 
     public Categoria getCategoria() {
         return categoria;
@@ -203,17 +228,20 @@ public class GestionPedido {
     }
 
     public void conseguirRubroSeleccionado() {
-
-        if (this.getForm().getEstado() >= 2) {
+        this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+       /* if (this.getForm().getEstado() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
             //this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
             this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
         } else {
             this.getForm().setEstado(this.getForm().getEstado() + 1);
         }
+*/
     }
 
     public void conseguirCategoriaSeleccionado() {
+        this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
+        /*
         if (this.getForm().getEstadoCategoria() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
             //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
@@ -221,10 +249,13 @@ public class GestionPedido {
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }
+*/
     }
 
     public void cargarComercio() {
-        List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(getCategoria(), getRubro());
+        conseguirRubroSeleccionado();
+        conseguirCategoriaSeleccionado();
+        List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(categoria,rubro);
         if (comercio.size() > 0) {
             Iterator consulta = comercio.iterator();
             while (consulta.hasNext()) {
@@ -396,9 +427,17 @@ public class GestionPedido {
     }
 
     public void hacerPedido() {
-        this.calculoTotal();
-        this.setModel();
-        this.getOper().guardarObjeto(getModel());
+
+        if (validarPedido()) {
+            this.calculoTotal();
+            this.conseguirFechaHora();
+            this.setModel();
+            this.getOper().guardarObjeto(getModel());
+            JOptionPane.showMessageDialog(null, "Pedido creado correctamente");
+        }
+
+
+        
 
     }
 
@@ -550,6 +589,34 @@ public class GestionPedido {
             JOptionPane.showMessageDialog(null, "Pedido ya calificado");
             return false;
         }
+        return true;
+    }
+
+    private void conseguirFechaHora() {
+        
+        hora= this.getForm().getjComboBoxHora().getSelectedItem().toString()
+                + ":" + this.getForm().getjComboBoxMinuto().getSelectedItem().toString();
+
+        Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+        fecha = dateFormat.format(date);  
+    }
+
+    private boolean validarPedido() {
+        
+        if(this.getComercio()==null){
+            JOptionPane.showMessageDialog(null, "seleccione un comercio");
+            return false;
+        }
+        
+
+        
+        if(producto.size() <= 0){
+            JOptionPane.showMessageDialog(null, "seleccione al menos un producto");
+            return false;
+        }
+        
+        
         return true;
     }
 }

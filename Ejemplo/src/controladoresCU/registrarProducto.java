@@ -63,6 +63,8 @@ public class registrarProducto {
     
 
     public void conseguirCategoriaSeleccionado() {
+        this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
+       /*
         if (this.getForm().getEstadoCategoria() >= 2) {
             String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
             //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
@@ -70,6 +72,7 @@ public class registrarProducto {
         } else {
             this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
         }
+*/
     }
 
     public void setModel() {
@@ -78,9 +81,9 @@ public class registrarProducto {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setPrecio(Float.parseFloat(this.getForm().getTxtPrecio().getText()));
-        model.setCategoria((Categoria) this.getCategoria());
+        model.setCategoria((Categoria) this.getForm().getComboBoxCategoria().getSelectedItem());
         model.comercio = comercio;
-        this.model = model;
+        //this.model = model;
     }
 
     public void guardar() {

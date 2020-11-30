@@ -132,10 +132,12 @@ public class InicioSesion {
         if (this.getOper().ingresarAdmin(this.getForm().getUsuarioText().getText(), password)) {
             FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
             frmAdmin.setVisible(true);
+            this.getForm().setVisible(false);
         } else if (this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password)!=null) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
             Usuario usuario=  this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password);
 
             this.getGestionPedido().abrirse(usuario);
+            this.getForm().setVisible(false);
 
         }
     }
@@ -167,7 +169,7 @@ public class InicioSesion {
             }
         } else {
             ingresarUsuario();
-            this.getForm().setVisible(false);
+            //this.getForm().setVisible(false);
         }
 
     }

@@ -819,7 +819,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCuitActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        this.getControlVista().conseguirCategoriaSeleccionado();
+//        this.getControlVista().conseguirCategoriaSeleccionado();
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -837,7 +837,7 @@ public class FrmComercio extends javax.swing.JFrame {
 
 
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
-        this.getControlVista().conseguirRubroSeleccionado();
+//        this.getControlVista().conseguirRubroSeleccionado();
 
             }//GEN-LAST:event_jComboBoxRubroActionPerformed
 
