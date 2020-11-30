@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ModelosPA;
+package Modelos.GestionProyecto;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,53 +13,25 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Chelo
+ * @author CrapBoy
  */
-
 @Entity
-@Table (name="rubro")
-public class Rubro implements Serializable{
+@Table (name="usuario") 
+public class Usuario {
 
-    public Rubro(String nombre, String descripcion) {
+    public Usuario() {
+    }
+
+    public Usuario( String nombre, String apellido, String password) {   
+        //this.id = id;
+        //creamos el constructor para los datos que le vamos a pasar, pero el ID no porque es autoincremental
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado="Activo";
+        this.apellido = apellido;
+        this.password= password;
     }
-
-    public Rubro() {
-    }
-    
-    
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;
-       
-    @Column(columnDefinition = "TEXT")
-    private String nombre;       
-   
-    @Column(columnDefinition = "TEXT")
-    private String descripcion;
-    
-    @Column(columnDefinition = "TEXT")
-    private String estado;
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    
-    
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -70,19 +41,37 @@ public class Rubro implements Serializable{
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
     
-    
-    @Override
-    public String toString () {
-        return  this.getNombre();
-    }  
-    
+    @Column(columnDefinition = "TEXT")
+    private String password;     
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
+    @Column(columnDefinition = "TEXT")
+    private String nombre;       
+   
+    @Column(columnDefinition = "TEXT")
+    private String apellido;  
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     
 }
