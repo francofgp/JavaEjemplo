@@ -1,5 +1,6 @@
 package ModelosPA;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="calificacion")
-public class Calificacion {
+public class Calificacion implements Serializable {
     
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
     private long id;

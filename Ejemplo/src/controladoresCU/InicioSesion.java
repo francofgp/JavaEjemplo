@@ -139,6 +139,8 @@ public class InicioSesion {
             this.getGestionPedido().abrirse(usuario);
             this.getForm().setVisible(false);
 
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "", JOptionPane.ERROR_MESSAGE);
         }
     }
 

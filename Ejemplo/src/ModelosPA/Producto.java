@@ -5,6 +5,7 @@
  */
 package ModelosPA;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="producto")
-public class Producto {
+public class Producto implements Serializable{
 
     public Producto() {
     }

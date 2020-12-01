@@ -343,7 +343,7 @@ public class GestionPedido {
         }
     }
 
-    public void nuevoPedido() {
+    public void verPedido() {
 
         //this.setFormPedido();
         FrmVerPedidoUsuario fPedido = new FrmVerPedidoUsuario();
@@ -472,11 +472,12 @@ public class GestionPedido {
             this.setModel();
             this.getOper().guardarObjeto(getModel());
             JOptionPane.showMessageDialog(null, "Pedido creado correctamente");
+            this.limpiarTablaCarro();
+            this.limpiarTablaComercio();
+            this.limpiarTablaProducto();
+            this.getForm().getTxtMontoTotal().setText("$ xxxxx");
+            
         }
-
-
-        
-
     }
 
     public void quitarProducto() {
@@ -656,4 +657,19 @@ public class GestionPedido {
         
         return true;
     }
+
+    public void interactuarSeleccionComercio() {
+        seleccionarComercio();
+        limpiarTablaCarro();
+        calculoTotal();
+
+    }
+
+    public void buscar() {
+        this.limpiarTablaComercio();
+        this.cargarComercio();
+
+    }
+
+ 
 }

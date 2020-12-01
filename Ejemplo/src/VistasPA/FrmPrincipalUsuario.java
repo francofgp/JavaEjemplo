@@ -99,12 +99,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtComercio = new javax.swing.JLabel();
-        txtIDL = new javax.swing.JLabel();
         jComboBoxHora = new javax.swing.JComboBox<>();
         jComboBoxMinuto = new javax.swing.JComboBox<>();
         checkBoxComercio = new javax.swing.JCheckBox();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -224,7 +222,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         txtBuscarComercio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtBuscarComercio.setForeground(new java.awt.Color(204, 204, 204));
-        txtBuscarComercio.setText("buscar comercio");
         jPanel2.add(txtBuscarComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
         jLabel2.setText("______________________________");
@@ -493,17 +490,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 60, 20));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jLabel12.setText("Categoria");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
-
-        jLabel3.setText("Comercio:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-
-        txtComercio.setText("No hay comercio seleccionado");
-        jPanel2.add(txtComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 170, 10));
-
-        txtIDL.setText("ID");
-        jPanel2.add(txtIDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
+        jLabel12.setText("Nombre Comercio");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 110, 20));
 
         jComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         jPanel2.add(jComboBoxHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 50, -1));
@@ -518,6 +506,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         checkBoxComercio.setText("Buscar por nombre");
         jPanel2.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel13.setText("Categoria");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -550,7 +542,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new FrmCalificacion().setVisible(true);
+//        new FrmCalificacion().setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -570,16 +562,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
 
-        this.getControlVista().nuevoPedido();
+        this.getControlVista().verPedido();
         
         
     }//GEN-LAST:event_jButton12ActionPerformed
-    int estado=0;
-    int estadoCategoria=0;
-
     
-    Long idDeRubroSeleccionado;
-    Long idCategoriaSeleccionado;
+    /*int estado=0;
+    int estadoCategoria=0;
+*/
+    
+    //Long idDeRubroSeleccionado;
+    //Long idCategoriaSeleccionado;
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
  //             this.getControlVista().conseguirCategoriaSeleccionado();
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
@@ -590,14 +583,20 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxRubroActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        this.limpiarTablaComercio();
-        this.LoadComercio();
+        this.getControlVista().buscar();
+        
+        /*this.limpiarTablaComercio();
+        this.cargarComercio();
+        */
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jTableComercioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseClicked
+        this.getControlVista().interactuarSeleccionComercio();
+        /*
         this.getControlVista().seleccionarComercio();
-        this.limpiarTablaPedidos();
+        this.limpiarTablaCarro();
         this.getControlVista().calculoTotal();
+        */
     }//GEN-LAST:event_jTableComercioMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -622,11 +621,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.getControlVista().limpiarTablaComercio();
     }
     
-    void limpiarTablaPedidos() {
+    void limpiarTablaCarro() {
         this.getControlVista().limpiarTablaCarro();
     }
         
-    void LoadComercio(){
+    void cargarComercio(){
         this.getControlVista().cargarComercio();
     }
     public JComboBox<String> getjComboBoxCategoria() {
@@ -661,64 +660,15 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public void setCheckBoxComercio(JCheckBox checkBoxComercio) {
         this.checkBoxComercio = checkBoxComercio;
     }
-    
-    
-    
-    
 
-    public JLabel getTxtComercio() {
-        return txtComercio;
-    }
-
-    public void setTxtComercio(JLabel txtComercio) {
-        this.txtComercio = txtComercio;
-    }
-
-    public JLabel getTxtIDL() {
-        return txtIDL;
-    }
-
-    public void setTxtIDL(JLabel txtIDL) {
-        this.txtIDL = txtIDL;
-    }
-    
 
     public void setjTableComercio(JTable jTableComercio) {
         this.jTableComercio = jTableComercio;
     }
     
 
-    public int getEstado() {
-        return estado;
-    }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
 
-    public int getEstadoCategoria() {
-        return estadoCategoria;
-    }
-
-    public void setEstadoCategoria(int estadoCategoria) {
-        this.estadoCategoria = estadoCategoria;
-    }
-
-    public Long getIdDeRubroSeleccionado() {
-        return idDeRubroSeleccionado;
-    }
-
-    public void setIdDeRubroSeleccionado(Long idDeRubroSeleccionado) {
-        this.idDeRubroSeleccionado = idDeRubroSeleccionado;
-    }
-
-    public Long getIdCategoriaSeleccionado() {
-        return idCategoriaSeleccionado;
-    }
-
-    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
-        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
-    }
 
     
     public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
@@ -1185,8 +1135,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1208,11 +1158,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtBuscarComercio;
-    private javax.swing.JLabel txtComercio;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JLabel txtID;
-    private javax.swing.JLabel txtIDL;
     private javax.swing.JTextField txtMontoTotal;
     private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtRuta2;
