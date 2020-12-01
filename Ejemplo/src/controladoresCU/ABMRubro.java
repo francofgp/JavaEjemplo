@@ -97,19 +97,16 @@ public class ABMRubro {
     }
 
     public void crearModificar() {
-        String nombre = form.getTxtNombre().getText();
-        if ("1".equals(form.getModificado()) && (corroborar(nombre) == false || this.getModel().getNombre().equals(nombre))) {                       
+        if ("1".equals(form.getModificado())) {                       
                     modificar();
                     JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
                     form.setVisible(false);
                     new FrmVentanaAdmin().setVisible(true);                           
-        } else if(corroborar(nombre) == false) {
+        } else {
                 guardar();
                 JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
                 form.setVisible(false);
                 new FrmVentanaAdmin().setVisible(true);           
-        }else{
-        JOptionPane.showMessageDialog(null, "El rubro ya existe!");
         }
     }
 
@@ -146,11 +143,22 @@ public class ABMRubro {
         String nombs = this.getForm().getTxtNombre().getText();
         String trim = nombs.trim();
 
-        if(trim.length()==0){
+        if (trim.length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
-           return false;
+            return false;
         }
-        return true;
+        
+        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))){
+            return true;
+        }else if(!"1".equals(form.getModificado()) && corroborar(trim) == false){
+            return true;
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "El rubro ya existe");
+         return false;
+        }
+
+        //return true;
     }
 
 }

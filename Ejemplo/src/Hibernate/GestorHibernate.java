@@ -183,13 +183,18 @@ public class GestorHibernate extends HibernateUtil {
     public static List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .createAlias("categoria", "cat")
+//                .createAlias("categoria", "cat")
                 .createAlias("rubro", "rub")
-                .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
+                
+                
+//                      .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
+                .add(Restrictions.eq("categoria", categoria))
                 .add(Restrictions.eq("rub.nombre", rubro.getNombre())).list();
 
         return comercio;
 
+        
+//         Criteria crit =
     }
 
     public static List<Producto> BuscarProducto() {

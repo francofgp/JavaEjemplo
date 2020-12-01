@@ -103,6 +103,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jComboBoxMinuto = new javax.swing.JComboBox<>();
         checkBoxComercio = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -388,16 +389,16 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 160, 40));
 
-        jTextField7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Century Gothic", 0, 8)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField7.setText("Ingrese la hora deseada de recepción (hh:mm)");
+        jTextField7.setText("*cantidad máxima 5 productos");
         jTextField7.setBorder(null);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 400, 30));
+        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 360, 20));
 
         jTextField8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(153, 204, 0));
@@ -511,6 +512,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel13.setText("Categoria");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
 
+        jTextField9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(153, 204, 0));
+        jTextField9.setText("Ingrese la hora deseada de recepción (hh:mm)");
+        jTextField9.setBorder(null);
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 400, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -616,6 +628,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void jComboBoxMinutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMinutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxMinutoActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
     
     void limpiarTablaComercio() {
         this.getControlVista().limpiarTablaComercio();
@@ -1157,6 +1173,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTableProducto;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtBuscarComercio;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtDescripcion;

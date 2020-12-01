@@ -61,19 +61,18 @@ public class ABMCategoria {
     
 
     public void crearModificar() {
-        String nombre = form.getTxtNombre().getText();
-        if ("1".equals(form.getModificado()) &&  (this.corroborar(nombre) == false || this.getModel().getNombre().equals(nombre))) {
-                    modificar();
-                    JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
-                    form.setVisible(false);
-                    new FrmVentanaAdmin().setVisible(true);
-        } else if(this.corroborar(nombre) == false) {
-                this.guardar();
-                JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
-                form.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);
-        }else{
-        JOptionPane.showMessageDialog(null, "La categoria ya existe!");}
+
+        if ("1".equals(form.getModificado())) {
+            modificar();
+            JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
+            form.setVisible(false);
+            new FrmVentanaAdmin().setVisible(true);
+        } else {
+            this.guardar();
+            JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
+            form.setVisible(false);
+            new FrmVentanaAdmin().setVisible(true);
+        }
     }
 
     public Categoria getModel() {
@@ -159,6 +158,15 @@ public class ABMCategoria {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su categoria");
            return false;
         }
-        return true;
+       
+        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))){
+            return true;
+        }else if(!"1".equals(form.getModificado()) && corroborar(trim) == false){
+            return true;
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "La categoria ya existe");
+         return false;
+        }
     }
 }

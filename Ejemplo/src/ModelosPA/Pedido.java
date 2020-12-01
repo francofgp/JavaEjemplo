@@ -1,6 +1,7 @@
 package ModelosPA;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,8 +52,8 @@ public class Pedido  implements Serializable{
     @Column(columnDefinition = "TEXT")
     private String estado;
     
-    @Column(columnDefinition = "TEXT")
-    private String fecha;
+    //@Column(columnDefinition = "TEXT")
+    private Date fecha;
     
     @Column(columnDefinition = "TEXT")
     private String hora;
@@ -116,14 +117,24 @@ public class Pedido  implements Serializable{
         this.calificacion = calificacion;
     }
 
-    public String getFecha() {
+   /* public String getFecha() {
         return fecha;
     }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+*/
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     public String getHora() {
         return hora;
     }

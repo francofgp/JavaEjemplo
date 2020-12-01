@@ -43,7 +43,7 @@ public class GestionPedido {
     private FrmPrincipalComercio formComercio;
     private String hora;
     private float puntaje;
-    private String fecha;
+    private Date fecha;
 
     
     /////////////////////////getter y setter ////////////////////////////////
@@ -151,11 +151,19 @@ public class GestionPedido {
         this.hora = hora;
     }
 
-    public String getFecha() {
+//    public String getFecha() {
+//        return fecha;
+//    }
+//
+//    public void setFecha(String fecha) {
+//        this.fecha = fecha;
+//    }
+
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
     
@@ -255,7 +263,9 @@ public class GestionPedido {
     public void cargarComercio() {
 
         if (this.getForm().getCheckBoxComercio().isSelected()) {
-
+                    
+//            this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+                    
             conseguirRubroSeleccionado();
             conseguirCategoriaSeleccionado();
             String nombreComercio= this.getForm().getTxtBuscarComercio().getText();
@@ -636,8 +646,8 @@ public class GestionPedido {
                 + ":" + this.getForm().getjComboBoxMinuto().getSelectedItem().toString();
 
         Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
-        fecha = dateFormat.format(date);  
+        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+        fecha = date;  
     }
 
     private boolean validarPedido() {
