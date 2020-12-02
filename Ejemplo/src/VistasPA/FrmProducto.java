@@ -454,7 +454,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-                this.controlVista.guardar();
+        this.controlVista.guardar();
 
 
 //String image =txtRuta.getText();

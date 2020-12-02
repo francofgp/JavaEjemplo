@@ -9,17 +9,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 public class DetallePedido {
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-       
+
     @Column(columnDefinition = "TEXT")
-    private String cantidad;     
-    
+    private String cantidad;
+
     @Column(columnDefinition = "TEXT")
     private String total;
-    
-    @OneToOne (targetEntity = Producto.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+
+    @OneToOne(targetEntity = Producto.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Producto producto;
 
     public long getId() {
@@ -53,20 +54,5 @@ public class DetallePedido {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

@@ -118,7 +118,7 @@ public class ABMRubro {
         }
     }
 
-    public void CrearModificar() {       
+    public void modificarCrear() {       
         if (validar()) {
             crearModificar();
         }

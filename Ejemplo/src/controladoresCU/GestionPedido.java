@@ -322,9 +322,9 @@ public class GestionPedido {
         this.limpiarTablaProducto();
          List<Producto> producto;
         if(this.getForm().getCheckBoxComercio().isSelected()){
-             producto = this.getOper().BuscarProducto(this.getComercio());
+             producto = this.getOper().buscarProducto(this.getComercio());
         }else{
-            producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
+            producto = this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
         }
         //List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
         //List<Producto> producto = this.getOper().BuscarProducto();
@@ -481,11 +481,15 @@ public class GestionPedido {
             this.conseguirFechaHora();
             this.setModel();
             this.getOper().guardarObjeto(getModel());
+            
             JOptionPane.showMessageDialog(null, "Pedido creado correctamente");
             this.limpiarTablaCarro();
             this.limpiarTablaComercio();
             this.limpiarTablaProducto();
             this.getForm().getTxtMontoTotal().setText("$ xxxxx");
+            
+            comercio=null;
+            producto=null;
             
         }
     }

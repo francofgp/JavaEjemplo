@@ -12,14 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table (name="comercio")
+@Table(name = "comercio")
 public class Comercio {
 
     public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion,
-                    String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
-                    Rubro rubro, Categoria categoria) {
+            String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
+            Rubro rubro, Categoria categoria) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
@@ -31,59 +30,54 @@ public class Comercio {
         this.nombreLocal = nombreLocal;
         this.direccionNegocio = direccionNegocio;
         this.rubro = rubro;
-        this.categoria=categoria;
+        this.categoria = categoria;
     }
 
     public Comercio() {
     }
-    
-    
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-       
+
     @Column(columnDefinition = "TEXT")
-    private String nombre;     
-    
+    private String nombre;
+
     @Column(columnDefinition = "TEXT")
     private String apellido;
-    
+
     @Column(columnDefinition = "TEXT")
     private String fechaNac;
-   
+
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")
     private String password;
-    
+
     @Column(columnDefinition = "TEXT")
     private String direccion;
-    
+
     @Column(columnDefinition = "TEXT")
     private String correo;
-    
+
     @Column(columnDefinition = "TEXT")
     private String cuil;
-    
+
     @Column(columnDefinition = "TEXT")
     private String telefono;
-    
+
     //@Column(columnDefinition = "TEXT")
     //private String imagen;
-        
     @Column(columnDefinition = "TEXT")
     private String nombreLocal;
     /*
     @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
     private Categoria categoria;
-    */
-    @ManyToOne (targetEntity = Rubro.class, cascade= MERGE,fetch=FetchType.LAZY)
+     */
+    @ManyToOne(targetEntity = Rubro.class, cascade = MERGE, fetch = FetchType.LAZY)
     private Rubro rubro;
-    
-    
-    
-    @ManyToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
+
+    @ManyToOne(targetEntity = Categoria.class, cascade = MERGE, fetch = FetchType.LAZY)
     private Categoria categoria;
-    
-    
+
     @Column(columnDefinition = "TEXT")
     private String direccionNegocio;
 
@@ -95,8 +89,7 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String calificacion;
     ////////////////////////////////////////
-    */
-    
+     */
     public long getId() {
         return id;
     }
@@ -144,7 +137,6 @@ public class Comercio {
     public Rubro getRubro() {
         return rubro;
     }
-    
 
     public String getDireccionNegocio() {
         return direccionNegocio;
@@ -201,6 +193,7 @@ public class Comercio {
     public void setDireccionNegocio(String direccionNegocio) {
         this.direccionNegocio = direccionNegocio;
     }
+
     /*
     public void setImagen(String imagen) {
         this.imagen = imagen;
@@ -211,10 +204,9 @@ public class Comercio {
         return imagen;
     }
     
-    */
-    
+     */
     @Override
-    public String toString () {
-        return  this.getNombre();
-    }  
+    public String toString() {
+        return this.getNombre();
+    }
 }

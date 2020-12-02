@@ -671,7 +671,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Producto> BuscarProducto(Categoria categoria, Comercio comercio) {
+    public static List<Producto> buscarProducto(Categoria categoria, Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
@@ -684,7 +684,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
     
-    public static List<Producto> BuscarProducto(Comercio comercio) {
+    public static List<Producto> buscarProducto(Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
