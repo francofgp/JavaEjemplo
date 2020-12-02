@@ -571,6 +571,31 @@ public class GestorHibernate extends HibernateUtil {
         }
 
     }
+    
+    
+    public boolean corroborarProducto(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+
+        Producto producto = (Producto) sesion.createCriteria(Producto.class)
+                .add(Restrictions.eq("nombre", nombre)).uniqueResult();
+
+        try {
+            if (producto != null) {
+                String nom = producto.getNombre();
+                if (nom.equals(nombre)) {
+                    //JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
     public void eliminarRubro(Long ID) {
         Session s = HibernateUtil.getSession();
@@ -783,6 +808,16 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.like("nombre", "%"+nombreComercio+"%")).list();
         return comercio;
         
+    }
+
+    public List<Producto> productosComercio(Comercio comercio) {
+        Session sesion = HibernateUtil.getSession();
+        List<Producto> producto = session.createCriteria(Producto.class)
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("com.nombre", comercio.getNombre()))
+                .list();
+
+        return producto;
     }
 
 

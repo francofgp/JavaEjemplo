@@ -178,11 +178,17 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void modificar() {
-        conseguirRubro();
-        this.getABMrubro().setRubroElegido(this.getRubro());
-        this.getABMrubro().getForm().modificar("1", this.getABMrubro().getRubroElegido());
-        this.getABMrubro().getForm().setVisible(true);
-        this.getForm().setVisible(false);
+        try {
+            conseguirRubro();
+            this.getABMrubro().setRubroElegido(this.getRubro());
+            this.getABMrubro().getForm().modificar("1", this.getABMrubro().getRubroElegido());
+            this.getABMrubro().getForm().setVisible(true);
+            this.getForm().setVisible(false);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un rubro");
+        }
+
     }
 
     public void nuevoCategoria() {
@@ -192,12 +198,17 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void modificarCategoria() {
-
+        
+        try{
         conseguirCategoria();
         this.getABMcategoria().setCategoriaElegida(this.getCategoria());
         this.getABMcategoria().getForm().modificar("1", this.getABMcategoria().getModel());
         this.getABMcategoria().getForm().setVisible(true);
         this.getForm().setVisible(false);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
+        }
+
     }
 
     public void darDeBajaCategoria() {

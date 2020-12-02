@@ -2,6 +2,7 @@ package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import ModelosPA.Usuario;
+import controladoresCU.GestionCalificacion;
 import controladoresCU.GestionPedido;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,20 +11,21 @@ import javax.swing.JTextField;
 
 public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
-    GestionPedido controlVista;
+    GestionCalificacion controlVista;
     FrmVerPedidoUsuario desktop = this;
+    
 
     public FrmVerPedidoUsuario() {
 
         initComponents();
-        this.getControlVista().setFormPedido(desktop);
+        this.getControlVista().setForm(desktop);
         this.getControlVista().activarCalificacion(false);
     }
 
-    public GestionPedido getControlVista() {
+    public GestionCalificacion getControlVista() {
         if (controlVista == null) {
-            synchronized (GestionPedido.class) {
-                controlVista = new GestionPedido();
+            synchronized (GestionCalificacion.class) {
+                controlVista = new GestionCalificacion();
 
             }
         }
@@ -31,7 +33,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
     }
 
-    public void setControlVista(GestionPedido controlVista) {
+    public void setControlVista(GestionCalificacion controlVista) {
         this.controlVista = controlVista;
     }
 

@@ -143,11 +143,13 @@ public class ABMCategoria {
         this.getForm().getBtnAceptar().setText("Modificar categoria");
         this.getForm().setModificado(modificado);
            
+        /*
         this.getForm().setNombre(categoria.getNombre());
         this.getForm().setDescripcion(categoria.getDescripcion());
         this.getForm().setID(categoria.getId());
         
         this.getForm().setNombrePrimero(this.getForm().getNombre());
+*/
         setCategoriaElegida(categoria);
         }
 

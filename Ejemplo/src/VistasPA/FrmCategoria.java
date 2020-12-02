@@ -31,10 +31,7 @@ public class FrmCategoria extends javax.swing.JFrame {
 
     String modificado="0"; //uso esto para saber si se modifico, si es 1 es
     // es porque lo mando para modificar
-    String nombre;
-    String descripcion;
-    Long ID;
-    String nombrePrimero;
+
     
     
     ABMCategoria oper;
@@ -191,39 +188,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         this.modificado = modificado;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
     
-    public String getNombrePrimero() {
-        return nombrePrimero;
-    }
-
-    public void setNombrePrimero(String nombrePrimero) {
-        this.nombrePrimero = nombrePrimero;
-    }
-
     public ABMCategoria getOper() {
         return oper;
     }

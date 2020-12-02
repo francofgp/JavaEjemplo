@@ -39,43 +39,31 @@ public class GestionPedido {
     private Categoria categoria;
     private float precioTotal = (float) 0.0;
     private List<Producto> producto;
-    private FrmVerPedidoUsuario formPedido;
-    private FrmPrincipalComercio formComercio;
+   
+    
     private String hora;
-    private float puntaje;
+
     private Date fecha;
+    private GestionCalificacion controlCalificacion;
 
     
     /////////////////////////getter y setter ////////////////////////////////
-    
-    public FrmVerPedidoUsuario getFormPedido() {
-        if (formPedido == null) {
-            synchronized (FrmVerPedidoUsuario.class) {
-                formPedido = new FrmVerPedidoUsuario();
+
+    public GestionCalificacion getControlCalificacion() {
+        if (controlCalificacion == null) {
+            synchronized (GestionCalificacion.class) {
+                controlCalificacion = new GestionCalificacion();
             }
         }
-        return formPedido;
+        return controlCalificacion;
     }
 
-    public void setFormPedido(FrmVerPedidoUsuario form) {
-        this.formPedido = form;
+    public void setControlCalificacion(GestionCalificacion controlCalificacion) {
+        this.controlCalificacion = controlCalificacion;
     }
+    
+    
 
-    public float getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(float puntaje) {
-        this.puntaje = puntaje;
-    }
-
-    public FrmPrincipalComercio getFormComercio() {
-        return formComercio;
-    }
-
-    public void setFormComercio(FrmPrincipalComercio formComercio) {
-        this.formComercio = formComercio;
-    }
 
     public void setPedido(Pedido pedido) {
         this.model = pedido;
@@ -188,18 +176,7 @@ public class GestionPedido {
     
     //////////////////Metodos/////////////////////////
 
-    public void cancelar() {
-        conseguirPedido();
-        this.darDeBaja();
-        this.limpiarTablaPedido();
-        this.cargarPedido();
 
-    }
-
-    public void darDeBaja() {
-        this.getOper().cancelar(this.getModel());
-
-    }
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
         //getOper().llenaJComboBoxRubro(jComboBoxRubro);
@@ -356,51 +333,12 @@ public class GestionPedido {
     public void verPedido() {
 
         //this.setFormPedido();
-        FrmVerPedidoUsuario fPedido = new FrmVerPedidoUsuario();
-        setFormPedido(fPedido);
-        this.getFormPedido().setVisible(true);
-        this.getFormPedido().setControlVista(this);
-        System.out.println(this.getUsuario().getId());
-        this.cargarPedido();
+        this.getControlCalificacion().abrirse(usuario);
 
-    }
-
-    public void cargarPedido() {
-
-        //this.limpiarTablaPedido();
-        long a = this.getUsuario().getId();
-        System.out.println(a);
-
-        List<Pedido> pedido = this.getOper().buscarPedido(this.getUsuario());
-
-        if (pedido.size() > 0) {
-            Iterator consulta = pedido.iterator();
-            while (consulta.hasNext()) {
-                DefaultTableModel tabla = (DefaultTableModel) this.getFormPedido().getjTablePedidos().getModel();
-
-                Vector datos = new Vector();
-                Pedido fila = (Pedido) consulta.next();
-
-                //datos.add(fila);
-                datos.add(fila);
-                datos.add(fila.getTotal());
-                datos.add(fila.getId());
-                datos.add(fila.getUsuario().getNombre());
-                datos.add(fila.getEstado());
-                datos.add(fila.getComercio().getNombre());
-                if (fila.getCalificacion() != null) {
-                    datos.add(fila.getCalificacion().getCalificacion());
-                } else {
-                    datos.add("Sin calificar");
-                }
-
-                tabla.addRow(datos);
-
-                //}
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de productos");
-        }
+        
+        //this.getFormPedido().setControlVista(this);
+        //System.out.println(this.getUsuario().getId());
+        
 
     }
 
@@ -422,17 +360,9 @@ public class GestionPedido {
         }
     }
 
-    public void limpiarTablaPedido() {
-        while (this.getFormPedido().getjTablePedidos().getRowCount() != 0) {
-            ((DefaultTableModel) this.getFormPedido().getjTablePedidos().getModel()).removeRow(0);
-        }
-    }
 
-    public void limpiarTablaProductos() {
-        while (this.getFormPedido().getjTableProducto().getRowCount() != 0) {
-            ((DefaultTableModel) this.getFormPedido().getjTableProducto().getModel()).removeRow(0);
-        }
-    }
+
+
 
     //String comercioSeleccionadoID;
     public void seleccionarComercio() {
@@ -447,13 +377,7 @@ public class GestionPedido {
         this.calculoTotal();
     }
 
-    public void seleccionarPedido() {
-        DefaultTableModel tabla = (DefaultTableModel) this.getFormPedido().getjTablePedidos().getModel();
-        int selectedRowIndex = this.getFormPedido().getjTablePedidos().getSelectedRow();
 
-        this.model = (Pedido) tabla.getValueAt(selectedRowIndex, 0);
-
-    }
 
     public void agregarAlCarro() {
 
@@ -524,8 +448,9 @@ public class GestionPedido {
     }
 
     void abrirse(Usuario usuario) {
-
+        
         FrmPrincipalUsuario frmUsuario = new FrmPrincipalUsuario();
+        
         this.setForm(frmUsuario);
         this.getForm().setVisible(true);
         this.getForm().setControlVista(this);
@@ -536,113 +461,17 @@ public class GestionPedido {
 
     }
 
-    public void cargarProductosPedido() {
-        limpiarTablaProductos();
-        this.seleccionarPedido();
-        this.cargarPedidos();
 
-    }
 
-    public void conseguirPedido() {
-        DefaultTableModel model = (DefaultTableModel) this.getFormPedido().getjTablePedidos().getModel();
-        int selectedRowIndex = this.getFormPedido().getjTablePedidos().getSelectedRow();
 
-        this.model = ((Pedido) model.getValueAt(selectedRowIndex, 0));
 
-    }
 
-    private void cargarPedidos() {
-        //this.limpiarTablaProducto();
-        List<Producto> producto = this.getModel().getProducto();
-        //List<Producto> producto = this.getOper().BuscarProducto();
-        if (producto.size() > 0) {
-            Iterator consulta = producto.iterator();
-            while (consulta.hasNext()) {
-                DefaultTableModel tabla = (DefaultTableModel) this.getFormPedido().getjTableProducto().getModel();
 
-                Vector datos = new Vector();
-                Producto fila = (Producto) consulta.next();
-                //if (fila.getComercio() == this.getComercio()
-                //        && fila.getCategoria() == this.getCategoria()) {
-                datos.add(fila);
-                datos.add(fila.getDescripcion());
-                datos.add(fila.getPrecio());
-                datos.add(fila.getId());
-                System.out.println(fila.getComercio().getNombre());
 
-                tabla.addRow(datos);
 
-                //}
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de productos");
-        }
 
-    }
 
-    public void activarCalificacion(boolean estado) {
-        this.getFormPedido().getBtnAceptarCancelarCalificacion().setVisible(estado);
-        this.getFormPedido().getBtnAceptarConfirmarCalificacion().setVisible(estado);
 
-        this.getFormPedido().getBtnValor1().setVisible(estado);
-        this.getFormPedido().getBtnValor2().setVisible(estado);
-        this.getFormPedido().getBtnValor3().setVisible(estado);
-        this.getFormPedido().getBtnValor4().setVisible(estado);
-        this.getFormPedido().getBtnValor5().setVisible(estado);
-
-        this.getFormPedido().getjLabelDescrip().setVisible(estado);
-        this.getFormPedido().getjLabelDescripcion().setVisible(estado);
-        this.getFormPedido().getTxtDescripcion().setVisible(estado);
-
-    }
-
-    public void calificar() {
-
-        if (validar()) {
-            setPuntaje(0.0f);
-            activarCalificacion(true);
-        }
-
-    }
-
-    public void cancelarCalificacion() {
-        activarCalificacion(false);
-    }
-
-    public void obtenerPuntaje(float valor) {
-        puntaje = valor;
-    }
-
-    public void aceptarCalificacion() {
-        if (puntaje != 0.0f) {
-            crearCalificacion();
-            activarCalificacion(false);
-            limpiarTablaPedido();
-            cargarPedido();
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un puntaje");
-        }
-    }
-
-    private void crearCalificacion() {
-        Calificacion calificacion = new Calificacion();
-        calificacion.setCalificacion(puntaje);
-        calificacion.setDescripcion(this.getFormPedido().getTxtDescripcion().getText());
-        model.setCalificacion(calificacion);
-        this.getOper().actualizarObjeto(model);
-
-    }
-
-    private boolean validar() {
-        if (model == null) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un pedido");
-            return false;
-        } else if (model.getCalificacion() != null) {
-            JOptionPane.showMessageDialog(null, "Pedido ya calificado");
-            return false;
-        }
-        return true;
-    }
 
     private void conseguirFechaHora() {
         

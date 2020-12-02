@@ -6,6 +6,7 @@
 package VistasPA;
 
 import Hibernate.GestorHibernate;
+import ModelosPA.Producto;
 
 //import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
@@ -18,16 +19,16 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import controladoresCU.registrarProducto;
+import controladoresCU.ABMProducto;
 /**
  *
  * @author CrapBoy
  */
 public class FrmProducto extends javax.swing.JFrame {
     
-registrarProducto controlVista;
+ABMProducto controlVista;
 FrmProducto desktop=this;
-
+private String modificado="0";
 
 
     public FrmProducto() {
@@ -233,24 +234,24 @@ FrmProducto desktop=this;
     
     
     
-    public registrarProducto getOper() {
+    public ABMProducto getOper() {
         return controlVista;
     }
 
-    public void setOper(registrarProducto oper) {
+    public void setOper(ABMProducto oper) {
         this.controlVista = oper;
     }
 
-    public registrarProducto getControlVista() {
+    public ABMProducto getControlVista() {
         if (controlVista == null) {
-            synchronized (registrarProducto.class) {
-                controlVista = new registrarProducto();
+            synchronized (ABMProducto.class) {
+                controlVista = new ABMProducto();
 
             }
         }
         return controlVista;    }
 
-    public void setControlVista(registrarProducto controlVista) {
+    public void setControlVista(ABMProducto controlVista) {
         this.controlVista = controlVista;
     }
 
@@ -438,7 +439,23 @@ FrmProducto desktop=this;
     public void setTxtRuta(JLabel txtRuta) {
         this.txtRuta = txtRuta;
     }
+
+    public String getModificado() {
+        return modificado;
+    }
+
+    public void setModificado(String modificado) {
+        this.modificado = modificado;
+    }
     
+    
+    
+    public void modificar(String modificado,Producto producto){
+        
+        this.getControlVista().setearCampos(modificado,producto);
+
+
+    }
     
     
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
@@ -454,7 +471,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        this.controlVista.guardar();
+        this.controlVista.modificarCrear();
 
 
 //String image =txtRuta.getText();
@@ -476,7 +493,7 @@ FrmProducto desktop=this;
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.setVisible(false);
+        this.getControlVista().salir();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -571,6 +588,8 @@ FrmProducto desktop=this;
     private void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
+
+
 
 
 

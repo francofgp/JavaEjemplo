@@ -6,9 +6,7 @@
 package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
-import ModelosPA.Pedido;
-import controladoresCU.GestionPedido;
-import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,9 +26,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     ControladorVistaPrincipalComercio controlVista;
     FrmPrincipalComercio desktop=this;
     FrmProducto frmProducto;
-    GestionPedido controlPedido;
-    Pedido pedido;
-    
+
     public FrmPrincipalComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -42,6 +38,37 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         
     }
 
+    public JTable getjTablePedidos() {
+        return jTablePedidos;
+    }
+
+    public void setjTablePedidos(JTable jTablePedidos) {
+        this.jTablePedidos = jTablePedidos;
+    }
+
+    public JTable getjTableProductos() {
+        return jTableProductos;
+    }
+
+    public void setjTableProductos(JTable jTableProductos) {
+        this.jTableProductos = jTableProductos;
+    }
+
+
+    
+
+
+
+    public JTable getjTableProductoPedidos() {
+        return jTableProductoPedidos;
+    }
+
+    public void setjTableProductoPedidos(JTable jTableProductoPedidos) {
+        this.jTableProductoPedidos = jTableProductoPedidos;
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,9 +92,17 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePedidos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        btnCalificar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableProductoPedidos = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableProductos = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,7 +180,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -153,26 +188,118 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 "Descripcion", "Total", "IDPedido", "IDcomercio", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 860, 360));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Pedidos");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 20));
-
-        btnCalificar.setBackground(new java.awt.Color(153, 204, 0));
-        btnCalificar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnCalificar.setForeground(new java.awt.Color(153, 204, 0));
-        btnCalificar.setText("Listo");
-        btnCalificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        btnCalificar.setContentAreaFilled(false);
-        btnCalificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalificarActionPerformed(evt);
+        jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePedidosMouseClicked(evt);
             }
         });
-        jPanel2.add(btnCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 110, 30));
+        jScrollPane1.setViewportView(jTablePedidos);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 420, 160));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Productos de los pedidos");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 170, 20));
+
+        btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnNuevo.setContentAreaFilled(false);
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 100, 30));
+
+        jTableProductoPedidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Descripcion", "Categoria", "Precio", "ID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableProductoPedidos);
+        if (jTableProductoPedidos.getColumnModel().getColumnCount() > 0) {
+            jTableProductoPedidos.getColumnModel().getColumn(0).setResizable(false);
+            jTableProductoPedidos.getColumnModel().getColumn(1).setResizable(false);
+            jTableProductoPedidos.getColumnModel().getColumn(2).setResizable(false);
+            jTableProductoPedidos.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 420, 130));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Productos");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 70, 20));
+
+        jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Descripcion", "Categoria", "Precio", "ID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTableProductos);
+        if (jTableProductos.getColumnModel().getColumnCount() > 0) {
+            jTableProductos.getColumnModel().getColumn(0).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(1).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(2).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(3).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 420, 330));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Pedidos");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 20));
+
+        btnModificar.setBackground(new java.awt.Color(153, 204, 0));
+        btnModificar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(153, 204, 0));
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 100, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(153, 204, 0));
+        btnEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(153, 204, 0));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,12 +336,24 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
-        //this.getControlVista().listo();
-
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+       //this.getControlVista().listo();
+        this.getControlVista().nuevoProducto();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCalificarActionPerformed
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void jTablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePedidosMouseClicked
+            this.getControlVista().cargarProductosPedido();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTablePedidosMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        this.getControlVista().modificar();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        this.getControlVista().eliminar();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,15 +402,15 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         }
         return controlVista;
     }
-
-    public GestionPedido getControlPedido() {
-        return controlPedido;
-    }
-    private static final Logger LOG = Logger.getLogger(FrmPrincipalComercio.class.getName());
-
-    public void setControlPedido(GestionPedido controlPedido) {
-        this.controlPedido = controlPedido;
-    }
+//
+//    public GestionPedido getControlPedido() {
+//        return controlPedido;
+//    }
+//    private static final Logger LOG = Logger.getLogger(FrmPrincipalComercio.class.getName());
+//
+//    public void setControlPedido(GestionPedido controlPedido) {
+//        this.controlPedido = controlPedido;
+//    }
 
     
     
@@ -360,13 +499,9 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.jScrollPane1 = jScrollPane1;
     }
 
-    public JTable getjTable1() {
-        return jTable1;
-    }
 
-    public void setjTable1(JTable jTable1) {
-        this.jTable1 = jTable1;
-    }
+
+
 
     public FrmPrincipalComercio getDesktop() {
         return desktop;
@@ -419,7 +554,9 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalificar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -427,16 +564,23 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTablePedidos;
+    private javax.swing.JTable jTableProductoPedidos;
+    private javax.swing.JTable jTableProductos;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtID;
     private javax.swing.JLabel txtNombre;
     // End of variables declaration//GEN-END:variables
+
 
 
 
