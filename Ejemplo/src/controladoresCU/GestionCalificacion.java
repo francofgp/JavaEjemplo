@@ -148,6 +148,7 @@ public class GestionCalificacion {
             cargarPedido();
             limpiarTablaProductos();
             model = null;
+            this.getForm().getTxtDescripcion().setText("");
             JOptionPane.showMessageDialog(null, "Gracias por calificar " + ("\uD83D\uDC4D"));
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un puntaje");

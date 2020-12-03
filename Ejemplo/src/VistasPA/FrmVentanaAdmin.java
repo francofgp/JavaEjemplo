@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -51,7 +52,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jTableRubro = new javax.swing.JTable();
         btnAceptar5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        seleccionTxt = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCategoria = new javax.swing.JTable();
@@ -59,12 +59,19 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnDarDeBaja = new javax.swing.JButton();
         btnDarDeBajaCategoria = new javax.swing.JButton();
-        btnDarDeBaja2 = new javax.swing.JButton();
-        btnDarDeBaja3 = new javax.swing.JButton();
+        btnDarDeAlta = new javax.swing.JButton();
+        btnDarDeAltaCategoria = new javax.swing.JButton();
+        txtBuscarRubro = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        btnMostrarTodos = new javax.swing.JButton();
+        btnMostrarTodosCategoria = new javax.swing.JButton();
+        btnBuscar1 = new javax.swing.JButton();
+        txtBuscarCategoria = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
@@ -178,10 +185,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel2.setText("Elemento Seleccionado:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 130, -1));
 
-        seleccionTxt.setForeground(new java.awt.Color(255, 255, 255));
-        seleccionTxt.setText("No ha seleccionado ningun elemento");
-        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 520, 30));
-
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Categoría");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, -1, -1));
@@ -257,35 +260,107 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 350, 110, 30));
 
-        btnDarDeBaja2.setBackground(new java.awt.Color(153, 204, 0));
-        btnDarDeBaja2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnDarDeBaja2.setForeground(new java.awt.Color(153, 204, 0));
-        btnDarDeBaja2.setText("Dar de alta");
-        btnDarDeBaja2.setToolTipText("");
-        btnDarDeBaja2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        btnDarDeBaja2.setContentAreaFilled(false);
-        btnDarDeBaja2.addActionListener(new java.awt.event.ActionListener() {
+        btnDarDeAlta.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeAlta.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeAlta.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeAlta.setText("Dar de alta");
+        btnDarDeAlta.setToolTipText("");
+        btnDarDeAlta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeAlta.setContentAreaFilled(false);
+        btnDarDeAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDarDeBaja2ActionPerformed(evt);
+                btnDarDeAltaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBaja2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 110, 30));
+        jPanel1.add(btnDarDeAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 110, 30));
 
-        btnDarDeBaja3.setBackground(new java.awt.Color(153, 204, 0));
-        btnDarDeBaja3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnDarDeBaja3.setForeground(new java.awt.Color(153, 204, 0));
-        btnDarDeBaja3.setText("Dar de alta");
-        btnDarDeBaja3.setToolTipText("");
-        btnDarDeBaja3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        btnDarDeBaja3.setContentAreaFilled(false);
-        btnDarDeBaja3.addActionListener(new java.awt.event.ActionListener() {
+        btnDarDeAltaCategoria.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeAltaCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeAltaCategoria.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeAltaCategoria.setText("Dar de alta");
+        btnDarDeAltaCategoria.setToolTipText("");
+        btnDarDeAltaCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeAltaCategoria.setContentAreaFilled(false);
+        btnDarDeAltaCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDarDeBaja3ActionPerformed(evt);
+                btnDarDeAltaCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBaja3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 350, 110, 30));
+        jPanel1.add(btnDarDeAltaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 350, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
+        txtBuscarRubro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtBuscarRubro.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(txtBuscarRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 290, -1));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel12.setText("Buscar por nombre de rubro");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 210, 20));
+
+        btnBuscar.setBackground(new java.awt.Color(153, 204, 0));
+        btnBuscar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(153, 204, 0));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setToolTipText("");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 110, 30));
+
+        btnMostrarTodos.setBackground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnMostrarTodos.setForeground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodos.setText("Mostrar Todos");
+        btnMostrarTodos.setToolTipText("");
+        btnMostrarTodos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnMostrarTodos.setContentAreaFilled(false);
+        btnMostrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMostrarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 110, 30));
+
+        btnMostrarTodosCategoria.setBackground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodosCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnMostrarTodosCategoria.setForeground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodosCategoria.setText("Mostrar Todas");
+        btnMostrarTodosCategoria.setToolTipText("");
+        btnMostrarTodosCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnMostrarTodosCategoria.setContentAreaFilled(false);
+        btnMostrarTodosCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodosCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMostrarTodosCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 70, 110, 30));
+
+        btnBuscar1.setBackground(new java.awt.Color(153, 204, 0));
+        btnBuscar1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnBuscar1.setForeground(new java.awt.Color(153, 204, 0));
+        btnBuscar1.setText("Buscar");
+        btnBuscar1.setToolTipText("");
+        btnBuscar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnBuscar1.setContentAreaFilled(false);
+        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 410, 110, 30));
+
+        txtBuscarCategoria.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtBuscarCategoria.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(txtBuscarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 290, -1));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel13.setText("Buscar por nombre de la categoria");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 210, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1270, 510));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -299,10 +374,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DELIVERY");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, -1));
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel3.setText("email:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 230, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -420,13 +491,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.jLabel2 = jLabel2;
     }
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -476,6 +541,24 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.jScrollPane1 = jScrollPane1;
     }
 
+    public JTextField getTxtBuscarRubro() {
+        return txtBuscarRubro;
+    }
+
+    public JTextField getTxtBuscarCategoria() {
+        return txtBuscarCategoria;
+    }
+
+    public void setTxtBuscarCategoria(JTextField txtBuscarCategoria) {
+        this.txtBuscarCategoria = txtBuscarCategoria;
+    }
+    
+
+    public void setTxtBuscarRubro(JTextField txtBuscarRubro) {
+        this.txtBuscarRubro = txtBuscarRubro;
+    }
+
+    
     public JScrollPane getjScrollPane2() {
         return jScrollPane2;
     }
@@ -500,13 +583,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.jTableRubro = jTableRubro;
     }
 
-    public JLabel getSeleccionTxt() {
-        return seleccionTxt;
-    }
-
-    public void setSeleccionTxt(JLabel seleccionTxt) {
-        this.seleccionTxt = seleccionTxt;
-    }
 
     void cargarRubro() {
         this.getControlVista().cargarRubro();
@@ -619,17 +695,33 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void btnDarDeBaja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBaja2ActionPerformed
+    private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
         this.getControlVista().darDeAlta();
-    }//GEN-LAST:event_btnDarDeBaja2ActionPerformed
+    }//GEN-LAST:event_btnDarDeAltaActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
         this.getControlVista().darDeBaja();
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
-    private void btnDarDeBaja3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBaja3ActionPerformed
+    private void btnDarDeAltaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaCategoriaActionPerformed
          this.getControlVista().darDeAltaCategoria();
-    }//GEN-LAST:event_btnDarDeBaja3ActionPerformed
+    }//GEN-LAST:event_btnDarDeAltaCategoriaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+     this.getControlVista().buscarRubro();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosActionPerformed
+        this.getControlVista().mostrarTodosLosRubros();
+    }//GEN-LAST:event_btnMostrarTodosActionPerformed
+
+    private void btnMostrarTodosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosCategoriaActionPerformed
+        this.getControlVista().mostrarTodasLasCategorias();
+    }//GEN-LAST:event_btnMostrarTodosCategoriaActionPerformed
+
+    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+     this.getControlVista().buscarCategoria();    // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -673,18 +765,23 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnAceptar4;
     private javax.swing.JButton btnAceptar5;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnDarDeAlta;
+    private javax.swing.JButton btnDarDeAltaCategoria;
     private javax.swing.JButton btnDarDeBaja;
-    private javax.swing.JButton btnDarDeBaja2;
-    private javax.swing.JButton btnDarDeBaja3;
     private javax.swing.JButton btnDarDeBajaCategoria;
     private javax.swing.JButton btnEliminarCategoria;
     private javax.swing.JButton btnModificarCategoria;
+    private javax.swing.JButton btnMostrarTodos;
+    private javax.swing.JButton btnMostrarTodosCategoria;
     private javax.swing.JButton btnNuevaCategoria;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -694,7 +791,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCategoria;
     private javax.swing.JTable jTableRubro;
-    private javax.swing.JLabel seleccionTxt;
+    private javax.swing.JTextField txtBuscarCategoria;
+    private javax.swing.JTextField txtBuscarRubro;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

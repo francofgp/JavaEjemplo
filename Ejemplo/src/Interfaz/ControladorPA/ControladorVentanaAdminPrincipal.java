@@ -242,4 +242,67 @@ public class ControladorVentanaAdminPrincipal {
         cargarCategoria();
     }
 
+    public void buscarRubro() {
+        this.limpiarTablaRubro();
+        this.cargarBusquedaRubro();
+    }
+
+    private void cargarBusquedaRubro() {
+        String nombreRubro = this.getForm().getTxtBuscarRubro().getText();
+        List<Rubro> listaRubro = this.getOper().busquedaRubroPorNombre(nombreRubro);
+        if (listaRubro.size() > 0) {
+            Iterator consulta = listaRubro.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
+                Vector datos = new Vector();
+                Rubro fila = (Rubro) consulta.next();
+                datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getId());
+                datos.add(fila.getEstado());
+                //datos.add(fila);
+                tabla.addRow(datos);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de rubros");
+        }
+    }
+
+    public void mostrarTodosLosRubros() {
+        this.limpiarTablaRubro();
+        this.cargarRubro();
+    }
+
+    public void mostrarTodasLasCategorias() {
+        this.limpiarTablaCategoria();
+        this.cargarCategoria();
+    }
+
+    public void buscarCategoria() {
+        this.limpiarTablaCategoria();
+        this.cargarBusquedaCategoria();
+
+    }
+
+    private void cargarBusquedaCategoria() {
+        String nombreCategoria = this.getForm().getTxtBuscarCategoria().getText();
+        List<Categoria> listaCategoria = this.getOper().busquedaCategoriaPorNombre(nombreCategoria);
+        if (listaCategoria.size() > 0) {
+            Iterator consulta = listaCategoria.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
+                Vector datos = new Vector();
+                Categoria fila = (Categoria) consulta.next();
+                datos.add(fila);
+                datos.add(fila.getDescripcion());
+                datos.add(fila.getId());
+                datos.add(fila.getEstado());
+                //datos.add(fila);
+                tabla.addRow(datos);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de categorias");
+        }
+    }
+
 }

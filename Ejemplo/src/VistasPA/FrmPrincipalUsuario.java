@@ -6,11 +6,13 @@
 package VistasPA;
 
 import controladoresCU.GestionPedido;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -48,6 +50,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupFiltro = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -101,6 +104,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtID1 = new javax.swing.JLabel();
+        rbtnPorNombre = new javax.swing.JRadioButton();
+        rbtnPorCategoriaRubro = new javax.swing.JRadioButton();
+        rbtnSoloCategoria = new javax.swing.JRadioButton();
+        jLabel15 = new javax.swing.JLabel();
+        rbtnSoloRubro = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -217,7 +225,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
             jTableComercio.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 180));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 180));
 
         txtBuscarComercio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtBuscarComercio.setForeground(new java.awt.Color(204, 204, 204));
@@ -489,8 +497,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 60, 20));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jLabel12.setText("Nombre Comercio");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 110, 20));
+        jLabel12.setText("Seleccione un filtro:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 20));
 
         jComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         jPanel2.add(jComboBoxHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 50, -1));
@@ -504,7 +512,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.add(jComboBoxMinuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 50, -1));
 
         checkBoxComercio.setText("Buscar por nombre");
-        jPanel2.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPanel2.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jLabel13.setText("Categoria");
@@ -528,6 +536,31 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtID1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtID1.setText("Calificacion");
         jPanel2.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 80, -1));
+
+        buttonGroupFiltro.add(rbtnPorNombre);
+        rbtnPorNombre.setText("Nombre");
+        jPanel2.add(rbtnPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+
+        buttonGroupFiltro.add(rbtnPorCategoriaRubro);
+        rbtnPorCategoriaRubro.setText("Categoria y Rubro");
+        rbtnPorCategoriaRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnPorCategoriaRubroActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rbtnPorCategoriaRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
+
+        buttonGroupFiltro.add(rbtnSoloCategoria);
+        rbtnSoloCategoria.setText("Categoria");
+        jPanel2.add(rbtnSoloCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel15.setText("Nombre Comercio");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 110, 20));
+
+        buttonGroupFiltro.add(rbtnSoloRubro);
+        rbtnSoloRubro.setText("Rubro");
+        jPanel2.add(rbtnSoloRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -636,15 +669,19 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
-    void limpiarTablaComercio() {
+    private void rbtnPorCategoriaRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPorCategoriaRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnPorCategoriaRubroActionPerformed
+
+    public void limpiarTablaComercio() {
         this.getControlVista().limpiarTablaComercio();
     }
 
-    void limpiarTablaCarro() {
+    public void limpiarTablaCarro() {
         this.getControlVista().limpiarTablaCarro();
     }
 
-    void cargarComercio() {
+    public void cargarComercio() {
         this.getControlVista().cargarComercio();
     }
 
@@ -655,6 +692,40 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public JTextField getTxtBuscarComercio() {
         return txtBuscarComercio;
     }
+
+    public ButtonGroup getButtonGroupFiltro() {
+        return buttonGroupFiltro;
+    }
+
+    public void setButtonGroupFiltro(ButtonGroup buttonGroupFiltro) {
+        this.buttonGroupFiltro = buttonGroupFiltro;
+    }
+
+    public JRadioButton getRbtnPorCategoriaRubro() {
+        return rbtnPorCategoriaRubro;
+    }
+
+    public void setRbtnPorCategoriaRubro(JRadioButton rbtnPorCategoriaRubro) {
+        this.rbtnPorCategoriaRubro = rbtnPorCategoriaRubro;
+    }
+
+    public JRadioButton getRbtnPorNombre() {
+        return rbtnPorNombre;
+    }
+
+    public void setRbtnPorNombre(JRadioButton rbtnPorNombre) {
+        this.rbtnPorNombre = rbtnPorNombre;
+    }
+
+    public JRadioButton getRbtnSoloCategoria() {
+        return rbtnSoloCategoria;
+    }
+
+    public void setRbtnSoloCategoria(JRadioButton rbtnSoloCategoria) {
+        this.rbtnSoloCategoria = rbtnSoloCategoria;
+    }
+    
+    
 
     public void setTxtBuscarComercio(JTextField txtBuscarComercio) {
         this.txtBuscarComercio = txtBuscarComercio;
@@ -1129,6 +1200,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarComercio;
     private javax.swing.JButton btnHacerPedido;
     private javax.swing.JButton btnQuitarProducto;
+    private javax.swing.ButtonGroup buttonGroupFiltro;
     private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1148,6 +1220,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -1170,6 +1243,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JRadioButton rbtnPorCategoriaRubro;
+    private javax.swing.JRadioButton rbtnPorNombre;
+    private javax.swing.JRadioButton rbtnSoloCategoria;
+    private javax.swing.JRadioButton rbtnSoloRubro;
     private javax.swing.JTextField txtBuscarComercio;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtDescripcion;

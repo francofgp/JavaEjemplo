@@ -121,6 +121,8 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnDarDeBaja = new javax.swing.JButton();
+        btnDarDeBaja1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,11 +285,11 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "Categoria", "Precio", "ID"
+                "Nombre", "Descripcion", "Categoria", "Precio", "ID", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -301,6 +303,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             jTableProductos.getColumnModel().getColumn(2).setResizable(false);
             jTableProductos.getColumnModel().getColumn(3).setResizable(false);
             jTableProductos.getColumnModel().getColumn(4).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 420, 330));
@@ -320,7 +323,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 100, 30));
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 100, 30));
 
         btnEliminar.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -333,7 +336,33 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 100, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 100, 30));
+
+        btnDarDeBaja.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBaja.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja.setText("Dar de baja");
+        btnDarDeBaja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBaja.setContentAreaFilled(false);
+        btnDarDeBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBajaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, 100, 30));
+
+        btnDarDeBaja1.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBaja1.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja1.setText("Dar de alta");
+        btnDarDeBaja1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBaja1.setContentAreaFilled(false);
+        btnDarDeBaja1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBaja1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnDarDeBaja1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -388,6 +417,14 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         this.getControlVista().eliminar();        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
+        this.getControlVista().darDeBaja();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarDeBajaActionPerformed
+
+    private void btnDarDeBaja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBaja1ActionPerformed
+    this.getControlVista().darDeAlta();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarDeBaja1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -588,6 +625,8 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDarDeBaja;
+    private javax.swing.JButton btnDarDeBaja1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;

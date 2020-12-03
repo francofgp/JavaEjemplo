@@ -110,7 +110,8 @@ public class ABMProducto {
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setPrecio(Float.parseFloat(this.getForm().getTxtPrecio().getText()));
         model.setCategoria((Categoria) this.getForm().getComboBoxCategoria().getSelectedItem());
-        model.comercio = comercio;
+        model.setEstado("Activo");
+        model.setComercio(comercio);
         //this.model = model;
     }
     
@@ -182,9 +183,12 @@ public class ABMProducto {
     }
 
     public void abrirse(Comercio comercio) {
+        
+        
         this.getForm();
         this.getForm().setVisible(true);
         this.getForm().getControlVista().setComercio(comercio);
+       // this.getForm().getControlVista().setComercio(comercio);
 
     }
 
@@ -263,6 +267,14 @@ public class ABMProducto {
                 } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "No se puede eliminar, ya el producto tiene al menos un pedido asociado");
         }
+    }
+
+    public void darDeBaja() {
+        this.getOper().cambiarEstadoProducto(this.getModel(), "Dado de Baja");
+    }
+
+    public void darDeAlta() {
+        this.getOper().cambiarEstadoProducto(this.getModel(), "Activo");
     }
 
 

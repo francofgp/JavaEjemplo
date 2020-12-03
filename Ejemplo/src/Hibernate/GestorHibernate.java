@@ -165,7 +165,7 @@ public class GestorHibernate extends HibernateUtil {
         }
     }
 
-    public static List<Rubro> rubroShow() {
+    public  List<Rubro> rubroShow() {
         Session sesion = HibernateUtil.getSession();
         List<Rubro> rubro = session.createCriteria(Rubro.class).list();
         return rubro;
@@ -180,7 +180,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+    public  List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
 //                .createAlias("categoria", "cat")
@@ -639,6 +639,20 @@ public class GestorHibernate extends HibernateUtil {
 
         }
     }
+        
+    public void cambiarEstadoProducto(Producto producto, String estado) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            producto.setEstado(estado);
+            s.update(producto);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
 
     public void cancelar(Pedido pedido) {
         Session s = HibernateUtil.getSession();
@@ -723,25 +737,27 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Producto> buscarProducto(Categoria categoria, Comercio comercio) {
+    public  List<Producto> buscarProducto(Categoria categoria, Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
                 .createAlias("categoria", "cat")
                 .createAlias("comercio", "com")
                 .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
-                .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
+                .add(Restrictions.eq("com.nombre", comercio.getNombre()))
+                .add(Restrictions.eq("estado", "Activo")).list();
 
         return producto;
 
     }
     
-    public static List<Producto> buscarProducto(Comercio comercio) {
+    public  List<Producto> buscarProducto(Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
                 .createAlias("comercio", "com")
-                .add(Restrictions.eq("com.nombre", comercio.getNombre())).list();
+                .add(Restrictions.eq("com.nombre", comercio.getNombre()))
+                .add(Restrictions.eq("estado", "Activo")).list();
 
         return producto;
 
@@ -829,10 +845,10 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public List<Comercio> buscarComercioPorNombre(String nombreComercio) {
+    public List<Comercio> buscarComercioPorNombre(String nombre) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%"+nombreComercio+"%")).list();
+                .add(Restrictions.like("nombre", "%"+nombre+"%")).list();
         return comercio;
         
     }
@@ -847,6 +863,39 @@ public class GestorHibernate extends HibernateUtil {
         return producto;
     }
 
+    public List<Rubro> busquedaRubroPorNombre(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+        List<Rubro> rubro;
+        rubro = session.createCriteria(Rubro.class)
+                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
+        return rubro;
+    }
+
+        public List<Categoria> busquedaCategoriaPorNombre(String nombre) {
+        Session sesion = HibernateUtil.getSession();
+        List<Categoria> categoria;
+        categoria = session.createCriteria(Categoria.class)
+                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
+        return categoria;
+    }
+
+    public List<Comercio> buscarComercioPorCategoria(Categoria categoria) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.eq("categoria", categoria)).list();
+        return comercio;
+
+    }
+
+ 
+
+    public List<Comercio> buscarComercioPorRubro(Rubro rubro) {
+        Session sesion = HibernateUtil.getSession();
+        List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.eq("rubro", rubro)).list();
+        return comercio;
+
+    }
 
 
 }

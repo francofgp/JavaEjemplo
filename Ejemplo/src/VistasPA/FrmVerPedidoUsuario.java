@@ -521,9 +521,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 //    private void setLocationRelativeTo(int i, int i0) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-    void setVisible() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     public JTable getjTablePedidos() {
 

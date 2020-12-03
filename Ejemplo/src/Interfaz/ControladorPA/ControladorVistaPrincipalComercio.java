@@ -145,7 +145,7 @@ public class ControladorVistaPrincipalComercio {
                 //}
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+            JOptionPane.showMessageDialog(null, "no hay registros de Pedidos");
         }
 
     }
@@ -204,12 +204,12 @@ public class ControladorVistaPrincipalComercio {
                 //}
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+            JOptionPane.showMessageDialog(null, "no hay registros de productos pedidos");
         }
 
     }
 
-    private void cargarProductos() {
+    public void cargarProductos() {
         List<Producto> producto = this.getOper().productosComercio(comercio);
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
@@ -222,11 +222,13 @@ public class ControladorVistaPrincipalComercio {
                 datos.add(fila.getCategoria());
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
+                datos.add(fila.getEstado());
+                //System.out.println(fila.getEstado());
                 //datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay registros de rubros");
+            JOptionPane.showMessageDialog(null, "no hay registros de Productos");
         }
     }
 
@@ -299,6 +301,23 @@ public class ControladorVistaPrincipalComercio {
             this.getForm().getTxtID1().setText("Sin calificar");
         }
         return total;
+    }
+
+    public void darDeBaja() {
+        this.conseguirProducto();
+        this.getABMproducto().setProductoElegido(producto);
+        this.getABMproducto().darDeBaja();
+        this.limpiarTablaProductos();
+        this.cargarProductos();
+
+    }
+
+    public void darDeAlta() {
+        this.conseguirProducto();
+        this.getABMproducto().setProductoElegido(producto);
+        this.getABMproducto().darDeAlta();
+        this.limpiarTablaProductos();
+        this.cargarProductos();
     }
     
     

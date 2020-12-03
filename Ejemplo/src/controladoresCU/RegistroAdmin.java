@@ -91,7 +91,7 @@ public class RegistroAdmin {
 
     }
 
-    void abrirse() {
+    public void abrirse() {
         new FrmAdmin().setVisible(true);
     }
 }

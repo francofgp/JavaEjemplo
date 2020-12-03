@@ -161,6 +161,7 @@ public class InicioSesion {
 
     void abrirse() {
         this.getForm().setVisible(true);
+        
     }
 
     public void iniciarSesion() {

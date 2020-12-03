@@ -225,63 +225,34 @@ public class GestionPedido {
     }
 
     public void cargarComercio() {
+        //this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+        conseguirRubroSeleccionado();
+        conseguirCategoriaSeleccionado();
 
-        if (this.getForm().getCheckBoxComercio().isSelected()) {
+        List<Comercio> listaComercio = this.buscarComercio();
 
-//            this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-            conseguirRubroSeleccionado();
-            conseguirCategoriaSeleccionado();
-            String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
+        if (listaComercio.size() > 0) {
+            Iterator consulta = listaComercio.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
 
-            List<Comercio> comercio = this.getOper().buscarComercioPorNombre(nombreComercio);
-            if (comercio.size() > 0) {
-                Iterator consulta = comercio.iterator();
-                while (consulta.hasNext()) {
-                    DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
-
-                    Vector datos = new Vector();
-                    Comercio fila = (Comercio) consulta.next();
-                    //  if (fila.getRubro().getId() == this.getRubro().getId()
-                    //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
-                    datos.add(fila);
-                    datos.add(fila.getId());
-                    //datos.add(calcularCalificacion());
-                    tabla.addRow(datos);
-
-                    //}
+                Vector datos = new Vector();
+                Comercio fila = (Comercio) consulta.next();
+                //  if (fila.getRubro().getId() == this.getRubro().getId()
+                //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
+                datos.add(fila);
+                datos.add(fila.getId());
+                if (calificacionTabla(fila) > 0) {
+                    datos.add(calificacionTabla(fila));
+                } else {
+                    datos.add("Sin calificar");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
-            }
+                tabla.addRow(datos);
 
+                //}
+            }
         } else {
-            conseguirRubroSeleccionado();
-            conseguirCategoriaSeleccionado();
-            List<Comercio> comercio = this.getOper().buscarComercioPorCategoriaYRubro(categoria, rubro);
-            if (comercio.size() > 0) {
-                Iterator consulta = comercio.iterator();
-                while (consulta.hasNext()) {
-                    DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
-
-                    Vector datos = new Vector();
-                    Comercio fila = (Comercio) consulta.next();
-                    //  if (fila.getRubro().getId() == this.getRubro().getId()
-                    //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
-                    datos.add(fila);
-                    datos.add(fila.getId());
-                    if (calificacionTabla(fila) > 0){
-                       datos.add(calificacionTabla(fila)); 
-                    } else {
-                        datos.add("Sin calificar");
-                    }
-                    
-                    tabla.addRow(datos);
-
-                    //}
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
-            }
+            JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
         }
 
     }
@@ -352,12 +323,8 @@ public class GestionPedido {
     public void cargarProductos() {
 
         this.limpiarTablaProducto();
-        List<Producto> producto;
-        if (this.getForm().getCheckBoxComercio().isSelected()) {
-            producto = this.getOper().buscarProducto(this.getComercio());
-        } else {
-            producto = this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
-        }
+        List<Producto> producto = this.buscarProducto();
+        
         //List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
         //List<Producto> producto = this.getOper().BuscarProducto();
         if (producto.size() > 0) {
@@ -504,6 +471,7 @@ public class GestionPedido {
         this.getForm().getTxtID().setText(Long.toString(getUsuario().getId()));
         this.getForm().getTxtNombre().setText(getUsuario().getNombre());
         this.getForm().getTxtCorreo().setText(getUsuario().getEmail());
+        this.getForm().getRbtnPorNombre().setSelected(true);
 
     }
 
@@ -541,9 +509,42 @@ public class GestionPedido {
 
     
     public void buscar() {
+
         this.limpiarTablaComercio();
         this.cargarComercio();
 
+    }
+
+    private List<Comercio> buscarComercio() {
+        
+        String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
+        
+        if (this.getForm().getRbtnPorNombre().isSelected()){
+        return this.getOper().buscarComercioPorNombre(nombreComercio);
+        
+        }else if(this.getForm().getRbtnPorCategoriaRubro().isSelected()){
+            return this.getOper().buscarComercioPorCategoriaYRubro(categoria, rubro);
+        }else if(this.getForm().getRbtnSoloCategoria().isSelected()){
+            return this.getOper().buscarComercioPorCategoria(categoria);
+        }else{
+            return this.getOper().buscarComercioPorRubro(rubro);
+        }
+    }
+    
+ private List<Producto> buscarProducto() {
+        
+        String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
+        
+        if (this.getForm().getRbtnPorNombre().isSelected()){
+        return this.getOper().buscarProducto(this.getComercio());
+        
+        }else if(this.getForm().getRbtnPorCategoriaRubro().isSelected()){
+            return this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
+        }else if(this.getForm().getRbtnSoloCategoria().isSelected()){
+            return this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
+        }else{
+            return this.getOper().buscarProducto(this.getComercio());
+        }
     }
 
 }

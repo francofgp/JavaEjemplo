@@ -51,6 +51,9 @@ public class Producto implements Serializable{
     @Column(columnDefinition = "TEXT")
     private String descripcion;
     
+    
+    @Column(columnDefinition = "TEXT")
+    private String estado;
     private float precio;
     
     @OneToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
@@ -74,6 +77,16 @@ public class Producto implements Serializable{
     public String getNombre() {
         return nombre;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

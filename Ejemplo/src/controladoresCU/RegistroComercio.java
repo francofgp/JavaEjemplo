@@ -250,7 +250,7 @@ public class RegistroComercio {
 
     }
 
-    void abrirse() {
+    public void abrirse() {
         new FrmComercio().setVisible(true);
     }
 
