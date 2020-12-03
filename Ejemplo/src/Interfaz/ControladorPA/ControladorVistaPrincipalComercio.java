@@ -292,7 +292,12 @@ public class ControladorVistaPrincipalComercio {
         }
 }
         total = total/a;
-    this.getForm().getTxtID1().setText(String.valueOf(total));
+
+    if (total >0){
+            this.getForm().getTxtID1().setText(String.valueOf(total));
+        } else{
+            this.getForm().getTxtID1().setText("Sin calificar");
+        }
         return total;
     }
     

@@ -34,6 +34,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
         this.getTxtMontoTotal().setText("0.0");
+        this.getTxtID1().setText("0.0");
+        //this.getControlVista().calcularCalificacion();
 
     }
 
@@ -97,6 +99,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         checkBoxComercio = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtID1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,11 +191,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Comercio", "ID"
+                "Comercio", "ID", "Calificacion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -210,6 +214,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         if (jTableComercio.getColumnModel().getColumnCount() > 0) {
             jTableComercio.getColumnModel().getColumn(0).setResizable(false);
             jTableComercio.getColumnModel().getColumn(1).setResizable(false);
+            jTableComercio.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 180));
@@ -516,6 +521,14 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 400, 30));
 
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel14.setText("Calificacion:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 80, -1));
+
+        txtID1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtID1.setText("Calificacion");
+        jPanel2.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 80, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -593,6 +606,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     private void jTableComercioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseClicked
         this.getControlVista().interactuarSeleccionComercio();
+        this.getControlVista().calcularCalificacionTxt();
         /*
         this.getControlVista().seleccionarComercio();
         this.limpiarTablaCarro();
@@ -678,6 +692,18 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         return jComboBoxRubro;
     }
 
+    public JLabel getTxtID1() {
+        return txtID1;
+    }
+
+    public void setTxtID1(JLabel txtID1) {
+        this.txtID1 = txtID1;
+    }
+
+    
+    
+    
+    
     public void setjComboBoxRubro(JComboBox<String> jComboBoxRubro) {
         this.jComboBoxRubro = jComboBoxRubro;
     }
@@ -1121,6 +1147,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -1147,6 +1174,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtID1;
     private javax.swing.JTextField txtMontoTotal;
     private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtRuta2;
