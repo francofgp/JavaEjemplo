@@ -34,7 +34,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.getControlVista().setForm(desktop);
 //        this.getControlPedido();
 //        this.getControlPedido().setFormComercio(desktop);
-        
+        //this.getControlVista().cargarPedido();
         
     }
 
@@ -52,6 +52,22 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
     public void setjTableProductos(JTable jTableProductos) {
         this.jTableProductos = jTableProductos;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public JLabel getTxtID1() {
+        return txtID1;
+    }
+
+    public void setTxtID1(JLabel txtID1) {
+        this.txtID1 = txtID1;
     }
 
 
@@ -90,6 +106,8 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtEmail = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtID1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePedidos = new javax.swing.JTable();
@@ -177,6 +195,14 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 120, 30));
 
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setText("Calificacion:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 90, -1));
+
+        txtID1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtID1.setText("Comercio:");
+        jPanel1.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 130, -1));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -185,9 +211,17 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Descripcion", "Total", "IDPedido", "IDcomercio", "Estado"
+                "Descripcion", "Total", "Calificacion", "IDcomercio", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTablePedidosMouseClicked(evt);
@@ -568,6 +602,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -578,6 +613,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JTable jTableProductos;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtID1;
     private javax.swing.JLabel txtNombre;
     // End of variables declaration//GEN-END:variables
 

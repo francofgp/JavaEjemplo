@@ -50,6 +50,11 @@ public class ABMCategoria {
         this.getOper().darDeBajaCategoria(this.getModel());
     }
 
+        public void darDeAltaCategoria() {
+        this.getOper().darDeAltaCategoria(this.getModel());
+    }
+
+        
 //    public Categoria getCategoriaElegida() {
 //        return model;
 //    }

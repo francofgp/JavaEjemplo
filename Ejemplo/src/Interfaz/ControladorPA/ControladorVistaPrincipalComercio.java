@@ -6,6 +6,7 @@ import ModelosPA.Pedido;
 import ModelosPA.Producto;
 import VistasPA.FrmPrincipalComercio;
 import controladoresCU.ABMProducto;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -100,6 +101,7 @@ public class ControladorVistaPrincipalComercio {
         this.getForm().getTxtNombre().setText(getComercio().getNombre());
         this.getForm().getTxtEmail().setText(getComercio().getCorreo());
         this.cargarProductos();
+        this.calculoCalificacion();
         
 
     }
@@ -110,10 +112,9 @@ public class ControladorVistaPrincipalComercio {
             ((DefaultTableModel) this.getForm().getjTablePedidos().getModel()).removeRow(0);
         }
     }
-     
-    
-   public void cargarPedido() {
-        
+
+    public void cargarPedido() {
+        //calculoCalificacion();
         limpiarTablaPedido();
 //        System.out.println(this.getComercio().getNombre());
         List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
@@ -129,7 +130,12 @@ public class ControladorVistaPrincipalComercio {
                 //datos.add(fila);
                 datos.add(fila);
                 datos.add(fila.getTotal());
-                datos.add(fila.getId());
+                if (fila.getCalificacion() != null) {
+                    datos.add(fila.getCalificacion().getCalificacion());
+                } else {
+                    datos.add("Sin calificar");
+                }
+
                 //datos.add(fila.getUsuario().getId());
                 datos.add(fila.getComercio().getId());
                 datos.add(fila.getEstado());
@@ -141,9 +147,7 @@ public class ControladorVistaPrincipalComercio {
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");
         }
-        
-    
-    
+
     }
 
     public void cargarProductosPedido() {
@@ -151,6 +155,7 @@ public class ControladorVistaPrincipalComercio {
         limpiarTablaProductosPedidos();
         this.seleccionarPedido();
         this.cargarPedidos();
+        
 
     }
     public void limpiarTablaProductosPedidos() {
@@ -174,6 +179,7 @@ public class ControladorVistaPrincipalComercio {
     }
 
     private void cargarPedidos() {
+
         //this.limpiarTablaProducto();
         List<Producto> producto = this.getModel().getProducto();
         //List<Producto> producto = this.getOper().BuscarProducto();
@@ -269,6 +275,31 @@ public class ControladorVistaPrincipalComercio {
 
 
     }
+    
+    public float calculoCalificacion() {
+
+    DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+    float total = 0;
+    int a = 0;
+    for(int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++){
+        
+        System.out.println(this.getForm().getjTablePedidos().getValueAt(i, 2));
+
+        if (this.getForm().getjTablePedidos().getValueAt(i, 2) != "Sin calificar")      {
+            float total2 = (float)this.getForm().getjTablePedidos().getValueAt(i, 2);
+            a++;
+           total = total+total2; 
+        }
+}
+        total = total/a;
+    this.getForm().getTxtID1().setText(String.valueOf(total));
+        return total;
+    }
+    
+    
+    
+    
+    
 
     }
 

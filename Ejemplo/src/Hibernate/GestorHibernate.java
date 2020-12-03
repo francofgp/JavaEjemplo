@@ -625,6 +625,20 @@ public class GestorHibernate extends HibernateUtil {
 
         }
     }
+    
+        public void darDeAltaRubro(Rubro rubro) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            rubro.setEstado("Activo");
+            s.update(rubro);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
+            //getTx().rollback();
+
+        }
+    }
 
     public void cancelar(Pedido pedido) {
         Session s = HibernateUtil.getSession();
@@ -645,6 +659,19 @@ public class GestorHibernate extends HibernateUtil {
         Transaction tx = s.beginTransaction();
         try {
             categoria.setEstado("Dado de Baja");
+            s.update(categoria);
+            tx.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja a la categoria ", " Error ", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+    
+       public void darDeAltaCategoria(Categoria categoria) {
+        Session s = HibernateUtil.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            categoria.setEstado("Activo");
             s.update(categoria);
             tx.commit();
         } catch (Exception e) {

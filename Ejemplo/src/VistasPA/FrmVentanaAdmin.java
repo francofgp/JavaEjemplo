@@ -59,6 +59,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnDarDeBaja = new javax.swing.JButton();
         btnDarDeBajaCategoria = new javax.swing.JButton();
+        btnDarDeBaja2 = new javax.swing.JButton();
+        btnDarDeBaja3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -85,7 +87,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnNuevaCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 110, 30));
+        jPanel1.add(btnNuevaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, 110, 30));
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -98,7 +100,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 110, 30));
+        jPanel1.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 30));
 
         btnEliminarCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminarCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -111,7 +113,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnEliminarCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, 110, 30));
+        jPanel1.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 110, 30));
 
         btnAceptar4.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -125,7 +127,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar4ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, 30));
+        jPanel1.add(btnAceptar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 110, 30));
 
         jTableRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,7 +158,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableRubro.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 570, 230));
 
         btnAceptar5.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -170,7 +172,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnAceptar5ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 110, 30));
+        jPanel1.add(btnAceptar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, 30));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Elemento Seleccionado:");
@@ -178,11 +180,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
         seleccionTxt.setForeground(new java.awt.Color(255, 255, 255));
         seleccionTxt.setText("No ha seleccionado ningun elemento");
-        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 520, 30));
+        jPanel1.add(seleccionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 520, 30));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Categoría");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, -1, -1));
 
         jTableCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,7 +210,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
             jTableCategoria.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, 230));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 570, 230));
 
         btnModificarCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnModificarCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -221,11 +223,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnModificarCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 110, 30));
+        jPanel1.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel6.setText("Rubro");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         btnDarDeBaja.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBaja.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -239,7 +241,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnDarDeBajaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 110, 30));
+        jPanel1.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 110, 30));
 
         btnDarDeBajaCategoria.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBajaCategoria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -253,7 +255,35 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 btnDarDeBajaCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 110, 30));
+        jPanel1.add(btnDarDeBajaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 350, 110, 30));
+
+        btnDarDeBaja2.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBaja2.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja2.setText("Dar de alta");
+        btnDarDeBaja2.setToolTipText("");
+        btnDarDeBaja2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBaja2.setContentAreaFilled(false);
+        btnDarDeBaja2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBaja2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDarDeBaja2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 110, 30));
+
+        btnDarDeBaja3.setBackground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDarDeBaja3.setForeground(new java.awt.Color(153, 204, 0));
+        btnDarDeBaja3.setText("Dar de alta");
+        btnDarDeBaja3.setToolTipText("");
+        btnDarDeBaja3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnDarDeBaja3.setContentAreaFilled(false);
+        btnDarDeBaja3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarDeBaja3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDarDeBaja3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 350, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1270, 570));
 
@@ -577,11 +607,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        this.getControlVista().darDeBaja();
-
-    }//GEN-LAST:event_btnDarDeBajaActionPerformed
-
     private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
         this.getControlVista().darDeBajaCategoria();
 
@@ -593,6 +618,18 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnDarDeBaja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBaja2ActionPerformed
+        this.getControlVista().darDeAlta();
+    }//GEN-LAST:event_btnDarDeBaja2ActionPerformed
+
+    private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
+        this.getControlVista().darDeBaja();
+    }//GEN-LAST:event_btnDarDeBajaActionPerformed
+
+    private void btnDarDeBaja3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBaja3ActionPerformed
+         this.getControlVista().darDeAltaCategoria();
+    }//GEN-LAST:event_btnDarDeBaja3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,6 +674,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar4;
     private javax.swing.JButton btnAceptar5;
     private javax.swing.JButton btnDarDeBaja;
+    private javax.swing.JButton btnDarDeBaja2;
+    private javax.swing.JButton btnDarDeBaja3;
     private javax.swing.JButton btnDarDeBajaCategoria;
     private javax.swing.JButton btnEliminarCategoria;
     private javax.swing.JButton btnModificarCategoria;

@@ -95,6 +95,10 @@ public class ABMRubro {
     public void darDeBaja() {
         this.getOper().darDeBajaRubro(this.getModel());
     }
+    
+        public void darDeAlta() {
+        this.getOper().darDeAltaRubro(this.getModel());
+    }
 
     public void crearModificar() {
         if ("1".equals(form.getModificado())) {                       

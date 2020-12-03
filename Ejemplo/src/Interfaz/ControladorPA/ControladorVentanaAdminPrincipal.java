@@ -176,6 +176,14 @@ public class ControladorVentanaAdminPrincipal {
         limpiarTablaRubro();
         cargarRubro();
     }
+    
+        public void darDeAlta() {
+        conseguirRubro();
+        this.getABMrubro().setRubroElegido(this.getRubro());
+        this.getABMrubro().darDeAlta();
+        limpiarTablaRubro();
+        cargarRubro();
+    }
 
     public void modificar() {
         try {
@@ -219,6 +227,13 @@ public class ControladorVentanaAdminPrincipal {
         cargarCategoria();
     }
 
+        public void darDeAltaCategoria() {
+        conseguirCategoria();
+        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+        this.getABMcategoria().darDeAltaCategoria();
+        limpiarTablaCategoria();
+        cargarCategoria();
+    }
     public void eliminarCategoria() {
         conseguirCategoria();
         this.getABMcategoria().setCategoriaElegida(this.getCategoria());

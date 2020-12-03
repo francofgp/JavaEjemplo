@@ -73,8 +73,7 @@ public class GestionCalificacion {
     public void setModel(Pedido model) {
         this.model = model;
     }
-    
-    
+
     public void activarCalificacion(boolean estado) {
         this.getForm().getBtnAceptarCancelarCalificacion().setVisible(estado);
         this.getForm().getBtnAceptarConfirmarCalificacion().setVisible(estado);
@@ -140,31 +139,30 @@ public class GestionCalificacion {
         }
 
     }
-    
-    
-        public void aceptarCalificacion() {
+
+    public void aceptarCalificacion() {
         if (puntaje != 0.0f) {
             crearCalificacion();
             activarCalificacion(false);
             limpiarTablaPedido();
             cargarPedido();
             limpiarTablaProductos();
-            model=null;
-            JOptionPane.showMessageDialog(null, "Gracias por calificar " +("\uD83D\uDC4D"));
+            model = null;
+            JOptionPane.showMessageDialog(null, "Gracias por calificar " + ("\uD83D\uDC4D"));
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un puntaje");
         }
     }
-        
-public void cancelar() {
+
+    public void cancelar() {
         conseguirPedido();
         this.darDeBaja();
         this.limpiarTablaPedido();
         this.cargarPedido();
 
     }
-            
-                public void conseguirPedido() {
+
+    public void conseguirPedido() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
         int selectedRowIndex = this.getForm().getjTablePedidos().getSelectedRow();
 
@@ -176,15 +174,14 @@ public void cancelar() {
         this.getOper().cancelar(this.getModel());
 
     }
-    
-        public void limpiarTablaPedido() {
+
+    public void limpiarTablaPedido() {
         while (this.getForm().getjTablePedidos().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTablePedidos().getModel()).removeRow(0);
         }
     }
-        
-        
-         public void cargarPedido() {
+
+    public void cargarPedido() {
 
         //this.limpiarTablaPedido();
         long a = this.getUsuario().getId();
@@ -222,12 +219,10 @@ public void cancelar() {
         }
 
     }
-        
-            public void obtenerPuntaje(float valor) {
+
+    public void obtenerPuntaje(float valor) {
         puntaje = valor;
     }
-
-
 
     private void crearCalificacion() {
         Calificacion calificacion = new Calificacion();
@@ -246,7 +241,7 @@ public void cancelar() {
         }
 
     }
-    
+
     private boolean validar() {
         if (model == null) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un pedido");
