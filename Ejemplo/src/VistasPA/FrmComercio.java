@@ -43,6 +43,16 @@ public class FrmComercio extends javax.swing.JFrame {
         //oper = new ABMComercio();
         this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
+        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
+        TextPrompt apellido = new TextPrompt("Apellido",txtApellido);
+        TextPrompt email = new TextPrompt("Email",txtEmail);
+        TextPrompt direccion = new TextPrompt("Direccion",txtDireccion);
+        TextPrompt cuit = new TextPrompt("Cuit",txtCuit);
+        TextPrompt telefono = new TextPrompt("Telefono",txtTelefono);
+        TextPrompt contrasena = new TextPrompt("Contraseña",txtPassword);
+        TextPrompt nombreLocal = new TextPrompt("Nombre Local",txtNombreLocal);
+        TextPrompt direccionLocal = new TextPrompt("Nombre Direccion",txtDireccionLocal);
+        
         
         
     }
@@ -67,7 +77,6 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -131,7 +140,6 @@ public class FrmComercio extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +147,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,26 +157,29 @@ public class FrmComercio extends javax.swing.JFrame {
         txtEmail.setBackground(new java.awt.Color(153, 204, 0));
         txtEmail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setText("Email");
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("______________________________");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         txtPassword.setBackground(new java.awt.Color(153, 204, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setText("Contraseña");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 200, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 200, 20));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,9 +189,8 @@ public class FrmComercio extends javax.swing.JFrame {
         txtDireccion.setBackground(new java.awt.Color(153, 204, 0));
         txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setText("Dirección");
         txtDireccion.setBorder(null);
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 30));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 20));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -196,14 +206,13 @@ public class FrmComercio extends javax.swing.JFrame {
         txtTelefono.setBackground(new java.awt.Color(153, 204, 0));
         txtTelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Teléfono");
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 30));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 20));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -211,39 +220,33 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel15.setText("__________________________________");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 530, -1));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("______________________________");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
-
         txtFecha.setBackground(new java.awt.Color(153, 204, 0));
         txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(255, 255, 255));
         txtFecha.setText("Fecha de Nacimiento");
         txtFecha.setBorder(null);
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 30));
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 200, 20));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("______________________________");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("______________________________");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 170, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 220, -1));
 
         txtApellido.setBackground(new java.awt.Color(153, 204, 0));
         txtApellido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellido.setText("Apellido");
         txtApellido.setBorder(null);
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 200, 30));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,7 +285,6 @@ public class FrmComercio extends javax.swing.JFrame {
         txtCuit.setBackground(new java.awt.Color(153, 204, 0));
         txtCuit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtCuit.setForeground(new java.awt.Color(255, 255, 255));
-        txtCuit.setText("CUIT/CUIL");
         txtCuit.setToolTipText("");
         txtCuit.setBorder(null);
         txtCuit.addActionListener(new java.awt.event.ActionListener() {
@@ -290,7 +292,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 txtCuitActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 30));
+        jPanel1.add(txtCuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 200, 20));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,15 +312,14 @@ public class FrmComercio extends javax.swing.JFrame {
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("______________________________");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 220, -1));
 
         txtNombreLocal.setBackground(new java.awt.Color(153, 204, 0));
         txtNombreLocal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombreLocal.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombreLocal.setText("Nombre Local");
         txtNombreLocal.setToolTipText("");
         txtNombreLocal.setBorder(null);
-        jPanel1.add(txtNombreLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 200, 30));
+        jPanel1.add(txtNombreLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 180, 20));
 
         jComboBoxCategoria.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
@@ -329,7 +330,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 jComboBoxCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 170, 30));
+        jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 170, 30));
 
         jComboBoxRubro.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rubro", "Item 2", "Item 3", "Item 4" }));
@@ -338,15 +339,14 @@ public class FrmComercio extends javax.swing.JFrame {
                 jComboBoxRubroActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 170, 30));
+        jPanel1.add(jComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 170, 30));
 
         txtDireccionLocal.setBackground(new java.awt.Color(153, 204, 0));
         txtDireccionLocal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDireccionLocal.setForeground(new java.awt.Color(255, 255, 255));
-        txtDireccionLocal.setText("Dirección Completa");
         txtDireccionLocal.setToolTipText("");
         txtDireccionLocal.setBorder(null);
-        jPanel1.add(txtDireccionLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 210, 30));
+        jPanel1.add(txtDireccionLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 180, 20));
 
         jButton6.setBackground(new java.awt.Color(153, 204, 0));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -373,7 +373,7 @@ public class FrmComercio extends javax.swing.JFrame {
                 txtNombre1ActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 200, 30));
+        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 200, 30));
 
         txtNombre2.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -386,8 +386,8 @@ public class FrmComercio extends javax.swing.JFrame {
                 txtNombre2ActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 200, 30));
-        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 170, -1));
+        jPanel1.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 200, 30));
+        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 170, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 630));
 
@@ -637,13 +637,13 @@ public class FrmComercio extends javax.swing.JFrame {
         this.jLabel3 = jLabel3;
     }
 
-    public JLabel getjLabel4() {
+    /*public JLabel getjLabel4() {
         return jLabel4;
     }
 
     public void setjLabel4(JLabel jLabel4) {
         this.jLabel4 = jLabel4;
-    }
+    }*/
 
     public JLabel getjLabel5() {
         return jLabel5;
@@ -848,6 +848,10 @@ public class FrmComercio extends javax.swing.JFrame {
     private void txtNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombre2ActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
     
     
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
@@ -911,7 +915,6 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

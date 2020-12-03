@@ -23,6 +23,9 @@ public class FrmAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         oper = new RegistroAdmin();
         this.getControlVista().setForm(this);
+        
+        TextPrompt nombre = new TextPrompt("Nombre",txtNombre);
+        TextPrompt contraseña = new TextPrompt("Contraseña",txtPassword);
     }
 
     public RegistroAdmin getOper() {
@@ -200,10 +203,9 @@ public class FrmAdmin extends javax.swing.JFrame {
         txtNombre.setBackground(new java.awt.Color(153, 204, 0));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre");
         txtNombre.setToolTipText("");
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 200, 20));
 
         passwordTxt.setBackground(new java.awt.Color(255, 255, 255));
         passwordTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,14 +215,13 @@ public class FrmAdmin extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(153, 204, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setText("Contraseña");
         txtPassword.setBorder(null);
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

@@ -18,6 +18,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     public FrmVerPedidoUsuario() {
 
         initComponents();
+        this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
         this.getControlVista().activarCalificacion(false);
     }
@@ -146,6 +147,9 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePedidos = new javax.swing.JTable();
@@ -163,11 +167,25 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextField();
         jLabelDescrip = new javax.swing.JLabel();
         btnAceptarConfirmarCalificacion1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
 
         jScrollPane3.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 204, 0));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 0));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 20, 490));
+
+        jPanel4.setBackground(new java.awt.Color(153, 204, 0));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 820, 20));
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 0));
+        jPanel2.setForeground(new java.awt.Color(102, 204, 0));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 830, 20));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,13 +197,30 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
             new String [] {
                 "Descripcion", "Total", "IDcompra", "NombreCliente", "Estado", "NombreComercio", "Calificacion"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTablePedidosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTablePedidos);
+        if (jTablePedidos.getColumnModel().getColumnCount() > 0) {
+            jTablePedidos.getColumnModel().getColumn(0).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(1).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(2).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(3).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(4).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(5).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 730, 170));
 
@@ -196,8 +231,22 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "Descripcion", "Precio", "ID"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTableProducto);
+        if (jTableProducto.getColumnModel().getColumnCount() > 0) {
+            jTableProducto.getColumnModel().getColumn(0).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(1).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(2).setResizable(false);
+            jTableProducto.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 730, 150));
 
@@ -225,7 +274,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarCancelarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 110, 30));
+        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 110, 30));
 
         btnValor1.setBackground(new java.awt.Color(153, 204, 0));
         btnValor1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -303,12 +352,12 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarConfirmarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 110, 30));
+        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 110, 30));
 
         jLabelDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setForeground(new java.awt.Color(153, 204, 0));
         jLabelDescripcion.setText("__________________________________________________");
-        jPanel1.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 290, -1));
+        jPanel1.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 290, -1));
 
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(153, 204, 0));
@@ -332,9 +381,26 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarConfirmarCalificacion1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 150, 30));
+        jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 150, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 490));
+        jButton1.setBackground(new java.awt.Color(153, 204, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(102, 204, 0));
+        jButton1.setText("X");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 40, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 800, 470));
+
+        jPanel5.setBackground(new java.awt.Color(153, 204, 0));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, -10, 30, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,6 +455,10 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAceptarConfirmarCalificacion1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -431,9 +501,14 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnValor3;
     private javax.swing.JButton btnValor4;
     private javax.swing.JButton btnValor5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelDescrip;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

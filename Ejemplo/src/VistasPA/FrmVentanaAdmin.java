@@ -64,6 +64,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1274, 767));
@@ -276,7 +277,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Generar Reporte Rubro");
+        jButton5.setText("Volver al Login");
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -284,7 +285,20 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 160, 30));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 40, 160, 30));
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Generar Reporte Rubro");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButton6.setContentAreaFilled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
 
@@ -560,7 +574,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.getControlVista().reporteRubro();        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
@@ -575,6 +589,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -624,6 +642,7 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnModificarCategoria;
     private javax.swing.JButton btnNuevaCategoria;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
