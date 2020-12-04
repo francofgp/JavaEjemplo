@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
@@ -17,10 +12,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author CrapBoy
- */
 public class GestionCalificacion {
 
     private GestorHibernate oper;
@@ -112,9 +103,9 @@ public class GestionCalificacion {
     }
 
     private void cargarPedidos() {
-        //this.limpiarTablaProducto();
+
         List<Producto> producto = this.getModel().getProducto();
-        //List<Producto> producto = this.getOper().BuscarProducto();
+
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
             while (consulta.hasNext()) {
@@ -122,8 +113,7 @@ public class GestionCalificacion {
 
                 Vector datos = new Vector();
                 Producto fila = (Producto) consulta.next();
-                //if (fila.getComercio() == this.getComercio()
-                //        && fila.getCategoria() == this.getCategoria()) {
+
                 datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
@@ -132,7 +122,6 @@ public class GestionCalificacion {
 
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");
@@ -184,7 +173,6 @@ public class GestionCalificacion {
 
     public void cargarPedido() {
 
-        //this.limpiarTablaPedido();
         long a = this.getUsuario().getId();
         System.out.println(a);
 

@@ -3,7 +3,6 @@ package Interfaz.ControladorPA;
 import Hibernate.GestorHibernate;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
-
 import VistasPA.FrmVentanaAdmin;
 import controladoresCU.ABMCategoria;
 import controladoresCU.ABMRubro;
@@ -176,8 +175,8 @@ public class ControladorVentanaAdminPrincipal {
         limpiarTablaRubro();
         cargarRubro();
     }
-    
-        public void darDeAlta() {
+
+    public void darDeAlta() {
         conseguirRubro();
         this.getABMrubro().setRubroElegido(this.getRubro());
         this.getABMrubro().darDeAlta();
@@ -206,13 +205,13 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void modificarCategoria() {
-        
-        try{
-        conseguirCategoria();
-        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
-        this.getABMcategoria().getForm().modificar("1", this.getABMcategoria().getModel());
-        this.getABMcategoria().getForm().setVisible(true);
-        this.getForm().setVisible(false);
+
+        try {
+            conseguirCategoria();
+            this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+            this.getABMcategoria().getForm().modificar("1", this.getABMcategoria().getModel());
+            this.getABMcategoria().getForm().setVisible(true);
+            this.getForm().setVisible(false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
         }
@@ -227,13 +226,14 @@ public class ControladorVentanaAdminPrincipal {
         cargarCategoria();
     }
 
-        public void darDeAltaCategoria() {
+    public void darDeAltaCategoria() {
         conseguirCategoria();
         this.getABMcategoria().setCategoriaElegida(this.getCategoria());
         this.getABMcategoria().darDeAltaCategoria();
         limpiarTablaCategoria();
         cargarCategoria();
     }
+
     public void eliminarCategoria() {
         conseguirCategoria();
         this.getABMcategoria().setCategoriaElegida(this.getCategoria());

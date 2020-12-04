@@ -8,7 +8,7 @@ import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 import ModelosPA.Pedido;
-//import Modelos.GestionProyecto.Usuario;
+
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-//import org.hibernate.openSession;
+
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
@@ -39,7 +39,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.internal.SessionImpl;
 import org.hibernate.jdbc.Work;
-//import Modelos.GestionProyecto.Usuario;
 
 public class GestorHibernate extends HibernateUtil {
 
@@ -49,11 +48,6 @@ public class GestorHibernate extends HibernateUtil {
 
     private Transaction tx;
 
-    /**
-     * Elimina un objeto del repositorio
-     *
-     * @param objeto Objeto a eliminar
-     */
     public void eliminarObjeto(Object objeto) {
         try {
             Session s = HibernateUtil.getSession();
@@ -86,13 +80,9 @@ public class GestorHibernate extends HibernateUtil {
 
     public void guardarUsuario(Object objeto) {
 
-        //esto es copiado y pegado, basicamente a todo lo que estaba antes lo guarda, sin verificar nada
-        // le paso el objeto que lo cree en el FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el gestor
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
-        // objeto.setApellido("asd");
-        // objeto.setNombre("asdasd");
-        // objeto.setId(2);
+
         s.save(objeto);
         tx.commit();
     }
@@ -110,18 +100,7 @@ public class GestorHibernate extends HibernateUtil {
         s.update(rubro);
         tx.commit();
 
-        /**
-         * *
-         * //esto es copiado y pegado, basicamente a todo lo que estaba antes
-         * lo guarda, sin verificar nada // le paso el objeto que lo cree en el
-         * FRMusuario, aca se puede hacer comprobaciones supongo, ya que es el
-         * gestor Session s = HibernateUtil.getSession(); Transaction tx =
-         * s.beginTransaction(); // objeto.setApellido("asd"); //
-         * objeto.setNombre("asdasd"); // objeto.setId(2); s.save(objeto);
-         * tx.commit(); **
-         */
     }
-    //implementar al menos 3 try y catch
 
     public void modificarCategoria(String nombre, String descripcion, Long ID) {
 
@@ -142,11 +121,6 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    /**
-     * Actualiza un objeto en el repositorio
-     *
-     * @param objeto Objeto a actualizar
-     */
     public boolean actualizarObjeto(Object objeto) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
@@ -159,13 +133,12 @@ public class GestorHibernate extends HibernateUtil {
             JOptionPane.showMessageDialog(null, e);
             tx.rollback();
             JOptionPane.showMessageDialog(null, "No se pueden guardar los datos. \nLos mismos han sido modificados por otra persona.");
-//            this.clearCache(); //puso juan
 
             return false;
         }
     }
 
-    public  List<Rubro> rubroShow() {
+    public List<Rubro> rubroShow() {
         Session sesion = HibernateUtil.getSession();
         List<Rubro> rubro = session.createCriteria(Rubro.class).list();
         return rubro;
@@ -175,26 +148,20 @@ public class GestorHibernate extends HibernateUtil {
     public static List<Comercio> buscarComercioPorCategoriaYRubro(String nombre) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%"+nombre+"%")).list();
+                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
         return comercio;
 
     }
 
-    public  List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+    public List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-//                .createAlias("categoria", "cat")
                 .createAlias("rubro", "rub")
-                
-                
-//                      .add(Restrictions.eq("cat.nombre", categoria.getNombre()))
                 .add(Restrictions.eq("categoria", categoria))
                 .add(Restrictions.eq("rub.nombre", rubro.getNombre())).list();
 
         return comercio;
 
-        
-//         Criteria crit =
     }
 
     public static List<Producto> BuscarProducto() {
@@ -228,11 +195,6 @@ public class GestorHibernate extends HibernateUtil {
         return crit.list();
     }
 
-//    public Integer listarUltimo(Class clase) {
-//        Criteria crit = getSession().createCriteria(clase);
-//        crit.setProjection(Projections.max("codigo"));
-//        return Util.convertirToInteger(crit.uniqueResult());
-//    }
     public List listarUltimo(Class clase) {
         Criteria crit = getSession().createCriteria(clase)
                 .addOrder(Order.desc("codigo"));
@@ -252,7 +214,6 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("estado", 0));
         return crit.uniqueResult();
     }
-    //implementar al menos 3 try y catch
 
     public void eliminar(Long ID) {
 
@@ -270,9 +231,7 @@ public class GestorHibernate extends HibernateUtil {
 
         }
 
-//este metodo era originalmente elimnarrubro,reemplezé todos los nombre por clase
     }
-    //implementar al menos 3 try y catch
 
     public void eliminarCategoria(Long ID) {
 
@@ -287,7 +246,7 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar la categoria ya que la tiene seleccionada un comercio" /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
+
         }
 
     }
@@ -329,25 +288,16 @@ public class GestorHibernate extends HibernateUtil {
     }
 
     public void reporteRubro() {
-        //saqué de este video de youtube: https://www.youtube.com/watch?v=2DvwZmsHfgo&t=23s
+
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
 
-            /*
-            session.doWork(new Work() {
-                public void execute(Connection connection) throws SQLException {
-                    //use the connection here...
-                }
-            });
-             */
             SessionImpl sessionImpl = (SessionImpl) session;
             Connection connection = sessionImpl.connection();
-            //File file = new File("");
+
             JasperReport archivo = JasperCompileManager.compileReport("rubro.jrxml");
-            // Map<String,Object> map = new HashMap<String, Object>();
-            //Conectar con = new Conectar("jdbc:mysql://localhost/productos");
-            //JRDataSource data = new JREmptyDataSource();
+
             JasperPrint prin = JasperFillManager.fillReport(archivo, null, connection);
             JasperExportManager.exportReportToPdfFile(prin, "reporte.pdf");
 
@@ -375,7 +325,7 @@ public class GestorHibernate extends HibernateUtil {
 
         Producto producto = (Producto) sesion.createCriteria(Producto.class)
                 .add(Restrictions.eq("id", idProducto)).uniqueResult();
-        //System.out.println(producto.getId());
+
         return producto;
     }
 
@@ -384,7 +334,7 @@ public class GestorHibernate extends HibernateUtil {
 
         Comercio comercio = (Comercio) sesion.createCriteria(Comercio.class)
                 .add(Restrictions.eq("id", idProducto)).uniqueResult();
-        //System.out.println(producto.getId());
+
         return comercio;
     }
 
@@ -398,8 +348,7 @@ public class GestorHibernate extends HibernateUtil {
             if (comercio != null) {
 
                 if (comercio.getPassword().equals(password)) {
-                    //JOptionPane.showMessageDialog(null, "Bienvenido Comercio "+comercio.getNombre());
-                    //lo saco de aca porque spamea mucho sino
+
                     return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Error la contraseña ingresada "
@@ -464,7 +413,7 @@ public class GestorHibernate extends HibernateUtil {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El usuario "
                     + " no existe", "", JOptionPane.ERROR_MESSAGE);
-            //System.out.println(e);
+
             return false;
         }
     }
@@ -558,7 +507,7 @@ public class GestorHibernate extends HibernateUtil {
             if (rubro != null) {
                 String nom = rubro.getNombre();
                 if (nom.equals(nombre)) {
-                    //JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+
                     return true;
                 } else {
                     return false;
@@ -571,8 +520,7 @@ public class GestorHibernate extends HibernateUtil {
         }
 
     }
-    
-    
+
     public boolean corroborarProducto(String nombre) {
         Session sesion = HibernateUtil.getSession();
 
@@ -583,7 +531,7 @@ public class GestorHibernate extends HibernateUtil {
             if (producto != null) {
                 String nom = producto.getNombre();
                 if (nom.equals(nombre)) {
-                    //JOptionPane.showMessageDialog(null, "El rubro " + rubro.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+
                     return true;
                 } else {
                     return false;
@@ -607,7 +555,6 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar el rubro ya que lo tiene seleccionado un comercio " /*+ e.getMessage()*/, " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
 
         }
     }
@@ -621,12 +568,11 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
 
         }
     }
-    
-        public void darDeAltaRubro(Rubro rubro) {
+
+    public void darDeAltaRubro(Rubro rubro) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try {
@@ -635,11 +581,10 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
 
         }
     }
-        
+
     public void cambiarEstadoProducto(Producto producto, String estado) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
@@ -649,7 +594,6 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
 
         }
     }
@@ -663,7 +607,6 @@ public class GestorHibernate extends HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja al rubro ", " Error ", JOptionPane.ERROR_MESSAGE);
-            //getTx().rollback();
 
         }
     }
@@ -680,8 +623,8 @@ public class GestorHibernate extends HibernateUtil {
 
         }
     }
-    
-       public void darDeAltaCategoria(Categoria categoria) {
+
+    public void darDeAltaCategoria(Categoria categoria) {
         Session s = HibernateUtil.getSession();
         Transaction tx = s.beginTransaction();
         try {
@@ -704,7 +647,7 @@ public class GestorHibernate extends HibernateUtil {
             if (categoria != null) {
                 String nom = categoria.getNombre();
                 if (nom.equals(nombre)) {
-                    //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+
                     return true;
                 } else {
                     return false;
@@ -727,7 +670,7 @@ public class GestorHibernate extends HibernateUtil {
         try {
             if (usuario != null) {
                 String nom = usuario.getNombre();
-                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                return nom.equals(nombre);
             } else {
                 return false;
             }
@@ -737,7 +680,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public  List<Producto> buscarProducto(Categoria categoria, Comercio comercio) {
+    public List<Producto> buscarProducto(Categoria categoria, Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
@@ -750,8 +693,8 @@ public class GestorHibernate extends HibernateUtil {
         return producto;
 
     }
-    
-    public  List<Producto> buscarProducto(Comercio comercio) {
+
+    public List<Producto> buscarProducto(Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Producto> producto = session.createCriteria(Producto.class)
@@ -796,7 +739,7 @@ public class GestorHibernate extends HibernateUtil {
         try {
             if (admin != null) {
                 String nom = admin.getNombre();
-                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                return nom.equals(nombre);
             } else {
                 return false;
             }
@@ -815,7 +758,7 @@ public class GestorHibernate extends HibernateUtil {
         try {
             if (comercio != null) {
                 String nom = comercio.getNombre();
-                return nom.equals(nombre); //JOptionPane.showMessageDialog(null, "La categoría " + categoria.getNombre() + " ya existe!", "", JOptionPane.ERROR_MESSAGE);
+                return nom.equals(nombre);
             } else {
                 return false;
             }
@@ -848,9 +791,9 @@ public class GestorHibernate extends HibernateUtil {
     public List<Comercio> buscarComercioPorNombre(String nombre) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%"+nombre+"%")).list();
+                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
         return comercio;
-        
+
     }
 
     public List<Producto> productosComercio(Comercio comercio) {
@@ -871,7 +814,7 @@ public class GestorHibernate extends HibernateUtil {
         return rubro;
     }
 
-        public List<Categoria> busquedaCategoriaPorNombre(String nombre) {
+    public List<Categoria> busquedaCategoriaPorNombre(String nombre) {
         Session sesion = HibernateUtil.getSession();
         List<Categoria> categoria;
         categoria = session.createCriteria(Categoria.class)
@@ -887,8 +830,6 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
- 
-
     public List<Comercio> buscarComercioPorRubro(Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
@@ -896,6 +837,5 @@ public class GestorHibernate extends HibernateUtil {
         return comercio;
 
     }
-
 
 }

@@ -33,8 +33,6 @@ public class RegistroUsuario {
     public void setInicioSesion(InicioSesion inicioSesion) {
         this.inicioSesion = inicioSesion;
     }
-    
-    
 
     public GestorHibernate getOper() {
         return oper;
@@ -70,57 +68,52 @@ public class RegistroUsuario {
     }
 
     public void guardar() {
-        
-        if(validar()){
-        this.setModel();
-        oper.guardarObjeto(this.getModel());
-        JOptionPane.showMessageDialog(null, "Usuario Creado");
-        this.getForm().setVisible(false);
-        this.getInicioSesion().abrirse();
-        
+
+        if (validar()) {
+            this.setModel();
+            oper.guardarObjeto(this.getModel());
+            JOptionPane.showMessageDialog(null, "Usuario Creado");
+            this.getForm().setVisible(false);
+            this.getInicioSesion().abrirse();
+
         }
 
     }
-    
+
     private boolean obtenerFecha() {
-        
-        try{
+
+        try {
             SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
             date = dFormat.format(this.getForm().getDataFecha().getDate());
             System.out.println(date);
             return false;
-        }
-        
-        catch (Exception e) {
+        } catch (Exception e) {
             return true;
         }
 
-        
     }
 
     private boolean validar() {
         String nombs = this.getForm().getTxtNombre().getText();
         String trim = nombs.trim();
-        if(trim.length()==0){
+        if (trim.length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su Usuario");
-           return false;
+            return false;
         }
-        if(this.getOper().corroborarUsuario(trim) || this.getOper().corroborarComercio(trim) ||this.getOper().corroborarAdmin(trim)){
+        if (this.getOper().corroborarUsuario(trim) || this.getOper().corroborarComercio(trim) || this.getOper().corroborarAdmin(trim)) {
             JOptionPane.showMessageDialog(null, "Nombre de usuario ya esta en uso");
             return false;
         }
-        
-        if(obtenerFecha()){
+
+        if (obtenerFecha()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar Fecha de Nacimiento");
             return false;
         }
-        
-        
-        
+
         return true;
     }
 
     public void abrirse() {
-            new FrmUsuario().setVisible(true);
+        new FrmUsuario().setVisible(true);
     }
 }

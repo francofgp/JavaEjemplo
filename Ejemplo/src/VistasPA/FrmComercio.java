@@ -1,8 +1,6 @@
 package VistasPA;
 
 import Hibernate.HibernateUtil;
-//import Interfaz.ControladorPA.ControladorComercio;
-//import Interfaz.ControladorPA.ControladorVistaComercio;
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Rubro;
@@ -25,36 +23,27 @@ import org.hibernate.Session;
 
 public class FrmComercio extends javax.swing.JFrame {
 
-    RegistroComercio oper;         
-    FrmComercio desktop=this;
-     int estado=0;
-    int estadoCategoria=0;
+    RegistroComercio oper;
+    FrmComercio desktop = this;
+    int estado = 0;
+    int estadoCategoria = 0;
 
-    
-    /*
-    Long idDeRubroSeleccionado;
-    Long idCategoriaSeleccionado;
-    */
-    
     public FrmComercio() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getControlVista().setForm(desktop);
-        //oper = new ABMComercio();
         this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
-        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
-        TextPrompt apellido = new TextPrompt("Apellido",txtApellido);
-        TextPrompt email = new TextPrompt("Email",txtEmail);
-        TextPrompt direccion = new TextPrompt("Direccion",txtDireccion);
-        TextPrompt cuit = new TextPrompt("Cuit",txtCuit);
-        TextPrompt telefono = new TextPrompt("Telefono",txtTelefono);
-        TextPrompt contrasena = new TextPrompt("Contraseña",txtPassword);
-        TextPrompt nombreLocal = new TextPrompt("Nombre Local",txtNombreLocal);
-        TextPrompt direccionLocal = new TextPrompt("Nombre Direccion",txtDireccionLocal);
-        
-        
-        
+        TextPrompt nom = new TextPrompt("Nombre", txtNombre);
+        TextPrompt apellido = new TextPrompt("Apellido", txtApellido);
+        TextPrompt email = new TextPrompt("Email", txtEmail);
+        TextPrompt direccion = new TextPrompt("Direccion", txtDireccion);
+        TextPrompt cuit = new TextPrompt("Cuit", txtCuit);
+        TextPrompt telefono = new TextPrompt("Telefono", txtTelefono);
+        TextPrompt contrasena = new TextPrompt("Contraseña", txtPassword);
+        TextPrompt nombreLocal = new TextPrompt("Nombre Local", txtNombreLocal);
+        TextPrompt direccionLocal = new TextPrompt("Nombre Direccion", txtDireccionLocal);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -408,15 +397,13 @@ public class FrmComercio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void setOper(RegistroComercio  oper) {
+    public void setOper(RegistroComercio oper) {
         this.oper = oper;
     }
-     
-     public RegistroComercio getOper() {
+
+    public RegistroComercio getOper() {
         return oper;
     }
-     
-     
 
     public RegistroComercio getControlVista() {
         if (oper == null) {
@@ -429,16 +416,15 @@ public class FrmComercio extends javax.swing.JFrame {
     }
 
     public void setControlVista(RegistroComercio oper) {
-       this.oper = oper;
-       
-       
+        this.oper = oper;
+
     }
-    
+
     public FrmComercio getDesktop() {
         return desktop;
     }
 
-    public void setDesktop( FrmComercio  desktop) {
+    public void setDesktop(FrmComercio desktop) {
         this.desktop = desktop;
     }
 
@@ -457,23 +443,7 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setEstadoCategoria(int estadoCategoria) {
         this.estadoCategoria = estadoCategoria;
     }
-/*
-    public Long getIdDeRubroSeleccionado() {
-        return idDeRubroSeleccionado;
-    }
 
-    public void setIdDeRubroSeleccionado(Long idDeRubroSeleccionado) {
-        this.idDeRubroSeleccionado = idDeRubroSeleccionado;
-    }
-
-    public Long getIdCategoriaSeleccionado() {
-        return idCategoriaSeleccionado;
-    }
-
-    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
-        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
-    }
-*/
     public JButton getBtnAceptar() {
         return btnAceptar;
     }
@@ -481,7 +451,6 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setBtnAceptar(JButton btnAceptar) {
         this.btnAceptar = btnAceptar;
     }
-
 
     public JButton getjButton2() {
         return jButton2;
@@ -510,8 +479,6 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setDataFecha(JDateChooser dataFecha) {
         this.dataFecha = dataFecha;
     }
-    
-    
 
     public void setjButton5(JButton jButton5) {
         this.jButton5 = jButton5;
@@ -636,14 +603,6 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setjLabel3(JLabel jLabel3) {
         this.jLabel3 = jLabel3;
     }
-
-    /*public JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }*/
 
     public JLabel getjLabel5() {
         return jLabel5;
@@ -784,19 +743,10 @@ public class FrmComercio extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         this.oper.guardar();
 
-        
-  
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-    /*
-    public Object buscarObjetoPorId(Long id) {
-        return oper.buscarObjetoPorId(idDeRubroSeleccionado);
-    }
-    
-    public Object buscarCategoriaPorId(Long id) {
-        return oper.buscarCategoriaPorId(idCategoriaSeleccionado);
-    }
-    */
+
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
@@ -819,7 +769,7 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCuitActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-//        this.getControlVista().conseguirCategoriaSeleccionado();
+
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -831,13 +781,12 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
 
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
-//        this.getControlVista().conseguirRubroSeleccionado();
+
 
             }//GEN-LAST:event_jComboBoxRubroActionPerformed
 
@@ -852,41 +801,17 @@ public class FrmComercio extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
-    
-    
+
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         this.getControlVista().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
+
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
         this.getControlVista().llenaJComboBoxRubro(jComboBoxRubro);
     }
-    
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmComercio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmComercio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmComercio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmComercio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmComercio().setVisible(true);
@@ -935,10 +860,5 @@ public class FrmComercio extends javax.swing.JFrame {
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
-
-
-
-
-
 
 }

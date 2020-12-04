@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="calificacion")
+@Table(name = "calificacion")
 public class Calificacion implements Serializable {
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-       
+
     @Column(columnDefinition = "TEXT")
-    private String descripcion;       
-   
+    private String descripcion;
 
     @Column(columnDefinition = "TEXT")
     private float calificacion;
-        
+
     public long getId() {
         return id;
     }
@@ -37,8 +37,6 @@ public class Calificacion implements Serializable {
         this.descripcion = descripcion;
     }
 
-
-
     public float getCalificacion() {
         return calificacion;
     }
@@ -46,9 +44,5 @@ public class Calificacion implements Serializable {
     public void setCalificacion(float calificacion) {
         this.calificacion = calificacion;
     }
-    
-    
 
-
-    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelosPA;
 
 import java.io.Serializable;
@@ -12,35 +7,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author Chelo
- */
-
 @Entity
-@Table (name="rubro")
-public class Rubro implements Serializable{
+@Table(name = "rubro")
+public class Rubro implements Serializable {
 
     public Rubro(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.estado="Activo";
+        this.estado = "Activo";
     }
 
     public Rubro() {
     }
-    
-    
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-       
+
     @Column(columnDefinition = "TEXT")
-    private String nombre;       
-   
+    private String nombre;
+
     @Column(columnDefinition = "TEXT")
     private String descripcion;
-    
+
     @Column(columnDefinition = "TEXT")
     private String estado;
 
@@ -51,8 +40,6 @@ public class Rubro implements Serializable{
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
 
     public long getId() {
         return id;
@@ -77,12 +64,10 @@ public class Rubro implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
     @Override
-    public String toString () {
-        return  this.getNombre();
-    }  
-    
-    
+    public String toString() {
+        return this.getNombre();
+    }
+
 }

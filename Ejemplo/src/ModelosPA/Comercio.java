@@ -64,14 +64,9 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String telefono;
 
-    //@Column(columnDefinition = "TEXT")
-    //private String imagen;
     @Column(columnDefinition = "TEXT")
     private String nombreLocal;
-    /*
-    @OneToOne (targetEntity = Categoria.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-    private Categoria categoria;
-     */
+
     @ManyToOne(targetEntity = Rubro.class, cascade = MERGE, fetch = FetchType.LAZY)
     private Rubro rubro;
 
@@ -81,15 +76,6 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String direccionNegocio;
 
-    /*
-    ////////////////////////////////////
-    @OneToMany(targetEntity = Calificacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private Calificacion calificacionIndividual;
-    
-    @Column(columnDefinition = "TEXT")
-    private String calificacion;
-    ////////////////////////////////////////
-     */
     public long getId() {
         return id;
     }
@@ -194,17 +180,6 @@ public class Comercio {
         this.direccionNegocio = direccionNegocio;
     }
 
-    /*
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-
-    public String getImagen() {
-        return imagen;
-    }
-    
-     */
     @Override
     public String toString() {
         return this.getNombre();

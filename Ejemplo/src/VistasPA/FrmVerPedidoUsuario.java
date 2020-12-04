@@ -13,7 +13,6 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
     GestionCalificacion controlVista;
     FrmVerPedidoUsuario desktop = this;
-    
 
     public FrmVerPedidoUsuario() {
 
@@ -138,9 +137,6 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         this.txtDescripcion = txtDescripcion;
     }
 
-//    public JTable getjTablePedido() {
-//        
-//    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,7 +229,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -261,7 +257,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnValor3ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 30, 30));
+        jPanel1.add(btnValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 30, 30));
 
         btnAceptarCancelarCalificacion.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptarCancelarCalificacion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -274,7 +270,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarCancelarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 110, 30));
+        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 110, 30));
 
         btnValor1.setBackground(new java.awt.Color(153, 204, 0));
         btnValor1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -287,7 +283,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnValor1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 30, 30));
+        jPanel1.add(btnValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 30, 30));
 
         btnValor4.setBackground(new java.awt.Color(153, 204, 0));
         btnValor4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -300,7 +296,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnValor4ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, 30, 30));
+        jPanel1.add(btnValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 30, 30));
 
         btnValor5.setBackground(new java.awt.Color(153, 204, 0));
         btnValor5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -313,7 +309,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnValor5ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 30, 30));
+        jPanel1.add(btnValor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 30, 30));
 
         btnValor2.setBackground(new java.awt.Color(153, 204, 0));
         btnValor2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -326,7 +322,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnValor2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 30, 30));
+        jPanel1.add(btnValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 30, 30));
 
         btnCalificar.setBackground(new java.awt.Color(153, 204, 0));
         btnCalificar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -352,12 +348,12 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarConfirmarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 110, 30));
+        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 110, 30));
 
         jLabelDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setForeground(new java.awt.Color(153, 204, 0));
         jLabelDescripcion.setText("__________________________________________________");
-        jPanel1.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 290, -1));
+        jPanel1.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 290, -1));
 
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(153, 204, 0));
@@ -368,7 +364,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         jLabelDescrip.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
         jLabelDescrip.setForeground(new java.awt.Color(153, 204, 0));
         jLabelDescrip.setText("Descripcion:");
-        jPanel1.add(jLabelDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, -1, 20));
+        jPanel1.add(jLabelDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, 20));
 
         btnAceptarConfirmarCalificacion1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptarConfirmarCalificacion1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -383,7 +379,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 150, 30));
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 0));
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(102, 204, 0));
         jButton1.setText("X");
@@ -406,11 +402,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePedidosMouseClicked
-        // TODO add your handling code here:
-
         this.getControlVista().cargarProductosPedido();
-
-
     }//GEN-LAST:event_jTablePedidosMouseClicked
 
     private void btnValor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValor3ActionPerformed
@@ -424,15 +416,14 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
     private void btnValor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValor1ActionPerformed
         this.getControlVista().obtenerPuntaje(1.0f);
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnValor1ActionPerformed
 
     private void btnValor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValor4ActionPerformed
-        this.getControlVista().obtenerPuntaje(4.0f);        // TODO add your handling code here:
+        this.getControlVista().obtenerPuntaje(4.0f);
     }//GEN-LAST:event_btnValor4ActionPerformed
 
     private void btnValor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValor5ActionPerformed
-        this.getControlVista().obtenerPuntaje(5.0f);       // TODO add your handling code here:
+        this.getControlVista().obtenerPuntaje(5.0f);
     }//GEN-LAST:event_btnValor5ActionPerformed
 
     private void btnValor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValor2ActionPerformed
@@ -441,8 +432,6 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
     private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
         this.getControlVista().calificar();
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnCalificarActionPerformed
 
     private void btnAceptarConfirmarCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarConfirmarCalificacionActionPerformed
@@ -450,9 +439,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarConfirmarCalificacionActionPerformed
 
     private void btnAceptarConfirmarCalificacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarConfirmarCalificacion1ActionPerformed
-        // TODO add your handling code here:
         this.getControlVista().cancelar();
-
     }//GEN-LAST:event_btnAceptarConfirmarCalificacion1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -460,35 +447,16 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmVerPedidoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmVerPedidoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmVerPedidoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmVerPedidoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmVerPedidoUsuario().setVisible(true);
             }
         });
+    }
+
+    public JTable getjTablePedidos() {
+        return jTablePedidos;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -517,16 +485,5 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField txtDescripcion;
     // End of variables declaration//GEN-END:variables
-
-//    private void setLocationRelativeTo(int i, int i0) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-
-
-    public JTable getjTablePedidos() {
-
-        return jTablePedidos;
-
-    }
 
 }

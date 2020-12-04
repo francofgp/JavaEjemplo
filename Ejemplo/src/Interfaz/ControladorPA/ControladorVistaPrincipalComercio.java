@@ -38,16 +38,10 @@ public class ControladorVistaPrincipalComercio {
     public void setABMproducto(ABMProducto ABMproducto) {
         this.ABMproducto = ABMproducto;
     }
-    
-    
 
-
-
-    
     public void setComercio(Comercio comercio) {
         this.comercio = comercio;
     }
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -78,9 +72,6 @@ public class ControladorVistaPrincipalComercio {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    
-    
-    
 
     public FrmPrincipalComercio getForm() {
         return form;
@@ -102,11 +93,9 @@ public class ControladorVistaPrincipalComercio {
         this.getForm().getTxtEmail().setText(getComercio().getCorreo());
         this.cargarProductos();
         this.calculoCalificacion();
-        
 
     }
-    
-    
+
     public void limpiarTablaPedido() {
         while (this.getForm().getjTablePedidos().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTablePedidos().getModel()).removeRow(0);
@@ -114,9 +103,9 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void cargarPedido() {
-        //calculoCalificacion();
+
         limpiarTablaPedido();
-//        System.out.println(this.getComercio().getNombre());
+
         List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
 
         if (pedido.size() > 0) {
@@ -127,7 +116,6 @@ public class ControladorVistaPrincipalComercio {
                 Vector datos = new Vector();
                 Pedido fila = (Pedido) consulta.next();
 
-                //datos.add(fila);
                 datos.add(fila);
                 datos.add(fila.getTotal());
                 if (fila.getCalificacion() != null) {
@@ -136,13 +124,11 @@ public class ControladorVistaPrincipalComercio {
                     datos.add("Sin calificar");
                 }
 
-                //datos.add(fila.getUsuario().getId());
                 datos.add(fila.getComercio().getId());
                 datos.add(fila.getEstado());
 
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de Pedidos");
@@ -155,15 +141,15 @@ public class ControladorVistaPrincipalComercio {
         limpiarTablaProductosPedidos();
         this.seleccionarPedido();
         this.cargarPedidos();
-        
 
     }
+
     public void limpiarTablaProductosPedidos() {
         while (this.getForm().getjTableProductoPedidos().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTableProductoPedidos().getModel()).removeRow(0);
         }
     }
-    
+
     public void limpiarTablaProductos() {
         while (this.getForm().getjTableProductos().getRowCount() != 0) {
             ((DefaultTableModel) this.getForm().getjTableProductos().getModel()).removeRow(0);
@@ -180,9 +166,8 @@ public class ControladorVistaPrincipalComercio {
 
     private void cargarPedidos() {
 
-        //this.limpiarTablaProducto();
         List<Producto> producto = this.getModel().getProducto();
-        //List<Producto> producto = this.getOper().BuscarProducto();
+
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
             while (consulta.hasNext()) {
@@ -190,8 +175,7 @@ public class ControladorVistaPrincipalComercio {
 
                 Vector datos = new Vector();
                 Producto fila = (Producto) consulta.next();
-                //if (fila.getComercio() == this.getComercio()
-                //        && fila.getCategoria() == this.getCategoria()) {
+
                 datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getCategoria());
@@ -201,7 +185,6 @@ public class ControladorVistaPrincipalComercio {
 
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos pedidos");
@@ -223,8 +206,7 @@ public class ControladorVistaPrincipalComercio {
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                //System.out.println(fila.getEstado());
-                //datos.add(fila);
+
                 tabla.addRow(datos);
             }
         } else {
@@ -233,7 +215,7 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void nuevoProducto() {
-        
+
         this.getABMproducto().abrirse(comercio);
         this.getForm().setVisible(false);
 
@@ -250,8 +232,6 @@ public class ControladorVistaPrincipalComercio {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
         }
 
-
-        
     }
 
     public void conseguirProducto() {
@@ -274,30 +254,28 @@ public class ControladorVistaPrincipalComercio {
         this.limpiarTablaProductos();
         this.cargarProductos();
 
-
-
     }
-    
+
     public float calculoCalificacion() {
 
-    DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
-    float total = 0;
-    int a = 0;
-    for(int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++){
-        
-        System.out.println(this.getForm().getjTablePedidos().getValueAt(i, 2));
+        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+        float total = 0;
+        int a = 0;
+        for (int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++) {
 
-        if (this.getForm().getjTablePedidos().getValueAt(i, 2) != "Sin calificar")      {
-            float total2 = (float)this.getForm().getjTablePedidos().getValueAt(i, 2);
-            a++;
-           total = total+total2; 
+            System.out.println(this.getForm().getjTablePedidos().getValueAt(i, 2));
+
+            if (this.getForm().getjTablePedidos().getValueAt(i, 2) != "Sin calificar") {
+                float total2 = (float) this.getForm().getjTablePedidos().getValueAt(i, 2);
+                a++;
+                total = total + total2;
+            }
         }
-}
-        total = total/a;
+        total = total / a;
 
-    if (total >0){
+        if (total > 0) {
             this.getForm().getTxtID1().setText(String.valueOf(total));
-        } else{
+        } else {
             this.getForm().getTxtID1().setText("Sin calificar");
         }
         return total;
@@ -319,16 +297,5 @@ public class ControladorVistaPrincipalComercio {
         this.limpiarTablaProductos();
         this.cargarProductos();
     }
-    
-    
-    
-    
-    
 
-    }
-
-
-    
-    
-
-
+}

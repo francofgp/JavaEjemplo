@@ -17,7 +17,6 @@ public class ABMCategoria {
     private GestorHibernate oper;
     private FrmCategoria form;
     Categoria model;
-    //Categoria categoriaElegida;
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -50,20 +49,13 @@ public class ABMCategoria {
         this.getOper().darDeBajaCategoria(this.getModel());
     }
 
-        public void darDeAltaCategoria() {
+    public void darDeAltaCategoria() {
         this.getOper().darDeAltaCategoria(this.getModel());
     }
-
-        
-//    public Categoria getCategoriaElegida() {
-//        return model;
-//    }
 
     public void setCategoriaElegida(Categoria categoria) {
         this.model = categoria;
     }
-    
-    
 
     public void crearModificar() {
 
@@ -84,7 +76,6 @@ public class ABMCategoria {
         return model;
     }
 
-    //////////////////////////////
     public void eliminar() {
         this.getOper().eliminarObjeto(this.getModel());
     }
@@ -111,26 +102,19 @@ public class ABMCategoria {
         return this.getOper().corroborarCategoria(nombre);
 
     }
- /*
-    private void setearValoresEnTxtForm() {
-        form.setNombre(form.getTxtNombre().getText());
-        form.setDescripcion(form.getTxtDescripcion().getText());
-    }
-    */
+
     public void modificar() {
-        //form.setNombre(form.getTxtNombre().getText());
-        //form.setDescripcion(form.getTxtDescripcion().getText());
+
         this.getModel().setDescripcion(form.getTxtDescripcion().getText());
         this.getModel().setNombre(form.getTxtNombre().getText());
-        
-        
+
         this.getOper().actualizarObjeto(this.getModel());
     }
 
     public void preguntarEliminar() {
         int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        
-        if (preg == JOptionPane.YES_OPTION) {     
+
+        if (preg == JOptionPane.YES_OPTION) {
             eliminar();
         }
     }
@@ -147,33 +131,26 @@ public class ABMCategoria {
         this.getForm().getTxtNombre().setText(categoria.getNombre());
         this.getForm().getBtnAceptar().setText("Modificar categoria");
         this.getForm().setModificado(modificado);
-           
-        /*
-        this.getForm().setNombre(categoria.getNombre());
-        this.getForm().setDescripcion(categoria.getDescripcion());
-        this.getForm().setID(categoria.getId());
-        
-        this.getForm().setNombrePrimero(this.getForm().getNombre());
-*/
+
         setCategoriaElegida(categoria);
-        }
+    }
 
     private boolean validar() {
         String nombs = this.getForm().getTxtNombre().getText();
         String trim = nombs.trim();
-        if(trim.length()==0){
+        if (trim.length() == 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su categoria");
-           return false;
+            return false;
         }
-       
-        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))){
+
+        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))) {
             return true;
-        }else if(!"1".equals(form.getModificado()) && corroborar(trim) == false){
+        } else if (!"1".equals(form.getModificado()) && corroborar(trim) == false) {
             return true;
-        
-        }else{
-        JOptionPane.showMessageDialog(null, "La categoria ya existe");
-         return false;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "La categoria ya existe");
+            return false;
         }
     }
 }

@@ -7,23 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="admin") 
+@Table(name = "admin")
 public class Admin {
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")
     private String password;
     @Column(columnDefinition = "TEXT")
-    private String nombre;  
+    private String nombre;
 
     public Admin(String password, String nombre) {
         this.password = password;
         this.nombre = nombre;
     }
-    
-    public Admin(){
-        
+
+    public Admin() {
+
     }
 
     public long getId() {
@@ -49,7 +50,5 @@ public class Admin {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
 
 }

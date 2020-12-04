@@ -16,10 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table (name="pedido") 
-public class Pedido  implements Serializable{
+@Table(name = "pedido")
+public class Pedido implements Serializable {
 
     public Pedido() {
     }
@@ -31,36 +30,34 @@ public class Pedido  implements Serializable{
         this.total = total;
         this.descripcion = descripcion;
     }
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-   
-    @OneToOne (targetEntity = Usuario.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+
+    @OneToOne(targetEntity = Usuario.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Usuario usuario;
-    
-    @OneToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+
+    @OneToOne(targetEntity = Comercio.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Comercio comercio;
-    
+
     //@ManyToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    
     @ManyToMany
     private List<Producto> producto;
-    
+
     @Column(columnDefinition = "TEXT")
     private float total;
-    
+
     @Column(columnDefinition = "TEXT")
     private String estado;
-    
-    //@Column(columnDefinition = "TEXT")
+
     private Date fecha;
-    
+
     @Column(columnDefinition = "TEXT")
     private String hora;
-    
-    @OneToOne (targetEntity = Calificacion.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+
+    @OneToOne(targetEntity = Calificacion.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Calificacion calificacion;
-    
 
     public List<Producto> getProducto() {
         return producto;
@@ -74,8 +71,6 @@ public class Pedido  implements Serializable{
         return id;
     }
 
-    
-    
     @Column(columnDefinition = "TEXT")
     private String descripcion;
 
@@ -87,11 +82,9 @@ public class Pedido  implements Serializable{
         return comercio;
     }
 
-
     public float getTotal() {
         return total;
     }
-
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -117,15 +110,6 @@ public class Pedido  implements Serializable{
         this.calificacion = calificacion;
     }
 
-   /* public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-*/
-
     public Date getFecha() {
         return fecha;
     }
@@ -133,8 +117,7 @@ public class Pedido  implements Serializable{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    
+
     public String getHora() {
         return hora;
     }
@@ -143,14 +126,9 @@ public class Pedido  implements Serializable{
         this.hora = hora;
     }
 
-    
-    
-
-
     public void setTotal(float total) {
         this.total = total;
     }
-
 
     public String getDescripcion() {
         return descripcion;
@@ -159,12 +137,10 @@ public class Pedido  implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
     @Override
-    public String toString () {
-        return  this.getDescripcion();
-    }  
-    
-    
+    public String toString() {
+        return this.getDescripcion();
+    }
+
 }

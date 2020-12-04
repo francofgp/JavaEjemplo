@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package VistasPA;
 
 import Hibernate.GestorHibernate;
 import ModelosPA.Producto;
-
-//import Modelos.GestionProyecto.Usuario;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -20,29 +13,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import controladoresCU.ABMProducto;
-/**
- *
- * @author CrapBoy
- */
-public class FrmProducto extends javax.swing.JFrame {
-    
-ABMProducto controlVista;
-FrmProducto desktop=this;
-private String modificado="0";
 
+public class FrmProducto extends javax.swing.JFrame {
+
+    ABMProducto controlVista;
+    FrmProducto desktop = this;
+    private String modificado = "0";
 
     public FrmProducto() {
         initComponents();
         this.setLocationRelativeTo(null);//
         this.getControlVista().setForm(desktop);
-        
+
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
-        
-        TextPrompt nom = new TextPrompt("Nombre",txtNombre);
-        TextPrompt prec = new TextPrompt("Precio",txtPrecio);
-        TextPrompt desc = new TextPrompt("Descripcion",txtDescripcion);
+
+        TextPrompt nom = new TextPrompt("Nombre", txtNombre);
+        TextPrompt prec = new TextPrompt("Precio", txtPrecio);
+        TextPrompt desc = new TextPrompt("Descripcion", txtDescripcion);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -229,11 +218,9 @@ private String modificado="0";
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     int estadoCategoria = 0;
-    
-    
-    
+
     public ABMProducto getOper() {
         return controlVista;
     }
@@ -249,7 +236,8 @@ private String modificado="0";
 
             }
         }
-        return controlVista;    }
+        return controlVista;
+    }
 
     public void setControlVista(ABMProducto controlVista) {
         this.controlVista = controlVista;
@@ -270,8 +258,6 @@ private String modificado="0";
     public void setLblImagen(JLabel LblImagen) {
         this.LblImagen = LblImagen;
     }
-
-
 
     public JButton getBtnAceptar1() {
         return btnAceptar1;
@@ -402,18 +388,14 @@ private String modificado="0";
     }
 
     public JTextField getTxtPrecio() {
-        
-        
-        
+
         return txtPrecio;
     }
 
-    public void setTxtPrecio(JTextField txtPrecio ) {
-        
-        
+    public void setTxtPrecio(JTextField txtPrecio) {
+
         this.txtPrecio = txtPrecio;
-        
-        
+
     }
 
     public JTextField getTxtNombre() {
@@ -447,17 +429,14 @@ private String modificado="0";
     public void setModificado(String modificado) {
         this.modificado = modificado;
     }
-    
-    
-    
-    public void modificar(String modificado,Producto producto){
-        
-        this.getControlVista().setearCampos(modificado,producto);
 
+    public void modificar(String modificado, Producto producto) {
+
+        this.getControlVista().setearCampos(modificado, producto);
 
     }
-    
-    
+
+
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
@@ -472,23 +451,14 @@ private String modificado="0";
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         this.controlVista.modificarCrear();
-
-
-//String image =txtRuta.getText();
-    //image = image.replace("\\","\\\\");
-// TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    /*public Object buscarCategoriaPorId(Long id) {
-        return controlVista.buscarCategoriaPorId(idCategoriaSeleccionado);
-    }
-    */
+
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-        //this.getControlVista().conseguirCategoriaSeleccionado();
 
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
@@ -496,37 +466,8 @@ private String modificado="0";
         this.getControlVista().salir();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmProducto().setVisible(true);
@@ -558,7 +499,6 @@ private String modificado="0";
     private javax.swing.JLabel txtRuta;
     // End of variables declaration//GEN-END:variables
 
-
     public JComboBox<String> getjComboBoxCategoria() {
         return jComboBoxCategoria;
     }
@@ -566,15 +506,7 @@ private String modificado="0";
     public void setjComboBoxCategoria(JComboBox<String> jComboBoxCategoria) {
         this.jComboBoxCategoria = jComboBoxCategoria;
     }
-/*
-    public Long getIdCategoriaSeleccionado() {
-        return idCategoriaSeleccionado;
-    }
 
-    public void setIdCategoriaSeleccionado(Long idCategoriaSeleccionado) {
-        this.idCategoriaSeleccionado = idCategoriaSeleccionado;
-    }
-*/
     public int getEstadoCategoria() {
         return estadoCategoria;
     }
@@ -582,16 +514,8 @@ private String modificado="0";
     public void setEstadoCategoria(int estadoCategoria) {
         this.estadoCategoria = estadoCategoria;
     }
-    
-
 
     private void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
         this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
     }
-
-
-
-
-
-
 }

@@ -6,14 +6,12 @@ import VistasPA.FrmRubro;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
 
-
 public class ABMRubro {
 
     GestorHibernate oper;
     Rubro model;
     FrmRubro form;
     private String titulo;
-    //Rubro rubroElegido;
 
     public String getTitulo() {
         return titulo;
@@ -45,8 +43,7 @@ public class ABMRubro {
     }
 
     public void modificar() {
-        //form.setNombre(form.getTxtNombre().getText());
-        //form.setDescripcion(form.getTxtDescripcion().getText());
+
         this.getModel().setDescripcion(form.getTxtDescripcion().getText());
         this.getModel().setNombre(form.getTxtNombre().getText());
 
@@ -54,7 +51,7 @@ public class ABMRubro {
     }
 
     public FrmRubro getForm() {
-                if (form == null) {
+        if (form == null) {
             synchronized (FrmRubro.class) {
                 form = new FrmRubro();
             }
@@ -72,7 +69,7 @@ public class ABMRubro {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setEstado("Activo");
-        //this.model = model;
+
     }
 
     public void guardar() {
@@ -95,22 +92,22 @@ public class ABMRubro {
     public void darDeBaja() {
         this.getOper().darDeBajaRubro(this.getModel());
     }
-    
-        public void darDeAlta() {
+
+    public void darDeAlta() {
         this.getOper().darDeAltaRubro(this.getModel());
     }
 
     public void crearModificar() {
-        if ("1".equals(form.getModificado())) {                       
-                    modificar();
-                    JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
-                    form.setVisible(false);
-                    new FrmVentanaAdmin().setVisible(true);                           
+        if ("1".equals(form.getModificado())) {
+            modificar();
+            JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
+            form.setVisible(false);
+            new FrmVentanaAdmin().setVisible(true);
         } else {
-                guardar();
-                JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
-                form.setVisible(false);
-                new FrmVentanaAdmin().setVisible(true);           
+            guardar();
+            JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
+            form.setVisible(false);
+            new FrmVentanaAdmin().setVisible(true);
         }
     }
 
@@ -122,11 +119,11 @@ public class ABMRubro {
         }
     }
 
-    public void modificarCrear() {       
+    public void modificarCrear() {
         if (validar()) {
             crearModificar();
         }
-        
+
     }
 
     public void setearCampos(String modificado, Rubro rubro) {
@@ -151,18 +148,17 @@ public class ABMRubro {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su rubro");
             return false;
         }
-        
-        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))){
+
+        if ("1".equals(form.getModificado()) && (corroborar(trim) == false || this.getModel().getNombre().equals(trim))) {
             return true;
-        }else if(!"1".equals(form.getModificado()) && corroborar(trim) == false){
+        } else if (!"1".equals(form.getModificado()) && corroborar(trim) == false) {
             return true;
-        
-        }else{
-        JOptionPane.showMessageDialog(null, "El rubro ya existe");
-         return false;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El rubro ya existe");
+            return false;
         }
 
-        //return true;
     }
 
 }

@@ -41,11 +41,9 @@ public class InicioSesion {
     public void setGestionPedido(GestionPedido gestionPedido) {
         this.gestionPedido = gestionPedido;
     }
-    
-    
 
     public ControladorVistaPrincipalComercio getVistaComercio() {
-            if (vistaComercio == null) {
+        if (vistaComercio == null) {
             synchronized (ControladorVistaPrincipalComercio.class) {
                 vistaComercio = new ControladorVistaPrincipalComercio();
             }
@@ -56,10 +54,7 @@ public class InicioSesion {
     public void setVistaComercio(ControladorVistaPrincipalComercio vistaComercio) {
         this.vistaComercio = vistaComercio;
     }
-    
-    
-    
-    
+
     public RegistroUsuario getrUsuario() {
         if (rUsuario == null) {
             synchronized (RegistroUsuario.class) {
@@ -71,15 +66,13 @@ public class InicioSesion {
     }
 
     public RegistroAdmin getrAdmin() {
-                if (rAdmin == null) {
+        if (rAdmin == null) {
             synchronized (RegistroAdmin.class) {
                 rAdmin = new RegistroAdmin();
             }
         }
         return rAdmin;
     }
-    
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -110,9 +103,9 @@ public class InicioSesion {
 
     public boolean ingresarComercio() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
-        //this.getOper().Ingresar(this.getForm().getUsuarioText().getText(), password);
+
         Comercio comercio = this.getOper().buscarComercioLogin(this.getForm().getUsuarioText().getText(), password);
-        //if (this.getOper().ingresarComercio(this.getForm().getUsuarioText().getText(), password)) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
+
         if (comercio != null) {
             this.getVistaComercio().abrirse(comercio);
             return true;
@@ -120,26 +113,23 @@ public class InicioSesion {
             JOptionPane.showMessageDialog(null, "Comercio o contraseña incorrecta", "", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        
+
     }
 
     public void ingresarUsuario() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
-        //primero pruebo si ingresa con admin, sino pruebo con usuario
 
-
-        
         if (this.getOper().ingresarAdmin(this.getForm().getUsuarioText().getText(), password)) {
             FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
             frmAdmin.setVisible(true);
             this.getForm().setVisible(false);
-        } else if (this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password)!=null) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
-            Usuario usuario=  this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password);
+        } else if (this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password) != null) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
+            Usuario usuario = this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password);
 
             this.getGestionPedido().abrirse(usuario);
             this.getForm().setVisible(false);
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -151,7 +141,7 @@ public class InicioSesion {
 
     public void ingresarRegistrarAdmin() {
         this.getrAdmin().abrirse();
-        this.getForm().setVisible(false);// TODO add your handling code here:
+        this.getForm().setVisible(false);
     }
 
     public void ingresarRegistrarComercio() {
@@ -161,7 +151,7 @@ public class InicioSesion {
 
     void abrirse() {
         this.getForm().setVisible(true);
-        
+
     }
 
     public void iniciarSesion() {
@@ -172,7 +162,6 @@ public class InicioSesion {
             }
         } else {
             ingresarUsuario();
-            //this.getForm().setVisible(false);
         }
 
     }

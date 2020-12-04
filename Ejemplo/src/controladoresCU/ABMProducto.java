@@ -3,7 +3,6 @@ package controladoresCU;
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
 import ModelosPA.Admin;
-
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Producto;
@@ -20,7 +19,6 @@ public class ABMProducto {
     private Producto model;
     public Categoria categoria;
     private ControladorVistaPrincipalComercio vistaComercio;
-    
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -56,9 +54,6 @@ public class ABMProducto {
     public void setVistaComercio(ControladorVistaPrincipalComercio vistaComercio) {
         this.vistaComercio = vistaComercio;
     }
-    
-    
-    
 
     public void setForm(FrmProducto form) {
         this.form = form;
@@ -83,24 +78,13 @@ public class ABMProducto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
-    public void setProductoElegido(Producto producto){
-        model=producto;
+
+    public void setProductoElegido(Producto producto) {
+        model = producto;
     }
-    
-    
 
     public void conseguirCategoriaSeleccionado() {
         this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-       /*
-        if (this.getForm().getEstadoCategoria() >= 2) {
-            String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-            //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
-            this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-        } else {
-            this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
-        }
-*/
     }
 
     public void setModel() {
@@ -112,10 +96,9 @@ public class ABMProducto {
         model.setCategoria((Categoria) this.getForm().getComboBoxCategoria().getSelectedItem());
         model.setEstado("Activo");
         model.setComercio(comercio);
-        //this.model = model;
+
     }
-    
-    
+
     public void modificar() {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
@@ -125,42 +108,30 @@ public class ABMProducto {
 
         this.getOper().actualizarObjeto(this.getModel());
     }
-    
+
     public void guardar() {
         this.setModel();
         this.getOper().guardarObjeto(this.getModel());
     }
 
-    
     public void crearModificar() {
-        if ("1".equals(form.getModificado())) {                       
-                    modificar();
-                    JOptionPane.showMessageDialog(null, "El producto se modificó con éxito!");
-                    this.salir();                        
+        if ("1".equals(form.getModificado())) {
+            modificar();
+            JOptionPane.showMessageDialog(null, "El producto se modificó con éxito!");
+            this.salir();
         } else {
-                guardar();
-                JOptionPane.showMessageDialog(null, "El producto se registró con éxito!");
-                this.salir();          
+            guardar();
+            JOptionPane.showMessageDialog(null, "El producto se registró con éxito!");
+            this.salir();
         }
     }
+
     public void modificarCrear() {
-        
+
         if (validar()) {
             crearModificar();
         }
-       /* if (validar()) {
-            try {
-                this.setModel();
-                System.out.println(model);
-                oper.guardarObjeto(model);
-                
-                this.salir();
-                
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Parámetros incorrectos" + ex.getMessage(), " Error ", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-*/
+
     }
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
@@ -169,7 +140,7 @@ public class ABMProducto {
         jComboBoxCategoria.removeAllItems();
 
         for (Categoria categoria : resulset) {
-            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+
             if ("Activo".equals(categoria.getEstado())) {
                 jComboBoxCategoria.addItem(categoria);
 
@@ -183,12 +154,10 @@ public class ABMProducto {
     }
 
     public void abrirse(Comercio comercio) {
-        
-        
+
         this.getForm();
         this.getForm().setVisible(true);
         this.getForm().getControlVista().setComercio(comercio);
-       // this.getForm().getControlVista().setComercio(comercio);
 
     }
 
@@ -200,22 +169,21 @@ public class ABMProducto {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre a su producto");
             return false;
         }
-        try{
-        Float.parseFloat(this.getForm().getTxtPrecio().getText());
+        try {
+            Float.parseFloat(this.getForm().getTxtPrecio().getText());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número para el precio");
             return false;
         }
-        
-        
-        if ("1".equals(form.getModificado()) && (this.getOper().corroborarProducto(trim) == false || this.getModel().getNombre().equals(trim))){
+
+        if ("1".equals(form.getModificado()) && (this.getOper().corroborarProducto(trim) == false || this.getModel().getNombre().equals(trim))) {
             return true;
-        }else if(!"1".equals(form.getModificado()) && this.getOper().corroborarProducto(trim) == false){
+        } else if (!"1".equals(form.getModificado()) && this.getOper().corroborarProducto(trim) == false) {
             return true;
-        
-        }else{
-        JOptionPane.showMessageDialog(null, "El producto ya existe");
-         return false;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El producto ya existe");
+            return false;
         }
     }
 
@@ -231,41 +199,36 @@ public class ABMProducto {
         this.getForm().getBtnCrear().setText("Modificar categoria");
         this.getForm().setModificado(modificado);
         this.getForm().getComboBoxCategoria().getModel().setSelectedItem(producto.getCategoria());
-        
+
         this.setProductoElegido(producto);
-        }
+    }
 
     public void abrirseParaModificar(Comercio comercio, Producto producto) {
         this.getForm();
         this.getForm().setVisible(true);
         this.getForm().getControlVista().setComercio(comercio);
-        
-        
+
         setProductoElegido(producto);
         getForm().modificar("1", getModel());
         getForm().setVisible(true);
-        
-        
 
     }
 
     public void preguntarEliminar() {
         int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este producto?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        
-        if (preg == JOptionPane.YES_OPTION) {     
+
+        if (preg == JOptionPane.YES_OPTION) {
             eliminar();
         }
     }
 
     public void eliminar() {
         this.getModel().setComercio(null);
-        
-        
-        
-        try{
+
+        try {
             this.getOper().eliminarObjeto(this.getModel());
-                } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "No se puede eliminar, ya el producto tiene al menos un pedido asociado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar, ya que el producto tiene al menos un pedido asociado");
         }
     }
 
@@ -276,6 +239,5 @@ public class ABMProducto {
     public void darDeAlta() {
         this.getOper().cambiarEstadoProducto(this.getModel(), "Activo");
     }
-
 
 }

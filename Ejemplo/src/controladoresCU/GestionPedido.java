@@ -45,7 +45,6 @@ public class GestionPedido {
     private Date fecha;
     private GestionCalificacion controlCalificacion;
 
-    /////////////////////////getter y setter ////////////////////////////////
     public GestionCalificacion getControlCalificacion() {
         if (controlCalificacion == null) {
             synchronized (GestionCalificacion.class) {
@@ -133,13 +132,6 @@ public class GestionPedido {
         this.hora = hora;
     }
 
-//    public String getFecha() {
-//        return fecha;
-//    }
-//
-//    public void setFecha(String fecha) {
-//        this.fecha = fecha;
-//    }
     public Date getFecha() {
         return fecha;
     }
@@ -164,16 +156,14 @@ public class GestionPedido {
         this.producto = producto;
     }
 
-    //////////////////Metodos/////////////////////////
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
-        //getOper().llenaJComboBoxRubro(jComboBoxRubro);
 
         List<Rubro> resulset = getOper().rubroShow();
 
         jComboBoxRubro.removeAllItems();
 
         for (Rubro rubro : resulset) {
-            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+
             if ("Activo".equals(rubro.getEstado())) {
                 jComboBoxRubro.addItem(rubro);
 
@@ -183,13 +173,13 @@ public class GestionPedido {
     }
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-        //this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
+
         List<Categoria> resulset = this.getOper().categoriaShow();
 
         jComboBoxCategoria.removeAllItems();
 
         for (Categoria categoria : resulset) {
-            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+
             if ("Activo".equals(categoria.getEstado())) {
                 jComboBoxCategoria.addItem(categoria);
 
@@ -201,31 +191,14 @@ public class GestionPedido {
 
     public void conseguirRubroSeleccionado() {
         this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-        /* if (this.getForm().getEstado() >= 2) {
-            String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
-            //this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
-            this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-        } else {
-            this.getForm().setEstado(this.getForm().getEstado() + 1);
-        }
-         */
     }
 
     public void conseguirCategoriaSeleccionado() {
         this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-        /*
-        if (this.getForm().getEstadoCategoria() >= 2) {
-            String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-            //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
-            this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-        } else {
-            this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
-        }
-         */
     }
 
     public void cargarComercio() {
-        //this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
+
         conseguirRubroSeleccionado();
         conseguirCategoriaSeleccionado();
 
@@ -238,8 +211,7 @@ public class GestionPedido {
 
                 Vector datos = new Vector();
                 Comercio fila = (Comercio) consulta.next();
-                //  if (fila.getRubro().getId() == this.getRubro().getId()
-                //      && fila.getCategoria().getId() == this.getCategoria().getId()) {
+
                 datos.add(fila);
                 datos.add(fila.getId());
                 if (calificacionTabla(fila) > 0) {
@@ -249,15 +221,14 @@ public class GestionPedido {
                 }
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
-            JOptionPane.showMessageDialog(null, "no hay productos con tales datos");
+            JOptionPane.showMessageDialog(null, "No hay comercios con tales datos!");
         }
 
     }
 
-    public float calificacionTabla(Comercio fila){
+    public float calificacionTabla(Comercio fila) {
 
         int i = 0;
         float total = 0;
@@ -265,7 +236,7 @@ public class GestionPedido {
         float subCat = 0;
         List<Pedido> pedido = this.getOper().buscarPedidoComercio(fila);
         Iterator consulta = pedido.iterator();
-        
+
         while (consulta.hasNext()) {
 
             Vector datos = new Vector();
@@ -279,10 +250,10 @@ public class GestionPedido {
             }
         }
         calificacion = total / i;
-        
+
         return calificacion;
     }
-    
+
     public float calcularCalificacionTxt() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
@@ -319,14 +290,15 @@ public class GestionPedido {
         return calificacion;
     }
 
-    
+    public void cargarNombreComercio() {
+        this.getForm().getJNombreComercio().setText(comercio.getNombre());
+    }
+
     public void cargarProductos() {
 
         this.limpiarTablaProducto();
         List<Producto> producto = this.buscarProducto();
-        
-        //List<Producto> producto = this.getOper().BuscarProducto(this.getCategoria(), this.getComercio());
-        //List<Producto> producto = this.getOper().BuscarProducto();
+
         if (producto.size() > 0) {
             Iterator consulta = producto.iterator();
             while (consulta.hasNext()) {
@@ -334,18 +306,15 @@ public class GestionPedido {
 
                 Vector datos = new Vector();
                 Producto fila = (Producto) consulta.next();
-                //if (fila.getComercio() == this.getComercio()
-                //        && fila.getCategoria() == this.getCategoria()) {
+
                 datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
                 System.out.println(fila.getComercio().getNombre());
-                //System.out.println(fila.getCategoria().getNombre());
 
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");
@@ -353,12 +322,7 @@ public class GestionPedido {
     }
 
     public void verPedido() {
-
-        //this.setFormPedido();
         this.getControlCalificacion().abrirse(usuario);
-
-        //this.getFormPedido().setControlVista(this);
-        //System.out.println(this.getUsuario().getId());
     }
 
     public void limpiarTablaComercio() {
@@ -379,12 +343,10 @@ public class GestionPedido {
         }
     }
 
-    //String comercioSeleccionadoID;
     public void seleccionarComercio() {
         DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
-        //this.getForm().getTxtComercio().setText(model.getValueAt(selectedRowIndex, 0).toString());
-        //this.getForm().getTxtIDL().setText(model.getValueAt(selectedRowIndex, 1).toString());
+
         comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
 
         this.cargarProductos();
@@ -450,7 +412,7 @@ public class GestionPedido {
 
         for (int row = 0; row < this.getForm().getjTableCarro().getRowCount(); row++) {
             productos.add((Producto) model.getValueAt(row, 0));
-            //System.out.println(model.getValueAt(row, 3).toString());
+
             precioTotal = precioTotal + Float.parseFloat(model.getValueAt(row, 2).toString());
         }
 
@@ -481,7 +443,7 @@ public class GestionPedido {
                 + ":" + this.getForm().getjComboBoxMinuto().getSelectedItem().toString();
 
         Date date = Calendar.getInstance().getTime();
-        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+
         fecha = date;
     }
 
@@ -507,7 +469,6 @@ public class GestionPedido {
 
     }
 
-    
     public void buscar() {
 
         this.limpiarTablaComercio();
@@ -516,33 +477,33 @@ public class GestionPedido {
     }
 
     private List<Comercio> buscarComercio() {
-        
+
         String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
-        
-        if (this.getForm().getRbtnPorNombre().isSelected()){
-        return this.getOper().buscarComercioPorNombre(nombreComercio);
-        
-        }else if(this.getForm().getRbtnPorCategoriaRubro().isSelected()){
+
+        if (this.getForm().getRbtnPorNombre().isSelected()) {
+            return this.getOper().buscarComercioPorNombre(nombreComercio);
+
+        } else if (this.getForm().getRbtnPorCategoriaRubro().isSelected()) {
             return this.getOper().buscarComercioPorCategoriaYRubro(categoria, rubro);
-        }else if(this.getForm().getRbtnSoloCategoria().isSelected()){
+        } else if (this.getForm().getRbtnSoloCategoria().isSelected()) {
             return this.getOper().buscarComercioPorCategoria(categoria);
-        }else{
+        } else {
             return this.getOper().buscarComercioPorRubro(rubro);
         }
     }
-    
- private List<Producto> buscarProducto() {
-        
+
+    private List<Producto> buscarProducto() {
+
         String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
-        
-        if (this.getForm().getRbtnPorNombre().isSelected()){
-        return this.getOper().buscarProducto(this.getComercio());
-        
-        }else if(this.getForm().getRbtnPorCategoriaRubro().isSelected()){
+
+        if (this.getForm().getRbtnPorNombre().isSelected()) {
+            return this.getOper().buscarProducto(this.getComercio());
+
+        } else if (this.getForm().getRbtnPorCategoriaRubro().isSelected()) {
             return this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
-        }else if(this.getForm().getRbtnSoloCategoria().isSelected()){
+        } else if (this.getForm().getRbtnSoloCategoria().isSelected()) {
             return this.getOper().buscarProducto(this.getCategoria(), this.getComercio());
-        }else{
+        } else {
             return this.getOper().buscarProducto(this.getComercio());
         }
     }

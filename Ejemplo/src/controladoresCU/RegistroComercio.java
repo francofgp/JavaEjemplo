@@ -90,21 +90,20 @@ public class RegistroComercio {
         model.setNombreLocal(this.getForm().getTxtNombreLocal().getText());
         model.setRubro((Rubro) rubro);
         model.setCategoria((Categoria) categoria);
-        
-        System.out.println(rubro);System.out.println(categoria);
-        
+
+        System.out.println(rubro);
+        System.out.println(categoria);
 
     }
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
-        //getOper().llenaJComboBoxRubro(jComboBoxRubro);
 
         List<Rubro> resulset = getOper().rubroShow();
 
         jComboBoxRubro.removeAllItems();
 
         for (Rubro rubro : resulset) {
-            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+
             if ("Activo".equals(rubro.getEstado())) {
                 jComboBoxRubro.addItem(rubro);
 
@@ -113,15 +112,14 @@ public class RegistroComercio {
         }
     }
 
-    //////////////////////////    
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
-        //this.getOper().llenaJComboBoxCategoria(jComboBoxCategoria);
+
         List<Categoria> resulset = this.getOper().categoriaShow();
 
         jComboBoxCategoria.removeAllItems();
 
         for (Categoria categoria : resulset) {
-            //jComboBox1.addItem("" + usuario.getNombre() + " - " + usuario.getApellido());
+
             if ("Activo".equals(categoria.getEstado())) {
                 jComboBoxCategoria.addItem(categoria);
 
@@ -134,7 +132,6 @@ public class RegistroComercio {
     public Object buscarCategoriaPorId(Long idCategoriaSeleccionado) {
         return getOper().buscarCategoriaPorId(idCategoriaSeleccionado);
     }
-    /////////////////////////
 
     public long buscarObjeto(String s) {
         return oper.buscarObjeto(s);
@@ -144,10 +141,6 @@ public class RegistroComercio {
         return oper.buscarCategoria(s);
     }
 
-    /*public Object buscarObjetoPorId(Long idDeRubroSeleccionado) {
-        return oper.buscarObjetoPorId(idDeRubroSeleccionado);
-    }
-     */
     public void guardar() {
         if (validar()) {
             this.setModel();
@@ -159,32 +152,12 @@ public class RegistroComercio {
 
     }
 
-    ////////////////////////////////////////////////////
     public void conseguirRubroSeleccionado() {
         this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-/*
-        if (this.getForm().getEstado() >= 2) {
-            String s = String.valueOf(this.getForm().getjComboBoxRubro().getSelectedItem());
-            //this.getForm().setIdDeRubroSeleccionado(this.buscarObjeto(s));
-            this.setRubro((Rubro) this.getForm().getjComboBoxRubro().getSelectedItem());
-        } else {
-            this.getForm().setEstado(this.getForm().getEstado() + 1);
-        }
-        */
     }
 
     public void conseguirCategoriaSeleccionado() {
-        
         this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-        /*
-        if (this.getForm().getEstadoCategoria() >= 2) {
-            String s = String.valueOf(this.getForm().getjComboBoxCategoria().getSelectedItem());
-            //this.getForm().setIdCategoriaSeleccionado(this.buscarCategoria(s));
-            this.setCategoria((Categoria) this.getForm().getjComboBoxCategoria().getSelectedItem());
-        } else {
-            this.getForm().setEstadoCategoria(this.getForm().getEstadoCategoria() + 1);
-        }
-*/
     }
 
     private boolean obtenerFecha() {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelosPA;
 
 import java.io.Serializable;
@@ -18,20 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author Chelo
- */
-
 @Entity
-@Table (name="producto")
-public class Producto implements Serializable{
+@Table(name = "producto")
+public class Producto implements Serializable {
 
     public Producto() {
     }
 
-    
-    
     public Producto(String nombre, String descripcion, float precio, Categoria categoria, Comercio comercio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -39,33 +27,27 @@ public class Producto implements Serializable{
         this.categoria = categoria;
         this.comercio = comercio;
     }
-    
-    
-    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
     private long id;
-       
+
     @Column(columnDefinition = "TEXT")
-    private String nombre;       
-    
-   
+    private String nombre;
+
     @Column(columnDefinition = "TEXT")
     private String descripcion;
-    
-    
+
     @Column(columnDefinition = "TEXT")
     private String estado;
     private float precio;
-    
-    @OneToOne (targetEntity = Categoria.class, cascade= MERGE,fetch=FetchType.LAZY)
+
+    @OneToOne(targetEntity = Categoria.class, cascade = MERGE, fetch = FetchType.LAZY)
     public Categoria categoria;
 
-    /*
-    @Column(columnDefinition = "TEXT")
-    private float imagen;
-    */
-    @ManyToOne (targetEntity = Comercio.class, cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+    @ManyToOne(targetEntity = Comercio.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Comercio comercio;
-    
+
     public long getId() {
         return id;
     }
@@ -85,8 +67,6 @@ public class Producto implements Serializable{
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -120,18 +100,13 @@ public class Producto implements Serializable{
         this.comercio = comercio;
     }
 
-
-
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
     @Override
-    public String toString () {
-        return  this.getNombre();
-    }  
+    public String toString() {
+        return this.getNombre();
+    }
 
-
-    
-    
 }
