@@ -6,10 +6,13 @@ import ModelosPA.Pedido;
 import ModelosPA.Producto;
 import VistasPA.FrmPrincipalComercio;
 import controladoresCU.ABMProducto;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -124,7 +127,7 @@ public class ControladorVistaPrincipalComercio {
                     datos.add("Sin calificar");
                 }
 
-                datos.add(fila.getComercio().getId());
+                datos.add(fila.getFecha());
                 datos.add(fila.getEstado());
 
                 tabla.addRow(datos);
@@ -244,15 +247,15 @@ public class ControladorVistaPrincipalComercio {
     public void eliminar() {
         try {
             conseguirProducto();
-
+            this.getABMproducto().setProductoElegido(this.getProducto());
+            this.getABMproducto().preguntarEliminar();
+            this.limpiarTablaProductos();
+            this.cargarProductos();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
         }
 
-        this.getABMproducto().setProductoElegido(this.getProducto());
-        this.getABMproducto().preguntarEliminar();
-        this.limpiarTablaProductos();
-        this.cargarProductos();
+
 
     }
 
@@ -282,20 +285,97 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void darDeBaja() {
-        this.conseguirProducto();
-        this.getABMproducto().setProductoElegido(producto);
-        this.getABMproducto().darDeBaja();
-        this.limpiarTablaProductos();
-        this.cargarProductos();
+        try {
+            this.conseguirProducto();
+            this.getABMproducto().setProductoElegido(producto);
+            this.getABMproducto().darDeBaja();
+            this.limpiarTablaProductos();
+            this.cargarProductos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
+        }
 
     }
 
     public void darDeAlta() {
-        this.conseguirProducto();
-        this.getABMproducto().setProductoElegido(producto);
-        this.getABMproducto().darDeAlta();
-        this.limpiarTablaProductos();
-        this.cargarProductos();
+        try {
+
+            this.conseguirProducto();
+            this.getABMproducto().setProductoElegido(producto);
+            this.getABMproducto().darDeAlta();
+            this.limpiarTablaProductos();
+            this.cargarProductos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
+        }
     }
+
+    public void buscar() {
+        
+        if(validar()){
+        this.limpiarTablaPedido();
+        this.limpiarTablaProductosPedidos();
+        this.obtenerFecha();
+        this.cargarBusquedaFecha();
+        }
+
+    }
+
+    private void cargarBusquedaFecha() {
+        List<Pedido> pedido = getOper().buscarPedidoComercioYFecha(this.getComercio(),minDate,maxDate );
+
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                datos.add(fila);
+                datos.add(fila.getTotal());
+                if (fila.getCalificacion() != null) {
+                    datos.add(fila.getCalificacion().getCalificacion());
+                } else {
+                    datos.add("Sin calificar");
+                }
+
+                datos.add(fila.getFecha());
+                datos.add(fila.getEstado());
+
+                tabla.addRow(datos);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de Pedidos");
+        }
+    }
+    
+   // private String fechaDesde;
+   // private String fechaHasta;
+   
+    Date minDate;
+    Date maxDate;
+    private boolean obtenerFecha() {
+        try {
+  
+            SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String fechaDesde = dFormat.format(this.getForm().getDataFecha().getDate());   
+            minDate = dFormat.parse(fechaDesde);
+            maxDate = new Date(minDate.getTime() + TimeUnit.DAYS.toMillis(1));
+
+            return false;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una fecha de busqueda válida");
+            return true;
+        }
+
+    }
+
+    private boolean validar() {
+        
+        return !obtenerFecha();
+    }
+
 
 }

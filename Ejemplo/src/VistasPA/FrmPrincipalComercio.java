@@ -1,6 +1,7 @@
 package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -74,7 +75,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtNombre = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtID1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -92,6 +92,10 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnDarDeBaja = new javax.swing.JButton();
         btnDarDeBaja1 = new javax.swing.JButton();
+        dataFecha = new com.toedter.calendar.JDateChooser();
+        btnBuscarPorFecha = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        btnMostrarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,7 +126,12 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jButton5.setText("Configuracion");
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton5.setContentAreaFilled(false);
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 120, 30));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel6.setText("email:");
@@ -140,26 +149,13 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtEmail.setText("Comercio:");
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 150, -1));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("CargarPedidos");
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 120, 30));
-
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel9.setText("Calificacion:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 90, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 90, -1));
 
         txtID1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtID1.setText("Comercio:");
-        jPanel1.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 130, -1));
+        txtID1.setText("Calificacion");
+        jPanel1.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 130, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,7 +165,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Descripcion", "Total", "Calificacion", "IDcomercio", "Estado"
+                "Descripcion", "Total", "Calificacion", "Fecha", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -186,8 +182,15 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTablePedidos);
+        if (jTablePedidos.getColumnModel().getColumnCount() > 0) {
+            jTablePedidos.getColumnModel().getColumn(0).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(1).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(2).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(3).setResizable(false);
+            jTablePedidos.getColumnModel().getColumn(4).setResizable(false);
+        }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 420, 160));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 460, 160));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Productos de los pedidos");
@@ -204,7 +207,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 100, 30));
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 100, 30));
 
         jTableProductoPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,11 +233,11 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             jTableProductoPedidos.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 420, 130));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 460, 130));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Productos");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 70, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 70, 20));
 
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -262,7 +265,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             jTableProductos.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 420, 330));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 500, 340));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Pedidos");
@@ -279,7 +282,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 100, 30));
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 100, 30));
 
         btnEliminar.setBackground(new java.awt.Color(153, 204, 0));
         btnEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -292,7 +295,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 100, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 100, 30));
 
         btnDarDeBaja.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBaja.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -305,7 +308,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnDarDeBajaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, 100, 30));
+        jPanel2.add(btnDarDeBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, 100, 30));
 
         btnDarDeBaja1.setBackground(new java.awt.Color(153, 204, 0));
         btnDarDeBaja1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -318,29 +321,56 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 btnDarDeBaja1ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDarDeBaja1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 100, 30));
+        jPanel2.add(btnDarDeBaja1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 400, 100, 30));
+        jPanel2.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 200, 30));
+
+        btnBuscarPorFecha.setBackground(new java.awt.Color(153, 204, 0));
+        btnBuscarPorFecha.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnBuscarPorFecha.setForeground(new java.awt.Color(153, 204, 0));
+        btnBuscarPorFecha.setText("Buscar");
+        btnBuscarPorFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnBuscarPorFecha.setContentAreaFilled(false);
+        btnBuscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorFechaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscarPorFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 110, 30));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel12.setText("Buscar pedidos por fecha");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 210, 20));
+
+        btnMostrarTodos.setBackground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnMostrarTodos.setForeground(new java.awt.Color(153, 204, 0));
+        btnMostrarTodos.setText("Mostrar Todos");
+        btnMostrarTodos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnMostrarTodos.setContentAreaFilled(false);
+        btnMostrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMostrarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.getControlVista().cargarPedido();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         this.getControlVista().nuevoProducto();
@@ -366,6 +396,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.getControlVista().darDeAlta();
     }//GEN-LAST:event_btnDarDeBaja1ActionPerformed
 
+    private void btnBuscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorFechaActionPerformed
+        this.getControlVista().buscar();
+    }//GEN-LAST:event_btnBuscarPorFechaActionPerformed
+
+    private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosActionPerformed
+        this.getControlVista().cargarPedido();
+    }//GEN-LAST:event_btnMostrarTodosActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -390,13 +432,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.controlVista = controlVista;
     }
 
-    public JButton getjButton4() {
-        return jButton4;
+
+
+    public JDateChooser getDataFecha() {
+        return dataFecha;
     }
 
-    public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
+    public void setDataFecha(JDateChooser dataFecha) {
+        this.dataFecha = dataFecha;
     }
+    
+
+
 
     public JButton getjButton5() {
         return jButton5;
@@ -520,14 +567,17 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarPorFecha;
     private javax.swing.JButton btnDarDeBaja;
     private javax.swing.JButton btnDarDeBaja1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnMostrarTodos;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -549,5 +599,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JLabel txtID1;
     private javax.swing.JLabel txtNombre;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

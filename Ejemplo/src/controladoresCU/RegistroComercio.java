@@ -6,6 +6,7 @@ import ModelosPA.Comercio;
 import ModelosPA.Rubro;
 import VistasPA.FrmComercio;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ public class RegistroComercio {
     private Comercio model;
     private Rubro rubro;
     private Categoria categoria;
-    private String date;
+    private Date date;
     private InicioSesion inicioSesion;
 
     public Rubro getRubro() {
@@ -164,7 +165,7 @@ public class RegistroComercio {
 
         try {
             SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
-            date = dFormat.format(this.getForm().getDataFecha().getDate());
+            date = this.getForm().getDataFecha().getDate();
             System.out.println(date);
             return false;
         } catch (Exception e) {
@@ -184,43 +185,34 @@ public class RegistroComercio {
             JOptionPane.showMessageDialog(null, "Nombre de comercio ya esta en uso");
             return false;
         }
-
-        if (obtenerFecha()) {
+        obtenerFecha();
+        if (date==null) {
             JOptionPane.showMessageDialog(null, "Debe ingresar Fecha de Nacimiento");
             return false;
         }
-
-        if (tieneCategoriaSeleccionada()) {
+        conseguirCategoriaSeleccionado();
+        if (categoria==null) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar la Categoria");
             return false;
         }
 
-        if (tieneRubroSeleccionado()) {
+        conseguirRubroSeleccionado();
+        if (rubro==null) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar el Rubro");
+            return false;
+        }
+        
+        if ("".equals(this.getForm().getTxtPassword().getText())) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una Contraseña");
+            return false;
+        }
+        
+        if ("".equals(this.getForm().getTxtNombreLocal().getText())) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar nombre a su local");
             return false;
         }
 
         return true;
-    }
-
-    private boolean tieneCategoriaSeleccionada() {
-        try {
-            conseguirCategoriaSeleccionado();
-            return false;
-        } catch (Exception e) {
-            return true;
-        }
-
-    }
-
-    private boolean tieneRubroSeleccionado() {
-        try {
-            conseguirRubroSeleccionado();
-            return false;
-        } catch (Exception e) {
-            return true;
-        }
-
     }
 
     public void abrirse() {

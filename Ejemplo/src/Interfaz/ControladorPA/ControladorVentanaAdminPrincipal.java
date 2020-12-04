@@ -161,27 +161,40 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void eliminar() {
-        conseguirRubro();
-        this.getABMrubro().setRubroElegido(this.getRubro());
-        this.getABMrubro().preguntarEliminar();
-        limpiarTablaRubro();
-        cargarRubro();
+        try {
+            conseguirRubro();
+            this.getABMrubro().setRubroElegido(this.getRubro());
+            this.getABMrubro().preguntarEliminar();
+            limpiarTablaRubro();
+            cargarRubro();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un rubro");
+        }
     }
 
     public void darDeBaja() {
-        conseguirRubro();
-        this.getABMrubro().setRubroElegido(this.getRubro());
-        this.getABMrubro().darDeBaja();
-        limpiarTablaRubro();
-        cargarRubro();
+        try {
+            conseguirRubro();
+            this.getABMrubro().setRubroElegido(this.getRubro());
+            this.getABMrubro().darDeBaja();
+            limpiarTablaRubro();
+            cargarRubro();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un rubro");
+        }
     }
 
     public void darDeAlta() {
-        conseguirRubro();
-        this.getABMrubro().setRubroElegido(this.getRubro());
-        this.getABMrubro().darDeAlta();
-        limpiarTablaRubro();
-        cargarRubro();
+        try {
+            conseguirRubro();
+            this.getABMrubro().setRubroElegido(this.getRubro());
+            this.getABMrubro().darDeAlta();
+            limpiarTablaRubro();
+            cargarRubro();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un rubro");
+        }
     }
 
     public void modificar() {
@@ -219,27 +232,39 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void darDeBajaCategoria() {
-        conseguirCategoria();
-        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
-        this.getABMcategoria().darDeBajaCategoria();
-        limpiarTablaCategoria();
-        cargarCategoria();
+        try {
+            conseguirCategoria();
+            this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+            this.getABMcategoria().darDeBajaCategoria();
+            limpiarTablaCategoria();
+            cargarCategoria();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
+        }
     }
 
     public void darDeAltaCategoria() {
-        conseguirCategoria();
-        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
-        this.getABMcategoria().darDeAltaCategoria();
-        limpiarTablaCategoria();
-        cargarCategoria();
+        try {
+            conseguirCategoria();
+            this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+            this.getABMcategoria().darDeAltaCategoria();
+            limpiarTablaCategoria();
+            cargarCategoria();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
+        }
     }
 
     public void eliminarCategoria() {
-        conseguirCategoria();
-        this.getABMcategoria().setCategoriaElegida(this.getCategoria());
-        this.getABMcategoria().preguntarEliminar();
-        limpiarTablaCategoria();
-        cargarCategoria();
+        try {
+            conseguirCategoria();
+            this.getABMcategoria().setCategoriaElegida(this.getCategoria());
+            this.getABMcategoria().preguntarEliminar();
+            limpiarTablaCategoria();
+            cargarCategoria();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
+        }
     }
 
     public void buscarRubro() {

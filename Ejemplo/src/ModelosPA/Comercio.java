@@ -1,5 +1,6 @@
 package ModelosPA;
 
+import java.util.Date;
 import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "comercio")
 public class Comercio {
 
-    public Comercio(String nombre, String apellido, String fechaNac, String password, String direccion,
+    public Comercio(String nombre, String apellido, Date fechaNac, String password, String direccion,
             String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
             Rubro rubro, Categoria categoria) {
         this.nombre = nombre;
@@ -46,8 +47,7 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String apellido;
 
-    @Column(columnDefinition = "TEXT")
-    private String fechaNac;
+    private Date fechaNac;
 
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")
     private String password;
@@ -88,7 +88,7 @@ public class Comercio {
         return apellido;
     }
 
-    public String getFechaNac() {
+    public Date getFechaNac() {
         return fechaNac;
     }
 
@@ -140,7 +140,7 @@ public class Comercio {
         this.apellido = apellido;
     }
 
-    public void setFechaNac(String fechaNac) {
+    public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 

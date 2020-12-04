@@ -311,7 +311,7 @@ public class GestionPedido {
                 datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
-                datos.add(fila.getId());
+                datos.add(fila.getCategoria());
                 System.out.println(fila.getComercio().getNombre());
 
                 tabla.addRow(datos);
@@ -493,11 +493,11 @@ public class GestionPedido {
             return this.getOper().buscarComercioPorNombre(nombreComercio);
 
         } else if (this.getForm().getRbtnPorCategoriaRubro().isSelected()) {
-            return this.getOper().buscarComercioPorCategoriaYRubro(categoria, rubro);
+            return this.getOper().buscarComercioPorCategoriaYRubro(nombreComercio, categoria, rubro);
         } else if (this.getForm().getRbtnSoloCategoria().isSelected()) {
-            return this.getOper().buscarComercioPorCategoria(categoria);
+            return this.getOper().buscarComercioPorCategoria(nombreComercio, categoria);
         } else {
-            return this.getOper().buscarComercioPorRubro(rubro);
+            return this.getOper().buscarComercioPorRubro(nombreComercio, rubro);
         }
     }
 

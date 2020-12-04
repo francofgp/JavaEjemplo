@@ -86,7 +86,7 @@ public class ABMCategoria {
         model.setNombre(this.getForm().getTxtNombre().getText());
         model.setDescripcion(this.getForm().getTxtDescripcion().getText());
         model.setEstado("Activo");
-        this.model = model;
+        
     }
 
     public void guardar() {
@@ -112,7 +112,7 @@ public class ABMCategoria {
     }
 
     public void preguntarEliminar() {
-        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar esta categoria?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (preg == JOptionPane.YES_OPTION) {
             eliminar();

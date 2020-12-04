@@ -6,6 +6,7 @@ import ModelosPA.Usuario;
 import VistasPA.FrmAdmin;
 import VistasPA.FrmUsuario;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class RegistroUsuario {
@@ -13,7 +14,7 @@ public class RegistroUsuario {
     GestorHibernate oper;
     Usuario model;
     FrmUsuario form;
-    String date;
+    Date date;
     InicioSesion inicioSesion;
 
     public RegistroUsuario() {
@@ -84,8 +85,7 @@ public class RegistroUsuario {
 
         try {
             SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
-            date = dFormat.format(this.getForm().getDataFecha().getDate());
-            System.out.println(date);
+            date = this.getForm().getDataFecha().getDate();
             return false;
         } catch (Exception e) {
             return true;
@@ -104,9 +104,14 @@ public class RegistroUsuario {
             JOptionPane.showMessageDialog(null, "Nombre de usuario ya esta en uso");
             return false;
         }
-
-        if (obtenerFecha()) {
+        obtenerFecha();
+        if (date==null) {
             JOptionPane.showMessageDialog(null, "Debe ingresar Fecha de Nacimiento");
+            return false;
+        }
+        
+        if ("".equals(this.getForm().getTxtPassword().getText())) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una Contraseña");
             return false;
         }
 

@@ -7,12 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import ModelosPA.Admin;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "usuario")
 public class Usuario extends Admin implements Serializable {
 
-    public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, String fechaNac) {
+    public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, Date fechaNac) {
         super(password, nombre);
         //this.password = password;
         //this.nombre = nombre;
@@ -39,8 +40,8 @@ public class Usuario extends Admin implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String telefono;
 
-    @Column(columnDefinition = "TEXT")
-    private String fechaNac;
+
+    private Date fechaNac;
 
     public String getApellido() {
         return apellido;
@@ -62,7 +63,7 @@ public class Usuario extends Admin implements Serializable {
         return telefono;
     }
 
-    public String getFechaNac() {
+    public Date getFechaNac() {
         return fechaNac;
     }
 
@@ -78,7 +79,7 @@ public class Usuario extends Admin implements Serializable {
         this.telefono = telefono;
     }
 
-    public void setFechaNac(String fechaNac) {
+    public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 

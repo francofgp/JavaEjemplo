@@ -140,15 +140,21 @@ public class GestionCalificacion {
             this.getForm().getTxtDescripcion().setText("");
             JOptionPane.showMessageDialog(null, "Gracias por calificar " + ("\uD83D\uDC4D"));
         } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un puntaje");
+            
         }
     }
 
     public void cancelar() {
+        
+        try{
         conseguirPedido();
         this.darDeBaja();
         this.limpiarTablaPedido();
         this.cargarPedido();
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un pedido");
+        }
+
 
     }
 
@@ -254,6 +260,52 @@ public class GestionCalificacion {
         this.setUsuario(usuario);
         this.cargarPedido();
 
+    }
+
+    public void buscar() {
+        this.limpiarTablaPedido();
+        this.limpiarTablaProductos();
+        this.cargarBusquedaNombre();
+    }
+    
+        private void cargarBusquedaNombre() {
+        String nombreComercio = this.getForm().getTxtBuscarPedido().getText();
+        List<Pedido> pedido = getOper().busquedaPedidoPorNombre(this.getUsuario(), nombreComercio);
+
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                //datos.add(fila);
+                datos.add(fila);
+                datos.add(fila.getTotal());
+                datos.add(fila.getId());
+                datos.add(fila.getUsuario().getNombre());
+                datos.add(fila.getEstado());
+                datos.add(fila.getComercio().getNombre());
+                if (fila.getCalificacion() != null) {
+                    datos.add(fila.getCalificacion().getCalificacion());
+                } else {
+                    datos.add("Sin calificar");
+                }
+
+                tabla.addRow(datos);
+
+                //}
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+        }
+    }
+
+    public void mostrarTodos() {
+        this.limpiarTablaPedido();
+        this.limpiarTablaProductos();
+        this.cargarPedido();
     }
 
 }

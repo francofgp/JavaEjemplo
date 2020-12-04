@@ -88,7 +88,7 @@ public class Frmlogin extends javax.swing.JFrame {
 
         jLabel2_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2_Usuario.setText("Email");
+        jLabel2_Usuario.setText("Usuario o comerciante");
         getContentPane().add(jLabel2_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel4_Contraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N

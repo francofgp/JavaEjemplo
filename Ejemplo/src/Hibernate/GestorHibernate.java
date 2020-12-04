@@ -145,12 +145,14 @@ public class GestorHibernate extends HibernateUtil {
 
 
 
-    public List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
+    public List<Comercio> buscarComercioPorCategoriaYRubro(String nombreComercio, Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
                 .createAlias("rubro", "rub")
                 .add(Restrictions.eq("categoria", categoria))
-                .add(Restrictions.eq("rub.nombre", rubro.getNombre())).list();
+                .add(Restrictions.eq("rub.nombre", rubro.getNombre()))
+                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
+                .list();
 
         return comercio;
 
@@ -814,19 +816,51 @@ public class GestorHibernate extends HibernateUtil {
         return categoria;
     }
 
-    public List<Comercio> buscarComercioPorCategoria(Categoria categoria) {
+    public List<Comercio> buscarComercioPorCategoria(String nombreComercio, Categoria categoria) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
+                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
                 .add(Restrictions.eq("categoria", categoria)).list();
         return comercio;
 
     }
 
-    public List<Comercio> buscarComercioPorRubro(Rubro rubro) {
+    public List<Comercio> buscarComercioPorRubro(String nombreComercio, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.eq("rubro", rubro)).list();
+                .add(Restrictions.eq("rubro", rubro))
+                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
+                .list();
+       
         return comercio;
+
+    }
+
+
+
+    public List<Pedido> busquedaPedidoPorNombre(Usuario usuario, String nombreComercio) {
+                Session sesion = HibernateUtil.getSession();
+
+        List<Pedido> pedido = session.createCriteria(Pedido.class)
+                .createAlias("usuario", "usu")
+                .createAlias("comercio", "com")
+                .add(Restrictions.eq("usu.nombre", usuario.getNombre()))
+                .add(Restrictions.like("com.nombre", "%" + nombreComercio + "%"))
+                .list();
+
+        return pedido;
+    }
+
+
+
+    public List<Pedido> buscarPedidoComercioYFecha(Comercio comercio, Date minDate, Date maxDate) {
+
+        Criteria crit = getSession().createCriteria(Pedido.class);
+        crit.add(Restrictions.eq("comercio", comercio));
+        crit.add(Restrictions.ge("fecha", minDate));
+        crit.add(Restrictions.lt("fecha", maxDate));
+
+        return crit.list();
 
     }
 

@@ -36,10 +36,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         txtID = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         txtCorreo = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -80,7 +78,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jComboBoxHora = new javax.swing.JComboBox<>();
         jComboBoxMinuto = new javax.swing.JComboBox<>();
-        checkBoxComercio = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -106,18 +103,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel4.setText("DELIVERY");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, -1));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cancelar ultimo Pedido");
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 40, 160, 40));
-
         txtID.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtID.setText("ID:");
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 20, -1));
@@ -126,24 +111,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtNombre.setText("Nombre:");
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 50, -1));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Configuracion");
-        jButton4.setContentAreaFilled(false);
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 50, 120, 30));
-
         jButton12.setBackground(new java.awt.Color(255, 255, 255));
         jButton12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Pedidos");
+        jButton12.setText("Mis pedidos");
         jButton12.setContentAreaFilled(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, 160, 40));
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 40, 160, 40));
 
         txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtCorreo.setText("email:");
@@ -255,10 +233,24 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Producto", "Descripcion", "Precio", "ID"
+                "Nombre Producto", "Descripcion", "Precio", "Categoria"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTableCarro);
+        if (jTableCarro.getColumnModel().getColumnCount() > 0) {
+            jTableCarro.getColumnModel().getColumn(0).setResizable(false);
+            jTableCarro.getColumnModel().getColumn(1).setResizable(false);
+            jTableCarro.getColumnModel().getColumn(2).setResizable(false);
+            jTableCarro.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 450, 110));
 
@@ -411,7 +403,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Producto", "Descripcion", "Precio", "ID"
+                "Nombre Producto", "Descripcion", "Precio", "Categoria"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -480,9 +472,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(jComboBoxMinuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 50, -1));
 
-        checkBoxComercio.setText("Buscar por nombre");
-        jPanel2.add(checkBoxComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
-
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jLabel13.setText("Categoria");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
@@ -548,10 +537,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtMontoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoTotalActionPerformed
         // TODO add your handling code here:
@@ -688,13 +673,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.jTableCarro = jTableCarro;
     }
 
-    public JCheckBox getCheckBoxComercio() {
-        return checkBoxComercio;
-    }
-
-    public void setCheckBoxComercio(JCheckBox checkBoxComercio) {
-        this.checkBoxComercio = checkBoxComercio;
-    }
 
     public void setjTableComercio(JTable jTableComercio) {
         this.jTableComercio = jTableComercio;
@@ -785,21 +763,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.btnHacerPedido = jButton2;
     }
 
-    public JButton getjButton3() {
-        return jButton3;
-    }
 
-    public void setjButton3(JButton jButton3) {
-        this.jButton3 = jButton3;
-    }
-
-    public JButton getjButton4() {
-        return jButton4;
-    }
-
-    public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
-    }
 
     public JButton getjButton5() {
         return btnAgregarAPedido;
@@ -1138,11 +1102,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnHacerPedido;
     private javax.swing.JButton btnQuitarProducto;
     private javax.swing.ButtonGroup buttonGroupFiltro;
-    private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
