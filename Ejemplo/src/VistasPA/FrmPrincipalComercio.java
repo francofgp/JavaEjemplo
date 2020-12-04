@@ -74,7 +74,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtNombre = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtID1 = new javax.swing.JLabel();
@@ -141,19 +140,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtEmail.setText("Comercio:");
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 150, -1));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Registrar Producto");
-        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton6.setContentAreaFilled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 120, 30));
-
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +151,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 120, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel9.setText("Calificacion:");
@@ -356,12 +342,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.getControlVista().cargarPedido();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        frmProducto = new FrmProducto();
-        frmProducto.setVisible(true);
-        frmProducto.getControlVista().setComercio(this.getControlVista().getComercio());
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         this.getControlVista().nuevoProducto();
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -547,7 +527,6 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

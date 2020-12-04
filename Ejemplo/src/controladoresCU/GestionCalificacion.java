@@ -175,8 +175,8 @@ public class GestionCalificacion {
 
         long a = this.getUsuario().getId();
         System.out.println(a);
-
-        List<Pedido> pedido = this.getOper().buscarPedido(this.getUsuario());
+        
+        List<Pedido> pedido = getOper().buscarPedido(this.getUsuario());
 
         if (pedido.size() > 0) {
             Iterator consulta = pedido.iterator();

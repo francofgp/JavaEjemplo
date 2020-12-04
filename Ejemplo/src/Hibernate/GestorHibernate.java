@@ -42,9 +42,7 @@ import org.hibernate.jdbc.Work;
 
 public class GestorHibernate extends HibernateUtil {
 
-    public static void Usuario(String text, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     private Transaction tx;
 
@@ -145,13 +143,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Comercio> buscarComercioPorCategoriaYRubro(String nombre) {
-        Session sesion = HibernateUtil.getSession();
-        List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
-        return comercio;
 
-    }
 
     public List<Comercio> buscarComercioPorCategoriaYRubro(Categoria categoria, Rubro rubro) {
         Session sesion = HibernateUtil.getSession();
@@ -164,7 +156,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Producto> BuscarProducto() {
+    public  List<Producto> BuscarProducto() {
         Session sesion = HibernateUtil.getSession();
         List<Producto> producto = session.createCriteria(Producto.class).list();
         return producto;
@@ -706,7 +698,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Pedido> buscarPedido(Usuario usuario) {
+    public  List<Pedido> buscarPedido(Usuario usuario) {
         Session sesion = HibernateUtil.getSession();
 
         List<Pedido> pedido = session.createCriteria(Pedido.class)
@@ -718,7 +710,7 @@ public class GestorHibernate extends HibernateUtil {
 
     }
 
-    public static List<Pedido> buscarPedidoComercio(Comercio comercio) {
+    public  List<Pedido> buscarPedidoComercio(Comercio comercio) {
         Session sesion = HibernateUtil.getSession();
 
         List<Pedido> pedido = session.createCriteria(Pedido.class)

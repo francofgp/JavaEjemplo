@@ -106,7 +106,7 @@ public class ControladorVistaPrincipalComercio {
 
         limpiarTablaPedido();
 
-        List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
+        List<Pedido> pedido = getOper().buscarPedidoComercio(this.getComercio());
 
         if (pedido.size() > 0) {
             Iterator consulta = pedido.iterator();

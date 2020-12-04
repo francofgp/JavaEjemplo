@@ -234,7 +234,8 @@ public class GestionPedido {
         float total = 0;
         float calificacion = 0;
         float subCat = 0;
-        List<Pedido> pedido = this.getOper().buscarPedidoComercio(fila);
+        this.getOper();
+        List<Pedido> pedido = oper.buscarPedidoComercio(fila);
         Iterator consulta = pedido.iterator();
 
         while (consulta.hasNext()) {
@@ -356,6 +357,7 @@ public class GestionPedido {
 
     public void agregarAlCarro() {
 
+        if(this.getForm().getjTableProducto().getSelectedRow()>-1){
         TableModel model1 = this.getForm().getjTableProducto().getModel();
         int[] indexs = this.getForm().getjTableProducto().getSelectedRows();
         Object[] row = new Object[4];
@@ -371,6 +373,10 @@ public class GestionPedido {
             }
         }
         this.calculoTotal();
+        }else{
+         JOptionPane.showMessageDialog(null, "Por favor seleccione un producto");
+        }
+        
     }
 
     public void hacerPedido() {
@@ -394,7 +400,7 @@ public class GestionPedido {
     }
 
     public void quitarProducto() {
-
+        if(this.getForm().getjTableProducto().getSelectedRow()>-1){
         int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model
@@ -402,6 +408,9 @@ public class GestionPedido {
             model.removeRow(modelIndex);
         }
         this.calculoTotal();
+        }else{
+        JOptionPane.showMessageDialog(null, "Por favor seleccione producto a quitar");
+        }
     }
 
     public float calculoTotal() {
