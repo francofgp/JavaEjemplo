@@ -1,25 +1,12 @@
 package VistasPA;
 
-import Hibernate.HibernateUtil;
-import ModelosPA.Categoria;
-import ModelosPA.Comercio;
-import ModelosPA.Rubro;
-import ModelosPA.Usuario;
 import com.toedter.calendar.JDateChooser;
 import controladoresCU.RegistroComercio;
-import java.awt.Image;
-import java.io.File;
-import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 
 public class FrmComercio extends javax.swing.JFrame {
 

@@ -1,16 +1,10 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
-import Hibernate.HibernateUtil;
-import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import VistasPA.FrmCategoria;
-import VistasPA.FrmRubro;
 import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 public class ABMCategoria {
 

@@ -1,13 +1,6 @@
 package VistasPA;
 
-import Hibernate.GestorHibernate;
-import ModelosPA.Admin;
 import ModelosPA.Rubro;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import VistasPA.FrmVentanaAdmin;
 import controladoresCU.ABMRubro;
 import javax.swing.JButton;
 import javax.swing.JTextField;

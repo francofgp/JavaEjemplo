@@ -1,13 +1,6 @@
 package VistasPA;
 
 import controladoresCU.InicioSesion;
-import VistasPA.FrmUsuario;
-import VistasPA.FrmComercio;
-import VistasPA.FrmPrincipalUsuario;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import VistasPA.FrmAdmin;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;

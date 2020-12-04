@@ -4,8 +4,6 @@ import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
 import ModelosPA.Comercio;
 import ModelosPA.Usuario;
-import VistasPA.FrmPrincipalComercio;
-import VistasPA.FrmPrincipalUsuario;
 import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
 import javax.swing.JOptionPane;

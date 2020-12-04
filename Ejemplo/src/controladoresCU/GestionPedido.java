@@ -1,12 +1,10 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
-import ModelosPA.Calificacion;
 import ModelosPA.Categoria;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 import VistasPA.FrmPrincipalUsuario;
-import controladoresCU.registrarPedido;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,15 +14,8 @@ import javax.swing.JOptionPane;
 import ModelosPA.Comercio;
 import ModelosPA.Pedido;
 import ModelosPA.Producto;
-import VistasPA.FrmPrincipalComercio;
-import VistasPA.FrmRubro;
-import VistasPA.FrmVerPedidoUsuario;
-import java.awt.HeadlessException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -178,10 +169,10 @@ public class GestionPedido {
 
         jComboBoxCategoria.removeAllItems();
 
-        for (Categoria categoria : resulset) {
+        for (Categoria categoria2 : resulset) {
 
-            if ("Activo".equals(categoria.getEstado())) {
-                jComboBoxCategoria.addItem(categoria);
+            if ("Activo".equals(categoria2.getEstado())) {
+                jComboBoxCategoria.addItem(categoria2);
 
             }
 
@@ -240,11 +231,11 @@ public class GestionPedido {
 
         while (consulta.hasNext()) {
 
-            Vector datos = new Vector();
+            Vector datos2 = new Vector();
             Pedido fila2 = (Pedido) consulta.next();
 
             if (fila2.getCalificacion() != null) {
-                datos.add(fila2.getCalificacion().getCalificacion());
+                datos2.add(fila2.getCalificacion().getCalificacion());
                 subCat = fila2.getCalificacion().getCalificacion();
                 total = total + subCat;
                 i++;
@@ -256,9 +247,9 @@ public class GestionPedido {
     }
 
     public float calcularCalificacionTxt() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+        DefaultTableModel model3 = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
-        this.comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
+        this.comercio = (Comercio) model3.getValueAt(selectedRowIndex, 0);
 
         List<Pedido> pedido = this.getOper().buscarPedidoComercio(this.getComercio());
         Iterator consulta = pedido.iterator();
@@ -269,11 +260,11 @@ public class GestionPedido {
 
         while (consulta.hasNext()) {
 
-            Vector datos = new Vector();
+            Vector datos3 = new Vector();
             Pedido fila = (Pedido) consulta.next();
 
             if (fila.getCalificacion() != null) {
-                datos.add(fila.getCalificacion().getCalificacion());
+                datos3.add(fila.getCalificacion().getCalificacion());
                 subCat = fila.getCalificacion().getCalificacion();
                 total = total + subCat;
                 i++;
@@ -298,10 +289,10 @@ public class GestionPedido {
     public void cargarProductos() {
 
         this.limpiarTablaProducto();
-        List<Producto> producto = this.buscarProducto();
+        List<Producto> producto3 = this.buscarProducto();
 
-        if (producto.size() > 0) {
-            Iterator consulta = producto.iterator();
+        if (producto3.size() > 0) {
+            Iterator consulta = producto3.iterator();
             while (consulta.hasNext()) {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableProducto().getModel();
 
@@ -345,10 +336,10 @@ public class GestionPedido {
     }
 
     public void seleccionarComercio() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+        DefaultTableModel model4 = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
         int selectedRowIndex = this.getForm().getjTableComercio().getSelectedRow();
 
-        comercio = (Comercio) model.getValueAt(selectedRowIndex, 0);
+        comercio = (Comercio) model4.getValueAt(selectedRowIndex, 0);
 
         this.cargarProductos();
 
@@ -416,13 +407,13 @@ public class GestionPedido {
     public float calculoTotal() {
 
         precioTotal = (float) 0.0;
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
+        DefaultTableModel model5 = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
         List<Producto> productos = new ArrayList<Producto>();
 
         for (int row = 0; row < this.getForm().getjTableCarro().getRowCount(); row++) {
-            productos.add((Producto) model.getValueAt(row, 0));
+            productos.add((Producto) model5.getValueAt(row, 0));
 
-            precioTotal = precioTotal + Float.parseFloat(model.getValueAt(row, 2).toString());
+            precioTotal = precioTotal + Float.parseFloat(model5.getValueAt(row, 2).toString());
         }
 
         this.getForm().getTxtMontoTotal().setText(String.valueOf(precioTotal));

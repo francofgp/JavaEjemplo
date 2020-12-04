@@ -103,10 +103,10 @@ public class RegistroComercio {
 
         jComboBoxRubro.removeAllItems();
 
-        for (Rubro rubro : resulset) {
+        for (Rubro rubro2 : resulset) {
 
-            if ("Activo".equals(rubro.getEstado())) {
-                jComboBoxRubro.addItem(rubro);
+            if ("Activo".equals(rubro2.getEstado())) {
+                jComboBoxRubro.addItem(rubro2);
 
             }
 
@@ -119,10 +119,10 @@ public class RegistroComercio {
 
         jComboBoxCategoria.removeAllItems();
 
-        for (Categoria categoria : resulset) {
+        for (Categoria categoria1 : resulset) {
 
-            if ("Activo".equals(categoria.getEstado())) {
-                jComboBoxCategoria.addItem(categoria);
+            if ("Activo".equals(categoria1.getEstado())) {
+                jComboBoxCategoria.addItem(categoria1);
 
             }
 

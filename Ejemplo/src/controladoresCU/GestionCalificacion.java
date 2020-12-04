@@ -159,10 +159,10 @@ public class GestionCalificacion {
     }
 
     public void conseguirPedido() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+        DefaultTableModel model2 = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
         int selectedRowIndex = this.getForm().getjTablePedidos().getSelectedRow();
 
-        this.model = ((Pedido) model.getValueAt(selectedRowIndex, 0));
+        this.model = ((Pedido) model2.getValueAt(selectedRowIndex, 0));
 
     }
 
@@ -280,7 +280,6 @@ public class GestionCalificacion {
                 Vector datos = new Vector();
                 Pedido fila = (Pedido) consulta.next();
 
-                //datos.add(fila);
                 datos.add(fila);
                 datos.add(fila.getTotal());
                 datos.add(fila.getId());
@@ -295,7 +294,6 @@ public class GestionCalificacion {
 
                 tabla.addRow(datos);
 
-                //}
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");

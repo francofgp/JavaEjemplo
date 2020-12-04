@@ -1,9 +1,6 @@
 package VistasPA;
 
-import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
-import ModelosPA.Usuario;
 import controladoresCU.GestionCalificacion;
-import controladoresCU.GestionPedido;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTable;

@@ -1,8 +1,6 @@
 package VistasPA;
 
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
-import controladoresCU.ABMCategoria;
-import controladoresCU.ABMRubro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

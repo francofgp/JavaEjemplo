@@ -2,7 +2,6 @@ package controladoresCU;
 
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
-import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
 import ModelosPA.Producto;
@@ -139,10 +138,10 @@ public class ABMProducto {
 
         jComboBoxCategoria.removeAllItems();
 
-        for (Categoria categoria : resulset) {
+        for (Categoria categoria2 : resulset) {
 
-            if ("Activo".equals(categoria.getEstado())) {
-                jComboBoxCategoria.addItem(categoria);
+            if ("Activo".equals(categoria2.getEstado())) {
+                jComboBoxCategoria.addItem(categoria2);
 
             }
 

@@ -1,6 +1,5 @@
 package Hibernate;
 
-import GUtilr.Util;
 import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import ModelosPA.Comercio;
@@ -11,34 +10,26 @@ import ModelosPA.Pedido;
 
 import java.awt.Component;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.internal.SessionImpl;
-import org.hibernate.jdbc.Work;
 
 public class GestorHibernate extends HibernateUtil {
 

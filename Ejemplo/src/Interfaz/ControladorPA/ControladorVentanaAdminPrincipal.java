@@ -86,9 +86,9 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void cargarRubro() {
-        List<Rubro> rubro = this.getOper().rubroShow();
-        if (rubro.size() > 0) {
-            Iterator consulta = rubro.iterator();
+        List<Rubro> rubro1 = this.getOper().rubroShow();
+        if (rubro1.size() > 0) {
+            Iterator consulta = rubro1.iterator();
             while (consulta.hasNext()) {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
                 Vector datos = new Vector();
@@ -106,9 +106,9 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void cargarCategoria() {
-        List<Categoria> categoria = this.getOper().categoriaShow();
-        if (categoria.size() > 0) {
-            Iterator consulta = categoria.iterator();
+        List<Categoria> categoria2 = this.getOper().categoriaShow();
+        if (categoria2.size() > 0) {
+            Iterator consulta = categoria2.iterator();
             while (consulta.hasNext()) {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
                 Vector datos = new Vector();

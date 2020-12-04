@@ -1,9 +1,7 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
-import ModelosPA.Admin;
 import ModelosPA.Usuario;
-import VistasPA.FrmAdmin;
 import VistasPA.FrmUsuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,7 +63,7 @@ public class RegistroUsuario {
         model.setDireccion(this.getForm().getTxtDireccion().getText());
         model.setTelefono(this.getForm().getTxtTelefono().getText());
         model.setFechaNac(date);
-        //this.model = model;
+
     }
 
     public void guardar() {

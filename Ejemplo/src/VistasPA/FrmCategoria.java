@@ -1,16 +1,9 @@
 package VistasPA;
 
-import Hibernate.GestorHibernate;
-import java.awt.Image;
-import java.util.HashSet;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import ModelosPA.Admin;
 import ModelosPA.Categoria;
 import controladoresCU.ABMCategoria;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 

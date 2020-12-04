@@ -7,7 +7,6 @@ import ModelosPA.Producto;
 import VistasPA.FrmPrincipalComercio;
 import controladoresCU.ABMProducto;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -169,10 +168,10 @@ public class ControladorVistaPrincipalComercio {
 
     private void cargarPedidos() {
 
-        List<Producto> producto = this.getModel().getProducto();
+        List<Producto> producto2 = this.getModel().getProducto();
 
-        if (producto.size() > 0) {
-            Iterator consulta = producto.iterator();
+        if (producto2.size() > 0) {
+            Iterator consulta = producto2.iterator();
             while (consulta.hasNext()) {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableProductoPedidos().getModel();
 
@@ -196,9 +195,9 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void cargarProductos() {
-        List<Producto> producto = this.getOper().productosComercio(comercio);
-        if (producto.size() > 0) {
-            Iterator consulta = producto.iterator();
+        List<Producto> producto3 = this.getOper().productosComercio(comercio);
+        if (producto3.size() > 0) {
+            Iterator consulta = producto3.iterator();
             while (consulta.hasNext()) {
                 DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableProductos().getModel();
                 Vector datos = new Vector();
@@ -238,10 +237,10 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void conseguirProducto() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableProductos().getModel();
+        DefaultTableModel model1 = (DefaultTableModel) this.getForm().getjTableProductos().getModel();
         int selectedRowIndex = this.getForm().getjTableProductos().getSelectedRow();
 
-        this.setProducto((Producto) model.getValueAt(selectedRowIndex, 0));
+        this.setProducto((Producto) model1.getValueAt(selectedRowIndex, 0));
     }
 
     public void eliminar() {
@@ -351,9 +350,6 @@ public class ControladorVistaPrincipalComercio {
         }
     }
     
-   // private String fechaDesde;
-   // private String fechaHasta;
-   
     Date minDate;
     Date maxDate;
     private boolean obtenerFecha() {
