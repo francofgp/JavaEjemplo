@@ -505,7 +505,7 @@ public class GestionPedido {
 
     private List<Producto> buscarProducto() {
 
-        String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
+        //String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
 
         if (this.getForm().getRbtnPorNombre().isSelected()) {
             return this.getOper().buscarProducto(this.getComercio());

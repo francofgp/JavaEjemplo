@@ -153,6 +153,8 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtMontoTotal.setEditable(false);
+        txtMontoTotal.setBackground(new java.awt.Color(255, 255, 255));
         txtMontoTotal.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         txtMontoTotal.setForeground(new java.awt.Color(153, 204, 0));
         txtMontoTotal.setText("$ xxxxx");
@@ -233,7 +235,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setText("Mi Pedido");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
 
         jTableCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -386,7 +388,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
                 btnQuitarProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnQuitarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, 150, 30));
+        jPanel2.add(btnQuitarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 360, 150, 30));
 
         jTableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -414,7 +416,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
             jTableProducto.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 450, 190));
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 450, 190));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -429,7 +431,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 450, 190));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 450, 190));
 
         btnBuscarComercio.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarComercio.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -474,10 +476,12 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtID1.setText("Calificacion");
         jPanel2.add(txtID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 80, -1));
 
+        rbtnPorNombre.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFiltro.add(rbtnPorNombre);
         rbtnPorNombre.setText("Nombre");
         jPanel2.add(rbtnPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
+        rbtnPorCategoriaRubro.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFiltro.add(rbtnPorCategoriaRubro);
         rbtnPorCategoriaRubro.setText("Categoria y Rubro");
         rbtnPorCategoriaRubro.addActionListener(new java.awt.event.ActionListener() {
@@ -487,6 +491,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel2.add(rbtnPorCategoriaRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
 
+        rbtnSoloCategoria.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFiltro.add(rbtnSoloCategoria);
         rbtnSoloCategoria.setText("Categoria");
         jPanel2.add(rbtnSoloCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
@@ -495,6 +500,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel15.setText("Nombre Comercio");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 110, 20));
 
+        rbtnSoloRubro.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroupFiltro.add(rbtnSoloRubro);
         rbtnSoloRubro.setText("Rubro");
         jPanel2.add(rbtnSoloRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));

@@ -632,7 +632,10 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
-        // TODO add your handling code here:
+        this.getControlVista().reporteRubro();
+
+
+// TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
