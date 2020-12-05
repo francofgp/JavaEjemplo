@@ -409,7 +409,6 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 210, 20));
 
         txtBuscarPedido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtBuscarPedido.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(txtBuscarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 290, -1));
 
         btnBuscar.setBackground(new java.awt.Color(153, 204, 0));

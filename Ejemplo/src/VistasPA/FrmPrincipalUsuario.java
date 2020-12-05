@@ -37,17 +37,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
+        btnMisPedidos = new javax.swing.JButton();
         txtCorreo = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        btnCerrarSesion = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtMontoTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableComercio = new javax.swing.JTable();
         txtBuscarComercio = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         jComboBoxRubro = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
@@ -110,17 +110,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         txtNombre.setText("Nombre:");
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 50, -1));
 
-        jButton12.setBackground(new java.awt.Color(255, 255, 255));
-        jButton12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Mis pedidos");
-        jButton12.setContentAreaFilled(false);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnMisPedidos.setBackground(new java.awt.Color(255, 255, 255));
+        btnMisPedidos.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnMisPedidos.setForeground(new java.awt.Color(255, 255, 255));
+        btnMisPedidos.setText("Mis pedidos");
+        btnMisPedidos.setContentAreaFilled(false);
+        btnMisPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnMisPedidosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 40, 160, 40));
+        jPanel1.add(btnMisPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 130, 40));
 
         txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtCorreo.setText("email:");
@@ -137,6 +137,18 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel11.setText("ID:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 20, -1));
+
+        btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setText("Volver al Login");
+        btnCerrarSesion.setContentAreaFilled(false);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 40, 130, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,11 +198,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 180));
 
         txtBuscarComercio.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtBuscarComercio.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.add(txtBuscarComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
-
-        jLabel2.setText("______________________________");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, -1));
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Item 2", "Item 3", "Item 4" }));
         jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -303,18 +311,18 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnHacerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(btnHacerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(btnHacerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 560, 210, 80));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, 220, 80));
 
         jPanel5.setBackground(new java.awt.Color(153, 204, 0));
 
@@ -523,15 +531,15 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1216, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE))
         );
 
         pack();
@@ -557,9 +565,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void btnMisPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMisPedidosActionPerformed
         this.getControlVista().verPedido();
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_btnMisPedidosActionPerformed
 
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
@@ -603,6 +611,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void rbtnPorCategoriaRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPorCategoriaRubroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnPorCategoriaRubroActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        this.getControlVista().cerrarse();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     public void limpiarTablaComercio() {
         this.getControlVista().limpiarTablaComercio();
@@ -747,11 +759,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     }
 
     public JButton getjButton12() {
-        return jButton12;
+        return btnMisPedidos;
     }
 
     public void setjButton12(JButton jButton12) {
-        this.jButton12 = jButton12;
+        this.btnMisPedidos = jButton12;
     }
 
     public JButton getjButton2() {
@@ -836,13 +848,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.jLabel11 = jLabel11;
     }
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -1098,11 +1103,12 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarAPedido;
     private javax.swing.JButton btnBuscarComercio;
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnHacerPedido;
+    private javax.swing.JButton btnMisPedidos;
     private javax.swing.JButton btnQuitarProducto;
     private javax.swing.ButtonGroup buttonGroupFiltro;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1117,7 +1123,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

@@ -272,7 +272,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jPanel1.add(btnDarDeAltaCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 350, 110, 30));
 
         txtBuscarRubro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtBuscarRubro.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(txtBuscarRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 290, -1));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -336,7 +335,6 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jPanel1.add(btnBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 410, 110, 30));
 
         txtBuscarCategoria.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtBuscarCategoria.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(txtBuscarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 290, -1));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N

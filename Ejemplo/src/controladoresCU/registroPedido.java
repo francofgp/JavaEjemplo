@@ -7,7 +7,7 @@ import ModelosPA.Producto;
 import ModelosPA.Usuario;
 import java.util.List;
 
-public class registrarPedido {
+public class RegistroPedido {
 
     GestorHibernate oper;
 

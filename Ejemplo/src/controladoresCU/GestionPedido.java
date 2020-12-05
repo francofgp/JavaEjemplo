@@ -30,6 +30,7 @@ public class GestionPedido {
     private Categoria categoria;
     private float precioTotal = (float) 0.0;
     private List<Producto> producto;
+    private InicioSesion inicioSesion;
 
     private String hora;
 
@@ -61,6 +62,17 @@ public class GestionPedido {
         }
         return oper;
     }
+
+    public InicioSesion getInicioSesion() {
+        if (inicioSesion == null) {
+            synchronized (InicioSesion.class) {
+                inicioSesion = new InicioSesion();
+            }
+        }
+        return inicioSesion;
+    }
+    
+    
 
     public void setOper(GestorHibernate oper) {
         this.oper = oper;
@@ -255,8 +267,8 @@ public class GestionPedido {
         Iterator consulta = pedido.iterator();
         int i = 0;
         float total = 0;
-        float calificacion = 0;
-        float subCat = 0;
+        float calificacion;
+        float subCat;
 
         while (consulta.hasNext()) {
 
@@ -506,6 +518,12 @@ public class GestionPedido {
         } else {
             return this.getOper().buscarProducto(this.getComercio());
         }
+    }
+
+    public void cerrarse() {
+        this.getForm().setVisible(false);
+        this.getControlCalificacion().cerrarse();
+        this.getInicioSesion().abrirse();
     }
 
 }

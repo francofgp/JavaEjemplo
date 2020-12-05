@@ -6,6 +6,7 @@ import ModelosPA.Pedido;
 import ModelosPA.Producto;
 import VistasPA.FrmPrincipalComercio;
 import controladoresCU.ABMProducto;
+import controladoresCU.InicioSesion;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -23,7 +24,7 @@ public class ControladorVistaPrincipalComercio {
     private ABMProducto ABMproducto;
     private Pedido model;
     private Producto producto;
-
+    private InicioSesion inicioSesion;
     public Comercio getComercio() {
         return comercio;
     }
@@ -53,6 +54,15 @@ public class ControladorVistaPrincipalComercio {
             }
         }
         return oper;
+    }
+   
+    public InicioSesion getInicioSesion() {
+        if (inicioSesion == null) {
+            synchronized (InicioSesion.class) {
+                inicioSesion = new InicioSesion();
+            }
+        }
+        return inicioSesion;
     }
 
     public void setOper(GestorHibernate oper) {
@@ -373,5 +383,10 @@ public class ControladorVistaPrincipalComercio {
         return !obtenerFecha();
     }
 
+    public void cerrarse() {
+        this.getForm().setVisible(false);
+        this.getInicioSesion().abrirse();
+
+    }
 
 }

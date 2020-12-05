@@ -147,7 +147,7 @@ public class InicioSesion {
         this.getForm().setVisible(false);
     }
 
-    void abrirse() {
+    public void abrirse() {
         this.getForm().setVisible(true);
 
     }

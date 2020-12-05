@@ -306,4 +306,11 @@ public class GestionCalificacion {
         this.cargarPedido();
     }
 
+    void cerrarse() {
+        if (getForm() != null) {
+            this.getForm().setVisible(false);
+        }
+    }
+    
+
 }
