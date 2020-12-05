@@ -168,7 +168,7 @@ public class ControladorVentanaAdminPrincipal {
             cargarRubro();
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un rubro");
+            JOptionPane.showMessageDialog(null, "Error al eliminar o rubro no seleccionado");
         }
     }
 
@@ -262,7 +262,7 @@ public class ControladorVentanaAdminPrincipal {
             limpiarTablaCategoria();
             cargarCategoria();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria");
+            JOptionPane.showMessageDialog(null, "Error al eliminar o categoria no seleccionada");
         }
     }
 
@@ -327,6 +327,11 @@ public class ControladorVentanaAdminPrincipal {
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de categorias");
         }
+    }
+
+    public void abrirse() {
+        FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
+        frmAdmin.setVisible(true);
     }
 
 }

@@ -9,12 +9,12 @@ import javax.swing.JTextField;
 public class FrmAdmin extends javax.swing.JFrame {
 
     RegistroAdmin oper;
-
+    FrmAdmin desktop=this;
     public FrmAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
         oper = new RegistroAdmin();
-        this.getControlVista().setForm(this);
+        this.getControlVista().setForm(desktop);
 
         TextPrompt nombre = new TextPrompt("Nombre", txtNombre);
         TextPrompt contraseña = new TextPrompt("Contraseña", txtPassword);
@@ -259,8 +259,8 @@ public class FrmAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Frmlogin().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().salirse();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {

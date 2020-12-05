@@ -12,8 +12,7 @@ public class FrmComercio extends javax.swing.JFrame {
 
     RegistroComercio oper;
     FrmComercio desktop = this;
-    int estado = 0;
-    int estadoCategoria = 0;
+
 
     public FrmComercio() {
         initComponents();
@@ -21,7 +20,7 @@ public class FrmComercio extends javax.swing.JFrame {
         this.getControlVista().setForm(desktop);
         this.llenaJComboBoxRubro(jComboBoxRubro);
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
-        TextPrompt nom = new TextPrompt("Nombre", txtNombre);
+        TextPrompt nom = new TextPrompt("Nombre del comerciante", txtNombre);
         TextPrompt apellido = new TextPrompt("Apellido", txtApellido);
         TextPrompt email = new TextPrompt("Email", txtEmail);
         TextPrompt direccion = new TextPrompt("Direccion", txtDireccion);
@@ -383,23 +382,7 @@ public class FrmComercio extends javax.swing.JFrame {
     public void setDesktop(FrmComercio desktop) {
         this.desktop = desktop;
     }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public int getEstadoCategoria() {
-        return estadoCategoria;
-    }
-
-    public void setEstadoCategoria(int estadoCategoria) {
-        this.estadoCategoria = estadoCategoria;
-    }
-
+    
     public JButton getBtnAceptar() {
         return btnAceptar;
     }
@@ -708,8 +691,8 @@ public class FrmComercio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Frmlogin().setVisible(true);
-        this.setVisible(false);
+        this.getControlVista().salirse();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCuitActionPerformed

@@ -6,9 +6,12 @@ import ModelosPA.Pedido;
 import ModelosPA.Producto;
 import ModelosPA.Usuario;
 import VistasPA.FrmVerPedidoUsuario;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -117,7 +120,7 @@ public class GestionCalificacion {
                 datos.add(fila);
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
-                datos.add(fila.getId());
+                datos.add(fila.getCategoria());
                 
                 tabla.addRow(datos);
 
@@ -190,18 +193,19 @@ public class GestionCalificacion {
                 Vector datos = new Vector();
                 Pedido fila = (Pedido) consulta.next();
 
-                //datos.add(fila);
+                
                 datos.add(fila);
                 datos.add(fila.getTotal());
                 datos.add(fila.getId());
-                datos.add(fila.getUsuario().getNombre());
                 datos.add(fila.getEstado());
                 datos.add(fila.getComercio().getNombre());
+
                 if (fila.getCalificacion() != null) {
                     datos.add(fila.getCalificacion().getCalificacion());
                 } else {
                     datos.add("Sin calificar");
                 }
+                datos.add(fila.getFecha());
 
                 tabla.addRow(datos);
 
@@ -309,6 +313,78 @@ public class GestionCalificacion {
             this.getForm().setVisible(false);
         }
     }
+
+    public void buscarPorFecha() {
+        if(esFechaValida()){
+            
+        this.limpiarTablaPedido();
+        this.limpiarTablaProductos();
+            this.obtenerFecha();
+            this.cargarBusquedaFecha();
+        }
+    }
+
+    Date minDate;
+    Date maxDate;
+
+    private boolean obtenerFecha() {
+        try {
+
+            SimpleDateFormat dFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String fechaDesde = dFormat.format(this.getForm().getDataFecha().getDate());
+            minDate = dFormat.parse(fechaDesde);
+            maxDate = new Date(minDate.getTime() + TimeUnit.DAYS.toMillis(1));
+
+            return false;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una fecha de busqueda válida");
+            return true;
+        }
+
+    }
+
+    private boolean esFechaValida() {
+
+        return !obtenerFecha();
+    }
     
+    public void cargarBusquedaFecha() {
+
+        long a = this.getUsuario().getId();
+                
+        List<Pedido> pedido = getOper().buscarPedidoPorFecha(this.getUsuario(),minDate,maxDate);
+
+        if (pedido.size() > 0) {
+            Iterator consulta = pedido.iterator();
+            while (consulta.hasNext()) {
+                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+
+                Vector datos = new Vector();
+                Pedido fila = (Pedido) consulta.next();
+
+                
+                datos.add(fila);
+                datos.add(fila.getTotal());
+                datos.add(fila.getId());
+                datos.add(fila.getEstado());
+                datos.add(fila.getComercio().getNombre());
+
+                if (fila.getCalificacion() != null) {
+                    datos.add(fila.getCalificacion().getCalificacion());
+                } else {
+                    datos.add("Sin calificar");
+                }
+                datos.add(fila.getFecha());
+
+                tabla.addRow(datos);
+
+                //}
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "no hay registros de productos");
+        }
+
+    }
+
 
 }

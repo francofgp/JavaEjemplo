@@ -1,10 +1,10 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import Interfaz.ControladorPA.ControladorVistaPrincipalComercio;
 import ModelosPA.Comercio;
 import ModelosPA.Usuario;
-import VistasPA.FrmVentanaAdmin;
 import VistasPA.Frmlogin;
 import javax.swing.JOptionPane;
 
@@ -17,6 +17,7 @@ public class InicioSesion {
     private RegistroComercio rComercio;
     private ControladorVistaPrincipalComercio vistaComercio;
     private GestionPedido gestionPedido;
+    private ControladorVentanaAdminPrincipal vAdmin;
 
     public RegistroComercio getrComercio() {
         if (rComercio == null) {
@@ -35,6 +36,17 @@ public class InicioSesion {
         }
         return gestionPedido;
     }
+
+    public ControladorVentanaAdminPrincipal getvAdmin() {
+        if (vAdmin == null) {
+            synchronized (ControladorVentanaAdminPrincipal.class) {
+                vAdmin = new ControladorVentanaAdminPrincipal();
+            }
+        }
+        return vAdmin;
+    }
+    
+    
 
     public void setGestionPedido(GestionPedido gestionPedido) {
         this.gestionPedido = gestionPedido;
@@ -116,14 +128,11 @@ public class InicioSesion {
 
     public void ingresarUsuario() {
         String password = new String(this.getForm().getjPasswordField1().getPassword());
-
         if (this.getOper().ingresarAdmin(this.getForm().getUsuarioText().getText(), password)) {
-            FrmVentanaAdmin frmAdmin = new FrmVentanaAdmin();
-            frmAdmin.setVisible(true);
+            this.getvAdmin().abrirse();
             this.getForm().setVisible(false);
         } else if (this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password) != null) { //si es verdadero abro el princiapl comercio y el return va a ser que cierre el login despues
             Usuario usuario = this.getOper().buscarUsuarioLogin(this.getForm().getUsuarioText().getText(), password);
-
             this.getGestionPedido().abrirse(usuario);
             this.getForm().setVisible(false);
 

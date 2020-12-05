@@ -161,32 +161,25 @@ public class GestionPedido {
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
 
-        List<Rubro> resulset = getOper().rubroShow();
+        List<Rubro> resulset = getOper().rubroComboBox();
 
         jComboBoxRubro.removeAllItems();
 
-        for (Rubro rubro : resulset) {
-
-            if ("Activo".equals(rubro.getEstado())) {
-                jComboBoxRubro.addItem(rubro);
-
-            }
+        for (Rubro rubro1 : resulset) {
+                jComboBoxRubro.addItem(rubro1);
 
         }
     }
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
 
-        List<Categoria> resulset = this.getOper().categoriaShow();
+        List<Categoria> resulset = this.getOper().categoriaComboBox();
 
         jComboBoxCategoria.removeAllItems();
 
         for (Categoria categoria2 : resulset) {
 
-            if ("Activo".equals(categoria2.getEstado())) {
                 jComboBoxCategoria.addItem(categoria2);
-
-            }
 
         }
 
@@ -235,8 +228,8 @@ public class GestionPedido {
 
         int i = 0;
         float total = 0;
-        float calificacion = 0;
-        float subCat = 0;
+        float calificacion;
+        float subCat;
         this.getOper();
         List<Pedido> pedido = oper.buscarPedidoComercio(fila);
         Iterator consulta = pedido.iterator();
@@ -406,8 +399,8 @@ public class GestionPedido {
         int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model
-            DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
-            model.removeRow(modelIndex);
+            DefaultTableModel model1 = (DefaultTableModel) this.getForm().getjTableCarro().getModel();
+            model1.removeRow(modelIndex);
         }
         this.calculoTotal();
         }else{
@@ -477,6 +470,11 @@ public class GestionPedido {
         seleccionarComercio();
         limpiarTablaCarro();
         calculoTotal();
+        
+        calcularCalificacionTxt();
+        cargarNombreComercio();
+        
+        
 
     }
 
@@ -505,7 +503,6 @@ public class GestionPedido {
 
     private List<Producto> buscarProducto() {
 
-        //String nombreComercio = this.getForm().getTxtBuscarComercio().getText();
 
         if (this.getForm().getRbtnPorNombre().isSelected()) {
             return this.getOper().buscarProducto(this.getComercio());

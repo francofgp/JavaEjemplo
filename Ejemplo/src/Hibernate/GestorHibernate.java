@@ -133,6 +133,14 @@ public class GestorHibernate extends HibernateUtil {
         return rubro;
 
     }
+    
+    public List<Rubro> rubroComboBox() {
+        Session sesion = HibernateUtil.getSession();
+        List<Rubro> rubro = session.createCriteria(Rubro.class)
+                            .add(Restrictions.eq("estado", "Activo")).list();
+        return rubro;
+
+    }
 
 
 
@@ -239,6 +247,14 @@ public class GestorHibernate extends HibernateUtil {
     public List<Categoria> categoriaShow() {
         Session sesion = HibernateUtil.getSession();
         List<Categoria> categoria = session.createCriteria(Categoria.class).list();
+
+        return categoria;
+    }
+    
+    public List<Categoria> categoriaComboBox() {
+        Session sesion = HibernateUtil.getSession();
+        List<Categoria> categoria = session.createCriteria(Categoria.class)
+                                    .add(Restrictions.eq("estado", "Activo")).list();
         return categoria;
     }
 
@@ -852,6 +868,18 @@ public class GestorHibernate extends HibernateUtil {
         crit.add(Restrictions.lt("fecha", maxDate));
 
         return crit.list();
+
+    }
+
+    public List<Pedido> buscarPedidoPorFecha(Usuario usuario, Date minDate, Date maxDate) {
+        
+        Criteria crit = getSession().createCriteria(Pedido.class);
+        crit.add(Restrictions.eq("usuario", usuario));
+        crit.add(Restrictions.ge("fecha", minDate));
+        crit.add(Restrictions.lt("fecha", maxDate));
+
+        return crit.list();
+        
 
     }
 

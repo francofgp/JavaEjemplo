@@ -3,7 +3,6 @@ package controladoresCU;
 import Hibernate.GestorHibernate;
 import ModelosPA.Usuario;
 import VistasPA.FrmUsuario;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -82,7 +81,6 @@ public class RegistroUsuario {
     private boolean obtenerFecha() {
 
         try {
-            SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
             date = this.getForm().getDataFecha().getDate();
             return false;
         } catch (Exception e) {

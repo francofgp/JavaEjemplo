@@ -98,4 +98,9 @@ public class RegistroAdmin {
     public void abrirse() {
         new FrmAdmin().setVisible(true);
     }
+
+    public void salirse() {
+        this.getForm().setVisible(false);
+        this.getInicioSesion().abrirse();
+    }
 }

@@ -568,8 +568,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
     private void jTableComercioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableComercioMouseClicked
         this.getControlVista().interactuarSeleccionComercio();
-        this.getControlVista().calcularCalificacionTxt();
-        this.getControlVista().cargarNombreComercio();
+
     }//GEN-LAST:event_jTableComercioMouseClicked
 
     private void btnAgregarAPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAPedidoActionPerformed

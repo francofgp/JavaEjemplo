@@ -112,7 +112,7 @@ public class ABMRubro {
     }
 
     public void preguntarEliminar() {
-        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea elimar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea eliminar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (preg == JOptionPane.YES_OPTION) {
             eliminar();

@@ -1,5 +1,6 @@
 package VistasPA;
 
+import com.toedter.calendar.JDateChooser;
 import controladoresCU.GestionCalificacion;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -49,6 +50,16 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     public JButton getBtnAceptarCancelarCalificacion() {
         return btnAceptarCancelarCalificacion;
     }
+
+    public JDateChooser getDataFecha() {
+        return dataFecha;
+    }
+
+    public void setDataFecha(JDateChooser dataFecha) {
+        this.dataFecha = dataFecha;
+    }
+    
+    
 
     public void setBtnAceptarCancelarCalificacion(JButton btnAceptarCancelarCalificacion) {
         this.btnAceptarCancelarCalificacion = btnAceptarCancelarCalificacion;
@@ -151,7 +162,6 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -175,7 +185,11 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         txtBuscarPedido = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnMostrarTodo = new javax.swing.JButton();
+        btnBuscarPorFecha = new javax.swing.JButton();
+        dataFecha = new com.toedter.calendar.JDateChooser();
+        jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         jScrollPane3.setViewportView(jTextPane1);
 
@@ -185,10 +199,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 0));
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 20, 530));
-
-        jPanel4.setBackground(new java.awt.Color(153, 204, 0));
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 820, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 20, 600));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 0));
         jPanel2.setForeground(new java.awt.Color(102, 204, 0));
@@ -202,7 +213,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Descripcion", "Total", "IDcompra", "NombreCliente", "Estado", "NombreComercio", "Calificacion"
+                "Descripcion", "Total", "N° de compra", "Estado", "NombreComercio", "Calificacion", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -226,17 +237,16 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
             jTablePedidos.getColumnModel().getColumn(3).setResizable(false);
             jTablePedidos.getColumnModel().getColumn(4).setResizable(false);
             jTablePedidos.getColumnModel().getColumn(5).setResizable(false);
-            jTablePedidos.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 730, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 760, 170));
 
         jTableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "Precio", "ID"
+                "Nombre", "Descripcion", "Precio", "Categoria"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -255,7 +265,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
             jTableProducto.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 730, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 760, 150));
 
         btnValor3.setBackground(new java.awt.Color(153, 204, 0));
         btnValor3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -281,7 +291,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarCancelarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 110, 30));
+        jPanel1.add(btnAceptarCancelarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, 110, 30));
 
         btnValor1.setBackground(new java.awt.Color(153, 204, 0));
         btnValor1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -346,7 +356,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnCalificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 110, 30));
+        jPanel1.add(btnCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 110, 30));
 
         btnAceptarConfirmarCalificacion.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptarConfirmarCalificacion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -359,7 +369,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarConfirmarCalificacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 110, 30));
+        jPanel1.add(btnAceptarConfirmarCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, 110, 30));
 
         jLabelDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setForeground(new java.awt.Color(153, 204, 0));
@@ -388,7 +398,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnAceptarConfirmarCalificacion1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 150, 30));
+        jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 150, 30));
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -402,7 +412,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 40, 40));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jLabel12.setText("Buscar por nombre Comercio");
@@ -437,12 +447,33 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
                 btnMostrarTodoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 110, 30));
+        jPanel1.add(btnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 540, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 800, 540));
+        btnBuscarPorFecha.setBackground(new java.awt.Color(153, 204, 0));
+        btnBuscarPorFecha.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnBuscarPorFecha.setForeground(new java.awt.Color(153, 204, 0));
+        btnBuscarPorFecha.setText("Buscar");
+        btnBuscarPorFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnBuscarPorFecha.setContentAreaFilled(false);
+        btnBuscarPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorFechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscarPorFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 110, 30));
+        jPanel1.add(dataFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 290, 30));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel13.setText("Buscar pedidos por fecha");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 210, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 810, 580));
 
         jPanel5.setBackground(new java.awt.Color(153, 204, 0));
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, -10, 30, 530));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, -10, 30, 610));
+
+        jPanel4.setBackground(new java.awt.Color(153, 204, 0));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 580, 820, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -500,6 +531,10 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     this.getControlVista().mostrarTodos();       // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarTodoActionPerformed
 
+    private void btnBuscarPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorFechaActionPerformed
+        this.getControlVista().buscarPorFecha();
+    }//GEN-LAST:event_btnBuscarPorFechaActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -518,6 +553,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptarConfirmarCalificacion;
     private javax.swing.JButton btnAceptarConfirmarCalificacion1;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarPorFecha;
     private javax.swing.JButton btnCalificar;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMostrarTodo;
@@ -526,7 +562,9 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnValor3;
     private javax.swing.JButton btnValor4;
     private javax.swing.JButton btnValor5;
+    private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabelDescrip;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JPanel jPanel1;

@@ -96,32 +96,28 @@ public class RegistroComercio {
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
 
-        List<Rubro> resulset = getOper().rubroShow();
+        List<Rubro> resulset = getOper().rubroComboBox();
 
         jComboBoxRubro.removeAllItems();
 
         for (Rubro rubro2 : resulset) {
 
-            if ("Activo".equals(rubro2.getEstado())) {
                 jComboBoxRubro.addItem(rubro2);
 
-            }
 
         }
     }
 
     public void llenaJComboBoxCategoria(JComboBox jComboBoxCategoria) {
 
-        List<Categoria> resulset = this.getOper().categoriaShow();
+        List<Categoria> resulset = this.getOper().categoriaComboBox();
 
         jComboBoxCategoria.removeAllItems();
 
         for (Categoria categoria1 : resulset) {
 
-            if ("Activo".equals(categoria1.getEstado())) {
                 jComboBoxCategoria.addItem(categoria1);
 
-            }
 
         }
 
@@ -213,6 +209,11 @@ public class RegistroComercio {
 
     public void abrirse() {
         new FrmComercio().setVisible(true);
+    }
+
+    public void salirse() {
+        this.getForm().setVisible(false);
+        this.getInicioSesion().abrirse();
     }
 
 }
