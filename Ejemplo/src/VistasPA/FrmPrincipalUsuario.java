@@ -42,7 +42,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        btnCerrarSesion = new javax.swing.JButton();
+        btnVolverLogin = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtMontoTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,8 +64,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         btnQuitarProducto = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -78,7 +76,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jComboBoxHora = new javax.swing.JComboBox<>();
         jComboBoxMinuto = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtID1 = new javax.swing.JLabel();
         rbtnPorNombre = new javax.swing.JRadioButton();
@@ -86,6 +83,9 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         rbtnSoloCategoria = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
         rbtnSoloRubro = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,17 +138,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel11.setText("ID:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 20, -1));
 
-        btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
-        btnCerrarSesion.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrarSesion.setText("Volver al Login");
-        btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVolverLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setText("Volver al Login");
+        btnVolverLogin.setContentAreaFilled(false);
+        btnVolverLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
+                btnVolverLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 40, 130, 40));
+        jPanel1.add(btnVolverLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 40, 130, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -345,6 +345,11 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton7.setText("Agregar a Pedido");
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 110, 160, 60));
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
@@ -362,28 +367,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
         jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 110, 160, 60));
-
-        jTextField7.setFont(new java.awt.Font("Century Gothic", 0, 8)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField7.setText("*cantidad máxima 5 productos");
-        jTextField7.setBorder(null);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 360, 20));
-
-        jTextField8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField8.setText("Monto Total");
-        jTextField8.setBorder(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 480, 100, 30));
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -483,17 +466,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         jLabel13.setText("Categoria");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 20));
 
-        jTextField9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(153, 204, 0));
-        jTextField9.setText("Ingrese la hora deseada de recepción (hh:mm)");
-        jTextField9.setBorder(null);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 400, 30));
-
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel14.setText("Calificacion:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 80, -1));
@@ -527,6 +499,20 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         rbtnSoloRubro.setText("Rubro");
         jPanel2.add(rbtnSoloRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel2.setText("*cantidad máxima 5 productos");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 433, -1, 20));
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 204, 0));
+        jLabel3.setText("Monto Total");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 490, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(153, 204, 0));
+        jLabel5.setText("Ingrese la hora deseada de recepción (hh:mm)");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -556,14 +542,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private void btnQuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarProductoActionPerformed
         this.getControlVista().quitarProducto();
     }//GEN-LAST:event_btnQuitarProductoActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void btnMisPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMisPedidosActionPerformed
         this.getControlVista().verPedido();
@@ -604,17 +582,17 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxMinutoActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void rbtnPorCategoriaRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPorCategoriaRubroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnPorCategoriaRubroActionPerformed
 
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+    private void btnVolverLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverLoginActionPerformed
         this.getControlVista().cerrarse();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+    }//GEN-LAST:event_btnVolverLoginActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     public void limpiarTablaComercio() {
         this.getControlVista().limpiarTablaComercio();
@@ -683,7 +661,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public void setjTableCarro(JTable jTableCarro) {
         this.jTableCarro = jTableCarro;
     }
-
 
     public void setjTableComercio(JTable jTableComercio) {
         this.jTableComercio = jTableComercio;
@@ -774,8 +751,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.btnHacerPedido = jButton2;
     }
 
-
-
     public JButton getjButton5() {
         return btnAgregarAPedido;
     }
@@ -847,7 +822,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     public void setjLabel11(JLabel jLabel11) {
         this.jLabel11 = jLabel11;
     }
-
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -1017,22 +991,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.txtMontoTotal = txtMontoTotal;
     }
 
-    public JTextField getjTextField7() {
-        return jTextField7;
-    }
-
-    public void setjTextField7(JTextField jTextField7) {
-        this.jTextField7 = jTextField7;
-    }
-
-    public JTextField getjTextField8() {
-        return jTextField8;
-    }
-
-    public void setjTextField8(JTextField jTextField8) {
-        this.jTextField8 = jTextField8;
-    }
-
     public JLabel getTxtCorreo() {
         return txtCorreo;
     }
@@ -1103,10 +1061,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarAPedido;
     private javax.swing.JButton btnBuscarComercio;
-    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnHacerPedido;
     private javax.swing.JButton btnMisPedidos;
     private javax.swing.JButton btnQuitarProducto;
+    private javax.swing.JButton btnVolverLogin;
     private javax.swing.ButtonGroup buttonGroupFiltro;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton7;
@@ -1123,7 +1081,10 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1141,9 +1102,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTableCarro;
     private javax.swing.JTable jTableComercio;
     private javax.swing.JTable jTableProducto;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JRadioButton rbtnPorCategoriaRubro;
     private javax.swing.JRadioButton rbtnPorNombre;
     private javax.swing.JRadioButton rbtnSoloCategoria;

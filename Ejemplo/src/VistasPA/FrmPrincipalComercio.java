@@ -70,7 +70,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnVolverLogin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -120,18 +120,18 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         txtID.setText("Comercio:");
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 130, -1));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Volver al Login");
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton5.setContentAreaFilled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnVolverLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setText("Volver al Login");
+        btnVolverLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnVolverLogin.setContentAreaFilled(false);
+        btnVolverLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnVolverLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 120, 30));
+        jPanel1.add(btnVolverLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel6.setText("email:");
@@ -231,6 +231,7 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
             jTableProductoPedidos.getColumnModel().getColumn(1).setResizable(false);
             jTableProductoPedidos.getColumnModel().getColumn(2).setResizable(false);
             jTableProductoPedidos.getColumnModel().getColumn(3).setResizable(false);
+            jTableProductoPedidos.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 460, 130));
@@ -404,9 +405,9 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
         this.getControlVista().cargarPedido();
     }//GEN-LAST:event_btnMostrarTodosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnVolverLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverLoginActionPerformed
     this.getControlVista().cerrarse();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnVolverLoginActionPerformed
 
     public static void main(String args[]) {
 
@@ -446,11 +447,11 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
 
 
     public JButton getjButton5() {
-        return jButton5;
+        return btnVolverLogin;
     }
 
     public void setjButton5(JButton jButton5) {
-        this.jButton5 = jButton5;
+        this.btnVolverLogin = jButton5;
     }
 
     public JLabel getjLabel1() {
@@ -574,8 +575,8 @@ public class FrmPrincipalComercio extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrarTodos;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnVolverLogin;
     private com.toedter.calendar.JDateChooser dataFecha;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

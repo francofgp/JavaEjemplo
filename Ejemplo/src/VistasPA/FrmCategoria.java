@@ -43,10 +43,10 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jCompletaLosDatos = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,10 +93,10 @@ public class FrmCategoria extends javax.swing.JFrame {
         txtDescripcion.setBorder(null);
         jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 400, 20));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Completa los datos de una nueva categoría");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jCompletaLosDatos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jCompletaLosDatos.setForeground(new java.awt.Color(255, 255, 255));
+        jCompletaLosDatos.setText("Completa los datos de una nueva categoría");
+        jPanel1.add(jCompletaLosDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,19 +108,19 @@ public class FrmCategoria extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 310));
 
-        jButton5.setBackground(new java.awt.Color(153, 204, 0));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("X");
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(153, 204, 0));
+        btnExit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("X");
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 30, 20));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 30, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 200));
 
@@ -182,11 +182,11 @@ public class FrmCategoria extends javax.swing.JFrame {
     }
 
     public JButton getjButton5() {
-        return jButton5;
+        return btnExit;
     }
 
     public void setjButton5(JButton jButton5) {
-        this.jButton5 = jButton5;
+        this.btnExit = jButton5;
     }
 
     public JLabel getjLabel1() {
@@ -206,11 +206,11 @@ public class FrmCategoria extends javax.swing.JFrame {
     }
 
     public JLabel getjLabel7() {
-        return jLabel7;
+        return jCompletaLosDatos;
     }
 
     public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
+        this.jCompletaLosDatos = jLabel7;
     }
 
     public JPanel getjPanel1() {
@@ -267,13 +267,13 @@ public class FrmCategoria extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void modificar(String modificado, Categoria categoria) {
         this.getControlVista().setearCampos(modificado, categoria);
@@ -289,12 +289,12 @@ public class FrmCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jCompletaLosDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtDescripcion;

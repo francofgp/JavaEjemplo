@@ -86,6 +86,10 @@ public class RegistroAdmin {
             JOptionPane.showMessageDialog(null, "Nombre de admin ya esta en uso");
             return false;
         }
+        if ("".equals(this.getForm().getTxtPassword().getText())) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una Contraseña");
+            return false;
+        }
 
         return true;
 

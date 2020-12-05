@@ -39,10 +39,10 @@ public class Frmlogin extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCrearComercio = new javax.swing.JButton();
+        btnCrearUsuario = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        btnCrearAdmin = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         checkBoxComercio = new javax.swing.JCheckBox();
 
@@ -156,48 +156,48 @@ public class Frmlogin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setBackground(new java.awt.Color(153, 204, 0));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(153, 204, 0));
-        jButton4.setText("Registra tu negocio");
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearComercio.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrearComercio.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btnCrearComercio.setForeground(new java.awt.Color(153, 204, 0));
+        btnCrearComercio.setText("Registra tu negocio");
+        btnCrearComercio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnCrearComercio.setContentAreaFilled(false);
+        btnCrearComercio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCrearComercioActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 150, 50));
+        jPanel2.add(btnCrearComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 150, 50));
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 204, 0));
-        jButton2.setText("Crear una cuenta");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearUsuario.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrearUsuario.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnCrearUsuario.setForeground(new java.awt.Color(153, 204, 0));
+        btnCrearUsuario.setText("Crear una cuenta");
+        btnCrearUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnCrearUsuario.setContentAreaFilled(false);
+        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCrearUsuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 20));
+        jPanel2.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 20));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jLabel2.setText("¿No tenés una cuenta?");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
 
-        jButton6.setBackground(new java.awt.Color(153, 204, 0));
-        jButton6.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(153, 204, 0));
-        jButton6.setText("Crear Admin");
-        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
-        jButton6.setContentAreaFilled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearAdmin.setBackground(new java.awt.Color(153, 204, 0));
+        btnCrearAdmin.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnCrearAdmin.setForeground(new java.awt.Color(153, 204, 0));
+        btnCrearAdmin.setText("Crear Admin");
+        btnCrearAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
+        btnCrearAdmin.setContentAreaFilled(false);
+        btnCrearAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCrearAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 120, 20));
+        jPanel2.add(btnCrearAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 120, 20));
 
         jButton3.setBackground(new java.awt.Color(153, 204, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,11 +266,11 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     public JButton getjButton2() {
-        return jButton2;
+        return btnCrearUsuario;
     }
 
     public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
+        this.btnCrearUsuario = jButton2;
     }
 
     public JButton getjButton2_Ingresar() {
@@ -290,11 +290,11 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     public JButton getjButton4() {
-        return jButton4;
+        return btnCrearComercio;
     }
 
     public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
+        this.btnCrearComercio = jButton4;
     }
 
     public JButton getjButton5() {
@@ -306,11 +306,11 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     public JButton getjButton6() {
-        return jButton6;
+        return btnCrearAdmin;
     }
 
     public void setjButton6(JButton jButton6) {
-        this.jButton6 = jButton6;
+        this.btnCrearAdmin = jButton6;
     }
 
     public JButton getjButton7() {
@@ -429,17 +429,17 @@ public class Frmlogin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_usuarioTextActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnCrearComercioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearComercioActionPerformed
         this.getControlVista().ingresarRegistrarComercio();
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnCrearComercioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
 
         this.getControlVista().ingresarRegistrarUsuario();
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
@@ -449,11 +449,11 @@ public class Frmlogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnCrearAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAdminActionPerformed
 
         this.getControlVista().ingresarRegistrarAdmin();
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnCrearAdminActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -469,14 +469,14 @@ public class Frmlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearAdmin;
+    private javax.swing.JButton btnCrearComercio;
+    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JCheckBox checkBoxComercio;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton2_Ingresar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

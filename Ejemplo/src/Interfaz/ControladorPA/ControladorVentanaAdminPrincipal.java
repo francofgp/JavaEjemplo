@@ -129,7 +129,6 @@ public class ControladorVentanaAdminPrincipal {
         int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
 
         this.setRubro((Rubro) model.getValueAt(selectedRowIndex, 0));
-        //System.out.println(rubro.getDescripcion());
     }
 
     public void conseguirCategoria() {

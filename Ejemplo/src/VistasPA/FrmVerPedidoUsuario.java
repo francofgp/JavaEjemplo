@@ -170,7 +170,7 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextField();
         jLabelDescrip = new javax.swing.JLabel();
         btnAceptarConfirmarCalificacion1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         txtBuscarPedido = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -390,19 +390,19 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnAceptarConfirmarCalificacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 150, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 204, 0));
-        jButton1.setText("X");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(102, 204, 0));
+        btnExit.setText("X");
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 40, 40));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jLabel12.setText("Buscar por nombre Comercio");
@@ -488,9 +488,9 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
         this.getControlVista().cancelar();
     }//GEN-LAST:event_btnAceptarConfirmarCalificacion1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.getControlVista().buscar();        
@@ -519,13 +519,13 @@ public class FrmVerPedidoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptarConfirmarCalificacion1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCalificar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMostrarTodo;
     private javax.swing.JButton btnValor1;
     private javax.swing.JButton btnValor2;
     private javax.swing.JButton btnValor3;
     private javax.swing.JButton btnValor4;
     private javax.swing.JButton btnValor5;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabelDescrip;
     private javax.swing.JLabel jLabelDescripcion;

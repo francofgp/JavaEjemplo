@@ -118,8 +118,7 @@ public class GestionCalificacion {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
-                System.out.println(fila.getComercio().getNombre());
-
+                
                 tabla.addRow(datos);
 
             }
@@ -180,8 +179,7 @@ public class GestionCalificacion {
     public void cargarPedido() {
 
         long a = this.getUsuario().getId();
-        System.out.println(a);
-        
+                
         List<Pedido> pedido = getOper().buscarPedido(this.getUsuario());
 
         if (pedido.size() > 0) {

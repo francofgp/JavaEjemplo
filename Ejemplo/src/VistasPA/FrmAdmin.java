@@ -67,27 +67,27 @@ public class FrmAdmin extends javax.swing.JFrame {
     }
 
     public JLabel getjLabel10() {
-        return jLabel10;
+        return jDelivery;
     }
 
     public void setjLabel10(JLabel jLabel10) {
-        this.jLabel10 = jLabel10;
+        this.jDelivery = jLabel10;
     }
 
     public JLabel getjLabel7() {
-        return jLabel7;
+        return jCompletaTusDatos;
     }
 
     public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
+        this.jCompletaTusDatos = jLabel7;
     }
 
     public JLabel getjLabel9() {
-        return jLabel9;
+        return jEat;
     }
 
     public void setjLabel9(JLabel jLabel9) {
-        this.jLabel9 = jLabel9;
+        this.jEat = jLabel9;
     }
 
     public JPanel getjPanel1() {
@@ -144,13 +144,13 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jEat = new javax.swing.JLabel();
+        jDelivery = new javax.swing.JLabel();
         nombreTxt = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jCompletaTusDatos = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -176,16 +176,16 @@ public class FrmAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 190, 30));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("EAT");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 60, -1));
+        jEat.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
+        jEat.setForeground(new java.awt.Color(255, 255, 255));
+        jEat.setText("EAT");
+        jPanel1.add(jEat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 60, -1));
 
-        jLabel10.setBackground(new java.awt.Color(153, 204, 0));
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("DELIVERY");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 140, -1));
+        jDelivery.setBackground(new java.awt.Color(153, 204, 0));
+        jDelivery.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        jDelivery.setForeground(new java.awt.Color(255, 255, 255));
+        jDelivery.setText("DELIVERY");
+        jPanel1.add(jDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 140, -1));
 
         nombreTxt.setBackground(new java.awt.Color(255, 255, 255));
         nombreTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,10 +215,10 @@ public class FrmAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 200, 20));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Completá tus datos");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jCompletaTusDatos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jCompletaTusDatos.setForeground(new java.awt.Color(255, 255, 255));
+        jCompletaTusDatos.setText("Completá tus datos");
+        jPanel1.add(jCompletaTusDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,9 +276,9 @@ public class FrmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jCompletaTusDatos;
+    private javax.swing.JLabel jDelivery;
+    private javax.swing.JLabel jEat;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nombreTxt;

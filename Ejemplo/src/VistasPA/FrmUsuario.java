@@ -86,15 +86,15 @@ public class FrmUsuario extends javax.swing.JFrame {
     }
 
     public JButton getjButton1() {
-        return jButton1;
+        return btnCrearComercio;
     }
 
     public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
+        this.btnCrearComercio = jButton1;
     }
 
     public JButton getjButton2() {
-        return jButton2;
+        return btnVolver;
     }
 
     public JDateChooser getDataFecha() {
@@ -106,7 +106,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     }
 
     public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
+        this.btnVolver = jButton2;
     }
 
     public JButton getjButton3() {
@@ -242,7 +242,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButton1 = new javax.swing.JButton();
+        btnCrearComercio = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -263,7 +263,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         dataFecha = new com.toedter.calendar.JDateChooser();
 
@@ -272,17 +272,17 @@ public class FrmUsuario extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton1.setText("Crea una cuenta como Comercio");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearComercio.setBackground(new java.awt.Color(255, 255, 255));
+        btnCrearComercio.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnCrearComercio.setText("Crea una cuenta como Comercio");
+        btnCrearComercio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnCrearComercio.setBorderPainted(false);
+        btnCrearComercio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCrearComercioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 210, 30));
+        getContentPane().add(btnCrearComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 210, 30));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -417,19 +417,19 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 204, 0));
-        jButton2.setText("<");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(153, 204, 0));
+        btnVolver.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(153, 204, 0));
+        btnVolver.setText("<");
+        btnVolver.setBorderPainted(false);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 30));
+        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 204, 0)));
@@ -461,15 +461,15 @@ public class FrmUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         new Frmlogin().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCrearComercioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearComercioActionPerformed
         new FrmComercio().setVisible(true);
         this.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCrearComercioActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
@@ -487,12 +487,12 @@ public class FrmUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoTxt;
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCrearComercio;
+    private javax.swing.JButton btnVolver;
     private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel direccionTxt;
     private javax.swing.JLabel emailTxt;
     private javax.swing.JLabel fechaTxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel10;

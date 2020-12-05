@@ -55,8 +55,8 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnVolverLogin = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1274, 767));
@@ -356,31 +356,31 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         jLabel4.setText("DELIVERY");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, -1));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Volver al Login");
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton5.setContentAreaFilled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnVolverLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverLogin.setText("Volver al Login");
+        btnVolverLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnVolverLogin.setContentAreaFilled(false);
+        btnVolverLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnVolverLoginActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 40, 160, 30));
+        jPanel3.add(btnVolverLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 40, 160, 30));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Generar Reporte Rubro");
-        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jButton6.setContentAreaFilled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 255, 255));
+        btnGenerarReporte.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarReporte.setText("Generar Reporte Rubro");
+        btnGenerarReporte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnGenerarReporte.setContentAreaFilled(false);
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnGenerarReporteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 160, 30));
+        jPanel3.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 80));
 
@@ -449,11 +449,11 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     }
 
     public JButton getjButton5() {
-        return jButton5;
+        return btnVolverLogin;
     }
 
     public void setjButton5(JButton jButton5) {
-        this.jButton5 = jButton5;
+        this.btnVolverLogin = jButton5;
     }
 
     public JLabel getjLabel1() {
@@ -622,18 +622,18 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
         this.getControlVista().modificarCategoria();
     }//GEN-LAST:event_btnModificarCategoriaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnVolverLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverLoginActionPerformed
         this.setVisible(false);
         new Frmlogin().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnVolverLoginActionPerformed
 
     private void btnDarDeBajaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaCategoriaActionPerformed
         this.getControlVista().darDeBajaCategoria();
     }//GEN-LAST:event_btnDarDeBajaCategoriaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnDarDeAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeAltaActionPerformed
         this.getControlVista().darDeAlta();
@@ -683,12 +683,12 @@ public class FrmVentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnDarDeBaja;
     private javax.swing.JButton btnDarDeBajaCategoria;
     private javax.swing.JButton btnEliminarCategoria;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnModificarCategoria;
     private javax.swing.JButton btnMostrarTodos;
     private javax.swing.JButton btnMostrarTodosCategoria;
     private javax.swing.JButton btnNuevaCategoria;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnVolverLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

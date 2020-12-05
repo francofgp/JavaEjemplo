@@ -50,7 +50,7 @@ public class FrmProducto extends javax.swing.JFrame {
         LblImagen = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         btnAceptar1.setBackground(new java.awt.Color(153, 204, 0));
         btnAceptar1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -194,19 +194,19 @@ public class FrmProducto extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, -1));
 
-        jButton4.setBackground(new java.awt.Color(153, 204, 0));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("X");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(153, 204, 0));
+        btnExit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("X");
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 30, 20));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 30, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 300));
 
@@ -286,11 +286,11 @@ public class FrmProducto extends javax.swing.JFrame {
     }
 
     public JButton getjButton4() {
-        return jButton4;
+        return btnExit;
     }
 
     public void setjButton4(JButton jButton4) {
-        this.jButton4 = jButton4;
+        this.btnExit = jButton4;
     }
 
     public JLabel getjLabel1() {
@@ -456,9 +456,9 @@ public class FrmProducto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.getControlVista().salir();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     public static void main(String args[]) {
 
@@ -473,8 +473,8 @@ public class FrmProducto extends javax.swing.JFrame {
     private javax.swing.JLabel LblImagen;
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

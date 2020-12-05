@@ -315,8 +315,7 @@ public class GestionPedido {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getPrecio());
                 datos.add(fila.getCategoria());
-                System.out.println(fila.getComercio().getNombre());
-
+                
                 tabla.addRow(datos);
 
             }

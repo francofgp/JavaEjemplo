@@ -92,9 +92,6 @@ public class RegistroComercio {
         model.setRubro((Rubro) rubro);
         model.setCategoria((Categoria) categoria);
 
-        System.out.println(rubro);
-        System.out.println(categoria);
-
     }
 
     public void llenaJComboBoxRubro(JComboBox jComboBoxRubro) {
@@ -166,7 +163,6 @@ public class RegistroComercio {
         try {
             SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
             date = this.getForm().getDataFecha().getDate();
-            System.out.println(date);
             return false;
         } catch (Exception e) {
             return true;

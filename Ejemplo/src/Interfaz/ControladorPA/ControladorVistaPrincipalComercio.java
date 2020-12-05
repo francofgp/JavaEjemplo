@@ -173,7 +173,6 @@ public class ControladorVistaPrincipalComercio {
         int selectedRowIndex = this.getForm().getjTablePedidos().getSelectedRow();
 
         this.model = (Pedido) tabla.getValueAt(selectedRowIndex, 0);
-        System.out.println(model);
     }
 
     private void cargarPedidos() {
@@ -193,8 +192,7 @@ public class ControladorVistaPrincipalComercio {
                 datos.add(fila.getCategoria());
                 datos.add(fila.getPrecio());
                 datos.add(fila.getId());
-                System.out.println(fila.getComercio().getNombre());
-
+                
                 tabla.addRow(datos);
 
             }
@@ -274,8 +272,6 @@ public class ControladorVistaPrincipalComercio {
         float total = 0;
         int a = 0;
         for (int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++) {
-
-            System.out.println(this.getForm().getjTablePedidos().getValueAt(i, 2));
 
             if (this.getForm().getjTablePedidos().getValueAt(i, 2) != "Sin calificar") {
                 float total2 = (float) this.getForm().getjTablePedidos().getValueAt(i, 2);
