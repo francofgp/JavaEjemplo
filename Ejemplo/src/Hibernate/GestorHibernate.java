@@ -149,7 +149,7 @@ public class GestorHibernate extends HibernateUtil {
                 .createAlias("rubro", "rub")
                 .add(Restrictions.eq("categoria", categoria))
                 .add(Restrictions.eq("rub.nombre", rubro.getNombre()))
-                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
+                .add(Restrictions.like("nombreLocal", "%" + nombreComercio + "%"))
                 .list();
         return comercio;
 
@@ -788,7 +788,7 @@ public class GestorHibernate extends HibernateUtil {
     public List<Comercio> buscarComercioPorNombre(String nombre) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%" + nombre + "%")).list();
+                .add(Restrictions.like("nombreLocal", "%" + nombre + "%")).list();
         return comercio;
 
     }
@@ -822,7 +822,7 @@ public class GestorHibernate extends HibernateUtil {
     public List<Comercio> buscarComercioPorCategoria(String nombreComercio, Categoria categoria) {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
-                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
+                .add(Restrictions.like("nombreLocal", "%" + nombreComercio + "%"))
                 .add(Restrictions.eq("categoria", categoria)).list();
         return comercio;
 
@@ -832,7 +832,7 @@ public class GestorHibernate extends HibernateUtil {
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
                 .add(Restrictions.eq("rubro", rubro))
-                .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
+                .add(Restrictions.like("nombreLocal", "%" + nombreComercio + "%"))
                 .list();
        
         return comercio;

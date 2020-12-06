@@ -172,7 +172,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Comercio", "ID", "Calificacion"
+                "Comerciante", "Comercio", "Calificacion"
             }
         ) {
             boolean[] canEdit = new boolean [] {

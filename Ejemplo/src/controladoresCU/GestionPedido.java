@@ -209,7 +209,7 @@ public class GestionPedido {
                     Comercio fila = (Comercio) consulta.next();
 
                     datos.add(fila);
-                    datos.add(fila.getId());
+                    datos.add(fila.getNombreLocal());
                     if (calificacionTabla(fila) > 0) {
                         datos.add(calificacionTabla(fila));
                     } else {
