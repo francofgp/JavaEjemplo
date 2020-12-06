@@ -143,6 +143,7 @@ public class GestorHibernate extends HibernateUtil {
 
 
     public List<Comercio> buscarComercioPorCategoriaYRubro(String nombreComercio, Categoria categoria, Rubro rubro) {
+
         Session sesion = HibernateUtil.getSession();
         List<Comercio> comercio = session.createCriteria(Comercio.class)
                 .createAlias("rubro", "rub")
@@ -150,8 +151,10 @@ public class GestorHibernate extends HibernateUtil {
                 .add(Restrictions.eq("rub.nombre", rubro.getNombre()))
                 .add(Restrictions.like("nombre", "%" + nombreComercio + "%"))
                 .list();
-
         return comercio;
+
+        
+
 
     }
 

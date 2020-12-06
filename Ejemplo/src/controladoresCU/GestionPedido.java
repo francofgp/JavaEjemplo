@@ -194,32 +194,37 @@ public class GestionPedido {
     }
 
     public void cargarComercio() {
+        try {
+            conseguirRubroSeleccionado();
+            conseguirCategoriaSeleccionado();
 
-        conseguirRubroSeleccionado();
-        conseguirCategoriaSeleccionado();
+            List<Comercio> listaComercio = this.buscarComercio();
 
-        List<Comercio> listaComercio = this.buscarComercio();
+            if (listaComercio.size() > 0) {
+                Iterator consulta = listaComercio.iterator();
+                while (consulta.hasNext()) {
+                    DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
 
-        if (listaComercio.size() > 0) {
-            Iterator consulta = listaComercio.iterator();
-            while (consulta.hasNext()) {
-                DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTableComercio().getModel();
+                    Vector datos = new Vector();
+                    Comercio fila = (Comercio) consulta.next();
 
-                Vector datos = new Vector();
-                Comercio fila = (Comercio) consulta.next();
+                    datos.add(fila);
+                    datos.add(fila.getId());
+                    if (calificacionTabla(fila) > 0) {
+                        datos.add(calificacionTabla(fila));
+                    } else {
+                        datos.add("Sin calificar");
+                    }
+                    tabla.addRow(datos);
 
-                datos.add(fila);
-                datos.add(fila.getId());
-                if (calificacionTabla(fila) > 0) {
-                    datos.add(calificacionTabla(fila));
-                } else {
-                    datos.add("Sin calificar");
                 }
-                tabla.addRow(datos);
-
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay comercios con tales datos!");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No hay comercios con tales datos!");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay productos con tales datos");
+
         }
 
     }
