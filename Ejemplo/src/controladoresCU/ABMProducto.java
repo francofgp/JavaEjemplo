@@ -171,8 +171,14 @@ public class ABMProducto {
         }
         try {
             Float.parseFloat(this.getForm().getTxtPrecio().getText());
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número para el precio");
+            return false;
+        }
+        
+        conseguirCategoriaSeleccionado();
+        if (categoria==null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la Categoria");
             return false;
         }
 

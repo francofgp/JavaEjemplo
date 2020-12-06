@@ -395,7 +395,7 @@ public class GestionPedido {
     }
 
     public void quitarProducto() {
-        if(this.getForm().getjTableProducto().getSelectedRow()>-1){
+        if(this.getForm().getjTableCarro().getSelectedRow()>-1){
         int viewIndex = this.getForm().getjTableCarro().getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = this.getForm().getjTableCarro().convertRowIndexToModel(viewIndex); // converts the row index in the view to the appropriate index in the model

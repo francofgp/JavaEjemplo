@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 
 public class FrmComercio extends javax.swing.JFrame {
 
-    RegistroComercio oper;
-    FrmComercio desktop = this;
+    private RegistroComercio oper;
+    private FrmComercio desktop = this;
 
 
     public FrmComercio() {

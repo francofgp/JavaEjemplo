@@ -7,11 +7,9 @@ import javax.swing.JTextField;
 
 public class FrmRubro extends javax.swing.JFrame {
 
-    String modificado = "0";
-    String nombre;
-    String descripcion;
-    Long ID;
-    String nombrePrimero;
+    private ABMRubro oper;
+    private String modificado = "0";
+
 
     public FrmRubro(ABMRubro controlVista) {
         try {
@@ -46,44 +44,12 @@ public class FrmRubro extends javax.swing.JFrame {
         this.modificado = modificado;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public JButton getBtnAceptar() {
         return btnAceptar;
     }
 
     public void setBtnAceptar(JButton btnAceptar) {
         this.btnAceptar = btnAceptar;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public String getNombrePrimero() {
-        return nombrePrimero;
-    }
-
-    public void setNombrePrimero(String nombrePrimero) {
-        this.nombrePrimero = nombrePrimero;
     }
 
     public ABMRubro getControlVista() {
@@ -102,7 +68,7 @@ public class FrmRubro extends javax.swing.JFrame {
         this.oper = oper;
     }
 
-    ABMRubro oper;
+
 
     public ABMRubro getControlador() {
         if (oper == null) {
@@ -249,7 +215,7 @@ public class FrmRubro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        this.setVisible(false);
+    this.getControlVista().salirse();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

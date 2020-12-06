@@ -2,10 +2,7 @@ package ModelosPA;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import ModelosPA.Admin;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,8 +12,6 @@ public class Usuario extends Admin implements Serializable {
 
     public Usuario(String password, String nombre, String apellido, String email, String direccion, String telefono, Date fechaNac) {
         super(password, nombre);
-        //this.password = password;
-        //this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.direccion = direccion;

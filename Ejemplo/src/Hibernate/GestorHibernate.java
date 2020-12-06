@@ -7,7 +7,6 @@ import ModelosPA.Producto;
 import ModelosPA.Rubro;
 import ModelosPA.Usuario;
 import ModelosPA.Pedido;
-
 import java.awt.Component;
 import java.sql.Connection;
 import java.util.*;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-
 import org.hibernate.Transaction;
 import org.hibernate.criterion.*;
 import javax.swing.JOptionPane;
@@ -291,10 +289,10 @@ public class GestorHibernate extends HibernateUtil {
     public void reporteRubro() {
 
         try {
-            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-            Session session = sessionFactory.openSession();
+            SessionFactory sessionFactory1 = HibernateUtil.getSessionFactory();
+            Session session1 = sessionFactory1.openSession();
 
-            SessionImpl sessionImpl = (SessionImpl) session;
+            SessionImpl sessionImpl = (SessionImpl) session1;
             Connection connection = sessionImpl.connection();
 
             JasperReport archivo = JasperCompileManager.compileReport("rubro.jrxml");
@@ -647,12 +645,7 @@ public class GestorHibernate extends HibernateUtil {
         try {
             if (categoria != null) {
                 String nom = categoria.getNombre();
-                if (nom.equals(nombre)) {
-
-                    return true;
-                } else {
-                    return false;
-                }
+                return nom.equals(nombre);
             } else {
                 return false;
             }

@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 
 public class Frmlogin extends javax.swing.JFrame {
 
-    InicioSesion controlVista;
-    Frmlogin desktop = this;
+    private InicioSesion controlVista;
+    private Frmlogin desktop = this;
 
     public Frmlogin() {
         initComponents();

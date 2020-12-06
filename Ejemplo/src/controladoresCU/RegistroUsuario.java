@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 
 public class RegistroUsuario {
 
-    GestorHibernate oper;
-    Usuario model;
-    FrmUsuario form;
-    Date date;
-    InicioSesion inicioSesion;
+    private GestorHibernate oper;
+    private Usuario model;
+    private FrmUsuario form;
+    private Date date;
+    private InicioSesion inicioSesion;
 
     public RegistroUsuario() {
         oper = new GestorHibernate();

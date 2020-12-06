@@ -9,9 +9,8 @@ import javax.swing.JTextField;
 
 public class FrmCategoria extends javax.swing.JFrame {
 
-    String modificado = "0";
-
-    ABMCategoria oper;
+    private String modificado = "0";
+    private ABMCategoria oper;
 
     public ABMCategoria getControlador() {
         if (oper == null) {
@@ -268,7 +267,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        this.setVisible(false);
+        this.getControlVista().salirse();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

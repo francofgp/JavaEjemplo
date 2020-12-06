@@ -9,12 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "pedido")
@@ -41,7 +39,6 @@ public class Pedido implements Serializable {
     @OneToOne(targetEntity = Comercio.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Comercio comercio;
 
-    //@ManyToMany(targetEntity = DetallePedido.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     @ManyToMany
     private List<Producto> producto;
 
@@ -51,6 +48,7 @@ public class Pedido implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String estado;
 
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     @Column(columnDefinition = "TEXT")

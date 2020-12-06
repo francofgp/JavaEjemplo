@@ -25,6 +25,7 @@ public class ControladorVistaPrincipalComercio {
     private Pedido model;
     private Producto producto;
     private InicioSesion inicioSesion;
+    
     public Comercio getComercio() {
         return comercio;
     }
@@ -268,7 +269,7 @@ public class ControladorVistaPrincipalComercio {
 
     public float calculoCalificacion() {
 
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
+        //DefaultTableModel model1 = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
         float total = 0;
         int a = 0;
         for (int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++) {
@@ -375,7 +376,6 @@ public class ControladorVistaPrincipalComercio {
     }
 
     private boolean validar() {
-        
         return !obtenerFecha();
     }
 

@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 public class FrmUsuario extends javax.swing.JFrame {
 
-    RegistroUsuario oper;
+    private RegistroUsuario oper;
 
     public FrmUsuario() {
         initComponents();

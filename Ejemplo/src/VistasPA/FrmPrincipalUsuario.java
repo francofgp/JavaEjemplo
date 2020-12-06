@@ -13,8 +13,8 @@ import javax.swing.JTextField;
 
 public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
-    GestionPedido controlVista;
-    FrmPrincipalUsuario desktop = this;
+    private GestionPedido controlVista;
+    private FrmPrincipalUsuario desktop = this;
 
     public FrmPrincipalUsuario() {
         initComponents();
@@ -24,6 +24,7 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
         this.llenaJComboBoxCategoria(jComboBoxCategoria);
         this.getTxtMontoTotal().setText("0.0");
         this.getTxtID1().setText("0.0");
+        TextPrompt fecha = new TextPrompt("Descripcion (Opcional)", txtDescripcion);
 
     }
 
@@ -282,7 +283,6 @@ public class FrmPrincipalUsuario extends javax.swing.JFrame {
 
         txtDescripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(153, 204, 0));
-        txtDescripcion.setText("Descripcion (Opcional)");
         txtDescripcion.setBorder(null);
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

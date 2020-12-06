@@ -1,16 +1,17 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import ModelosPA.Categoria;
 import VistasPA.FrmCategoria;
-import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
 
 public class ABMCategoria {
 
     private GestorHibernate oper;
     private FrmCategoria form;
-    Categoria model;
+    private Categoria model;
+    private ControladorVentanaAdminPrincipal vAdmin;
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -22,6 +23,16 @@ public class ABMCategoria {
         return oper;
     }
 
+    
+    public ControladorVentanaAdminPrincipal getvAdmin() {
+        if (vAdmin == null) {
+            synchronized (ControladorVentanaAdminPrincipal.class) {
+                vAdmin = new ControladorVentanaAdminPrincipal();
+            }
+        }
+        return vAdmin;
+    }
+    
     public void setOper(GestorHibernate oper) {
         this.oper = oper;
     }
@@ -56,13 +67,11 @@ public class ABMCategoria {
         if ("1".equals(form.getModificado())) {
             modificar();
             JOptionPane.showMessageDialog(null, "La categoría se modificó con éxito!");
-            form.setVisible(false);
-            new FrmVentanaAdmin().setVisible(true);
+            salirse();
         } else {
             this.guardar();
             JOptionPane.showMessageDialog(null, "La categoría se registró con éxito!");
-            form.setVisible(false);
-            new FrmVentanaAdmin().setVisible(true);
+            salirse();
         }
     }
 
@@ -146,5 +155,12 @@ public class ABMCategoria {
             JOptionPane.showMessageDialog(null, "La categoria ya existe");
             return false;
         }
+    }
+    
+    
+    
+    public void salirse() {
+        this.getForm().setVisible(false);
+        this.getvAdmin().abrirse();    
     }
 }

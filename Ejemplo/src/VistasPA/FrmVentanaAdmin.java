@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 
 public class FrmVentanaAdmin extends javax.swing.JFrame {
 
-    FrmVentanaAdmin desktop = this;
-    ControladorVentanaAdminPrincipal controlVista;
+    private FrmVentanaAdmin desktop = this;
+    private ControladorVentanaAdminPrincipal controlVista;
 
     public FrmVentanaAdmin() {
         initComponents();

@@ -10,8 +10,8 @@ import controladoresCU.ABMProducto;
 
 public class FrmProducto extends javax.swing.JFrame {
 
-    ABMProducto controlVista;
-    FrmProducto desktop = this;
+    private ABMProducto controlVista;
+    private FrmProducto desktop = this;
     private String modificado = "0";
 
     public FrmProducto() {

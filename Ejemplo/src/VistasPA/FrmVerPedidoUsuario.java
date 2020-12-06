@@ -9,8 +9,8 @@ import javax.swing.JTextField;
 
 public class FrmVerPedidoUsuario extends javax.swing.JFrame {
 
-    GestionCalificacion controlVista;
-    FrmVerPedidoUsuario desktop = this;
+    private GestionCalificacion controlVista;
+    private FrmVerPedidoUsuario desktop = this;
 
     public FrmVerPedidoUsuario() {
 

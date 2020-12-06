@@ -10,9 +10,9 @@ import javax.swing.JTable;
 
 public class FrmPrincipalComercio extends javax.swing.JFrame {
 
-    ControladorVistaPrincipalComercio controlVista;
-    FrmPrincipalComercio desktop = this;
-    FrmProducto frmProducto;
+    private ControladorVistaPrincipalComercio controlVista;
+    private FrmPrincipalComercio desktop = this;
+
 
     public FrmPrincipalComercio() {
         initComponents();

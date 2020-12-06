@@ -8,8 +8,8 @@ import javax.swing.JTextField;
 
 public class FrmAdmin extends javax.swing.JFrame {
 
-    RegistroAdmin oper;
-    FrmAdmin desktop=this;
+    private RegistroAdmin oper;
+    private FrmAdmin desktop=this;
     public FrmAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);

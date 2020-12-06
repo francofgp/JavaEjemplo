@@ -1,7 +1,7 @@
 package ModelosPA;
 
+import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.MERGE;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "comercio")
-public class Comercio {
+public class Comercio implements Serializable {
 
     public Comercio(String nombre, String apellido, Date fechaNac, String password, String direccion,
             String correo, String cuil, String telefono, String nombreLocal, String direccionNegocio,
@@ -47,6 +46,7 @@ public class Comercio {
     @Column(columnDefinition = "TEXT")
     private String apellido;
 
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNac;
 
     @SuppressWarnings("FieldNameHidesFieldInSuperclass")

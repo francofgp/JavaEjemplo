@@ -1,17 +1,18 @@
 package controladoresCU;
 
 import Hibernate.GestorHibernate;
+import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
 import ModelosPA.Rubro;
 import VistasPA.FrmRubro;
-import VistasPA.FrmVentanaAdmin;
 import javax.swing.JOptionPane;
 
 public class ABMRubro {
 
-    GestorHibernate oper;
-    Rubro model;
-    FrmRubro form;
+    private GestorHibernate oper;
+    private Rubro model;
+    private FrmRubro form;
     private String titulo;
+    private ControladorVentanaAdminPrincipal vAdmin;
 
     public String getTitulo() {
         return titulo;
@@ -29,6 +30,17 @@ public class ABMRubro {
         }
         return oper;
     }
+
+    public ControladorVentanaAdminPrincipal getvAdmin() {
+        if (vAdmin == null) {
+            synchronized (ControladorVentanaAdminPrincipal.class) {
+                vAdmin = new ControladorVentanaAdminPrincipal();
+            }
+        }
+        return vAdmin;
+    }
+    
+    
 
     public void setOper(GestorHibernate oper) {
         this.oper = oper;
@@ -101,13 +113,11 @@ public class ABMRubro {
         if ("1".equals(form.getModificado())) {
             modificar();
             JOptionPane.showMessageDialog(null, "El rubro se modificó con éxito!");
-            form.setVisible(false);
-            new FrmVentanaAdmin().setVisible(true);
+            salirse();
         } else {
             guardar();
             JOptionPane.showMessageDialog(null, "El rubro se registró con éxito!");
-            form.setVisible(false);
-            new FrmVentanaAdmin().setVisible(true);
+            salirse();
         }
     }
 
@@ -132,11 +142,6 @@ public class ABMRubro {
         this.getForm().getBtnAceptar().setText("Modificar rubro");
         this.getForm().setModificado(modificado);
 
-        this.getForm().setNombre(rubro.getNombre());
-        this.getForm().setDescripcion(rubro.getDescripcion());
-        this.getForm().setID(rubro.getId());
-
-        this.getForm().setNombrePrimero(this.getForm().getNombre());
         setRubroElegido(rubro);
     }
 
@@ -159,6 +164,11 @@ public class ABMRubro {
             return false;
         }
 
+    }
+
+    public void salirse() {
+        this.getForm().setVisible(false);
+        this.getvAdmin().abrirse();    
     }
 
 }
