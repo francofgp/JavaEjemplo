@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVentanaAdminPrincipal.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/GestorHibernate.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/controladoresCU/RegistroComercio.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmVentanaAdmin.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmPrincipalUsuario.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/controladoresCU/ABMCategoria.java</file>
@@ -13,6 +14,7 @@
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmComercio.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Interfaz/ControladorPA/ControladorVistaPrincipalComercio.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/controladoresCU/GestionPedido.java</file>
+            <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/controladoresCU/RegistroUsuario.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/VistasPA/FrmPrincipalComercio.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/controladoresCU/ABMRubro.java</file>
             <file>file:/C:/Users/CrapBoy/UTN/PA/Ejempl/ProyectoJava/Ejemplo/src/Hibernate/HibernateUtil.java</file>
