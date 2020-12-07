@@ -102,7 +102,7 @@ public class ControladorVistaPrincipalComercio extends ClaseTabla{
         setComercio(comercio);
         this.cargarPedido();
         this.getForm().getTxtID().setText(Long.toString(getComercio().getId()));
-        this.getForm().getTxtNombre().setText(getComercio().getNombre());
+        this.getForm().getTxtNombre().setText(getComercio().getNombreLocal());
         this.getForm().getTxtEmail().setText(getComercio().getCorreo());
         this.cargarProductos();
         this.calculoCalificacion();

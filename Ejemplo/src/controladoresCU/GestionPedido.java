@@ -293,7 +293,7 @@ public class GestionPedido {
     }
 
     public void cargarNombreComercio() {
-        this.getForm().getJNombreComercio().setText(comercio.getNombre());
+        this.getForm().getJNombreComercio().setText(comercio.getNombreLocal());
     }
 
     public void cargarProductos() {

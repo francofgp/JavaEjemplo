@@ -23,7 +23,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         TextPrompt direcc = new TextPrompt("Direccion", txtDireccion);
         TextPrompt contrasena = new TextPrompt("Contraseña", txtPassword);
         TextPrompt telefono = new TextPrompt("Telefono", txtTelefono);
-        TextPrompt fecha = new TextPrompt("Fecha", txtFecha);
 
     }
 
@@ -77,13 +76,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.emailTxt = emailTxt;
     }
 
-    public JLabel getFechaTxt() {
-        return fechaTxt;
-    }
-
-    public void setFechaTxt(JLabel fechaTxt) {
-        this.fechaTxt = fechaTxt;
-    }
 
     public JButton getjButton1() {
         return btnCrearComercio;
@@ -205,13 +197,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.txtEmail = txtEmail;
     }
 
-    public JTextField getTxtFecha() {
-        return txtFecha;
-    }
 
-    public void setTxtFecha(JTextField txtFecha) {
-        this.txtFecha = txtFecha;
-    }
 
     public JTextField getTxtNombre() {
         return txtNombre;
@@ -257,8 +243,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         telefonoTxt = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        fechaTxt = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         apellidoTxt = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -377,22 +361,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 200, 20));
 
-        fechaTxt.setBackground(new java.awt.Color(255, 255, 255));
-        fechaTxt.setForeground(new java.awt.Color(255, 255, 255));
-        fechaTxt.setText("______________________________");
-        jPanel1.add(fechaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
-
-        txtFecha.setBackground(new java.awt.Color(153, 204, 0));
-        txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtFecha.setForeground(new java.awt.Color(255, 255, 255));
-        txtFecha.setBorder(null);
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 20));
-
         apellidoTxt.setBackground(new java.awt.Color(255, 255, 255));
         apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
         apellidoTxt.setText("______________________________");
@@ -471,10 +439,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnCrearComercioActionPerformed
 
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
-
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -492,7 +456,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel direccionTxt;
     private javax.swing.JLabel emailTxt;
-    private javax.swing.JLabel fechaTxt;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel10;
@@ -506,7 +469,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtTelefono;
