@@ -209,7 +209,7 @@ public class GestionCalificacion {
 
                 tabla.addRow(datos);
 
-                //}
+                
             }
         } else {
             JOptionPane.showMessageDialog(null, "no hay registros de productos");
@@ -285,14 +285,15 @@ public class GestionCalificacion {
                 datos.add(fila);
                 datos.add(fila.getTotal());
                 datos.add(fila.getId());
-                datos.add(fila.getUsuario().getNombre());
                 datos.add(fila.getEstado());
-                datos.add(fila.getComercio().getNombre());
+                datos.add(fila.getComercio().getNombreLocal());
+
                 if (fila.getCalificacion() != null) {
                     datos.add(fila.getCalificacion().getCalificacion());
                 } else {
                     datos.add("Sin calificar");
                 }
+                datos.add(fila.getFecha());
 
                 tabla.addRow(datos);
 
