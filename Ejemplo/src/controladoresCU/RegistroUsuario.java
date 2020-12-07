@@ -110,6 +110,14 @@ public class RegistroUsuario {
             JOptionPane.showMessageDialog(null, "Debe ingresar una Contraseña");
             return false;
         }
+        
+        
+        String direccion = this.getForm().getTxtDireccion().getText();
+        trim = direccion.trim();
+        if (trim.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una dirección");
+            return false;
+        }
 
         return true;
     }

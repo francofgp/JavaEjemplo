@@ -204,6 +204,20 @@ public class RegistroComercio {
             return false;
         }
 
+        String direccion = this.getForm().getTxtDireccion().getText();
+        trim = direccion.trim();
+        if (trim.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una dirección");
+            return false;
+        }
+        direccion = this.getForm().getTxtDireccionLocal().getText();
+        trim = direccion.trim();
+        
+        if (trim.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una dirección a su local");
+            return false;
+        }
+        
         return true;
     }
 
