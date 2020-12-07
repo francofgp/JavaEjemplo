@@ -2,25 +2,18 @@ package controladoresCU;
 
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
+import Interfaz.ControladorPA.IABMGenerico;
 import ModelosPA.Rubro;
 import VistasPA.FrmRubro;
 import javax.swing.JOptionPane;
 
-public class ABMRubro {
+public class ABMRubro implements IABMGenerico {
 
     private GestorHibernate oper;
     private Rubro model;
     private FrmRubro form;
-    private String titulo;
     private ControladorVentanaAdminPrincipal vAdmin;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     public GestorHibernate getOper() {
         if (oper == null) {
@@ -75,6 +68,7 @@ public class ABMRubro {
         this.form = form;
     }
 
+    @Override
     public void setModel() {
 
         model = new Rubro();
@@ -84,6 +78,7 @@ public class ABMRubro {
 
     }
 
+    @Override
     public void guardar() {
         this.setModel();
         this.getOper().guardarObjeto(this.getModel());
@@ -93,10 +88,12 @@ public class ABMRubro {
         return model;
     }
 
+    @Override
     public boolean corroborar(String nombre) {
         return this.getOper().corroborarRubro(nombre);
     }
 
+    @Override
     public void eliminar() {
         this.getOper().eliminarObjeto(this.getModel());
     }
@@ -109,6 +106,7 @@ public class ABMRubro {
         this.getOper().darDeAltaRubro(this.getModel());
     }
 
+    @Override
     public void crearModificar() {
         if ("1".equals(form.getModificado())) {
             modificar();
@@ -123,7 +121,6 @@ public class ABMRubro {
 
     public void preguntarEliminar() {
         int preg = JOptionPane.showConfirmDialog(null, "Seguro que desea eliminar este rubro?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
         if (preg == JOptionPane.YES_OPTION) {
             eliminar();
         }

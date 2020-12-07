@@ -120,6 +120,7 @@ public class ABMProducto {
             JOptionPane.showMessageDialog(null, "El producto se modificó con éxito!");
             this.salir();
         } else {
+            System.out.println(comercio);
             guardar();
             JOptionPane.showMessageDialog(null, "El producto se registró con éxito!");
             this.salir();
@@ -229,12 +230,14 @@ public class ABMProducto {
     }
 
     public void eliminar() {
-        this.getModel().setComercio(null);
+
 
         try {
+            this.getModel().setComercio(null);
             this.getOper().eliminarObjeto(this.getModel());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "No se puede eliminar, ya que el producto tiene al menos un pedido asociado");
+            
         }
     }
 

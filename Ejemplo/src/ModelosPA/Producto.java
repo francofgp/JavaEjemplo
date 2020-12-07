@@ -44,7 +44,7 @@ public class Producto implements Serializable {
     @OneToOne(targetEntity = Categoria.class, cascade = MERGE, fetch = FetchType.LAZY)
     public Categoria categoria;
 
-    @ManyToOne(targetEntity = Comercio.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Comercio.class, cascade = MERGE, fetch = FetchType.LAZY)
     public Comercio comercio;
 
     public long getId() {

@@ -48,6 +48,8 @@ public class GestorHibernate extends HibernateUtil {
             getTx().rollback();
         }
     }
+    
+    
 
     public void guardarObjeto(Object objeto) {
         try {

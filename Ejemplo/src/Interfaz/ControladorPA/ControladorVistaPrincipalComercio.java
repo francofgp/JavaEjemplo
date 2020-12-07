@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ControladorVistaPrincipalComercio {
+public class ControladorVistaPrincipalComercio extends ClaseTabla{
 
     private GestorHibernate oper;
     private FrmPrincipalComercio form;
@@ -110,9 +110,8 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void limpiarTablaPedido() {
-        while (this.getForm().getjTablePedidos().getRowCount() != 0) {
-            ((DefaultTableModel) this.getForm().getjTablePedidos().getModel()).removeRow(0);
-        }
+        this.limpiarTabla(this.getForm().getjTablePedidos());
+
     }
 
     public void cargarPedido() {
@@ -158,22 +157,15 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void limpiarTablaProductosPedidos() {
-        while (this.getForm().getjTableProductoPedidos().getRowCount() != 0) {
-            ((DefaultTableModel) this.getForm().getjTableProductoPedidos().getModel()).removeRow(0);
-        }
+        this.limpiarTabla(this.getForm().getjTableProductoPedidos());
     }
 
     public void limpiarTablaProductos() {
-        while (this.getForm().getjTableProductos().getRowCount() != 0) {
-            ((DefaultTableModel) this.getForm().getjTableProductos().getModel()).removeRow(0);
-        }
+        this.limpiarTabla(this.getForm().getjTableProductos());
     }
 
     public void seleccionarPedido() {
-        DefaultTableModel tabla = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
-        int selectedRowIndex = this.getForm().getjTablePedidos().getSelectedRow();
-
-        this.model = (Pedido) tabla.getValueAt(selectedRowIndex, 0);
+        this.model = (Pedido) this.conseguirObjetoDeTabla(this.getForm().getjTablePedidos());
     }
 
     private void cargarPedidos() {
@@ -246,10 +238,7 @@ public class ControladorVistaPrincipalComercio {
     }
 
     public void conseguirProducto() {
-        DefaultTableModel model1 = (DefaultTableModel) this.getForm().getjTableProductos().getModel();
-        int selectedRowIndex = this.getForm().getjTableProductos().getSelectedRow();
-
-        this.setProducto((Producto) model1.getValueAt(selectedRowIndex, 0));
+        this.setProducto((Producto) this.conseguirObjetoDeTabla(this.getForm().getjTableProductos()));
     }
 
     public void eliminar() {
@@ -263,13 +252,10 @@ public class ControladorVistaPrincipalComercio {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
         }
 
-
-
     }
 
     public float calculoCalificacion() {
 
-        //DefaultTableModel model1 = (DefaultTableModel) this.getForm().getjTablePedidos().getModel();
         float total = 0;
         int a = 0;
         for (int i = 0; i < this.getForm().getjTablePedidos().getRowCount(); i++) {

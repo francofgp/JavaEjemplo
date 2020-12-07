@@ -2,11 +2,12 @@ package controladoresCU;
 
 import Hibernate.GestorHibernate;
 import Interfaz.ControladorPA.ControladorVentanaAdminPrincipal;
+import Interfaz.ControladorPA.IABMGenerico;
 import ModelosPA.Categoria;
 import VistasPA.FrmCategoria;
 import javax.swing.JOptionPane;
 
-public class ABMCategoria {
+public class ABMCategoria implements IABMGenerico {
 
     private GestorHibernate oper;
     private FrmCategoria form;
@@ -62,6 +63,7 @@ public class ABMCategoria {
         this.model = categoria;
     }
 
+    @Override
     public void crearModificar() {
 
         if ("1".equals(form.getModificado())) {
@@ -79,10 +81,12 @@ public class ABMCategoria {
         return model;
     }
 
+    @Override
     public void eliminar() {
         this.getOper().eliminarObjeto(this.getModel());
     }
 
+    @Override
     public void setModel() {
 
         model = new Categoria();
@@ -92,13 +96,10 @@ public class ABMCategoria {
         
     }
 
+    @Override
     public void guardar() {
         this.setModel();
         this.getOper().guardarObjeto(this.getModel());
-    }
-
-    public void modificar(String nombre, String descripcion, Long ID) {
-        this.getOper().modificarCategoria(nombre, descripcion, ID);
     }
 
     public boolean corroborar(String nombre) {

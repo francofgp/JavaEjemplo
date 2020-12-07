@@ -12,7 +12,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ControladorVentanaAdminPrincipal {
+public class ControladorVentanaAdminPrincipal extends ClaseTabla {
 
     private GestorHibernate oper;
     private FrmVentanaAdmin form;
@@ -86,6 +86,7 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void cargarRubro() {
+        
         List<Rubro> rubro1 = this.getOper().rubroShow();
         if (rubro1.size() > 0) {
             Iterator consulta = rubro1.iterator();
@@ -97,7 +98,6 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                //datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
@@ -125,29 +125,19 @@ public class ControladorVentanaAdminPrincipal {
     }
 
     public void conseguirRubro() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableRubro().getModel();
-        int selectedRowIndex = this.getForm().getjTableRubro().getSelectedRow();
-
-        this.setRubro((Rubro) model.getValueAt(selectedRowIndex, 0));
+        this.setRubro((Rubro) this.conseguirObjetoDeTabla(this.getForm().getjTableRubro()));
     }
 
     public void conseguirCategoria() {
-        DefaultTableModel model = (DefaultTableModel) this.getForm().getjTableCategoria().getModel();
-        int selectedRowIndex = this.getForm().getjTableCategoria().getSelectedRow();
-
-        this.setCategoria((Categoria) model.getValueAt(selectedRowIndex, 0));
+        this.setCategoria((Categoria) this.conseguirObjetoDeTabla(this.getForm().getjTableCategoria()));
     }
 
     public void limpiarTablaRubro() {
-        while (this.getForm().getjTableRubro().getRowCount() != 0) {
-            ((DefaultTableModel) this.getForm().getjTableRubro().getModel()).removeRow(0);
-        }
+        this.limpiarTabla(this.getForm().getjTableRubro());
     }
 
     public void limpiarTablaCategoria() {
-        while (this.getForm().getjTableCategoria().getRowCount() != 0) {
-            ((DefaultTableModel) this.getForm().getjTableCategoria().getModel()).removeRow(0);
-        }
+        this.limpiarTabla(this.getForm().getjTableCategoria());
     }
 
     public void reporteRubro() {
@@ -169,7 +159,7 @@ public class ControladorVentanaAdminPrincipal {
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al eliminar o rubro no seleccionado");
-        }
+            }
     }
 
     public void darDeBaja() {
@@ -284,7 +274,6 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                //datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
@@ -321,7 +310,6 @@ public class ControladorVentanaAdminPrincipal {
                 datos.add(fila.getDescripcion());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                //datos.add(fila);
                 tabla.addRow(datos);
             }
         } else {
