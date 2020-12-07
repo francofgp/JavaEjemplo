@@ -77,13 +77,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     }
 
 
-    public JButton getjButton1() {
-        return btnCrearComercio;
-    }
-
-    public void setjButton1(JButton jButton1) {
-        this.btnCrearComercio = jButton1;
-    }
 
     public JButton getjButton2() {
         return btnVolver;
@@ -228,7 +221,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        btnCrearComercio = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -255,18 +247,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCrearComercio.setBackground(new java.awt.Color(255, 255, 255));
-        btnCrearComercio.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
-        btnCrearComercio.setText("Crea una cuenta como Comercio");
-        btnCrearComercio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnCrearComercio.setBorderPainted(false);
-        btnCrearComercio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearComercioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCrearComercio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 210, 30));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -434,11 +414,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnCrearComercioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearComercioActionPerformed
-        new FrmComercio().setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearComercioActionPerformed
-
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -451,7 +426,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoTxt;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnCrearComercio;
     private javax.swing.JButton btnVolver;
     private com.toedter.calendar.JDateChooser dataFecha;
     private javax.swing.JLabel direccionTxt;

@@ -198,7 +198,7 @@ public class GestionCalificacion {
                 datos.add(fila.getTotal());
                 datos.add(fila.getId());
                 datos.add(fila.getEstado());
-                datos.add(fila.getComercio().getNombre());
+                datos.add(fila.getComercio().getNombreLocal());
 
                 if (fila.getCalificacion() != null) {
                     datos.add(fila.getCalificacion().getCalificacion());
